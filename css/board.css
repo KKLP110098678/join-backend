@@ -29,3 +29,69 @@
 #technical-task {
     background-color: #0038FF;
 }
+
+.task-footer {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 8px;
+}
+
+.task-users {
+    display: flex;
+    gap: 4px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.user-avatar:not(:first-child) {
+    margin-left: -8px;
+}
+
+.task-priority {
+    display: flex;
+    align-items: center;
+}
+
+.priority-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.task-title {
+    font-weight: 600;
+    margin: 8px 0;
+    color: #2A3647;
+}
+
+/* User avatar color variations */
+.user-avatar:nth-child(1) {
+    background-color: #FF7A00;
+}
+
+.user-avatar:nth-child(2) {
+    background-color: #0038FF;
+}
+
+.user-avatar:nth-child(3) {
+    background-color: #02CF2F;
+}
+
+.user-avatar:nth-child(4) {
+    background-color: #EE00D6;
+}
+
+.user-avatar:nth-child(5) {
+    background-color: #9327FF;
+}
