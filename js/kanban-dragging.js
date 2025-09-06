@@ -71,7 +71,6 @@ function getDragAfterElement(container, y) {
 
 function updateTaskStatus(taskElement, columnId) {
     const taskId = taskElement.getAttribute('data-task-id');
-    console.log(`Task ${taskId} moved to column: ${columnId}`);
     // Add API call here to update the backend if needed
 }
 
