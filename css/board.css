@@ -14,7 +14,6 @@
 
 .kanban {
     gap: 24px;
-    padding: 20px;
 }
 
 .ticket-label {
@@ -94,4 +93,47 @@
 
 .user-avatar:nth-child(5) {
     background-color: #9327FF;
+}
+
+/* Drag and Drop Styles */
+.kanban-column {
+    min-height: 400px;
+    flex: 1;
+    border-radius: 16px;
+    padding: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.task-card {
+    cursor: move;
+    user-select: none;
+}
+
+.task-card.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+    z-index: 1000;
+}
+
+.kanban-column.drag-over {
+    background-color: #e3f2fd;
+    border: 2px dashed #2196f3;
+}
+
+.kanban-column.drag-active {
+    background-color: #f3e5f5;
+    border: 2px dashed #9c27b0;
+}
+
+.drop-indicator {
+    height: 2px;
+    background-color: #2196f3;
+    margin: 8px 0;
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.drop-indicator.show {
+    opacity: 1;
 }

@@ -45,7 +45,11 @@
         <button class="btn-add">Add Task</button>
       </div>
       <div class="kanban d-flex">
-        <div id="todo">
+        <div id="todo" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
           <div class="kanban-header d-flex">
             <h2>To Do</h2>
             <button class="btn-add-icon">
@@ -54,7 +58,9 @@
               </svg>
             </button>
           </div>
-          <div class="task-card">
+          <div class="task-card" draggable="true" data-task-id="task-1" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
             <div id="user-story" class="ticket-label">User Story</div>
             <div class="task-title">Task 1</div>
             <div class="task-footer d-flex">
@@ -67,7 +73,9 @@
               </div>
             </div>
           </div>
-          <div class="task-card">
+          <div class="task-card" draggable="true" data-task-id="task-2" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
             <div id="user-story" class="ticket-label">User Story</div>
             <div class="task-title">Task 2</div>
             <div class="task-footer d-flex">
@@ -80,7 +88,11 @@
             </div>
           </div>
         </div>
-        <div id="in-progress">
+        <div id="in-progress" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
           <div class="kanban-header d-flex">
             <h2>In Progress</h2>
             <button class="btn-add-icon">
@@ -89,7 +101,9 @@
               </svg>
             </button>
           </div>
-          <div class="task-card">
+          <div class="task-card" draggable="true" data-task-id="task-3" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
             <div id="user-story" class="ticket-label">User Story</div>
             <div class="task-title">Task 3</div>
             <div class="task-footer d-flex">
@@ -103,7 +117,9 @@
               </div>
             </div>
           </div>
-          <div class="task-card">
+          <div class="task-card" draggable="true" data-task-id="task-4" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
             <div id="technical-task" class="ticket-label">Technical Task</div>
             <div class="task-title">Task 4</div>
             <div class="task-footer d-flex">
@@ -116,7 +132,11 @@
             </div>
           </div>
         </div>
-        <div id="await-feedback">
+        <div id="await-feedback" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
           <div class="kanban-header d-flex">
             <h2>Awaiting Feedback</h2>
             <button class="btn-add-icon">
@@ -125,7 +145,9 @@
               </svg>
             </button>
           </div>
-          <div class="task-card">
+          <div class="task-card" draggable="true" data-task-id="task-5" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
             <div id="user-story" class="ticket-label">User Story</div>
             <div class="task-title">Task 5</div>
             <div class="task-footer d-flex">
@@ -139,7 +161,11 @@
             </div>
           </div>
         </div>
-        <div id="done">
+        <div id="done" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
           <div class="kanban-header d-flex">
             <h2>Done</h2>
             <button class="btn-add-icon">
@@ -148,7 +174,9 @@
               </svg>
             </button>
           </div>
-          <div class="task-card">
+          <div class="task-card" draggable="true" data-task-id="task-6" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
             <div id="user-story" class="ticket-label">User Story</div>
             <div class="task-title">Task 6</div>
             <div class="task-footer d-flex">
@@ -160,7 +188,9 @@
               </div>
             </div>
           </div>
-          <div class="task-card">
+          <div class="task-card" draggable="true" data-task-id="task-7" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
             <div id="technical-task" class="ticket-label">Technical Task</div>
             <div class="task-title">Task 7</div>
             <div class="task-footer d-flex">
@@ -176,6 +206,8 @@
         </div>
     </section>
   </main>
+  <script src="../js/script.js"></script>
+  <script src="../js/kanban-dragging.js"></script>
 </body>
 
 </html>
