@@ -17,9 +17,15 @@
     padding: 20px;
 }
 
-.user-story {
-    background-color: #FF7A00;
+.ticket-label {
     border-radius: 8px;
-    padding: 16px 4px;
+    padding: 4px 16px;
+}
 
+#user-story {
+    background-color: #FF7A00;
+}
+
+#technical-task {
+    background-color: #0038FF;
 }
