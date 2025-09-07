@@ -20,7 +20,7 @@
         z-index: 1000;
     }
 
-    /* الخلفية الزرقاء */
+
     .loader::before {
         content: '';
         position: absolute;
@@ -29,9 +29,7 @@
         width: 100%;
         height: 100%;
         background-color: #4589ff;
-        /* أزرق بالبداية */
-        animation: fadeOutBg 2s ease forwards 2s;
-        /* تختفي بعد 2 ثانية */
+        animation: fadeOutBg 1s ease forwards 1s;
         z-index: -1;
     }
 
@@ -45,7 +43,6 @@
         }
     }
 
-    /* الأيقونة */
     .loader svg {
         width: 100px;
         height: 120px;
@@ -53,10 +50,9 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        animation: moveAndColor 2s ease forwards;
+        animation: moveAndColor 1s ease forwards;
     }
 
-    /* أنيميشن الأيقونة */
     @keyframes moveAndColor {
         0% {
             top: 50%;
@@ -71,7 +67,6 @@
         }
     }
 
-    /* تغيير اللون للأزرق */
     .loader svg path {
         animation: fillToBlue 2s ease forwards;
     }
