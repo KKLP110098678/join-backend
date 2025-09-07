@@ -28,8 +28,8 @@
         <h1 class="text-center">Sign up</h1>
         <div class="separator"></div>
         <!-- </div> -->
-        <div class="text-center login-form w-100">
-          <div class="register-container">
+        <div class="text-center">
+          <div>
             <div class="input-icon-container">
               <input
                 id="inName"
@@ -38,11 +38,7 @@
                 onblur="isUserExisitByName(this.value)"
                 required
               />
-              <img
-                src="../assets/img/person.svg"
-                alt="name"
-                class="overlay-image"
-              />
+              <img src="../assets/img/person.svg" alt="name" />
               <small id="usernameError" class="d-none"></small>
             </div>
 
@@ -54,11 +50,7 @@
                 required
                 onblur="isUserExisitByEmail(this.value)"
               />
-              <img
-                src="../assets/img/mail.svg"
-                alt="E-Mail"
-                class="overlay-image"
-              />
+              <img src="../assets/img/mail.svg" alt="E-Mail" />
             </div>
 
             <div class="input-icon-container">
@@ -69,11 +61,7 @@
                 placeholder="Password"
                 required
               />
-              <img
-                src="../assets/img/lock.svg"
-                alt="password"
-                class="overlay-image"
-              />
+              <img src="../assets/img/lock.svg" alt="password" />
             </div>
             <div id="passwordTooltip" class="password-tooltip"></div>
             <div class="input-icon-container">
@@ -83,18 +71,13 @@
                 placeholder="Confirm password"
                 required
               />
-              <img
-                src="../assets/img/lock.svg"
-                alt="password"
-                class="overlay-image"
-              />
+              <img src="../assets/img/lock.svg" alt="password" />
             </div>
             <div id="checkboxContainer">
               <input id="checkBox" title="accept" type="checkbox" required />
               <span>I accept the Privacy policy</span>
             </div>
-
-            <div class="buttonDiv">
+            <div>
               <img
                 class="auth-loading-spinner"
                 src="../assets/icon/loading.png"
