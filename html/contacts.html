@@ -18,7 +18,7 @@
         <div class="user-avatar"><div>JD</div></div>
       </div>
     </header>
-    <main class="main-wrapper">
+    <main class="main-wrapper d-flex">
       <section id="sidebar-section" class="sidebar-content">
         <nav class="sidenav d-flex">
           <button class="btn-menu">Summary</button>
@@ -31,7 +31,24 @@
           <a href="/html/impressum.html">Legal Notice</a>
         </div>
       </section>
-      <section id="main-content" class="main-content">
+      <section id="main-content" class="main-content d-flex">
+        <div class="contact-menu">
+            <button class="btn-menu">Add Contact</button>
+            <div class="contact-list">
+                <div class="contact-card">
+                    <div class="user-avatar-sm"><div>JD</div></div>
+                    <div class="contact-info">
+                        <p class="contact-name">John Doe</p>
+                        <p class="contact-email">
+                            john.doe@example.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-details" id="contactDetails">
+            <h2>Select a contact to view details</h2>
+        </div>
       </section>
     </main>
   </body>
