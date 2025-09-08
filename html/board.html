@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/css/mainContent.css">
   <link rel="stylesheet" href="/css/sidebarContent.css">
   <link rel="stylesheet" href="/css/buttons.css">
+  <link rel="stylesheet" href="/css/board.css">
 </head>
 
 <body>
@@ -36,35 +37,177 @@
       </div>
     </section>
     <section id="main-content" class="main-content">
-      <div>
-        <div class="search-container">
+      <div class="d-flex">
+        <div class="search-container d-flex">
           <input type="text" name="find-task" id="task-search" placeholder="Find Task">
           <button type="button" id="search-button">Search</button>
         </div>
         <button class="btn-add">Add Task</button>
       </div>
-      <div class="kanban">
-        <div id="todo">
-          <h2>To Do</h2>
-          <div class="task-card">Task 1</div>
-          <div class="task-card">Task 2</div>
+      <div class="kanban d-flex">
+        <div id="todo" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
+          <div class="kanban-header d-flex">
+            <h2>To Do</h2>
+            <button class="btn-add-icon">
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.2485 13H6.24854C5.9652 13 5.7277 12.9042 5.53604 12.7125C5.34437 12.5208 5.24854 12.2833 5.24854 12C5.24854 11.7167 5.34437 11.4792 5.53604 11.2875C5.7277 11.0958 5.9652 11 6.24854 11H11.2485V6C11.2485 5.71667 11.3444 5.47917 11.536 5.2875C11.7277 5.09583 11.9652 5 12.2485 5C12.5319 5 12.7694 5.09583 12.961 5.2875C13.1527 5.47917 13.2485 5.71667 13.2485 6V11H18.2485C18.5319 11 18.7694 11.0958 18.961 11.2875C19.1527 11.4792 19.2485 11.7167 19.2485 12C19.2485 12.2833 19.1527 12.5208 18.961 12.7125C18.7694 12.9042 18.5319 13 18.2485 13H13.2485V18C13.2485 18.2833 13.1527 18.5208 12.961 18.7125C12.7694 18.9042 12.5319 19 12.2485 19C11.9652 19 11.7277 18.9042 11.536 18.7125C11.3444 18.5208 11.2485 18.2833 11.2485 18V13Z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="task-card" draggable="true" data-task-id="task-1" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
+            <div id="user-story" class="ticket-label">User Story</div>
+            <div class="task-title">Task 1</div>
+            <div class="task-footer d-flex">
+              <div class="task-users">
+                <div class="user-avatar">JD</div>
+                <div class="user-avatar">MS</div>
+              </div>
+              <div class="task-priority">
+                <img src="../assets/img/urgent.svg" alt="High Priority" class="priority-icon">
+              </div>
+            </div>
+          </div>
+          <div class="task-card" draggable="true" data-task-id="task-2" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
+            <div id="user-story" class="ticket-label">User Story</div>
+            <div class="task-title">Task 2</div>
+            <div class="task-footer d-flex">
+              <div class="task-users">
+                <div class="user-avatar">AB</div>
+              </div>
+              <div class="task-priority">
+                <img src="../assets/img/medium.svg" alt="Medium Priority" class="priority-icon">
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="in-progress">
-          <h2>In Progress</h2>
-          <div class="task-card">Task 3</div>
-          <div class="task-card">Task 4</div>
+        <div id="in-progress" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
+          <div class="kanban-header d-flex">
+            <h2>In Progress</h2>
+            <button class="btn-add-icon">
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.2485 13H6.24854C5.9652 13 5.7277 12.9042 5.53604 12.7125C5.34437 12.5208 5.24854 12.2833 5.24854 12C5.24854 11.7167 5.34437 11.4792 5.53604 11.2875C5.7277 11.0958 5.9652 11 6.24854 11H11.2485V6C11.2485 5.71667 11.3444 5.47917 11.536 5.2875C11.7277 5.09583 11.9652 5 12.2485 5C12.5319 5 12.7694 5.09583 12.961 5.2875C13.1527 5.47917 13.2485 5.71667 13.2485 6V11H18.2485C18.5319 11 18.7694 11.0958 18.961 11.2875C19.1527 11.4792 19.2485 11.7167 19.2485 12C19.2485 12.2833 19.1527 12.5208 18.961 12.7125C18.7694 12.9042 18.5319 13 18.2485 13H13.2485V18C13.2485 18.2833 13.1527 18.5208 12.961 18.7125C12.7694 18.9042 12.5319 19 12.2485 19C11.9652 19 11.7277 18.9042 11.536 18.7125C11.3444 18.5208 11.2485 18.2833 11.2485 18V13Z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="task-card" draggable="true" data-task-id="task-3" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
+            <div id="user-story" class="ticket-label">User Story</div>
+            <div class="task-title">Task 3</div>
+            <div class="task-footer d-flex">
+              <div class="task-users">
+                <div class="user-avatar">CG</div>
+                <div class="user-avatar">DK</div>
+                <div class="user-avatar">LM</div>
+              </div>
+              <div class="task-priority">
+                <img src="../assets/img/low.svg" alt="Low Priority" class="priority-icon">
+              </div>
+            </div>
+          </div>
+          <div class="task-card" draggable="true" data-task-id="task-4" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
+            <div id="technical-task" class="ticket-label">Technical Task</div>
+            <div class="task-title">Task 4</div>
+            <div class="task-footer d-flex">
+              <div class="task-users">
+                <div class="user-avatar">NG</div>
+              </div>
+              <div class="task-priority">
+                <img src="../assets/img/urgent.svg" alt="High Priority" class="priority-icon">
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="await-feedback">
-          <h2>Awaiting Feedback</h2>
-          <div class="task-card">Task 5</div>
+        <div id="await-feedback" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
+          <div class="kanban-header d-flex">
+            <h2>Awaiting Feedback</h2>
+            <button class="btn-add-icon">
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.2485 13H6.24854C5.9652 13 5.7277 12.9042 5.53604 12.7125C5.34437 12.5208 5.24854 12.2833 5.24854 12C5.24854 11.7167 5.34437 11.4792 5.53604 11.2875C5.7277 11.0958 5.9652 11 6.24854 11H11.2485V6C11.2485 5.71667 11.3444 5.47917 11.536 5.2875C11.7277 5.09583 11.9652 5 12.2485 5C12.5319 5 12.7694 5.09583 12.961 5.2875C13.1527 5.47917 13.2485 5.71667 13.2485 6V11H18.2485C18.5319 11 18.7694 11.0958 18.961 11.2875C19.1527 11.4792 19.2485 11.7167 19.2485 12C19.2485 12.2833 19.1527 12.5208 18.961 12.7125C18.7694 12.9042 18.5319 13 18.2485 13H13.2485V18C13.2485 18.2833 13.1527 18.5208 12.961 18.7125C12.7694 18.9042 12.5319 19 12.2485 19C11.9652 19 11.7277 18.9042 11.536 18.7125C11.3444 18.5208 11.2485 18.2833 11.2485 18V13Z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="task-card" draggable="true" data-task-id="task-5" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
+            <div id="user-story" class="ticket-label">User Story</div>
+            <div class="task-title">Task 5</div>
+            <div class="task-footer d-flex">
+              <div class="task-users">
+                <div class="user-avatar">PQ</div>
+                <div class="user-avatar">RS</div>
+              </div>
+              <div class="task-priority">
+                <img src="../assets/img/medium.svg" alt="Medium Priority" class="priority-icon">
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="done">
-          <h2>Done</h2>
-          <div class="task-card">Task 6</div>
-          <div class="task-card">Task 7</div>
+        <div id="done" class="kanban-column" 
+             ondragover="handleDragOver(event)" 
+             ondragenter="handleDragEnter(this)" 
+             ondragleave="handleDragLeave(event, this)" 
+             ondrop="handleDrop(event, this)">
+          <div class="kanban-header d-flex">
+            <h2>Done</h2>
+            <button class="btn-add-icon">
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.2485 13H6.24854C5.9652 13 5.7277 12.9042 5.53604 12.7125C5.34437 12.5208 5.24854 12.2833 5.24854 12C5.24854 11.7167 5.34437 11.4792 5.53604 11.2875C5.7277 11.0958 5.9652 11 6.24854 11H11.2485V6C11.2485 5.71667 11.3444 5.47917 11.536 5.2875C11.7277 5.09583 11.9652 5 12.2485 5C12.5319 5 12.7694 5.09583 12.961 5.2875C13.1527 5.47917 13.2485 5.71667 13.2485 6V11H18.2485C18.5319 11 18.7694 11.0958 18.961 11.2875C19.1527 11.4792 19.2485 11.7167 19.2485 12C19.2485 12.2833 19.1527 12.5208 18.961 12.7125C18.7694 12.9042 18.5319 13 18.2485 13H13.2485V18C13.2485 18.2833 13.1527 18.5208 12.961 18.7125C12.7694 18.9042 12.5319 19 12.2485 19C11.9652 19 11.7277 18.9042 11.536 18.7125C11.3444 18.5208 11.2485 18.2833 11.2485 18V13Z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="task-card" draggable="true" data-task-id="task-6" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
+            <div id="user-story" class="ticket-label">User Story</div>
+            <div class="task-title">Task 6</div>
+            <div class="task-footer d-flex">
+              <div class="task-users">
+                <div class="user-avatar">TV</div>
+              </div>
+              <div class="task-priority">
+                <img src="../assets/img/low.svg" alt="Low Priority" class="priority-icon">
+              </div>
+            </div>
+          </div>
+          <div class="task-card" draggable="true" data-task-id="task-7" 
+               ondragstart="handleDragStart(event, this)" 
+               ondragend="handleDragEnd(this)">
+            <div id="technical-task" class="ticket-label">Technical Task</div>
+            <div class="task-title">Task 7</div>
+            <div class="task-footer d-flex">
+              <div class="task-users">
+                <div class="user-avatar">WX</div>
+                <div class="user-avatar">YZ</div>
+              </div>
+              <div class="task-priority">
+                <img src="../assets/img/medium.svg" alt="Medium Priority" class="priority-icon">
+              </div>
+            </div>
+          </div>
         </div>
     </section>
   </main>
+  <script src="../js/script.js"></script>
+  <script src="../js/kanban-dragging.js"></script>
 </body>
 
 </html>
