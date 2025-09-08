@@ -137,3 +137,27 @@
 .drop-indicator.show {
     opacity: 1;
 }
+
+.search-container {
+    border-radius: 8px;
+    border: solid 1px #ddd;
+    overflow: hidden;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    width: 100%;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container button {
+    background-color: #4589ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
