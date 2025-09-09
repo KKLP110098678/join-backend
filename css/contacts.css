@@ -15,8 +15,25 @@
   display: flex;
   align-items: center;
   padding: 12px;
-  border: 1px solid #eee;
   border-radius: 8px;
+}
+
+.contact-card:hover {
+  background-color: #D2E3FF;
+  cursor: pointer;
+}
+
+.contact-card:active {
+  background-color: #4589FF;
+}
+
+.contact-card.active {
+  background-color: #4589FF;
+  color: white;
+}
+
+.contact-card.active .contact-email {
+  color: #E0E0E0;
 }
 
 .user-avatar-sm {
@@ -42,4 +59,6 @@
 .contact-email {
   color: #666;
 }
+
+
 

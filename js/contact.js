@@ -23,6 +23,8 @@ let contacts = [
     { name: "Tina Scott", email: "tina.scott@example.com", phone: "012-345-6790"}
 ];
 
+let activeContactIndex = null;
+
 function renderContactList() {
     const contactList = document.getElementById('contact-list');
     contactList.innerHTML = '';
@@ -32,8 +34,9 @@ function renderContactList() {
 }
 
 function getContactCardTemplate(contact, index) {
+        const activeClass = activeContactIndex === index ? 'active' : '';
         return `
-            <div class="contact-card" onclick="showContactDetails(${index})">
+            <div class="contact-card ${activeClass}" onclick="showContactDetails(${index})">
                 <div class="user-avatar-sm"><div>${contact.name.charAt(0)}</div></div>
                 <div class="contact-info">
                     <p class="contact-name">${contact.name}</p>
@@ -44,6 +47,8 @@ function getContactCardTemplate(contact, index) {
 }
 
 function showContactDetails(index) {
+    activeContactIndex = index;
+    renderContactList();
     const contact = contacts[index];
     const contactDetails = document.getElementById('contact-details');
     contactDetails.innerHTML = `
