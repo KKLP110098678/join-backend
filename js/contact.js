@@ -22,3 +22,33 @@ let contacts = [
     { name: "Samuel Reed", email: "samuel.reed@example.com", phone: "901-234-5679"},
     { name: "Tina Scott", email: "tina.scott@example.com", phone: "012-345-6790"}
 ];
+
+function renderContactList() {
+    const contactList = document.getElementById('contact-list');
+    contactList.innerHTML = '';
+    contacts.forEach((contact, index) => {
+        contactList.innerHTML += getContactCardTemplate(contact, index);
+    });
+}
+
+function getContactCardTemplate(contact, index) {
+        return `
+            <div class="contact-card" onclick="showContactDetails(${index})">
+                <div class="user-avatar-sm"><div>${contact.name.charAt(0)}</div></div>
+                <div class="contact-info">
+                    <p class="contact-name">${contact.name}</p>
+                    <p class="contact-email">${contact.email}</p>
+                </div>
+            </div>
+        `;
+}
+
+function showContactDetails(index) {
+    const contact = contacts[index];
+    const contactDetails = document.getElementById('contact-details');
+    contactDetails.innerHTML = `
+        <h2>${contact.name}</h2>
+        <p><strong>Email:</strong> ${contact.email}</p>
+        <p><strong>Phone:</strong> ${contact.phone}</p>
+    `;
+}

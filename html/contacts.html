@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/contacts.css">
   </head>
-  <body>
+  <body onload="renderContactList()">
     <header class="header d-flex">
       <img src="/assets/img/logo-white.svg" alt="Logo" height="56px">
       <div class="inner-header d-flex">
@@ -34,23 +34,15 @@
       </section>
       <div class="contact-menu">
           <button class="btn-menu">Add Contact</button>
-          <div class="contact-list">
-              <div class="contact-card">
-                  <div class="user-avatar-sm"><div>JD</div></div>
-                  <div class="contact-info">
-                      <p class="contact-name">John Doe</p>
-                      <p class="contact-email">
-                          john.doe@example.com
-                      </p>
-                  </div>
-              </div>
+          <div class="contact-list" id="contact-list">
           </div>
       </div>
       <section id="main-content" class="main-content d-flex">
-        <div class="contact-details" id="contactDetails">
+        <div class="contact-details" id="contact-details">
             <h2>Select a contact to view details</h2>
         </div>
       </section>
     </main>
+    <script src="/js/contact.js"></script>
   </body>
 </html>
