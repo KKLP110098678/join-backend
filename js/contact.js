@@ -52,7 +52,12 @@ function showContactDetails(index) {
     const contact = contacts[index];
     const contactDetails = document.getElementById('contact-details');
     contactDetails.innerHTML = `
+        <div class="user-avatar-lg"><div>${contact.name.charAt(0)}</div></div>
         <h2>${contact.name}</h2>
+        <div class="contact-actions">
+         <button class="text-btn-with-icon">Edit</button>
+         <button class="text-btn-with-icon">Delete</button>
+        </div>
         <p><strong>Email:</strong> ${contact.email}</p>
         <p><strong>Phone:</strong> ${contact.phone}</p>
     `;
