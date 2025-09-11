@@ -35,6 +35,17 @@ function getAvatarColor(name) {
     return avatarColors[colorIndex];
 }
 
+function getInitials(name) {
+    const nameParts = name.trim().split(' ');
+    if (nameParts.length >= 2) {
+        return nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+    } else {
+        return nameParts[0].length >= 2 ? 
+               nameParts[0].charAt(0).toUpperCase() + nameParts[0].charAt(1).toUpperCase() : 
+               nameParts[0].charAt(0).toUpperCase();
+    }
+}
+
 function renderContactList() {
     const contactList = document.getElementById('contact-list');
     contactList.innerHTML = '';
@@ -46,9 +57,10 @@ function renderContactList() {
 function getContactCardTemplate(contact, index) {
         const activeClass = activeContactIndex === index ? 'active' : '';
         const avatarColor = getAvatarColor(contact.name);
+        const initials = getInitials(contact.name);
         return `
             <div class="contact-card ${activeClass}" onclick="showContactDetails(${index})">
-                <div class="user-avatar-sm" style="background-color: ${avatarColor};"><div>${contact.name.charAt(0)}</div></div>
+                <div class="user-avatar-sm" style="background-color: ${avatarColor};"><div>${initials}</div></div>
                 <div class="contact-info">
                     <p class="contact-name">${contact.name}</p>
                     <p class="contact-email">${contact.email}</p>
@@ -62,10 +74,11 @@ function showContactDetails(index) {
     renderContactList();
     const contact = contacts[index];
     const avatarColor = getAvatarColor(contact.name);
+    const initials = getInitials(contact.name);
     const contactDetails = document.getElementById('contact-details');
     contactDetails.innerHTML = `
         <div class="contact-header d-flex">
-            <div class="user-avatar-lg" style="background-color: ${avatarColor};"><div>${contact.name.charAt(0)}</div></div>
+            <div class="user-avatar-lg" style="background-color: ${avatarColor};"><div>${initials}</div></div>
             <h2>${contact.name}</h2>
         </div>
         <div class="contact-actions">

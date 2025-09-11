@@ -125,3 +125,16 @@
 .btn-add-icon:active svg {
   fill: #ABABAB;
 }
+
+.btn-close {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.btn-close:hover {
+  background-color: #e3eeff;
+}
