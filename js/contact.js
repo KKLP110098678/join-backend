@@ -25,6 +25,16 @@ let contacts = [
 
 let activeContactIndex = null;
 
+// Avatar background colors
+const avatarColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646', '#00BEE8'];
+
+function getAvatarColor(name) {
+    const firstLetter = name.charAt(0).toUpperCase();
+    const charCode = firstLetter.charCodeAt(0);
+    const colorIndex = (charCode - 65) % avatarColors.length; 
+    return avatarColors[colorIndex];
+}
+
 function renderContactList() {
     const contactList = document.getElementById('contact-list');
     contactList.innerHTML = '';
@@ -35,9 +45,10 @@ function renderContactList() {
 
 function getContactCardTemplate(contact, index) {
         const activeClass = activeContactIndex === index ? 'active' : '';
+        const avatarColor = getAvatarColor(contact.name);
         return `
             <div class="contact-card ${activeClass}" onclick="showContactDetails(${index})">
-                <div class="user-avatar-sm"><div>${contact.name.charAt(0)}</div></div>
+                <div class="user-avatar-sm" style="background-color: ${avatarColor};"><div>${contact.name.charAt(0)}</div></div>
                 <div class="contact-info">
                     <p class="contact-name">${contact.name}</p>
                     <p class="contact-email">${contact.email}</p>
@@ -50,10 +61,13 @@ function showContactDetails(index) {
     activeContactIndex = index;
     renderContactList();
     const contact = contacts[index];
+    const avatarColor = getAvatarColor(contact.name);
     const contactDetails = document.getElementById('contact-details');
     contactDetails.innerHTML = `
-        <div class="user-avatar-lg"><div>${contact.name.charAt(0)}</div></div>
-        <h2>${contact.name}</h2>
+        <div class="contact-header d-flex">
+            <div class="user-avatar-lg" style="background-color: ${avatarColor};"><div>${contact.name.charAt(0)}</div></div>
+            <h2>${contact.name}</h2>
+        </div>
         <div class="contact-actions">
          <button class="text-btn-with-icon">Edit</button>
          <button class="text-btn-with-icon">Delete</button>
@@ -61,4 +75,9 @@ function showContactDetails(index) {
         <p><strong>Email:</strong> ${contact.email}</p>
         <p><strong>Phone:</strong> ${contact.phone}</p>
     `;
+}
+
+function toggleAddContactMenu() {
+    const menu = document.querySelector('.add-contact-menu');
+    menu.classList.toggle('open');
 }
