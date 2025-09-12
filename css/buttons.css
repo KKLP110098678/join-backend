@@ -138,3 +138,15 @@
 .btn-close:hover {
   background-color: #e3eeff;
 }
+
+.text-btn-with-icon {
+  background: none;
+  border: none;
+  color: #4589ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0;
+}

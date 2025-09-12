@@ -40,7 +40,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #ccc;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,7 +90,7 @@
 }
 
 .contact-form-header {
-  background: #4589FF;
+  background: #005DFF;
 }
 
 .contact-form-header, .add-contact-menu form {
