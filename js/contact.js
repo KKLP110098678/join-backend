@@ -79,7 +79,7 @@ function showContactDetails(index) {
         <div class="contact-header d-flex">
             <div class="user-avatar-lg" style="background-color: ${avatarColor};"><div>${initials}</div></div>
             <div>
-                <h2>${contact.name}</h2>
+                <h1>${contact.name}</h1>
                 <div class="contact-actions">
                     <button class="text-btn-with-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,12 +96,20 @@ function showContactDetails(index) {
                 </div>
             </div>
         </div>
-        <p><strong>Email:</strong> ${contact.email}</p>
-        <p><strong>Phone:</strong> ${contact.phone}</p>
+        <div class="contact-details">
+            <h2>Contact Information</h2>
+            <h3>Email</h3>
+            <a href="mailto:${contact.email}">${contact.email}</a>
+            <h3>Phone</h3>
+            <a href="tel:${contact.phone}">${contact.phone}</a>
+        </div>
     `;
 }
 
 function toggleAddContactMenu() {
     const menu = document.querySelector('.add-contact-menu');
+    const overlay = document.querySelector('.blur-overlay');
+    
     menu.classList.toggle('open');
+    overlay.classList.toggle('active');
 }

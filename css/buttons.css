@@ -136,7 +136,7 @@
 }
 
 .btn-close:hover {
-  background-color: #e3eeff;
+  background-color: #4589ff;
 }
 
 .text-btn-with-icon {
@@ -146,7 +146,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 1rem;
   font-weight: bold;
   padding: 0;
+}
+
+.text-btn-with-icon:hover {
+  color: #005dff;
+}
+
+.text-btn-with-icon:hover path {
+  fill: #005dff;
 }
