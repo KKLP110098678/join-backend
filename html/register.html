@@ -49,17 +49,20 @@
                 placeholder="E-Mail"
                 required
                 onblur="isUserExistByEmail(this.value)"
+                disabled
               />
               <img src="../assets/img/mail.svg" alt="E-Mail" />
+              <small id="emailError" class="d-none"></small>
             </div>
 
             <div class="input-icon-container">
               <input
                 id="inPassword"
-                oninput="validatePasswordTooltip()"
+                onblur="validatePasswordTooltip(this.value)"
                 type="password"
                 placeholder="Password"
                 required
+                disabled
               />
               <img src="../assets/img/lock.svg" alt="password" />
             </div>
@@ -69,12 +72,20 @@
                 id="inPasswordConfirm"
                 type="password"
                 placeholder="Confirm password"
+                onblur="isPasswordMatching(this.value)"
                 required
+                disabled
               />
               <img src="../assets/img/lock.svg" alt="password" />
             </div>
             <div id="checkboxContainer">
-              <input id="checkBox" title="accept" type="checkbox" required />
+              <input
+                id="checkBox"
+                title="accept"
+                type="checkbox"
+                required
+                disabled
+              />
               <span>I accept the Privacy policy</span>
             </div>
             <div>
@@ -83,7 +94,9 @@
                 src="../assets/icon/loading.png"
                 alt="loading icon"
               />
-              <button class="btn-no-icon" type="submit">Sign up</button>
+              <button id="btnSignup" class="btn-no-icon" type="submit" disabled>
+                Sign up
+              </button>
             </div>
           </div>
         </div>
