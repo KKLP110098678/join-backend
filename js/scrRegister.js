@@ -1,9 +1,3 @@
-// function isUserExisitByName(inUsereName) {}
-
-// function isUserExisitByEmail(inEmail) {}
-
-// function isPasswordMatching(password, confirmPassword) { }
-
 // Mock database
 const users = [
   { name: "Wassim", email: "wassim@da.com" },
@@ -61,11 +55,10 @@ function isUserExistByName(inName) {
     (user) => user.name.toLowerCase() === inName.toLowerCase()
   );
   if (exists) {
-    console.log("Username already exists!");
-
     error.textContent = "Username already exists!";
     error.classList.remove("d-none");
     emailField.disabled = true;
+    resetFromStep(1);
   } else {
     newUser.nuName = inName;
     error.textContent = "";
@@ -91,7 +84,6 @@ function isUserExistByEmail(inEmail) {
   if (exists) {
     error.textContent = "E-Mail already exists!";
     error.classList.remove("d-none");
-    // passwordField.disabled = true;
     resetFromStep(2);
   } else {
     newUser.nuEmail = inEmail;
@@ -119,54 +111,21 @@ function validateEmailFormat(inEmail) {
   }
 }
 
-function validatePasswordTooltip(inPassword) {
-  const tooltip = document.getElementById("passwordTooltip");
-  const confirmField = document.getElementById("inPasswordConfirm");
-
-  const minLength = inPassword.length >= 8;
-  const hasUpper = /[A-Z]/.test(inPassword);
-  const hasLower = /[a-z]/.test(inPassword);
-  const hasNumber = /[0-9]/.test(inPassword);
-
-  let message = "Password requirements:<br>";
-  message += minLength
-    ? "✔ At least 8 characters<br>"
-    : "❌ At least 8 characters<br>";
-  message += hasUpper
-    ? "✔ At least one uppercase letter<br>"
-    : "❌ At least one uppercase letter<br>";
-  message += hasLower
-    ? "✔ At least one lowercase letter<br>"
-    : "❌ At least one lowercase letter<br>";
-  message += hasNumber
-    ? "✔ At least one number<br>"
-    : "❌ At least one number<br>";
-
-  tooltip.innerHTML = message;
-  tooltip.style.display = inPassword ? "block" : "none";
-
-  if (minLength && hasUpper && hasLower && hasNumber) {
-    tooltip.classList.add("d-none");
-    newUser.nuPassword = inPassword;
-
-    confirmField.disabled = false;
-  } else {
-    // confirmField.disabled = true;
-    resetFromStep(3);
-  }
-}
+//
 function isPasswordMatching(confirmPassword) {
   const confirmField = document.getElementById("inPasswordConfirm");
   const checkBox = document.getElementById("checkBox");
-
+  const error = document.getElementById("confirmPassword");
   if (!confirmPassword) return;
 
   if (newUser.nuPassword === confirmPassword) {
-    confirmField.style.background = "none";
+    error.textContent = "";
+    error.classList.add("d-none");
     checkBox.disabled = false;
   } else {
-    confirmField.style.background = "red";
-    // checkBox.disabled = true;
+    error.textContent = "Password not Matched!";
+    error.classList.remove("d-none");
+
     resetFromStep(4);
   }
 }
@@ -205,4 +164,51 @@ function resetFromStep(step) {
       signUpBtn.disabled = true;
       break;
   }
+}
+
+function validatePasswordTooltip(inPassword) {
+  const tooltip = document.getElementById("passwordTooltip");
+  const confirmField = document.getElementById("inPasswordConfirm");
+
+  const rules = checkPasswordRules(inPassword);
+  tooltip.innerHTML = buildPasswordMessage(rules);
+  tooltip.style.display = inPassword ? "block" : "none";
+
+  if (isPasswordValid(rules)) {
+    tooltip.classList.add("d-none");
+    newUser.nuPassword = inPassword;
+    confirmField.disabled = false;
+  } else {
+    tooltip.classList.remove("d-none");
+    resetFromStep(3);
+  }
+}
+function isPasswordValid(rules) {
+  return rules.minLength && rules.hasUpper && rules.hasLower && rules.hasNumber;
+}
+function buildPasswordMessage(rules) {
+  let message = "Password requirements:<br>";
+
+  message += `<span class="${rules.minLength ? "valid" : "invalid"}">
+                ${rules.minLength ? "✔" : "❌"} At least 8 characters
+              </span><br>`;
+  message += `<span class="${rules.hasUpper ? "valid" : "invalid"}">
+                ${rules.hasUpper ? "✔" : "❌"} At least one uppercase letter
+              </span><br>`;
+  message += `<span class="${rules.hasLower ? "valid" : "invalid"}">
+                ${rules.hasLower ? "✔" : "❌"} At least one lowercase letter
+              </span><br>`;
+  message += `<span class="${rules.hasNumber ? "valid" : "invalid"}">
+                ${rules.hasNumber ? "✔" : "❌"} At least one number
+              </span><br>`;
+
+  return message;
+}
+function checkPasswordRules(password) {
+  return {
+    minLength: password.length >= 8,
+    hasUpper: /[A-Z]/.test(password),
+    hasLower: /[a-z]/.test(password),
+    hasNumber: /[0-9]/.test(password),
+  };
 }
