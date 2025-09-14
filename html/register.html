@@ -3,114 +3,130 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
     <link rel="stylesheet" href="../css/login.css" />
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
     <title>Sign Up</title>
   </head>
-  <body id="register-body">
-    <main class="register-main-container">
-      <form
-        class="register-form"
-        action="../index.html"
-        onsubmit="handleRegisterUser(event);"
-      >
-        <a class="back-button-link" href="./login.html" title="back">
-          <img
-            class="back-button singup-back-button"
-            alt="backImg"
-            src="../assets/img/back.svg"
-          />
-        </a>
-        <div class="d-flex"></div>
+  <body>
+    <div class="register-main-container">
+      <header>
+        <div class="logoHeader">
+          <img src="../assets/icon/logowhiteheader.svg" alt="" />
+        </div>
+      </header>
+      <main>
+        <form
+          class="register-form"
+          action="../index.html"
+          onsubmit="handleRegisterUser(event);"
+        >
+          <a class="back-button-link" href="./login.html" title="back">
+            <img
+              class="back-button singup-back-button"
+              alt="backImg"
+              src="../assets/img/back.svg"
+            />
+          </a>
 
-        <h1 class="text-center">Sign up</h1>
-        <div class="separator"></div>
-        <!-- </div> -->
-        <div class="text-center">
           <div>
-            <div class="input-icon-container">
-              <input
-                id="inName"
-                type="text"
-                placeholder="Name"
-                onblur="isUserExistByName(this.value)"
-                required
-              />
-              <img src="../assets/img/person.svg" alt="name" />
-              <small id="usernameError" class="d-none"></small>
+            <div class="headReg">
+              <h1>Sign up</h1>
+              <div class="separator"></div>
             </div>
-
-            <div class="input-icon-container">
-              <input
-                id="inEmail"
-                type="email"
-                placeholder="E-Mail"
-                required
-                onblur="isUserExistByEmail(this.value)"
-                disabled
-              />
-              <img src="../assets/img/mail.svg" alt="E-Mail" />
-              <small id="emailError" class="d-none"></small>
-            </div>
-
-            <div class="input-icon-container">
-              <input
-                id="inPassword"
-                onblur="validatePasswordTooltip(this.value)"
-                type="password"
-                placeholder="Password"
-                required
-                disabled
-              />
-              <img src="../assets/img/lock.svg" alt="password" />
-            </div>
-            <div id="passwordTooltip" class="password-tooltip"></div>
-            <div class="input-icon-container">
-              <input
-                id="inPasswordConfirm"
-                type="password"
-                placeholder="Confirm password"
-                onblur="isPasswordMatching(this.value)"
-                required
-                disabled
-              />
-              <img src="../assets/img/lock.svg" alt="password" />
-            </div>
-            <div id="checkboxContainer">
-              <input
-                id="checkBox"
-                title="accept"
-                type="checkbox"
-                required
-                disabled
-              />
-              <span>I accept the Privacy policy</span>
+            <div class="mainReg">
+              <div>
+                <div class="fieldContainer">
+                  <div class="input-icon-container">
+                    <input
+                      id="inName"
+                      type="text"
+                      placeholder="Name"
+                      onblur="isUserExistByName(this.value)"
+                      required
+                    />
+                    <img src="../assets/img/person.svg" alt="name" />
+                  </div>
+                  <small id="usernameError" class="d-none msgError"></small>
+                </div>
+                <div class="fieldContainer">
+                  <div class="input-icon-container">
+                    <input
+                      id="inEmail"
+                      type="email"
+                      placeholder="E-Mail"
+                      required
+                      onblur="isUserExistByEmail(this.value)"
+                      disabled
+                    />
+                    <img src="../assets/img/mail.svg" alt="E-Mail" />
+                  </div>
+                  <small id="emailError" class="d-none msgError"></small>
+                </div>
+                <div class="fieldContainer">
+                  <div class="input-icon-container">
+                    <input
+                      id="inPassword"
+                      oninput="validatePasswordTooltip(this.value)"
+                      type="password"
+                      placeholder="Password"
+                      required
+                      disabled
+                    />
+                    <img src="../assets/img/lock.svg" alt="password" />
+                  </div>
+                  <small id="passwordTooltip" class="d-none msgError"></small>
+                </div>
+                <div class="fieldContainer">
+                  <div class="input-icon-container">
+                    <input
+                      id="inPasswordConfirm"
+                      type="password"
+                      placeholder="Confirm password"
+                      onblur="isPasswordMatching(this.value)"
+                      required
+                      disabled
+                    />
+                    <img src="../assets/img/lock.svg" alt="password" />
+                  </div>
+                  <small id="confirmPassword" class="d-none msgError"></small>
+                </div>
+              </div>
+              <div id="checkboxContainer">
+                <input
+                  id="checkBox"
+                  title="accept"
+                  type="checkbox"
+                  required
+                  disabled
+                />
+                <span>I accept the Privacy policy</span>
+              </div>
             </div>
             <div>
-              <img
-                class="auth-loading-spinner"
-                src="../assets/icon/loading.png"
-                alt="loading icon"
-              />
               <button id="btnSignup" class="btn-no-icon" type="submit" disabled>
                 Sign up
               </button>
             </div>
           </div>
+        </form>
+      </main>
+      <footer>
+        <div class="footContainer">
+          <p class="footer-links">
+            <a href="/html/datenschutz.html">Privacy Policy</a>
+          </p>
+          <p class="footer-links">
+            <a href="/html/impressum.html">Legal Notice</a>
+          </p>
         </div>
-        <footer></footer>
-      </form>
-    </main>
-    <footer id="signup-legal-footer" class="legal-footer">
-      <p class="footer-links">
-        <a href="/html/datenschutz.html">Privacy Policy</a>
-      </p>
-      <p class="footer-links">
-        <a href="/html/impressum.html">Legal notice</a>
-      </p>
-    </footer>
+      </footer>
+    </div>
     <script src="../js/scrRegister.js"></script>
   </body>
 </html>
+
+<!-- 
+        
+-->
