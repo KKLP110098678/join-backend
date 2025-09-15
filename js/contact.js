@@ -81,7 +81,7 @@ function showContactDetails(index) {
             <div>
                 <h1>${contact.name}</h1>
                 <div class="contact-actions">
-                    <button class="text-btn-with-icon">
+                    <button onclick="editContact(${index})" class="text-btn-with-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2.49951 17H3.89951L12.5245 8.375L11.1245 6.975L2.49951 15.6V17ZM16.7995 6.925L12.5495 2.725L13.9495 1.325C14.3328 0.941667 14.8037 0.75 15.362 0.75C15.9203 0.75 16.3912 0.941667 16.7745 1.325L18.1745 2.725C18.5578 3.10833 18.7578 3.57083 18.7745 4.1125C18.7912 4.65417 18.6078 5.11667 18.2245 5.5L16.7995 6.925ZM15.3495 8.4L4.74951 19H0.499512V14.75L11.0995 4.15L15.3495 8.4Z" fill="#4589FF"/>
                         </svg>
@@ -107,9 +107,52 @@ function showContactDetails(index) {
 }
 
 function toggleAddContactMenu() {
-    const menu = document.querySelector('.add-contact-menu');
+    const menu = document.querySelector('#add-contact-menu');
     const overlay = document.querySelector('.blur-overlay');
     
     menu.classList.toggle('open');
     overlay.classList.toggle('active');
+}
+
+function toggleEditContactMenu() {
+    const menu = document.querySelector('#edit-contact-menu');
+    const overlay = document.querySelector('.blur-overlay');
+
+    menu.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
+
+function editContact(index) {
+    const contact = contacts[index];
+    const form = document.getElementById('edit-contact-form');
+    form.innerHTML = getEditContactFormTemplate(contact);
+    toggleEditContactMenu();
+}
+
+function getEditContactFormTemplate(contact) {
+    return `
+        <div class="input-icon-container">
+            <input type="text" id="edit-contact-name" value="${contact.name}" required />
+            <img src="/assets/img/person.svg" alt="name" class="overlay-image" />
+        </div>
+        <div class="input-icon-container">
+            <input type="email" id="edit-contact-email" value="${contact.email}" required />
+            <img src="/assets/img/mail.svg" alt="email" class="overlay-image" />
+        </div>
+        <div class="input-icon-container">
+            <input type="text" id="edit-contact-phone" value="${contact.phone}" required />
+            <img src="/assets/img/phone.svg" alt="phone" class="overlay-image" />
+        </div>
+        <button type="submit">Save Changes</button>
+    `;
+}
+
+function closeAllMenus() {
+    const addMenu = document.querySelector('#add-contact-menu');
+    const editMenu = document.querySelector('#edit-contact-menu');
+    const overlay = document.querySelector('.blur-overlay');
+
+    addMenu.classList.remove('open');
+    editMenu.classList.remove('open');
+    overlay.classList.remove('active');
 }

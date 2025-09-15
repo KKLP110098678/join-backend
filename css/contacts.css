@@ -113,10 +113,27 @@
   background: #005DFF;
 }
 
-.contact-form-header, .add-contact-menu form {
+.contact-form-header, .contact-side-menu form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 24px;
   gap: 8px;
+}
+
+.edit-contact-menu {
+  position: absolute;
+  width: 400px;
+  left: -400px;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  transition: right 0.3s ease;
+  border-radius: 0 30px 30px 30px;
+  overflow: hidden;
+  z-index: 1001;
+}
+.edit-contact-menu.open {
+  left: 0;
 }
