@@ -187,7 +187,7 @@ function isPasswordValid(rules) {
   return rules.minLength && rules.hasUpper && rules.hasLower && rules.hasNumber;
 }
 function buildPasswordMessage(rules) {
-  let message = "Password requirements:<br>";
+  let message = "";
 
   message += `<span class="${rules.minLength ? "valid" : "invalid"}">
                 ${rules.minLength ? "✔" : "❌"} At least 8 characters
