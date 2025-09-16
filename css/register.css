@@ -50,8 +50,6 @@
   justify-content: flex-start;
 }
 
-
-
 .back-button-link {
   position: absolute;
   left: 55.83px;
@@ -60,10 +58,7 @@
   height: 37px;
 }
 
-
-
 .headReg {
-
   text-align: center;
   margin-bottom: 32px;
 }
@@ -91,9 +86,10 @@
   gap: 24px;
 }
 
-.btnContainer{
+.btnContainer {
   padding-top: 10px;
 }
+
 #btnSignup {
   display: block;
   margin: 0 auto;

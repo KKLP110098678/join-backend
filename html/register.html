@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
     <link rel="stylesheet" href="../css/login.css" />
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
+
     <title>Sign Up</title>
   </head>
   <body>
@@ -102,10 +102,17 @@
                   disabled
                 />
                 <span>I accept the Privacy policy</span>
+                <small id="checkBoxError" class="d-none msgError"></small>
               </div>
             </div>
             <div class="btnContainer">
-              <button id="btnSignup" class="btn-no-icon" type="submit" disabled>
+              <button
+                id="btnSignup"
+                class="btn-no-icon"
+                onclick="handleCheckBox()"
+                type="submit"
+                
+              >
                 Sign up
               </button>
             </div>
@@ -123,10 +130,10 @@
         </div>
       </footer>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../scrDB/dbConfig.js"></script>
+    <script src="../scrDB/userDB.js"></script>
     <script src="../js/scrRegister.js"></script>
   </body>
 </html>
-
-<!-- 
-        
--->

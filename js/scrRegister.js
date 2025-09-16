@@ -1,47 +1,22 @@
 // Mock database
 const users = [
-  { name: "Wassim", email: "wassim@da.com" },
+  { name: "assim", email: "wassim@da.com" },
   { name: "Ali", email: "ali@da.com" },
 ];
 const newUser = [{ nuName: "", nuEmail: "", inPassword: "" }];
 
 async function handleRegisterUser(event) {
   event.preventDefault();
-
-  const name = document.getElementById("inName").value.trim();
-  const email = document.getElementById("inEmail").value.trim();
-  const password = document.getElementById("inPassword").value;
-  const confirmPassword = document.getElementById("inPasswordConfirm").value;
-  const checkBox = document.getElementById("checkBox").checked;
-
-  if (!checkBox) {
-    alert("You must accept the Privacy Policy.");
-    return;
-  }
-
-  if (password !== confirmPassword) {
-    alert("Passwords do not match!");
-    return;
-  }
-
-  const hashedPassword = btoa(password);
-  const userId = "user_" + Date.now();
-
+  console.log("handleRegisterUser called");
   try {
-    await firebase
-      .database()
-      .ref("users/" + userId)
-      .set({
-        name: name,
-        email: email,
-        password: hashedPassword,
-      });
+    await addNewUser(newUser);
 
-    alert("User registered successfully!");
-    window.location.href = "../index.html";
+    console.log("User registered successfully!");
+
+    // window.location.href = "../index.html";
   } catch (error) {
     console.error("Error registering user:", error);
-    alert("Something went wrong. Try again.");
+    // alert("Something went wrong. Try again.");
   }
 }
 
@@ -113,7 +88,7 @@ function validateEmailFormat(inEmail) {
 
 //
 function isPasswordMatching(confirmPassword) {
-  const confirmField = document.getElementById("inPasswordConfirm");
+  // const confirmField = document.getElementById("inPasswordConfirm");
   const checkBox = document.getElementById("checkBox");
   const error = document.getElementById("confirmPassword");
   if (!confirmPassword) return;
@@ -211,4 +186,20 @@ function checkPasswordRules(password) {
     hasLower: /[a-z]/.test(password),
     hasNumber: /[0-9]/.test(password),
   };
+}
+
+function handleCheckBox() {
+  const checkBox = document.getElementById("checkBox");
+  const btnSignup = document.getElementById("btnSignup");
+  const errorMsg = document.getElementById("checkBoxError");
+
+  if (checkBox.checked) {
+    // btnSignup.disabled = false;
+    errorMsg.textContent = "";
+    errorMsg.classList.add("d-none");
+  } else {
+    // btnSignup.disabled = true;
+    errorMsg.textContent = "يجب الموافقة على الترخيص!";
+    errorMsg.classList.remove("d-none");
+  }
 }
