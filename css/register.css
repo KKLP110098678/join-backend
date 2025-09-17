@@ -1,35 +1,110 @@
-#register-body {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.register-main-container {
   background-color: #4589ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  Gap: 35px;
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+  padding-top: 48px;
+
+}
+
+.logoHeader {
+  position: absolute;
+  width: 100px;
+  top: 80px;
+  left: 77px;
 }
 
 .register-form {
-  background-color: white;
-  min-width: 598px;
-  min-height: 607px;
+  background-color: #FFFFFF;
+  position: relative;
+  width: 598px;
+  height: 607px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   border-radius: 30px;
+  padding: 48px 20px 40px 20px;
+  justify-content: flex-start;
 }
 
-.register-main-container {
+.back-button-link {
+  position: absolute;
+  left: 55.83px;
+  top: 62px;
+  width: 37px;
+  height: 37px;
+}
+
+.headReg {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.separator {
+  width: 30%;
+  margin: 12px auto;
+  border: 2px solid #4589ff;
+}
+
+.mainReg {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+  width: 422px;
+  min-height: 324px;
+  margin: 0 auto;
+}
+
+.mainReg>div {
+  width: 100%;
+  gap: 24px;
+}
+
+.btnContainer {
+  padding-top: 10px;
+}
+
+#btnSignup {
+  display: block;
+  margin: 0 auto;
+  white-space: nowrap;
+  padding: 12px 20px;
+  font-size: 24px;
+  gap: 10px;
 }
 
 #checkbox-container {
   display: flex;
   justify-content: center;
-  font-size: 16px;
+  font-size: 22px;
   align-items: center;
-}
-
-#check-box {
-  margin: 0 10px 0 0;
-  width: auto;
+  padding-bottom: 16px;
 }
 
 .register-form .back-button-link {
@@ -37,18 +112,51 @@
   left: 55.83px;
   top: 88px;
   margin: 0 0 0px;
+  
+#checkBox {
+  width: 24px;
+  height: 24px;
+  appearance: none;
+  border: 2px solid #4589ff;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.register-main-container .register-form {
-  position: relative;
-}
-
-#signup-legal-footer {
+#checkBox:checked {
   background-color: #4589ff;
 }
 
-#signup-legal-footer a {
-  color: white;
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+
+
+.msgError {
+  color: red;
+  text-align: left;
+  border-top: 2px solid red;
+  font-size: 14px;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
+
+
+.footContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .button-div {
@@ -58,3 +166,16 @@
   align-items: center;
   gap: 20px;
 }
+
+.footContainer a {
+  text-decoration: none;
+  color: #FFFFFF;
+  padding: 8px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
