@@ -125,6 +125,7 @@ function toggleEditContactMenu() {
 function editContact(index) {
     const contact = contacts[index];
     const form = document.getElementById('edit-contact-form');
+    form.onsubmit = (event) => updateContact(event, index);
     form.innerHTML = getEditContactFormTemplate(contact);
     toggleEditContactMenu();
 }
@@ -145,6 +146,23 @@ function getEditContactFormTemplate(contact) {
         </div>
         <button type="submit">Save Changes</button>
     `;
+}
+
+function updateContact(event, editContactIndex) {
+    event.preventDefault();
+    const nameInput = document.getElementById('edit-contact-name');
+    const emailInput = document.getElementById('edit-contact-email');
+    const phoneInput = document.getElementById('edit-contact-phone');
+
+    const updatedContact = {
+        name: nameInput.value,
+        email: emailInput.value,
+        phone: phoneInput.value
+    };
+
+    contacts[editContactIndex] = updatedContact;
+    renderContactList();
+    closeAllMenus();
 }
 
 function closeAllMenus() {
