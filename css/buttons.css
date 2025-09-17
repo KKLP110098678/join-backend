@@ -89,6 +89,10 @@
   border-radius: 8px;
   border: none;
   background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(66, 82, 110, 1);
 }
 
 .btn-menu:hover {
@@ -98,6 +102,11 @@
 .btn-menu:active {
   background-color: #d2e3ff;
 }
+
+
+.btn-menu img {
+  width: 24px;
+  height: 24px;
 
 .btn-add-icon {
   border-radius: 8px;
@@ -124,4 +133,5 @@
 
 .btn-add-icon:active svg {
   fill: #ABABAB;
+
 }
