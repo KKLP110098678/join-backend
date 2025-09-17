@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/mainContent.css">
-    <link rel="stylesheet" href="/css/sidebarContent.css">
-    <link rel="stylesheet" href="/css/buttons.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summary</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/mainContent.css" />
+    <link rel="stylesheet" href="/css/sidebarContent.css" />
+    <link rel="stylesheet" href="/css/buttons.css" />
+    <link rel="stylesheet" href="/css/summary.css" />
   </head>
   <body>
     <header class="header d-flex">
-      <img src="/assets/img/logo-white.svg" alt="Logo" height="56px">
+      <img src="/assets/img/logo-white.svg" alt="Logo" height="56px" />
       <div class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>
-        <img src="/assets/img/questionmark.svg" alt="">
+        <img src="/assets/img/questionmark.svg" alt="" />
         <div class="user-avatar"><div>JD</div></div>
       </div>
     </header>
@@ -32,7 +33,88 @@
         </div>
       </section>
       <section id="main-content" class="main-content">
-        <h1>Good morning, JD</h1>
+        <div class="summary-main-content">
+          <h1 class="summary-greeting">Good morning</h1>
+          <div class="summary-square-box">
+            <div class="top-row">
+              <div class="summary-square square-urgency">
+                <div class="summary-left-side">
+                  <div class="urgent-icon">
+                    <img
+                      src="/assets/icon/summary/urgent.png"
+                      alt="Urgent Icon"
+                    />
+                    <span class="urgend-tasks">1</span>
+                  </div>
+                  <p>Task Urgent</p>
+                </div>
+                <div class="vertical-divider"></div>
+                <div class="urgent-sec-half">
+                  <p>October 16, 2022</p>
+                  <span>Upcoming Deadline</span>
+                </div>
+              </div>
+              <div class="summary-square square-board">
+                <div class="card-content">
+                  <img
+                    src="/assets/icon/summary/Default.png"
+                    alt="Board Icon"
+                    class="card-icon"
+                  />
+                  <span class="card-number">5</span>
+                  <p class="card-label">Task in Board</p>
+                </div>
+              </div>
+            </div>
+            <div class="bottom-row">
+              <div class="summary-square square-to-do">
+                <div class="card-content">
+                  <img
+                    src="/assets/icon/summary/todo.png"
+                    alt="To-do Icon"
+                    class="card-icon"
+                  />
+                  <span class="card-number">1</span>
+                  <p class="card-label">Tasks To-do</p>
+                </div>
+              </div>
+              <div class="summary-square square-progress">
+                <div class="card-content">
+                  <img
+                    src="/assets/icon/summary/in progress.png"
+                    alt="In Progress Icon"
+                    class="card-icon"
+                  />
+                  <span class="card-number">2</span>
+                  <p class="card-label">Task in Progress</p>
+                </div>
+              </div>
+              <div class="summary-square square-feedback">
+                <div class="card-content">
+                  <img
+                    src="/assets/icon/summary/afeedback.png"
+                    alt="Awaiting Feedback Icon"
+                    class="card-icon"
+                  />
+                  <span class="card-number">2</span>
+                  <p class="card-label">Awaiting Feedback</p>
+                </div>
+              </div>
+              <div class="summary-square square-done">
+                <div class="card-content">
+                  <img
+                    src="/assets/icon/summary/done.png"
+                    alt="Done Icon"
+                    class="card-icon"
+                  />
+                  <span class="card-number">1</span>
+                  <p class="card-label">Tasks Done</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <h1>Good morning, JD</h1>
         <div class="dashboard">
           <div class="card">
             <h2>Tasks</h2>
@@ -46,7 +128,7 @@
             <h2>Messages</h2>
             <p>You have 2 new messages.</p>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
   </body>

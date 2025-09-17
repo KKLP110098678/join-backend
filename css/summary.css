@@ -1,0 +1,162 @@
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.summary-main-content {
+  width: 912px;
+  height: 591px;
+  text-align: center;
+
+  position: relative;
+}
+
+.summary-square {
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+}
+
+.summary-square-box {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.square-urgency {
+  width: 672px;
+  height: 191px;
+  border-radius: 30px;
+  background: rgba(69, 137, 255, 1);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.square-to-do {
+  background: rgba(210, 227, 255, 1);
+}
+
+.square-urgency,
+.square-board {
+  margin: 0 0 32px;
+}
+
+.summary-square:not(.square-urgency) {
+  width: 208px;
+  height: 191px;
+  border-radius: 30px;
+}
+
+.vertical-divider {
+  width: 1px;
+  height: 145px;
+  background-color: white;
+  margin: 10px 0;
+  border-radius: 3px;
+}
+
+.urgent-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.urgent-icon img {
+  width: 76px;
+  height: 76px;
+}
+
+.urgend-tasks {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  margin-left: 18px;
+}
+
+.urgent-sec-half {
+  color: white;
+  text-align: left;
+}
+
+.urgent-sec-half p {
+  font-size: 21px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.urgent-sec-half span {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.summary-left-side {
+  color: white;
+  text-align: center;
+}
+
+.summary-left-side p {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 13px 0 0 0;
+}
+
+/* Card Content Styling */
+.card-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.card-icon {
+  width: 69px;
+  height: 69px;
+  margin-bottom: 13px;
+}
+
+.card-number {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 13px;
+  color: white;
+}
+
+.card-label {
+  font-size: 23px;
+  font-weight: 400px;
+  margin: 0;
+  color: white;
+}
+
+/* Background Colors */
+
+.square-to-do,
+.square-to-do,
+.card-label {
+  color: rgba(69, 137, 255, 1);
+}
+
+.card-number {
+  color: black;
+}
