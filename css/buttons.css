@@ -85,7 +85,14 @@
 }
 
 .btn-menu {
-  padding: 30px 8px;
+  padding: 8px 30px;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgba(66, 82, 110, 1);
 }
 
 .btn-menu:hover {
@@ -94,4 +101,37 @@
 
 .btn-menu:active {
   background-color: #d2e3ff;
+}
+
+
+.btn-menu img {
+  width: 24px;
+  height: 24px;
+
+.btn-add-icon {
+  border-radius: 8px;
+  padding: 3px;
+  border: solid 1px #4589ff;
+  background-color: transparent;
+}
+
+.btn-add-icon svg {
+  fill: #4589ff;
+}
+
+.btn-add-icon:hover {
+  border: solid 1px #005dff;
+}
+
+.btn-add-icon:hover svg {
+  fill: #005dff;
+}
+
+.btn-add-icon:active {
+  border: solid 1px #ABABAB;
+}
+
+.btn-add-icon:active svg {
+  fill: #ABABAB;
+
 }

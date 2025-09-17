@@ -1,0 +1,163 @@
+.task-card {
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 24px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.kanban {
+    gap: 24px;
+}
+
+.ticket-label {
+    border-radius: 8px;
+    padding: 4px 16px;
+}
+
+#user-story {
+    background-color: #FF7A00;
+}
+
+#technical-task {
+    background-color: #0038FF;
+}
+
+.task-footer {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 8px;
+}
+
+.task-users {
+    display: flex;
+    gap: 4px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.user-avatar:not(:first-child) {
+    margin-left: -8px;
+}
+
+.task-priority {
+    display: flex;
+    align-items: center;
+}
+
+.priority-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.task-title {
+    font-weight: 600;
+    margin: 8px 0;
+    color: #2A3647;
+}
+
+/* User avatar color variations */
+.user-avatar:nth-child(1) {
+    background-color: #FF7A00;
+}
+
+.user-avatar:nth-child(2) {
+    background-color: #0038FF;
+}
+
+.user-avatar:nth-child(3) {
+    background-color: #02CF2F;
+}
+
+.user-avatar:nth-child(4) {
+    background-color: #EE00D6;
+}
+
+.user-avatar:nth-child(5) {
+    background-color: #9327FF;
+}
+
+/* Drag and Drop Styles */
+.kanban-column {
+    min-height: 400px;
+    flex: 1;
+    border-radius: 16px;
+    padding: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.task-card {
+    cursor: move;
+    user-select: none;
+}
+
+.task-card.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+    z-index: 1000;
+}
+
+.kanban-column.drag-over {
+    background-color: #e3f2fd;
+    border: 2px dashed #2196f3;
+}
+
+.kanban-column.drag-active {
+    background-color: #f3e5f5;
+    border: 2px dashed #9c27b0;
+}
+
+.drop-indicator {
+    height: 2px;
+    background-color: #2196f3;
+    margin: 8px 0;
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.drop-indicator.show {
+    opacity: 1;
+}
+
+.search-container {
+    border-radius: 8px;
+    border: solid 1px #ddd;
+    overflow: hidden;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    width: 100%;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-container button {
+    background-color: #4589ff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
