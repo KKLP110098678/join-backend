@@ -161,3 +161,20 @@ function deleteContact(index) {
         contacts.splice(index, 1);
         renderContactList();
 }
+
+function addContact(event) {
+    event.preventDefault();
+    const nameInput = document.getElementById('add-contact-name');
+    const emailInput = document.getElementById('add-contact-email');
+    const phoneInput = document.getElementById('add-contact-phone');
+
+    const newContact = {
+        name: nameInput.value,
+        email: emailInput.value,
+        phone: phoneInput.value
+    };
+
+    contacts.push(newContact);
+    renderContactList();
+    closeAllMenus();
+}
