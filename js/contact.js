@@ -162,6 +162,7 @@ function updateContact(event, editContactIndex) {
 
     contacts[editContactIndex] = updatedContact;
     renderContactList();
+    showContactDetails(editContactIndex);
     closeAllMenus();
 }
 
