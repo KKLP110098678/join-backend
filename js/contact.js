@@ -195,5 +195,6 @@ function addContact(event) {
 
     contacts.push(newContact);
     renderContactList();
+    showContactDetails(contacts.length - 1);
     closeAllMenus();
 }
