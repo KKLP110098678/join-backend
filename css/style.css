@@ -12,6 +12,11 @@ body {
   overflow-x: hidden;
 }
 
+.body-no-scroll {
+  max-height: 100svh !important;
+  overflow: hidden !important;
+}
+
 /* Utility Classes */
 .d-none {
   display: none !important;
