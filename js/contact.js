@@ -144,7 +144,10 @@ function getEditContactFormTemplate(contact) {
             <input type="text" id="edit-contact-phone" value="${contact.phone}" required />
             <img src="/assets/img/phone.svg" alt="phone" class="overlay-image" />
         </div>
-        <button type="submit">Save Changes</button>
+        <div class="form-buttons">
+            <button type="button" onclick="deleteContact(${contacts.indexOf(contact)})" class="btn-secondary-with-icon">Delete</button>
+            <button type="submit" class="btn-with-icon">Save</button>
+        </div>
     `;
 }
 
@@ -179,6 +182,9 @@ function closeAllMenus() {
 function deleteContact(index) {
         contacts.splice(index, 1);
         renderContactList();
+        closeAllMenus();
+        const contactDetails = document.getElementById('contact-details');
+        contactDetails.innerHTML = '<p>Select a contact to view details</p>';
 }
 
 function addContact(event) {
