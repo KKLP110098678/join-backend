@@ -112,7 +112,8 @@
   left: 55.83px;
   top: 88px;
   margin: 0 0 0px;
-  
+}
+
 #checkBox {
   width: 24px;
   height: 24px;
@@ -178,4 +179,3 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #000 !important;
   transition: background-color 9999s ease-in-out 0s;
 }
-
