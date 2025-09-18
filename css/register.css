@@ -114,13 +114,23 @@
   margin: 0 0 0px;
 }
 
-#checkBox {
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+/* #checkBox {
   width: 24px;
   height: 24px;
   appearance: none;
   border: 2px solid #4589ff;
   border-radius: 4px;
   cursor: pointer;
+} */
+.custom-checkbox img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 8px;
 }
 
 #checkboxContainer {
