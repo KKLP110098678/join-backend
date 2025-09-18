@@ -194,24 +194,42 @@ function handleCheckBox() {
   const errorMsg = document.getElementById("checkBoxError");
 
   if (checkBox.checked) {
-    // btnSignup.disabled = false;
+    btnSignup.disabled = false;
     errorMsg.textContent = "";
     errorMsg.classList.add("d-none");
   } else {
-    // btnSignup.disabled = true;
-    errorMsg.textContent = "يجب الموافقة على الترخيص!";
+    btnSignup.disabled = true;
+    errorMsg.textContent = "Please accept the Privacy policy";
     errorMsg.classList.remove("d-none");
   }
 }
+// Qw123456
+function toggleCheckBox() {
+  const checkBox = document.getElementById("checkBox");
+  const checkBoxImage = document.getElementById("checkBoxImage");
 
-{
-  /* <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="4" y="4.96582" width="16" height="16" rx="3" stroke="#4589FF" stroke-width="2"/>
-</svg> */
+  checkBox.checked = !checkBox.checked;
+
+  if (checkBox.checked) {
+    checkBoxImage.src = "../assets/icon/sign/checked.svg";
+  } else {
+    checkBoxImage.src = "../assets/icon/sign/checkDefault.svg";
+  }
+
+  handleCheckBox();
 }
-{
-  /* <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M20 11.9658V17.9658C20 19.6227 18.6569 20.9658 17 20.9658H7C5.34315 20.9658 4 19.6227 4 17.9658V7.96582C4 6.30897 5.34315 4.96582 7 4.96582H15" stroke="#4589FF" stroke-width="2" stroke-linecap="round"/>
-<path d="M8 12.9658L12 16.9658L20 5.46582" stroke="#4589FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> */
+
+function hoverCheckBox(isHover) {
+  const checkBox = document.getElementById("checkBox");
+  const checkBoxImage = document.getElementById("checkBoxImage");
+
+  if (checkBox.checked) {
+    checkBoxImage.src = isHover
+      ? "../assets/icon/sign/hoverchecked.svg"
+      : "../assets/icon/sign/checked.svg";
+  } else {
+    checkBoxImage.src = isHover
+      ? "../assets/icon/sign/checkDefault.svg"
+      : "../assets/icon/sign/checkhoverdisable.svg";
+  }
 }
