@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/login.css" />
-    <link rel="stylesheet" href="/css/register.css" />
-
-    <link rel="stylesheet" href="/css/buttons.css" />
-
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="../css/buttons.css" />
     <title>Sign Up</title>
   </head>
 
@@ -29,7 +27,7 @@
             <img
               class="back-button singup-back-button"
               alt="backImg"
-              src="../assets/img/back.svg"
+              src="../assets/icon/sign/back.svg"
             />
           </a>
 
@@ -49,7 +47,7 @@
                       onblur="isUserExistByName(this.value)"
                       required
                     />
-                    <img src="../assets/img/person.svg" alt="name" />
+                    <img src="../assets/icon/sign/person.svg" alt="name" />
                   </div>
                   <small id="usernameError" class="d-none msgError"></small>
                 </div>
@@ -63,7 +61,7 @@
                       onblur="isUserExistByEmail(this.value)"
                       disabled
                     />
-                    <img src="../assets/img/mail.svg" alt="E-Mail" />
+                    <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
                   </div>
                   <small id="emailError" class="d-none msgError"></small>
                 </div>
@@ -77,7 +75,7 @@
                       required
                       disabled
                     />
-                    <img src="../assets/img/lock.svg" alt="password" />
+                    <img src="../assets/icon/sign/lock.svg" alt="password" />
                   </div>
                   <small id="passwordTooltip" class="d-none msgError"></small>
                 </div>
@@ -91,7 +89,7 @@
                       required
                       disabled
                     />
-                    <img src="../assets/img/lock.svg" alt="password" />
+                    <img src="../assets/icon/sign/lock.svg" alt="password" />
                   </div>
                   <small id="confirmPassword" class="d-none msgError"></small>
                 </div>
@@ -104,7 +102,10 @@
                   required
                   disabled
                 />
-                <span>I accept the Privacy policy</span>
+                <span
+                  >I accept the
+                  <span class="color-dark-blue">Privacy policy</span></span
+                >
                 <small id="checkBoxError" class="d-none msgError"></small>
               </div>
             </div>
@@ -114,7 +115,6 @@
                 class="btn-no-icon"
                 onclick="handleCheckBox()"
                 type="submit"
-                
               >
                 Sign up
               </button>
