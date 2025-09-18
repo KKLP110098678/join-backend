@@ -95,17 +95,21 @@
                 </div>
               </div>
               <div id="checkboxContainer">
-                <input
-                  id="checkBox"
-                  title="accept"
-                  type="checkbox"
-                  required
-                  disabled
-                />
-                <span
-                  >I accept the
-                  <span class="color-dark-blue">Privacy policy</span></span
-                >
+                <label class="custom-checkbox">
+                  <input id="checkBox" type="checkbox"/>
+                  <img
+                    id="checkBoxImage"
+                    src="../assets/icon/sign/checkDefault.svg"
+                    alt="checkbox image"
+                    onclick="toggleCheckBox()"
+                    onmouseover="hoverCheckBox(true)"
+                    onmouseout="hoverCheckBox(false)"
+                  />
+                  <span>
+                    I accept the
+                    <span class="color-dark-blue">Privacy policy</span>
+                  </span>
+                </label>
                 <small id="checkBoxError" class="d-none msgError"></small>
               </div>
             </div>
