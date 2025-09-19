@@ -9,10 +9,6 @@ body {
   font-family: "Inter", Arial, sans-serif;
   line-height: 1.6;
   color: #333;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
   background: transparent;
 }
