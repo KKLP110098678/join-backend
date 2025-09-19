@@ -17,6 +17,10 @@ body {
   background: transparent;
 }
 
+.body-no-scroll {
+  max-height: 100svh !important;
+}
+
 /* Utility Classes */
 .d-none {
   display: none !important;
