@@ -86,9 +86,8 @@ function validateEmailFormat(inEmail) {
   }
 }
 
-//
+// Qw123456
 function isPasswordMatching(confirmPassword) {
-  // const confirmField = document.getElementById("inPasswordConfirm");
   const checkBox = document.getElementById("checkBox");
   const error = document.getElementById("confirmPassword");
   if (!confirmPassword) return;
@@ -102,6 +101,9 @@ function isPasswordMatching(confirmPassword) {
     error.classList.remove("d-none");
 
     resetFromStep(4);
+    checkBox.disabled = true; 
+    checkBox.checked = false;
+    toggleCheckBox(true);
   }
 }
 // Qw123456
@@ -204,32 +206,28 @@ function handleCheckBox() {
   }
 }
 // Qw123456
-function toggleCheckBox() {
+
+
+function toggleCheckBox(forceUncheck = false) {
   const checkBox = document.getElementById("checkBox");
   const checkBoxImage = document.getElementById("checkBoxImage");
 
+  if (checkBox.disabled) return; 
+
+  if (forceUncheck) {
+    checkBox.checked = false;
+    checkBoxImage.src = "../assets/icon/sign/unchecked.svg";
+    return;
+  }
+
+  // عكس الحالة
   checkBox.checked = !checkBox.checked;
 
   if (checkBox.checked) {
+    checkBox.checked = false;
     checkBoxImage.src = "../assets/icon/sign/checked.svg";
   } else {
-    checkBoxImage.src = "../assets/icon/sign/checkDefault.svg";
-  }
-
-  handleCheckBox();
-}
-
-function hoverCheckBox(isHover) {
-  const checkBox = document.getElementById("checkBox");
-  const checkBoxImage = document.getElementById("checkBoxImage");
-
-  if (checkBox.checked) {
-    checkBoxImage.src = isHover
-      ? "../assets/icon/sign/hoverchecked.svg"
-      : "../assets/icon/sign/checked.svg";
-  } else {
-    checkBoxImage.src = isHover
-      ? "../assets/icon/sign/checkDefault.svg"
-      : "../assets/icon/sign/checkhoverdisable.svg";
+    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
+    checkBox.checked = true;
   }
 }
