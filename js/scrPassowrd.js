@@ -4,23 +4,6 @@ let isVisible = false;
 let realConfirmPassword = "";
 let confirmVisible = false;
 
-function toggleCheckBox() {
-  const checkBox = document.getElementById("checkBox");
-  const checkBoxImage = document.getElementById("checkBoxImage");
-
-  if (checkBox.disabled) return;
-
-  checkBox.checked = !checkBox.checked;
-
-  if (checkBox.checked) {
-    checkBox.checked = false;
-    checkBoxImage.src = "../assets/icon/sign/checked.svg";
-  } else {
-    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
-    checkBox.checked = true;
-  }
-}
-
 function updateIconByState() {
   const icon = document.getElementById("passwordIcon");
   if (realPassword.length === 0) {
@@ -47,7 +30,7 @@ function onPasswordInput(event) {
   input.value = isVisible ? realPassword : "*".repeat(realPassword.length);
 
   updateIconByState();
-
+  setBorderColor("fieldPassword", false);
   validatePasswordTooltip(realPassword);
 }
 
@@ -61,8 +44,6 @@ function onPasswordIconClick() {
   updateIconByState();
 }
 
-
-
 function updateConfirmIconByState() {
   const icon = document.getElementById("confirmPasswordIcon");
   if (realConfirmPassword.length === 0) {
@@ -75,7 +56,7 @@ function updateConfirmIconByState() {
   }
 }
 
-function onConfirmPasswordInput(event) {
+function onInputConfirmPassword(event) {
   const input = event.target;
   const value = input.value;
 
@@ -91,11 +72,10 @@ function onConfirmPasswordInput(event) {
     : "*".repeat(realConfirmPassword.length);
 
   updateConfirmIconByState();
-
   isPasswordMatching(realConfirmPassword);
 }
 
-function onConfirmPasswordIconClick() {
+function onClickConfirmPasswordIcon() {
   const input = document.getElementById("inPasswordConfirm");
   if (realConfirmPassword.length === 0) return;
 
@@ -117,9 +97,12 @@ function isPasswordMatching(confirmPassword) {
     error.textContent = "";
     error.classList.add("d-none");
     checkBox.disabled = false;
+    checkBox.checked = false;
+    removeBorderColor("fieldPasswordConfirm");
   } else {
     error.textContent = "Password not Matched!";
     error.classList.remove("d-none");
+    setBorderColor("fieldPasswordConfirm", false);
 
     checkBox.disabled = true;
     checkBox.checked = false;
@@ -139,6 +122,7 @@ function validatePasswordTooltip(inPassword) {
     tooltip.classList.add("d-none");
     newUser.nuPassword = inPassword;
     confirmField.disabled = false;
+    removeBorderColor("fieldPassword");
   } else {
     tooltip.classList.remove("d-none");
     confirmField.disabled = true;
@@ -153,14 +137,15 @@ function buildPasswordMessage(rules) {
   let message = "";
 
   message += `<span class="${rules.minLength ? "valid" : "invalid"}">
-                ${rules.minLength ? "✔" : "❌"} At least 8 characters
+                At least 8 characters
               </span><br>`;
 
   message += `<span class="${rules.hasLower ? "valid" : "invalid"}">
-                ${rules.hasLower ? "✔" : "❌"} At least one lowercase letter
+                At least one lowercase letter
               </span><br>`;
+
   message += `<span class="${rules.hasNumber ? "valid" : "invalid"}">
-                ${rules.hasNumber ? "✔" : "❌"} At least one number
+                At least one number
               </span><br>`;
 
   return message;
