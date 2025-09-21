@@ -13,110 +13,63 @@ async function isUserExistByName(inName) {
   if (!inName || !inName.trim()) return false;
   const exists = await isUserNameTaken(inName);
   if (exists) {
-    setBorderColor("fieldName", false);
-    toggleNextElement("inEmail", false);
-    toggleErrorMessage("usernameError", false, "Username already exists!");
-  } else {
-    newUser.nuName = inName;
-    removeBorderColor("fieldName");
-    toggleNextElement("inEmail", true);
-    toggleErrorMessage("usernameError", true);
-  }
-}
-
-function toggleErrorMessage(elementId, isValid, message = "") {
-  const el = document.getElementById(elementId);
-  if (!el) return;
-
-  if (isValid) {
-    el.classList.add("d-none");
-    el.textContent = "";
-  } else {
-    el.classList.remove("d-none");
-    el.textContent = message;
-  }
-}
-function toggleNextElement(eleID, status) {
-  const el = document.getElementById(eleID);
-  if (!el) return;
-  if (status) {
-    el.disabled = false;
-    el.focus();
-  } else {
-    el.disabled = true;
-  }
-}
-
-async function isUserExistByEmail(inEmail) {
-  const error = document.getElementById("emailError");
-  const passwordField = document.getElementById("inPassword");
-
-  if (!inEmail) return;
-
-  const exists = await isUserEmailTaken(inEmail);
-  if (!validateEmailFormat(inEmail)) {
-    setBorderColor("fieldEmail", false);
-    passwordField.disabled = true;
-    return;
-  }
-  if (exists) {
-    error.textContent = "E-Mail already exists!";
-    error.classList.remove("d-none");
-    passwordField.disabled = true;
-    setBorderColor("fieldEmail", false);
-  } else {
-    removeBorderColor("fieldEmail");
-    newUser.nuEmail = inEmail;
-    error.textContent = "";
-    error.classList.add("d-none");
-    passwordField.disabled = false;
-  }
-}
-
-function validateEmailFormat(inEmail) {
-  const error = document.getElementById("emailError");
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!emailRegex.test(inEmail)) {
-    error.textContent = "Invalid E-Mail format!";
-    error.classList.remove("d-none");
-
+    handleErrorSet(
+      "inEmail",
+      "fieldName",
+      "usernameError",
+      false,
+      "Username already exists!"
+    );
     return false;
   } else {
-    error.textContent = "";
-    error.classList.add("d-none");
+    newUser.nuName = inName;
+    handleErrorSet("inEmail", "fieldName", "usernameError", true);
     return true;
   }
 }
 
-// Qw123456
-function showSuccessAndRedirect() {
-  const overlay = document.getElementById("successOverlay");
-  overlay.classList.remove("d-none");
-
-  setTimeout(() => {
-    window.location.href = "../html/login.html";
-  }, 2000);
-}
-
-function removeBorderColor(inID) {
-  const feldInput = document.getElementById(inID);
-  feldInput.classList.remove("validInput", "invalidInput");
-}
-
-function setBorderColor(inID, status) {
-  const feldInput = document.getElementById(inID);
-  feldInput.classList.remove("validInput", "invalidInput");
-
-  if (status) {
-    feldInput.classList.add("validInput");
-  } else {
-    console.log("true fun");
-    feldInput.classList.add("invalidInput");
+async function isUserExistByEmail(inEmail) {
+  if (!inEmail || !inEmail.trim()) return false;
+  try {
+    if (!validateEmailFormat(inEmail)) {
+      return false;
+    }
+    const exists = await isUserEmailTaken(inEmail);
+    if (exists) {
+      handleErrorSet(
+        "inPassword",
+        "fieldEmail",
+        "emailError",
+        false,
+        "E-Mail already exists!"
+      );
+      return false;
+    }
+    newUser.nuEmail = inEmail;
+    handleErrorSet("inPassword", "fieldEmail", "emailError", true);
+    return true;
+  } catch (error) {
+    console.error("Error checking email:", error);
+    return false;
   }
 }
 
+function validateEmailFormat(inEmail) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(inEmail)) {
+    handleErrorSet(
+      "inPassword",
+      "fieldEmail",
+      "emailError",
+      false,
+      "Please enter a valid E-Mail!"
+    );
+    return false;
+  }
+  return true;
+}
+
+// Qw123456
 function toggleCheckBox() {
   const checkBox = document.getElementById("checkBox");
   const checkBoxImage = document.getElementById("checkBoxImage");
@@ -157,6 +110,7 @@ function handleCheckBox() {
     return;
   }
 }
+
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -236,5 +190,70 @@ function handleSubmit(event) {
     handleRegisterUser();
   } else {
     console.log("❌ Validation failed. Fix the errors first.");
+  }
+}
+
+function handleErrorSet(
+  nextFieldId,
+  fieldId,
+  errorId,
+  status,
+  errorMessage = ""
+) {
+  if (status) {
+    removeBorderColor(fieldId);
+  } else {
+    setBorderColor(fieldId, false);
+  }
+  toggleNextElement(nextFieldId, status);
+  toggleErrorMessage(errorId, status, errorMessage);
+}
+
+function toggleErrorMessage(elementId, isValid, message = "") {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+
+  if (isValid) {
+    el.classList.add("d-none");
+    el.textContent = "";
+  } else {
+    el.classList.remove("d-none");
+    el.textContent = message;
+  }
+}
+
+function toggleNextElement(eleID, status) {
+  const el = document.getElementById(eleID);
+  if (!el) return;
+  if (status) {
+    el.disabled = false;
+    el.focus();
+  } else {
+    el.disabled = true;
+  }
+}
+
+function showSuccessAndRedirect() {
+  const overlay = document.getElementById("successOverlay");
+  overlay.classList.remove("d-none");
+
+  setTimeout(() => {
+    window.location.href = "../html/login.html";
+  }, 2000);
+}
+
+function removeBorderColor(inID) {
+  const feldInput = document.getElementById(inID);
+  feldInput.classList.remove("validInput", "invalidInput");
+}
+
+function setBorderColor(inID, status) {
+  const feldInput = document.getElementById(inID);
+  feldInput.classList.remove("validInput", "invalidInput");
+
+  if (status) {
+    feldInput.classList.add("validInput");
+  } else {
+    feldInput.classList.add("invalidInput");
   }
 }
