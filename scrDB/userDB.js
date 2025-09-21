@@ -12,3 +12,47 @@ async function addNewUser(newUser) {
     console.error("Error registering user:", error);
   }
 }
+
+async function isUserNameTaken(userName) {
+  try {
+    const usersRef = firebase.database().ref("users");
+
+    const snapshot = await usersRef.once("value");
+    const users = snapshot.val();
+
+    if (!users) return false;
+
+    for (let key in users) {
+      if (users[key].name === userName) {
+        return true;
+      }
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Error checking username:", error);
+    return false;
+  }
+}
+
+async function isUserEmailTaken(inEmail) {
+  try {
+    const usersRef = firebase.database().ref("users");
+
+    const snapshot = await usersRef.once("value");
+    const users = snapshot.val();
+
+    if (!users) return false;
+
+    for (let key in users) {
+      if (users[key].email === inEmail) {
+        return true;
+      }
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Error checking user Email:", error);
+    return false;
+  }
+}
