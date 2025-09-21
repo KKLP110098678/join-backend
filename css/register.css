@@ -176,14 +176,16 @@ a {
 .footContainer {
   display: flex;
   flex-direction: row;
+  gap: 16px;
   justify-content: space-between;
-  gap: 8px;
 }
 
 
 
 .footContainer a {
-  color: #FFFFFF;
+  color:var(--color-font-white);
+  font-size: 16px;
+
 }
 
 input:-webkit-autofill {
