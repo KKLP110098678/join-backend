@@ -15,7 +15,7 @@
   --color-white: white;
   --color-red: red;
   --color-grey: #d1d1d1;
-  --color-grey-light: rgb(246, 247, 248);
+  --color-grey-light: rgba(209, 209, 209, 1);
   --color-font-white: rgba(255, 255, 255, 1);
 }
 
