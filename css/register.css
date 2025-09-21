@@ -86,13 +86,27 @@ a {
 
 .mainReg>div {
   width: 100%;
-  gap: 24px;
+  /*leter maybe delete   */
+  /* height: 284px; */
+  /* gap: 24px; */
 }
+
 
 .fieldContainer {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+}
+
+.validInput {
+  border-bottom: 1px solid var(--color-light-blue);
+  /* border-bottom: 1px solid blue; */
+  /* border: none; */
+  /* outline: none; */
+}
+
+.invalidInput {
+  border-bottom: 1px solid var(--color-red);
 }
 
 #confirmPasswordIcon,
@@ -156,8 +170,8 @@ a {
 .msgError {
   color: red;
   text-align: left;
-  border-top: 2px solid red;
-  font-size: 14px;
+  /* border-top: 2px solid red; */
+  font-size: 12px;
 }
 
 .valid {
