@@ -69,13 +69,18 @@
                   <div class="input-icon-container">
                     <input
                       id="inPassword"
-                      oninput="validatePasswordTooltip(this.value)"
-                      type="password"
+                      type="text"
                       placeholder="Password"
-                      required
-                      disabled
+                      oninput="onPasswordInput(event)"
+                      autocomplete="new-password"
                     />
-                    <img src="../assets/icon/sign/lock.svg" alt="password" />
+                    <img
+                      id="passwordIcon"
+                      src="../assets/icon/sign/lock.svg"
+                      alt="password icon"
+                      onclick="onPasswordIconClick()"
+                      style="cursor: pointer"
+                    />
                   </div>
                   <small id="passwordTooltip" class="d-none msgError"></small>
                 </div>
@@ -83,29 +88,38 @@
                   <div class="input-icon-container">
                     <input
                       id="inPasswordConfirm"
-                      type="password"
+                      type="text"
                       placeholder="Confirm password"
-                      onblur="isPasswordMatching(this.value)"
+                      oninput="onConfirmPasswordInput(event)"
+                      onblur="isPasswordMatching(realConfirmPassword)"
                       required
                       disabled
                     />
-                    <img src="../assets/icon/sign/lock.svg" alt="password" />
+                    <img
+                      id="confirmPasswordIcon"
+                      src="../assets/icon/sign/lock.svg"
+                      alt="confirm password icon"
+                      onclick="onConfirmPasswordIconClick()"
+                      style="cursor: pointer"
+                    />
                   </div>
                   <small id="confirmPassword" class="d-none msgError"></small>
                 </div>
               </div>
               <div id="checkboxContainer">
                 <label class="custom-checkbox">
-                  <input id="checkBox" type="checkbox" disabled/>
+                  <input id="checkBox" type="checkbox" disabled />
                   <img
                     id="checkBoxImage"
                     src="../assets/icon/sign/unchacked.svg"
                     alt="checkbox image"
-                    onclick="toggleCheckBox()" 
+                    onclick="toggleCheckBox()"
                   />
                   <span>
                     I accept the
-                    <span class="color-dark-blue"><a href="/html/datenschutz.html">Privacy Policy</a></span>
+                    <span class="color-dark-blue"
+                      ><a href="/html/datenschutz.html">Privacy Policy</a></span
+                    >
                   </span>
                 </label>
                 <small id="checkBoxError" class="d-none msgError"></small>
