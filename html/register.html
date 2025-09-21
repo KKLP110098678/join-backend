@@ -70,7 +70,8 @@
                       id="inPassword"
                       type="text"
                       placeholder="Password"
-                      oninput="onPasswordInput(event)"
+                      oninput="validatePasswordTooltip(this.value)"
+                      onblur="onPasswordBlur(this.value)"
                     />
                     <img
                       id="passwordIcon"

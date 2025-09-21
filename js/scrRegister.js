@@ -158,19 +158,19 @@ function handleSubmit(event) {
   }
 
   // Confirm password check
-  const confirmPasswordInput = document.getElementById("inPasswordConfirm");
-  const confirmPasswordError = document.getElementById("confirmPassword");
-  if (
-    !confirmPasswordInput.value ||
-    confirmPasswordInput.value !== passwordInput.value
-  ) {
-    confirmPasswordError.textContent = "Passwords do not match.";
-    confirmPasswordError.classList.remove("d-none");
-    isValid = false;
-  } else {
-    confirmPasswordError.textContent = "";
-    confirmPasswordError.classList.add("d-none");
-  }
+  // const confirmPasswordInput = document.getElementById("inPasswordConfirm");
+  // const confirmPasswordError = document.getElementById("confirmPassword");
+  // if (
+  //   !confirmPasswordInput.value ||
+  //   confirmPasswordInput.value !== passwordInput.value
+  // ) {
+  //   confirmPasswordError.textContent = "Passwords do not match.";
+  //   confirmPasswordError.classList.remove("d-none");
+  //   isValid = false;
+  // } else {
+  //   confirmPasswordError.textContent = "";
+  //   confirmPasswordError.classList.add("d-none");
+  // }
 
   // Checkbox check
   const checkBox = document.getElementById("checkBox");
@@ -218,7 +218,11 @@ function toggleErrorMessage(elementId, isValid, message = "") {
     el.textContent = "";
   } else {
     el.classList.remove("d-none");
-    el.textContent = message;
+    if (/<[a-z][\s\S]*>/i.test(message)) {
+      el.innerHTML = message;
+    } else {
+      el.textContent = message;
+    }
   }
 }
 
