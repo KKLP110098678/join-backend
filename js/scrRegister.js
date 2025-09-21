@@ -4,8 +4,7 @@ async function handleRegisterUser(event) {
   event.preventDefault();
   try {
     await addNewUser(newUser);
-
-    window.location.href = "../html/login.html";
+    showSuccessAndRedirect();
   } catch (error) {
     console.error("Error registering user:", error);
   }
@@ -89,3 +88,11 @@ function handleCheckBox() {
 }
 
 // Qw123456
+function showSuccessAndRedirect() {
+  const overlay = document.getElementById("successOverlay");
+  overlay.classList.remove("d-none");
+
+  setTimeout(() => {
+    window.location.href = "../html/login.html";
+  }, 2000);
+}
