@@ -1,39 +1,27 @@
-// Mock database
-const users = [
-  { name: "assim", email: "wassim@da.com" },
-  { name: "Ali", email: "ali@da.com" },
-];
 const newUser = [{ nuName: "", nuEmail: "", inPassword: "" }];
 
 async function handleRegisterUser(event) {
   event.preventDefault();
-  console.log("handleRegisterUser called");
   try {
     await addNewUser(newUser);
 
-    console.log("User registered successfully!");
-
-    // window.location.href = "../index.html";
+    window.location.href = "../html/login.html";
   } catch (error) {
     console.error("Error registering user:", error);
-    // alert("Something went wrong. Try again.");
   }
 }
 
-function isUserExistByName(inName) {
+async function isUserExistByName(inName) {
   const error = document.getElementById("usernameError");
   const emailField = document.getElementById("inEmail");
 
   if (!inName) return;
 
-  const exists = users.some(
-    (user) => user.name.toLowerCase() === inName.toLowerCase()
-  );
+  const exists = await isUserNameTaken(inName);
   if (exists) {
     error.textContent = "Username already exists!";
     error.classList.remove("d-none");
     emailField.disabled = true;
-    resetFromStep(1);
   } else {
     newUser.nuName = inName;
     error.textContent = "";
@@ -43,15 +31,13 @@ function isUserExistByName(inName) {
   }
 }
 
-function isUserExistByEmail(inEmail) {
+async function isUserExistByEmail(inEmail) {
   const error = document.getElementById("emailError");
   const passwordField = document.getElementById("inPassword");
 
   if (!inEmail) return;
 
-  const exists = users.some(
-    (user) => user.email.toLowerCase() === inEmail.toLowerCase()
-  );
+  const exists = await isUserEmailTaken(inEmail);
   if (!validateEmailFormat(inEmail)) {
     passwordField.disabled = true;
     return;
@@ -59,7 +45,7 @@ function isUserExistByEmail(inEmail) {
   if (exists) {
     error.textContent = "E-Mail already exists!";
     error.classList.remove("d-none");
-    resetFromStep(2);
+    passwordField.disabled = true;
   } else {
     newUser.nuEmail = inEmail;
     error.textContent = "";
@@ -68,6 +54,7 @@ function isUserExistByEmail(inEmail) {
     passwordField.focus();
   }
 }
+
 function validateEmailFormat(inEmail) {
   const error = document.getElementById("emailError");
 
@@ -76,7 +63,6 @@ function validateEmailFormat(inEmail) {
   if (!emailRegex.test(inEmail)) {
     error.textContent = "Invalid E-Mail format!";
     error.classList.remove("d-none");
-    resetFromStep(2);
 
     return false;
   } else {
@@ -84,6 +70,131 @@ function validateEmailFormat(inEmail) {
     error.classList.add("d-none");
     return true;
   }
+}
+
+function handleCheckBox() {
+  const checkBox = document.getElementById("checkBox");
+  const btnSignup = document.getElementById("btnSignup");
+  const errorMsg = document.getElementById("checkBoxError");
+
+  if (checkBox.checked) {
+    btnSignup.disabled = false;
+    errorMsg.textContent = "";
+    errorMsg.classList.add("d-none");
+  } else {
+    btnSignup.disabled = true;
+    errorMsg.classList.remove("d-none");
+    errorMsg.textContent = "Please accept the Privacy policy";
+  }
+}
+
+// Qw123456
+
+function toggleCheckBox() {
+  const checkBox = document.getElementById("checkBox");
+  const checkBoxImage = document.getElementById("checkBoxImage");
+
+  if (checkBox.disabled) return;
+
+  checkBox.checked = !checkBox.checked;
+
+  if (checkBox.checked) {
+    checkBox.checked = false;
+    checkBoxImage.src = "../assets/icon/sign/checked.svg";
+  } else {
+    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
+    checkBox.checked = true;
+  }
+}
+
+function updateIconByState() {
+  const icon = document.getElementById("passwordIcon");
+  if (realPassword.length === 0) {
+    icon.src = "../assets/icon/sign/lock.svg";
+    isVisible = false;
+  } else {
+    icon.src = isVisible
+      ? "../assets/icon/sign/visibility.svg"
+      : "../assets/icon/sign/visibility_off.svg";
+  }
+}
+
+function onPasswordInput(event) {
+  const input = event.target;
+  const value = input.value;
+
+  if (value.length > realPassword.length) {
+    const added = value.slice(realPassword.length);
+    realPassword += added;
+  } else if (value.length < realPassword.length) {
+    realPassword = realPassword.slice(0, value.length);
+  }
+
+  input.value = isVisible ? realPassword : "*".repeat(realPassword.length);
+
+  updateIconByState();
+
+  validatePasswordTooltip(realPassword);
+}
+
+function onPasswordIconClick() {
+  const input = document.getElementById("inPassword");
+  if (realPassword.length === 0) return;
+
+  isVisible = !isVisible;
+  input.value = isVisible ? realPassword : "*".repeat(realPassword.length);
+
+  updateIconByState();
+}
+
+let realPassword = "";
+let isVisible = false;
+
+let realConfirmPassword = "";
+let confirmVisible = false;
+
+function updateConfirmIconByState() {
+  const icon = document.getElementById("confirmPasswordIcon");
+  if (realConfirmPassword.length === 0) {
+    icon.src = "../assets/icon/sign/lock.svg";
+    confirmVisible = false;
+  } else {
+    icon.src = confirmVisible
+      ? "../assets/icon/sign/visibility.svg"
+      : "../assets/icon/sign/visibility_off.svg";
+  }
+}
+
+function onConfirmPasswordInput(event) {
+  const input = event.target;
+  const value = input.value;
+
+  if (value.length > realConfirmPassword.length) {
+    const added = value.slice(realConfirmPassword.length);
+    realConfirmPassword += added;
+  } else if (value.length < realConfirmPassword.length) {
+    realConfirmPassword = realConfirmPassword.slice(0, value.length);
+  }
+
+  input.value = confirmVisible
+    ? realConfirmPassword
+    : "*".repeat(realConfirmPassword.length);
+
+  updateConfirmIconByState();
+
+  isPasswordMatching(realConfirmPassword);
+}
+
+function onConfirmPasswordIconClick() {
+  const input = document.getElementById("inPasswordConfirm");
+  if (realConfirmPassword.length === 0) return;
+
+  confirmVisible = !confirmVisible;
+  input.value = confirmVisible
+    ? realConfirmPassword
+    : "*".repeat(realConfirmPassword.length);
+
+  updateConfirmIconByState();
 }
 
 // Qw123456
@@ -100,48 +211,11 @@ function isPasswordMatching(confirmPassword) {
     error.textContent = "Password not Matched!";
     error.classList.remove("d-none");
 
-    resetFromStep(4);
-    checkBox.disabled = true; 
+    checkBox.disabled = true;
     checkBox.checked = false;
-    toggleCheckBox(true);
   }
 }
 // Qw123456
-function resetFromStep(step) {
-  const emailField = document.getElementById("inEmail");
-  const passwordField = document.getElementById("inPassword");
-  const confirmField = document.getElementById("inPasswordConfirm");
-  const checkBox = document.getElementById("checkBox");
-  const signUpBtn = document.getElementById("btnSignup");
-
-  switch (step) {
-    case 1:
-      emailField.disabled = true;
-      passwordField.disabled = true;
-      confirmField.disabled = true;
-      checkBox.disabled = true;
-      signUpBtn.disabled = true;
-      break;
-
-    case 2:
-      passwordField.disabled = true;
-      confirmField.disabled = true;
-      checkBox.disabled = true;
-      signUpBtn.disabled = true;
-      break;
-
-    case 3:
-      confirmField.disabled = true;
-      checkBox.disabled = true;
-      signUpBtn.disabled = true;
-      break;
-
-    case 4:
-      checkBox.disabled = true;
-      signUpBtn.disabled = true;
-      break;
-  }
-}
 
 function validatePasswordTooltip(inPassword) {
   const tooltip = document.getElementById("passwordTooltip");
@@ -157,21 +231,21 @@ function validatePasswordTooltip(inPassword) {
     confirmField.disabled = false;
   } else {
     tooltip.classList.remove("d-none");
-    resetFromStep(3);
+    confirmField.disabled = true;
   }
 }
+
 function isPasswordValid(rules) {
-  return rules.minLength && rules.hasUpper && rules.hasLower && rules.hasNumber;
+  return rules.minLength && rules.hasLower && rules.hasNumber;
 }
+
 function buildPasswordMessage(rules) {
   let message = "";
 
   message += `<span class="${rules.minLength ? "valid" : "invalid"}">
                 ${rules.minLength ? "✔" : "❌"} At least 8 characters
               </span><br>`;
-  message += `<span class="${rules.hasUpper ? "valid" : "invalid"}">
-                ${rules.hasUpper ? "✔" : "❌"} At least one uppercase letter
-              </span><br>`;
+
   message += `<span class="${rules.hasLower ? "valid" : "invalid"}">
                 ${rules.hasLower ? "✔" : "❌"} At least one lowercase letter
               </span><br>`;
@@ -181,53 +255,11 @@ function buildPasswordMessage(rules) {
 
   return message;
 }
+
 function checkPasswordRules(password) {
   return {
     minLength: password.length >= 8,
-    hasUpper: /[A-Z]/.test(password),
     hasLower: /[a-z]/.test(password),
     hasNumber: /[0-9]/.test(password),
   };
-}
-
-function handleCheckBox() {
-  const checkBox = document.getElementById("checkBox");
-  const btnSignup = document.getElementById("btnSignup");
-  const errorMsg = document.getElementById("checkBoxError");
-
-  if (checkBox.checked) {
-    btnSignup.disabled = false;
-    errorMsg.textContent = "";
-    errorMsg.classList.add("d-none");
-  } else {
-    btnSignup.disabled = true;
-    errorMsg.textContent = "Please accept the Privacy policy";
-    errorMsg.classList.remove("d-none");
-  }
-}
-// Qw123456
-
-
-function toggleCheckBox(forceUncheck = false) {
-  const checkBox = document.getElementById("checkBox");
-  const checkBoxImage = document.getElementById("checkBoxImage");
-
-  if (checkBox.disabled) return; 
-
-  if (forceUncheck) {
-    checkBox.checked = false;
-    checkBoxImage.src = "../assets/icon/sign/unchecked.svg";
-    return;
-  }
-
-  // عكس الحالة
-  checkBox.checked = !checkBox.checked;
-
-  if (checkBox.checked) {
-    checkBox.checked = false;
-    checkBoxImage.src = "../assets/icon/sign/checked.svg";
-  } else {
-    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
-    checkBox.checked = true;
-  }
 }
