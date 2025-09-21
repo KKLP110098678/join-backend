@@ -107,6 +107,7 @@
 .btn-menu img {
   width: 24px;
   height: 24px;
+}
 
 .btn-add-icon {
   border-radius: 8px;
@@ -134,4 +135,36 @@
 .btn-add-icon:active svg {
   fill: #ABABAB;
 
+}
+
+.btn-close {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.btn-close:hover {
+  background-color: #4589ff;
+}
+
+.text-btn-with-icon {
+  background: none;
+  border: none;
+  color: #4589ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  padding: 0;
+}
+
+.text-btn-with-icon:hover {
+  color: #005dff;
+}
+
+.text-btn-with-icon:hover path {
+  fill: #005dff;
 }
