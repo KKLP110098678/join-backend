@@ -58,10 +58,12 @@ a {
 .back-button-link {
   position: absolute;
   left: 55.83px;
-  top: 62px;
+  top: 60px;
   width: 37px;
   height: 37px;
 }
+
+/*  */
 
 .headReg {
   text-align: center;
@@ -79,7 +81,6 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
   gap: 16px;
   width: 422px;
   min-height: 324px;
@@ -91,18 +92,17 @@ a {
   gap: 24px;
 }
 
-.btnContainer {
-  padding-top: 10px;
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
-#btnSignup {
-  display: block;
-  margin: 0 auto;
-  white-space: nowrap;
-  padding: 12px 20px;
-  font-size: 24px;
-  gap: 10px;
+#confirmPasswordIcon,
+#passwordIcon {
+  cursor: pointer;
 }
+
 
 #checkbox-container {
   display: flex;
@@ -112,12 +112,6 @@ a {
   padding-bottom: 16px;
 }
 
-.register-form .back-button-link {
-  position: absolute;
-  left: 55.83px;
-  top: 88px;
-  margin: 0 0 0px;
-}
 
 .custom-checkbox {
   display: flex;
@@ -149,12 +143,19 @@ a {
 }
 
 
-.fieldContainer {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
+
+.btnContainer {
+  padding-top: 10px;
 }
 
+#btnSignup {
+  display: block;
+  margin: 0 auto;
+  white-space: nowrap;
+  padding: 12px 20px;
+  font-size: 24px;
+  gap: 10px;
+}
 
 
 .msgError {
@@ -192,4 +193,3 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #000 !important;
   transition: background-color 9999s ease-in-out 0s;
 }
-
