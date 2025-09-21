@@ -15,7 +15,8 @@
   --color-white: white;
   --color-red: red;
   --color-grey: #d1d1d1;
-  --color-grey-light: rgb(246,247,248);
+  --color-grey-light: rgb(246, 247, 248);
+  --color-font-white: rgba(255, 255, 255, 1);
 }
 
 .bg-white {
@@ -77,9 +78,10 @@
 .color-blue {
   color: var(--color-blue);
 }
+
 .color-dark-blue {
   color: var(--color-dark-blue);
-} 
+}
 
 .color-light-blue {
   color: var(--color-light-blue);
