@@ -20,39 +20,17 @@ a {
 }
 
 .register-main-container {
-  background-color: var(--color-light-blue);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  Gap: 35px;
-  max-width: 1920px;
+  background-color: var(--color-light-blue);
   height: 100vh;
-  margin: 0 auto;
+  max-width: 1920px;
   padding-top: 48px;
+  margin: 0 auto;
+  gap: 35px;
 
-}
-
-.logoHeader {
-  position: absolute;
-  width: 100px;
-  top: 80px;
-  left: 77px;
-}
-
-.register-form {
-  background-color: #FFFFFF;
-  position: relative;
-  width: 598px;
-  height: 607px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-  border-radius: 30px;
-  padding: 48px 20px 40px 20px;
-  justify-content: flex-start;
 }
 
 .back-button-link {
@@ -63,17 +41,36 @@ a {
   height: 37px;
 }
 
-/*  */
+.logoHeader {
+  position: absolute;
+  width: 100px;
+  top: 80px;
+  left: 77px;
+}
+
+.register-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-font-white);
+  width: 598px;
+  height: 607px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  padding: 48px 88px;
+}
 
 .headReg {
   text-align: center;
-  margin-bottom: 32px;
+  font-weight: bold;
+  font-size: 48px;
 }
 
 .separator {
-  width: 30%;
-  margin: 12px auto;
-  border: 2px solid #4589ff;
+  width: 150px;
+  margin: 16px auto;
+  border: 2px solid var(--color-light-blue);
 }
 
 .mainReg {
@@ -183,7 +180,7 @@ a {
 
 
 .footContainer a {
-  color:var(--color-font-white);
+  color: var(--color-font-white);
   font-size: 16px;
 
 }
