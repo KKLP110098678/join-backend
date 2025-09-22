@@ -224,6 +224,56 @@
         </div>
     </section>
   </main>
+  <div class="add-task-menu">
+    <h2>Add Contact</h2>
+    <form class="add-contact-form">
+      <input type="text" name="task-title" id="task-title" placeholder="Enter a title" required>
+      <label for="task-description">Description (optional)</label>
+      <textarea name="task-description" id="task-description" placeholder="Enter a description"></textarea>
+      <label for="task-due-date">Due date</label>
+      <input type="date" name="task-due-date" id="task-due-date" placeholder="dd/mm/yyyy" required>
+      <label for="task-priority">Priority</label>
+      <select name="task-priority" id="task-priority" required>
+        <option value="" disabled selected>Select priority</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <label for="assigned-to">Assigned to</label>
+      <select name="assigned-to" id="assigned-to" multiple required>
+        <option value="JD">JD</option>
+        <option value="MS">MS</option>
+        <option value="AB">AB</option>
+        <option value="CG">CG</option>
+        <option value="DK">DK</option>
+        <option value="LM">LM</option>
+        <option value="NG">NG</option>
+        <option value="PQ">PQ</option>
+        <option value="RS">RS</option>
+        <option value="TV">TV</option>
+        <option value="WX">WX</option>
+        <option value="YZ">YZ</option>
+      </select>
+      <label for="category">Category</label>
+      <select name="category" id="category" required>
+        <option value="" disabled selected>Select task category</option>
+        <option value="bug">Technical Task</option>
+        <option value="task">User Story</option>
+      </select>
+      <label for="add-sub-task">Subtasks</label>
+      <input type="text" name="add-sub-task" id="add-sub-task" placeholder="Add new subtask">
+      <div class="subtasks">
+        <div class="subtask-item d-flex">
+          <input type="checkbox" id="subtask-1" name="subtask-1">
+          <label for="subtask-1">Subtask 1</label>
+        </div>
+        <div class="subtask-item d-flex">
+          <input type="checkbox" id="subtask-2" name="subtask-2">
+          <label for="subtask-2">Subtask 2</label>
+        </div>
+      </div>
+    </form>
+  </div>
   <script src="../js/script.js"></script>
   <script src="../js/kanban-dragging.js"></script>
 </body>
