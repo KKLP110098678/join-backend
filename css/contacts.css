@@ -1,11 +1,11 @@
 .contact-menu {
   position: fixed;
-  left: 232px;
+  left: 222px;
   top: 96px;
   bottom: 0;
   overflow-y: scroll;
-  padding: 16px;
-  width: 456px;
+  padding: 16px 16px 16px 26px;
+  width: 466px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
 
