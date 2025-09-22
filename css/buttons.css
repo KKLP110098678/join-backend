@@ -91,6 +91,7 @@
   background-color: white;
   display: flex;
   align-items: center;
+  flex-direction: row;
   gap: 16px;
   color: rgba(66, 82, 110, 1);
 }
@@ -102,7 +103,6 @@
 .btn-menu:active {
   background-color: #d2e3ff;
 }
-
 
 .btn-menu img {
   width: 24px;
@@ -129,12 +129,11 @@
 }
 
 .btn-add-icon:active {
-  border: solid 1px #ABABAB;
+  border: solid 1px #ababab;
 }
 
 .btn-add-icon:active svg {
-  fill: #ABABAB;
-
+  fill: #ababab;
 }
 
 .btn-close {
