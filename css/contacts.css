@@ -73,7 +73,7 @@
 }
 
 .add-contact-menu {
-  position: absolute;
+  position: fixed;
   width: 400px;
   right: -400px;
   top: 0;
