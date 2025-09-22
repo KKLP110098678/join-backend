@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/login.css" />
-    <link rel="stylesheet" href="/css/register.css" />
-
-    <link rel="stylesheet" href="/css/buttons.css" />
-
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="../css/buttons.css" />
     <title>Sign Up</title>
   </head>
 
@@ -19,92 +17,106 @@
           <img src="../assets/icon/logowhiteheader.svg" alt="" />
         </div>
       </header>
+      <!-- onsubmit="handleRegisterUser(event);" -->
       <main>
-        <form
-          class="register-form"
-          action="../index.html"
-          onsubmit="handleRegisterUser(event);"
-        >
+        <form class="register-form" action="../index.html">
           <a class="back-button-link" href="./login.html" title="back">
             <img
               class="back-button singup-back-button"
               alt="backImg"
-              src="../assets/img/back.svg"
+              src="../assets/icon/sign/back.svg"
             />
           </a>
 
           <div>
             <div class="headReg">
-              <h1>Sign up</h1>
+              <span>Sign up</span>
               <div class="separator"></div>
             </div>
             <div class="mainReg">
               <div>
                 <div class="fieldContainer">
-                  <div class="input-icon-container">
+                  <div id="fieldName" class="input-icon-container">
                     <input
                       id="inName"
                       type="text"
                       placeholder="Name"
+                      oninput="setBorderColor('fieldName',true)"
                       onblur="isUserExistByName(this.value)"
                       required
                     />
-                    <img src="../assets/img/person.svg" alt="name" />
+                    <img src="../assets/icon/sign/person.svg" alt="name" />
                   </div>
                   <small id="usernameError" class="d-none msgError"></small>
                 </div>
                 <div class="fieldContainer">
-                  <div class="input-icon-container">
+                  <div id="fieldEmail" class="input-icon-container">
                     <input
                       id="inEmail"
                       type="email"
                       placeholder="E-Mail"
                       required
+                      oninput="setBorderColor('fieldEmail',true)"
                       onblur="isUserExistByEmail(this.value)"
                       disabled
                     />
-                    <img src="../assets/img/mail.svg" alt="E-Mail" />
+                    <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
                   </div>
                   <small id="emailError" class="d-none msgError"></small>
                 </div>
                 <div class="fieldContainer">
-                  <div class="input-icon-container">
+                  <div id="fieldPassword" class="input-icon-container">
                     <input
                       id="inPassword"
-                      oninput="validatePasswordTooltip(this.value)"
-                      type="password"
+                      type="text"
                       placeholder="Password"
-                      required
-                      disabled
+                      oninput="validatePasswordTooltip(this.value)"
+                      onblur="onPasswordBlur(this.value)"
                     />
-                    <img src="../assets/img/lock.svg" alt="password" />
+                    <img
+                      id="passwordIcon"
+                      src="../assets/icon/sign/lock.svg"
+                      alt="password icon"
+                      onclick="onPasswordIconClick()"
+                    />
                   </div>
                   <small id="passwordTooltip" class="d-none msgError"></small>
                 </div>
                 <div class="fieldContainer">
-                  <div class="input-icon-container">
+                  <div id="fieldPasswordConfirm" class="input-icon-container">
                     <input
                       id="inPasswordConfirm"
-                      type="password"
+                      type="text"
                       placeholder="Confirm password"
-                      onblur="isPasswordMatching(this.value)"
-                      required
+                      oninput="onInputConfirmPassword(event)"
                       disabled
                     />
-                    <img src="../assets/img/lock.svg" alt="password" />
+                    <img
+                      id="confirmPasswordIcon"
+                      src="../assets/icon/sign/lock.svg"
+                      alt="confirm password icon"
+                      onclick="onClickConfirmPasswordIcon()"
+                    />
                   </div>
                   <small id="confirmPassword" class="d-none msgError"></small>
                 </div>
               </div>
               <div id="checkboxContainer">
-                <input
-                  id="checkBox"
-                  title="accept"
-                  type="checkbox"
-                  required
-                  disabled
-                />
-                <span>I accept the Privacy policy</span>
+                <label class="custom-checkbox">
+                  <input id="checkBox" type="checkbox" disabled />
+                  <img
+                    id="checkBoxImage"
+                    src="../assets/icon/sign/unchacked.svg"
+                    alt="checkbox image"
+                    onclick="toggleCheckBox()"
+                  />
+                  <span>
+                    I accept the
+                    <span class="color-dark-blue"
+                      ><a href="/html/datenschutz.html">Privacy Policy</a></span
+                    >
+                  </span>
+                </label>
                 <small id="checkBoxError" class="d-none msgError"></small>
               </div>
             </div>
@@ -112,9 +124,8 @@
               <button
                 id="btnSignup"
                 class="btn-no-icon"
-                onclick="handleCheckBox()"
+                onclick="handleSubmit(event)"
                 type="submit"
-                
               >
                 Sign up
               </button>
@@ -124,19 +135,25 @@
       </main>
       <footer>
         <div class="footContainer">
-          <p class="footer-links">
+          <p>
             <a href="/html/datenschutz.html">Privacy Policy</a>
           </p>
-          <p class="footer-links">
+          <p>
             <a href="/html/impressum.html">Legal Notice</a>
           </p>
         </div>
       </footer>
+    </div>
+    <div id="successOverlay" class="ol-end d-none">
+      <div class="ol-end-content">
+        <p>You Signed Up successfully</p>
+      </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../scrDB/dbConfig.js"></script>
     <script src="../scrDB/userDB.js"></script>
     <script src="../js/scrRegister.js"></script>
+    <script src="../js/scrPassowrd.js"></script>
   </body>
 </html>
