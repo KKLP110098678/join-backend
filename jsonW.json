@@ -1,0 +1,39 @@
+{
+  "users": {
+    "userId123": {
+      "name": "Wassim",
+      "email": "wassim@example.com",
+      "password": "hashed_password_here"
+    },
+    "userId456": {
+      "name": "Ali",
+      "email": "ali@example.com",
+      "password": "hashed_password_here"
+    }
+  },
+  "tasks": {
+    "taskId001": {
+      "title": "Finish project",
+      "description": "Complete the Firebase project",
+      "dueDate": "2025-09-10",
+      "priority": "High",
+      "assignedTo": ["userId123", "userId456"],
+      "category": "Technical Task",
+      "status": "To Do",
+      "subtasks": {
+        "subtaskId001": { "title": "Setup Firebase", "done": true },
+        "subtaskId002": { "title": "Create DB structure", "done": false }
+      }
+    },
+    "taskId002": {
+      "title": "Buy groceries",
+      "description": "Milk, Bread, Eggs",
+      "dueDate": "2025-09-08",
+      "priority": "Medium",
+      "assignedTo": [],
+      "category": "User Story",
+      "status": "In Progress",
+      "subtasks": {}
+    }
+  }
+}

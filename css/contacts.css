@@ -1,0 +1,139 @@
+.contact-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.contact-card:hover {
+  background-color: #D2E3FF;
+  cursor: pointer;
+}
+
+.contact-card:active {
+  background-color: #4589FF;
+}
+
+.contact-card.active {
+  background-color: #4589FF;
+  color: white;
+}
+
+.contact-card.active .contact-email {
+  color: white;
+}
+
+.user-avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.user-avatar-lg {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-right: 16px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-weight: bold;
+}
+
+.contact-email {
+  color: #4589FF;
+}
+
+.add-contact-menu {
+  position: fixed;
+  width: 400px;
+  right: -400px;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  transition: right 0.3s ease;
+  border-radius: 30px 0px 30px 30px;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.add-contact-menu.open {
+  right: 0;
+}
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 1);
+
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.blur-overlay.active {
+  opacity: 0.84;
+  visibility: visible;
+}
+
+.contact-form-header {
+  background: #005DFF;
+}
+
+.contact-form-header, .contact-side-menu form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 8px;
+}
+
+.edit-contact-menu {
+  position: absolute;
+  width: 400px;
+  left: -400px;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  transition: right 0.3s ease;
+  border-radius: 0 30px 30px 30px;
+  overflow: hidden;
+  z-index: 1001;
+}
+.edit-contact-menu.open {
+  left: 0;
+}
