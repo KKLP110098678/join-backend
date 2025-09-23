@@ -151,6 +151,19 @@
   background-color: #4589ff;
 }
 
+.btn-close-white {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.btn-close-white:hover {
+  background-color: #E3EEFF;
+}
+
 .text-btn-with-icon {
   background: none;
   border: none;

@@ -221,3 +221,7 @@
     right: 0;
     transition: right 0.3s ease;
 }
+
+.add-task-header {
+   height: 156px;
+}
