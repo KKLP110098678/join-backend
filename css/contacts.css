@@ -24,6 +24,7 @@
   align-items: center;
   padding: 12px;
   border-radius: 8px;
+  gap: 12px;
 }
 
 .contact-card:hover {
@@ -42,17 +43,6 @@
 
 .contact-card.active .contact-email {
   color: white;
-}
-
-.user-avatar-sm {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 12px;
 }
 
 .user-avatar-lg {

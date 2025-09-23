@@ -124,7 +124,7 @@ const categoryToId = {
 
 function generateTaskCardHTML(task) {
   const assignedUsersHTML = task.assignedTo.map(user => 
-    `<div class="user-avatar">${user}</div>`
+    `<div class="user-avatar-sm">${user}</div>`
   ).join('');
   
   const categoryId = categoryToId[task.category] || "user-story";

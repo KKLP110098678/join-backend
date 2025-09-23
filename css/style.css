@@ -109,3 +109,13 @@ main {
   font-size: 1.2rem;
 }
 
+.user-avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
