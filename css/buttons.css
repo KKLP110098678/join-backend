@@ -15,6 +15,7 @@
 }
 
 .btn-secondary-with-icon {
+  font-size: 23px;
   background-color: white;
   border-radius: 10px;
   padding: 16px 10px;
@@ -68,6 +69,7 @@
 }
 
 .btn-with-icon {
+  font-size: 23px;
   color: white;
   border: none;
   border-radius: 10px;
