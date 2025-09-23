@@ -251,8 +251,3 @@ function handleSearchInput(event) {
     showAllTasks();
   }
 }
-
-// Vereinfachter DOMContentLoaded Handler - nur für das initiale Rendern
-document.addEventListener('DOMContentLoaded', function() {
-  renderAllTasks();
-});
