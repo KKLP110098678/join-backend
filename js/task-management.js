@@ -218,17 +218,13 @@ function filterTasks(searchTerm) {
   tasks = currentTasks;
 }
 
-function showAllTasks() {
-  renderAllTasks();
-}
-
 // Globale Event Handler Funktionen für inline Events
 function handleSearchClick() {
   const searchInput = document.getElementById('task-search');
   if (searchInput) {
     const searchTerm = searchInput.value.trim();
     if (searchTerm === '') {
-      showAllTasks();
+      renderAllTasks();
     } else {
       filterTasks(searchTerm);
     }
@@ -239,7 +235,7 @@ function handleSearchKeypress(event) {
   if (event.key === 'Enter') {
     const searchTerm = event.target.value.trim();
     if (searchTerm === '') {
-      showAllTasks();
+      renderAllTasks();
     } else {
       filterTasks(searchTerm);
     }
@@ -248,6 +244,6 @@ function handleSearchKeypress(event) {
 
 function handleSearchInput(event) {
   if (event.target.value.trim() === '') {
-    showAllTasks();
+    renderAllTasks();
   }
 }
