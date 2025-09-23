@@ -236,3 +236,9 @@
 .main-content {
     padding: 72px 64px 0 64px;
 }
+
+.main-content-header {
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 48px;
+}
