@@ -106,14 +106,6 @@ function showContactDetails(index) {
     `;
 }
 
-function toggleAddContactMenu() {
-    const menu = document.querySelector('#add-contact-menu');
-    const overlay = document.querySelector('.blur-overlay');
-    
-    menu.classList.toggle('open');
-    overlay.classList.toggle('active');
-}
-
 function toggleEditContactMenu() {
     const menu = document.querySelector('#edit-contact-menu');
     const overlay = document.querySelector('.blur-overlay');
@@ -167,16 +159,6 @@ function updateContact(event, editContactIndex) {
     renderContactList();
     showContactDetails(editContactIndex);
     closeAllMenus();
-}
-
-function closeAllMenus() {
-    const addMenu = document.querySelector('#add-contact-menu');
-    const editMenu = document.querySelector('#edit-contact-menu');
-    const overlay = document.querySelector('.blur-overlay');
-
-    addMenu.classList.remove('open');
-    editMenu.classList.remove('open');
-    overlay.classList.remove('active');
 }
 
 function deleteContact(index) {
