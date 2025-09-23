@@ -30,13 +30,6 @@
   margin: 8px 0;
   line-height: 1.4;
 }
-
-.task-subtasks {
-  font-size: 12px;
-  color: #999;
-  margin: 8px 0;
-}
-
 .kanban {
     gap: 24px;
 }
@@ -222,7 +215,7 @@
 }
 
 .add-task-header {
-   height: 156px;
+    height: 156px;
 }
 
 .progress-bar {
@@ -241,4 +234,20 @@
     gap: 20px;
     align-items: center;
     margin-bottom: 48px;
+}
+
+.subtask-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #999;
+}
+
+.progress-container {
+    flex: 1;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 8px;
 }

@@ -147,7 +147,9 @@ function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, 
       <div class="task-title">${task.title}</div>
       <div class="task-description">${task.description}</div>
       <div class="subtask-container">
-        <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
+        <div class="progress-container d-flex">
+          <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
+        </div>
         ${totalSubtasks > 0 ? `<div class="task-subtasks">${subtaskProgress}</div>` : ''}
       </div>
       <div class="task-footer d-flex">
