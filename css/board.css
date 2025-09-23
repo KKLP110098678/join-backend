@@ -225,3 +225,11 @@
 .add-task-header {
    height: 156px;
 }
+
+.progress-bar {
+    display: block;
+    height: 8px;
+    background-color: #4589ff;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}

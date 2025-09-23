@@ -134,10 +134,11 @@ function generateTaskCardHTML(task) {
   const completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
   const totalSubtasks = task.subtasks.length;
   const subtaskProgress = totalSubtasks > 0 ? `${completedSubtasks}/${totalSubtasks} Subtasks` : '';
-  return getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks);
+  const progressInPercent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  return getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks, progressInPercent);
 }
 
-function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks) {
+function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks, progressInPercent) {
   return `
     <div class="task-card" draggable="true" data-task-id="${task.id}" 
          ondragstart="handleDragStart(event, this)" 
@@ -145,7 +146,10 @@ function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, 
       <div id="${categoryId}" class="ticket-label">${task.category}</div>
       <div class="task-title">${task.title}</div>
       <div class="task-description">${task.description}</div>
-      ${totalSubtasks > 0 ? `<div class="task-subtasks">${subtaskProgress}</div>` : ''}
+      <div class="subtask-container">
+        <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
+        ${totalSubtasks > 0 ? `<div class="task-subtasks">${subtaskProgress}</div>` : ''}
+      </div>
       <div class="task-footer d-flex">
         <div class="task-users">
           ${assignedUsersHTML}
