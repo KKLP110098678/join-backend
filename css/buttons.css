@@ -167,3 +167,53 @@
 .text-btn-with-icon:hover path {
   fill: #005dff;
 }
+
+.radio-to-btn input {
+  display: none;
+}
+
+.radio-to-btn label {
+  display: inline-flex;
+  padding: 10px 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-to-btn label.active {
+  color: white !important;
+  path {
+    transition: all 0.3s ease;
+    fill: #FFFFFF !important;
+  }
+}
+
+label#low-priority:hover {
+  border-bottom: #7AE229 4px solid;
+}
+
+label#medium-priority:hover {
+  border-bottom: #FFA800 4px solid;
+}
+
+label#urgent-priority:hover {
+  border-bottom: #FF3D00 4px solid;
+}
+
+label#low-priority:checked {
+  background-color: #7AE229;
+
+}
+
+label#medium-priority:checked {
+  background-color: #FFA800;
+}
+
+label#urgent-priority:checked {
+  background-color: #FF3D00;
+}
+
+.radio-to-btn {
+  background-color: white;
+}
