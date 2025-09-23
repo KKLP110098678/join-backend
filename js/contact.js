@@ -134,15 +134,15 @@ function getEditContactFormTemplate(contact) {
     return `
         <div class="input-icon-container">
             <input type="text" id="edit-contact-name" value="${contact.name}" required />
-            <img src="/assets/img/person.svg" alt="name" class="overlay-image" />
+            <img src="/assets/icon/sign/person.svg" alt="name" class="overlay-image" />
         </div>
         <div class="input-icon-container">
             <input type="email" id="edit-contact-email" value="${contact.email}" required />
-            <img src="/assets/img/mail.svg" alt="email" class="overlay-image" />
+            <img src="/assets/icon/sign/mail.svg" alt="email" class="overlay-image" />
         </div>
         <div class="input-icon-container">
             <input type="text" id="edit-contact-phone" value="${contact.phone}" required />
-            <img src="/assets/img/phone.svg" alt="phone" class="overlay-image" />
+            <img src="/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
         </div>
         <div class="form-buttons">
             <button type="button" onclick="deleteContact(${contacts.indexOf(contact)})" class="btn-secondary-with-icon">Delete</button>
