@@ -106,20 +106,12 @@ function showContactDetails(index) {
     `;
 }
 
-function toggleEditContactMenu() {
-    const menu = document.querySelector('#edit-contact-menu');
-    const overlay = document.querySelector('.blur-overlay');
-
-    menu.classList.toggle('open');
-    overlay.classList.toggle('active');
-}
-
 function editContact(index) {
     const contact = contacts[index];
     const form = document.getElementById('edit-contact-form');
     form.onsubmit = (event) => updateContact(event, index);
     form.innerHTML = getEditContactFormTemplate(contact);
-    toggleEditContactMenu();
+    toggleOverlay('#edit-contact-menu');
 }
 
 function getEditContactFormTemplate(contact) {
