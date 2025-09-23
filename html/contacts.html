@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/css/sidebarContent.css">
   <link rel="stylesheet" href="/css/buttons.css">
   <link rel="stylesheet" href="/css/contacts.css">
+  <link rel="stylesheet" href="/css/overlays.css">
 </head>
 
 <body class="body-no-scroll" onload="renderContactList()">
@@ -57,7 +58,7 @@
     </section>
   </main>
   <div class="blur-overlay" id="blur-overlay" onclick="closeAllMenus()"></div>
-  <div class="contact-side-menu add-contact-menu" id="add-contact-menu">
+  <div class="contact-side-menu overlay-menu right" id="add-contact-menu">
     <div class="contact-form-header d-flex">
       <img src="/assets/icon/logo-white.svg" alt="">
       <h2>Add Contact</h2>
@@ -100,7 +101,7 @@
       </div>
     </form>
   </div>
-  <div class="contact-side-menu edit-contact-menu" id="edit-contact-menu">
+  <div class="contact-side-menu overlay-menu left" id="edit-contact-menu">
     <div class="contact-form-header d-flex">
       <img src="/assets/icon/logo-white.svg" alt="">
       <h2>Edit Contact</h2>
