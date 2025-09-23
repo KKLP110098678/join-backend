@@ -41,6 +41,11 @@
     gap: 24px;
 }
 
+.kanban-header {
+    justify-content: space-between;
+    align-items: center;
+}
+
 .ticket-label {
     border-radius: 8px;
     padding: 4px 16px;
