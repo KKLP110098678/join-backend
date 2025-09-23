@@ -6,10 +6,35 @@
   margin-bottom: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease;
+  cursor: grab;
 }
 
 .task-card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.task-card:active {
+  cursor: grabbing;
+}
+
+.task-title {
+  font-weight: 600;
+  margin: 8px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.task-description {
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.task-subtasks {
+  font-size: 12px;
+  color: #999;
+  margin: 8px 0;
 }
 
 .kanban {
