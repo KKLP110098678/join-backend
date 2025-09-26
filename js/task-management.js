@@ -124,7 +124,7 @@ const categoryToId = {
 
 function generateTaskCardHTML(task) {
   const assignedUsersHTML = task.assignedTo.map(user => 
-    `<div class="user-avatar-sm">${user}</div>`
+    `<div class="user-avatar">${user}</div>`
   ).join('');
   
   const categoryId = categoryToId[task.category] || "user-story";
@@ -134,11 +134,10 @@ function generateTaskCardHTML(task) {
   const completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
   const totalSubtasks = task.subtasks.length;
   const subtaskProgress = totalSubtasks > 0 ? `${completedSubtasks}/${totalSubtasks} Subtasks` : '';
-  const progressInPercent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-  return getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks, progressInPercent);
+  return getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks);
 }
 
-function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks, progressInPercent) {
+function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks) {
   return `
     <div class="task-card" draggable="true" data-task-id="${task.id}" 
          ondragstart="handleDragStart(event, this)" 
@@ -146,12 +145,7 @@ function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, 
       <div id="${categoryId}" class="ticket-label">${task.category}</div>
       <div class="task-title">${task.title}</div>
       <div class="task-description">${task.description}</div>
-      <div class="subtask-container">
-        <div class="progress-container d-flex">
-          <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
-        </div>
-        ${totalSubtasks > 0 ? `<div class="task-subtasks">${subtaskProgress}</div>` : ''}
-      </div>
+      ${totalSubtasks > 0 ? `<div class="task-subtasks">${subtaskProgress}</div>` : ''}
       <div class="task-footer d-flex">
         <div class="task-users">
           ${assignedUsersHTML}
@@ -224,13 +218,17 @@ function filterTasks(searchTerm) {
   tasks = currentTasks;
 }
 
+function showAllTasks() {
+  renderAllTasks();
+}
+
 // Globale Event Handler Funktionen für inline Events
 function handleSearchClick() {
   const searchInput = document.getElementById('task-search');
   if (searchInput) {
     const searchTerm = searchInput.value.trim();
     if (searchTerm === '') {
-      renderAllTasks();
+      showAllTasks();
     } else {
       filterTasks(searchTerm);
     }
@@ -241,7 +239,7 @@ function handleSearchKeypress(event) {
   if (event.key === 'Enter') {
     const searchTerm = event.target.value.trim();
     if (searchTerm === '') {
-      renderAllTasks();
+      showAllTasks();
     } else {
       filterTasks(searchTerm);
     }
@@ -250,6 +248,11 @@ function handleSearchKeypress(event) {
 
 function handleSearchInput(event) {
   if (event.target.value.trim() === '') {
-    renderAllTasks();
+    showAllTasks();
   }
 }
+
+// Vereinfachter DOMContentLoaded Handler - nur für das initiale Rendern
+document.addEventListener('DOMContentLoaded', function() {
+  renderAllTasks();
+});
