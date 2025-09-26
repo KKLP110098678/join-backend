@@ -15,6 +15,7 @@
 }
 
 .btn-secondary-with-icon {
+  font-size: 23px;
   background-color: white;
   border-radius: 10px;
   padding: 16px 10px;
@@ -68,6 +69,7 @@
 }
 
 .btn-with-icon {
+  font-size: 23px;
   color: white;
   border: none;
   border-radius: 10px;
@@ -149,6 +151,19 @@
   background-color: #4589ff;
 }
 
+.btn-close-white {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.btn-close-white:hover {
+  background-color: #E3EEFF;
+}
+
 .text-btn-with-icon {
   background: none;
   border: none;
@@ -166,4 +181,56 @@
 
 .text-btn-with-icon:hover path {
   fill: #005dff;
+}
+
+.radio-to-btn input {
+  display: none;
+}
+
+.radio-to-btn label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-to-btn label.active {
+  color: white !important;
+  path {
+    transition: all 0.3s ease;
+    fill: #FFFFFF !important;
+  }
+}
+
+label#low-priority:hover {
+  border-bottom: #7AE229 4px solid;
+}
+
+label#medium-priority:hover {
+  border-bottom: #FFA800 4px solid;
+}
+
+label#urgent-priority:hover {
+  border-bottom: #FF3D00 4px solid;
+}
+
+label#low-priority:checked {
+  background-color: #7AE229;
+
+}
+
+label#medium-priority:checked {
+  background-color: #FFA800;
+}
+
+label#urgent-priority:checked {
+  background-color: #FF3D00;
+}
+
+.radio-to-btn {
+  background-color: white;
 }
