@@ -45,12 +45,42 @@ function getInitials(name) {
     }
 }
 
+function groupContactsByAlphabet() {
+    const sortedContacts = [...contacts].sort((a, b) => a.name.localeCompare(b.name));
+    const groupedContacts = {};
+    
+    sortedContacts.forEach((contact, index) => {
+        const firstLetter = contact.name.charAt(0).toUpperCase();
+        if (!groupedContacts[firstLetter]) {
+            groupedContacts[firstLetter] = [];
+        }
+        groupedContacts[firstLetter].push({ contact, originalIndex: contacts.indexOf(contact) });
+    });
+    
+    return groupedContacts;
+}
+
 function renderContactList() {
     const contactList = document.getElementById('contact-list');
     contactList.innerHTML = '';
-    contacts.forEach((contact, index) => {
-        contactList.innerHTML += getContactCardTemplate(contact, index);
+    
+    const groupedContacts = groupContactsByAlphabet();
+    const alphabeticalKeys = Object.keys(groupedContacts).sort();
+    
+    alphabeticalKeys.forEach(letter => {
+        contactList.innerHTML += getAlphabetHeaderTemplate(letter);
+        groupedContacts[letter].forEach(({ contact, originalIndex }) => {
+            contactList.innerHTML += getContactCardTemplate(contact, originalIndex);
+        });
     });
+}
+
+function getAlphabetHeaderTemplate(letter) {
+    return `
+        <div class="alphabet-header">
+            <h3>${letter}</h3>
+        </div>
+    `;
 }
 
 function getContactCardTemplate(contact, index) {
@@ -75,7 +105,11 @@ function showContactDetails(index) {
     const avatarColor = getAvatarColor(contact.name);
     const initials = getInitials(contact.name);
     const contactDetails = document.getElementById('contact-details');
-    contactDetails.innerHTML = `
+    contactDetails.innerHTML = getContactDetailsTemplate(contact, index, avatarColor, initials);
+}
+
+function getContactDetailsTemplate(contact, index, avatarColor, initials) {
+    return `
         <div class="contact-header d-flex">
             <div class="user-avatar-lg" style="background-color: ${avatarColor};"><div>${initials}</div></div>
             <div>
@@ -104,6 +138,7 @@ function showContactDetails(index) {
             <a href="tel:${contact.phone}">${contact.phone}</a>
         </div>
     `;
+
 }
 
 function editContact(index) {
@@ -152,6 +187,7 @@ function updateContact(event, editContactIndex) {
     };
 
     contacts[editContactIndex] = updatedContact;
+    activeContactIndex = editContactIndex;
     renderContactList();
     showContactDetails(editContactIndex);
     closeAllMenus();
@@ -179,6 +215,7 @@ function addContact(event) {
 
     contacts.push(newContact);
     renderContactList();
-    showContactDetails(contacts.length - 1);
+    const newContactIndex = contacts.length - 1;
+    showContactDetails(newContactIndex);
     closeAllMenus();
 }
