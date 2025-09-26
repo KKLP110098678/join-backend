@@ -1,0 +1,104 @@
+.contact-menu {
+  position: fixed;
+  left: 222px;
+  top: 96px;
+  bottom: 0;
+  overflow-y: scroll;
+  padding: 16px 16px 16px 26px;
+  width: 466px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+}
+
+.contact-menu button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  gap: 12px;
+}
+
+.contact-card:hover {
+  background-color: #D2E3FF;
+  cursor: pointer;
+}
+
+.contact-card:active {
+  background-color: #4589FF;
+}
+
+.contact-card.active {
+  background-color: #4589FF;
+  color: white;
+}
+
+.contact-card.active .contact-email {
+  color: white;
+}
+
+.alphabet-header {
+  margin: 16px 0 8px 12px;
+  border-bottom: 1px solid #D2E3FF;
+  padding-bottom: 4px;
+}
+
+.alphabet-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.user-avatar-lg {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-right: 16px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-weight: bold;
+}
+
+.contact-email {
+  color: #4589FF;
+}
+
+.contact-form-header {
+  background: #005DFF;
+}
+
+.contact-form-header,
+.contact-side-menu form {
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  gap: 8px;
+}
+
+.main-content {
+  width: calc(100% - 688px);
+}

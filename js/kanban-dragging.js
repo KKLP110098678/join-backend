@@ -36,24 +36,19 @@ function handleDrop(event, element) {
     event.stopPropagation();
 
     if (draggedElement !== element && draggedElement) {
-        // Find the closest position to insert the card
         const afterElement = getDragAfterElement(element, event.clientY);
-        
         if (afterElement == null) {
             element.appendChild(draggedElement);
         } else {
             element.insertBefore(draggedElement, afterElement);
         }
-        
-        // Update the task status based on the column
-        updateTaskStatus(draggedElement, element.id);
+        updateTaskStatusInDrag(draggedElement, element.id);
     }
 
     element.classList.remove('drag-over', 'drag-active');
     return false;
 }
 
-// Helper function to determine insertion position
 function getDragAfterElement(container, y) {
     const draggableElements = [...container.querySelectorAll('.task-card:not(.dragging)')];
     
@@ -69,9 +64,21 @@ function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-function updateTaskStatus(taskElement, columnId) {
+function updateTaskStatusInDrag(taskElement, columnId) {
     const taskId = taskElement.getAttribute('data-task-id');
-    // Add API call here to update the backend if needed
+    const statusMapping = {
+        'todo': 'todo',
+        'in-progress': 'in-progress', 
+        'await-feedback': 'await-feedback',
+        'done': 'done'
+    };
+    
+    const newStatus = statusMapping[columnId];
+    
+    if (newStatus && typeof window.updateTaskStatus === 'function') {
+        // Verwende die globale updateTaskStatus Funktion aus task-management.js
+        window.updateTaskStatus(taskId, newStatus);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -79,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
     style.textContent = `
         .task-card.dragging {
             opacity: 0.5;
-            transform: rotate(-5deg);
+            transform: rotate(5deg);
         }
         
         .kanban-column.drag-over {

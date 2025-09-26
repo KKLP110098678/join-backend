@@ -1,60 +1,247 @@
-#register-body {
-  background-color: #4589ff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+
 }
 
-.register-form {
-  background-color: white;
-  min-width: 598px;
-  min-height: 607px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-  border-radius: 30px;
+a {
+  text-decoration: none;
+  padding: 8px;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
 }
 
 .register-main-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  background-color: var(--color-light-blue);
+  height: 100vh;
+  max-width: 1920px;
+  padding-top: 48px;
+  margin: 0 auto;
+  gap: 35px;
+
 }
+
+.back-button-link {
+  position: absolute;
+  left: 55.83px;
+  top: 60px;
+  width: 37px;
+  height: 37px;
+}
+
+.logoHeader {
+  position: absolute;
+  width: 100px;
+  top: 80px;
+  left: 77px;
+}
+
+.register-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-font-white);
+  width: 598px;
+  min-height: 607px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  padding: 48px 88px;
+}
+
+.headReg {
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.separator {
+  width: 150px;
+  margin: 16px auto;
+  border: 2px solid var(--color-light-blue);
+}
+
+.mainReg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 422px;
+  min-height: 324px;
+  margin: 0 auto;
+}
+
+.mainReg>div {
+  width: 100%;
+
+}
+
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.validInput {
+  border-bottom: 1px solid var(--color-light-blue);
+
+}
+
+.invalidInput {
+  border-bottom: 1px solid var(--color-red);
+}
+
+#confirmPasswordIcon,
+#passwordIcon {
+  cursor: pointer;
+}
+
 
 #checkbox-container {
   display: flex;
   justify-content: center;
-  font-size: 16px;
+  font-size: 22px;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+
+.custom-checkbox {
+  display: flex;
   align-items: center;
 }
 
-#check-box {
-  margin: 0 10px 0 0;
-  width: auto;
+.custom-checkbox input[type="checkbox"] {
+  display: none;
 }
 
-.register-form .back-button-link {
-  position: absolute;
-  left: 55.83px;
-  top: 88px;
-  margin: 0 0 0px;
+
+.custom-checkbox img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-right: 8px;
 }
 
-.register-main-container .register-form {
-  position: relative;
+#checkboxContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  padding-bottom: 16px;
+
 }
 
-#signup-legal-footer {
+#checkBox:checked {
   background-color: #4589ff;
 }
 
-#signup-legal-footer a {
-  color: white;
+.btnContainer {
+  padding-top: 10px;
 }
 
-.button-div {
+#btnSignup {
+  display: block;
+  margin: 0 auto;
+  white-space: nowrap;
+  padding: 12px 20px;
+  font-size: 24px;
+  gap: 10px;
+}
+
+
+.msgError {
+  color: red;
+  text-align: left;
+  font-size: 12px;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: red;
+}
+
+
+
+.footContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+
+
+.footContainer a {
+  color: var(--color-font-white);
+  font-size: 16px;
+
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.ol-end {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  z-index: 9999;
+}
+
+.ol-end-content {
+  background: var(--color-light-blue);
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  height: 74px;
+  width: 326px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.d-none {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(+100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
