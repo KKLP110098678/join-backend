@@ -49,6 +49,19 @@
   color: white;
 }
 
+.alphabet-header {
+  margin: 16px 0 8px 12px;
+  border-bottom: 1px solid #D2E3FF;
+  padding-bottom: 4px;
+}
+
+.alphabet-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
 .user-avatar-lg {
   width: 64px;
   height: 64px;
