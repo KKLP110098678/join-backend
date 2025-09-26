@@ -9,7 +9,7 @@
   /* flex: 1;
   padding: 72px 64px 0 64px; */
   width: calc(100% - 232px);
-  margin: 0;
+  margin-left: 232px;
 }
 
 #logo-slide {

@@ -51,7 +51,33 @@
           <a href="/html/impressum.html">Legal Notice</a>
         </div>
       </section>
-      <section id="main-content" class="main-content"></section>
+      <section id="main-content" class="main-content">
+        <form action="/html/board.html" method="post">
+          <p>
+            <label for="title"></label>
+            <input
+              type="text"
+              id="task-titel"
+              name="task_titel"
+              placeholder="Enter a Title"
+            />
+          </p>
+          <p>
+            <label for="describtion" id="tast-description"
+              >Description (optional)</label
+            >
+            <textarea
+              name="task_description"
+              id="task-description"
+              placeholder="Enter a Description"
+            ></textarea>
+          </p>
+          <p>
+            <label for="date">Due Date</label>
+            <input type="date" name="due_date" id="task-date" />
+          </p>
+        </form>
+      </section>
     </main>
   </body>
 </html>
