@@ -64,7 +64,6 @@ hr.solid {
 
 /* Header */
 header {
-  position: relative;
   z-index: 2;
   background: #4589ff;
   height: 96px;

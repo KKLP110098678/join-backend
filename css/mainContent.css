@@ -2,14 +2,16 @@
   justify-content: flex-end;
   flex-grow: 1;
   max-width: 1920px;
-  margin: 0 auto;
+  padding: 0;
+  display: flex;
 }
 
 .main-content {
   /* flex: 1;
   padding: 72px 64px 0 64px; */
   width: calc(100% - 232px);
-  margin-left: 232px;
+  display: flex;
+  margin-top: 50px;
 }
 
 #logo-slide {
