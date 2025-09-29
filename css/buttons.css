@@ -199,6 +199,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
+  border-bottom: solid 2px transparent;
 }
 
 .radio-to-btn input:checked + label {
@@ -210,15 +211,15 @@
 }
 
 label[for="low-priority"]:hover {
-  border-bottom: #7ae229 4px solid;
+  border-bottom: #7ae229 2px solid;
 }
 
 label[for="medium-priority"]:hover {
-  border-bottom: #ffa800 4px solid;
+  border-bottom: #ffa800 2px solid;
 }
 
 label[for="urgent-priority"]:hover {
-  border-bottom: #ff3d00 4px solid;
+  border-bottom: #ff3d00 2px solid;
 }
 
 .radio-to-btn input:checked + label[for="low-priority"] {
