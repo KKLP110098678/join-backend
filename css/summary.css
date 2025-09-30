@@ -58,7 +58,14 @@
 .square-urgency:hover {
   background: #ffffff;
   color: #4589ff;
+  .urgent-icon img {
+    border: none;
+  }
+  .vertical-divider {
+    background-color: #4589ff;
+  }
 }
+
 
 .square-to-do {
   background: rgba(210, 227, 255, 1);
@@ -83,9 +90,6 @@
   border-radius: 3px;
 }
 
-.square-urgency:hover .vertical-divider {
-  background-color: #4589ff;
-}
 
 .urgent-icon {
   display: flex;
