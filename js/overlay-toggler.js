@@ -6,7 +6,7 @@ function toggleOverlay(menu) {
 }
 
 function closeAllMenus() {
-    const menus = document.querySelectorAll('#add-task-menu, #edit-contact-menu, #add-contact-menu');
+    const menus = document.querySelectorAll('#add-task-menu, #edit-contact-menu, #add-contact-menu, #details-overlay');
     const overlay = document.querySelector('.blur-overlay');
 
     menus.forEach(menu => {
