@@ -14,6 +14,13 @@
 
 .summary-square {
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.summary-square:hover {
+  border-radius: 0 30px 30px 30px !important;
+  scale: 1.024;
+  transform-origin: center center;
 }
 
 .summary-square-box {
@@ -45,7 +52,20 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  color: white;
 }
+
+.square-urgency:hover {
+  background: #ffffff;
+  color: #4589ff;
+  .urgent-icon img {
+    border: none;
+  }
+  .vertical-divider {
+    background-color: #4589ff;
+  }
+}
+
 
 .square-to-do {
   background: rgba(210, 227, 255, 1);
@@ -70,6 +90,7 @@
   border-radius: 3px;
 }
 
+
 .urgent-icon {
   display: flex;
   align-items: center;
@@ -84,15 +105,13 @@
   border-radius: 66px;
 }
 
-.urgend-tasks {
-  color: white;
+.urgent-tasks {
   font-size: 48px;
   font-weight: 700;
   margin-left: 18px;
 }
 
 .urgent-sec-half {
-  color: white;
   text-align: left;
 }
 
@@ -108,7 +127,6 @@
 }
 
 .summary-left-side {
-  color: white;
   text-align: center;
 }
 
