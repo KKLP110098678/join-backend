@@ -184,7 +184,7 @@
 }
 
 .radio-to-btn input {
-  visibility: hidden;
+  display: none;
 }
 
 .radio-to-btn label {
@@ -210,28 +210,28 @@
   }
 }
 
-label[for="low-priority"]:hover {
+label.low-priority:hover {
   border-bottom: #7ae229 2px solid;
 }
 
-label[for="medium-priority"]:hover {
+label.medium-priority:hover {
   border-bottom: #ffa800 2px solid;
 }
 
-label[for="urgent-priority"]:hover {
+label.urgent-priority:hover {
   border-bottom: #ff3d00 2px solid;
 }
 
-.radio-to-btn input:checked + label[for="low-priority"] {
-  background-color: #7ae229;
+.radio-to-btn input:checked + label.low-priority {
+  background-color: #7ae229 !important;
 }
 
-.radio-to-btn input:checked + label[for="medium-priority"] {
-  background-color: #ffa800;
+.radio-to-btn input:checked + label.medium-priority {
+  background-color: #ffa800 !important;
 }
 
-.radio-to-btn input:checked + label[for="urgent-priority"] {
-  background-color: #ff3d00;
+.radio-to-btn input:checked + label.urgent-priority {
+  background-color: #ff3d00 !important;
 }
 
 .radio-to-btn {

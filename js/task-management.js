@@ -360,12 +360,12 @@ function getEditTaskTemplate(task) {
               <label>Priority</label>
               <div class="radio-to-btn d-flex">
                 <input
-                  id="urgent-priority"
+                  id="edit-urgent-priority"
                   type="radio"
                   name="priority"
                   value="Urgent"
                 />
-                <label for="urgent-priority">
+                <label for="edit-urgent-priority" class="urgent-priority">
                   Urgent
                   <svg
                     width="20"
@@ -385,12 +385,12 @@ function getEditTaskTemplate(task) {
                   </svg>
                 </label>
                 <input
-                  id="medium-priority"
+                  id="edit-medium-priority"
                   type="radio"
                   name="priority"
                   value="Medium"
                 />
-                <label for="medium-priority">
+                <label for="edit-medium-priority" class="medium-priority">
                   Medium
                   <svg
                     width="20"
@@ -410,12 +410,12 @@ function getEditTaskTemplate(task) {
                   </svg>
                 </label>
                 <input
-                  id="low-priority"
+                  id="edit-low-priority"
                   type="radio"
                   name="priority"
                   value="Low"
                 />
-                <label for="low-priority">
+                <label for="edit-low-priority" class="low-priority">
                   Low
                   <svg
                     width="21"
