@@ -69,10 +69,11 @@
                     <input
                       id="inPassword"
                       type="text"
+                      disabled
                       placeholder="Password"
-                      oninput="validatePasswordTooltip(this.value)"
+                      oninput="onPasswordInput(this)"
                       onblur="onPasswordBlur(this.value)"
-                    />
+                      />
                     <img
                       id="passwordIcon"
                       src="../assets/icon/sign/lock.svg"
@@ -88,9 +89,10 @@
                       id="inPasswordConfirm"
                       type="text"
                       placeholder="Confirm password"
-                      oninput="onInputConfirmPassword(event)"
+                      oninput="onInputConfirmPassword(this)"
+                      onblur="isPasswordMatching(this.value)"
                       disabled
-                    />
+                      />
                     <img
                       id="confirmPasswordIcon"
                       src="../assets/icon/sign/lock.svg"
