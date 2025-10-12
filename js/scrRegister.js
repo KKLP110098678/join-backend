@@ -49,7 +49,6 @@ async function isUserExistByEmail(inEmail) {
     handleErrorSet("inPassword", "fieldEmail", "emailError", true);
     return true;
   } catch (error) {
-    console.error("Error checking email:", error);
     return false;
   }
 }
@@ -205,6 +204,8 @@ function handleErrorSet(
   } else {
     setBorderColor(fieldId, false);
   }
+  console.log(nextFieldId);
+  
   toggleNextElement(nextFieldId, status);
   toggleErrorMessage(errorId, status, errorMessage);
 }
@@ -249,6 +250,8 @@ function showSuccessAndRedirect() {
 function removeBorderColor(inID) {
   const feldInput = document.getElementById(inID);
   feldInput.classList.remove("validInput", "invalidInput");
+  console.log("removeBorderColor");
+  
 }
 
 function setBorderColor(inID, status) {
