@@ -4,7 +4,6 @@ let passeordVisible = false;
 let realConfirmPassword = "";
 let confirmVisible = false;
 
-
 function toggleVisibilityIcon() {
   const icon = document.getElementById("passwordIcon");
   if (realPassword.length === 0) {
@@ -41,9 +40,9 @@ function updateConfirmIconByState() {
 
 function onInputConfirmPassword(input) {
   const inConfirmWord = input.value;
-  updateConfirmIconByState();
   realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+  updateConfirmIconByState();
 }
 
 function onClickConfirmPasswordIcon() {
@@ -53,29 +52,20 @@ function onClickConfirmPasswordIcon() {
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
 }
 
-// Qw123456
-function isPasswordMatching(confirmPassword) {
-  const checkBox = document.getElementById("checkBox");
-  const error = document.getElementById("confirmPassword");
-  if (!confirmPassword) return;
-  console.log(realPassword, confirmPassword);
-
-  if (realPassword === confirmPassword) {
-    error.textContent = "";
-    error.classList.add("d-none");
-    checkBox.disabled = false;
-    checkBox.checked = false;
-    removeBorderColor("fieldPasswordConfirm");
+function isPasswordMatching() {
+  if (!realConfirmPassword) return;
+  if (realPassword === realConfirmPassword) {
+    handleErrorSet("checkBox", "fieldPasswordConfirm", "confirmPassword", true);
   } else {
-    error.textContent = "Password not Matched!";
-    error.classList.remove("d-none");
-    setBorderColor("fieldPasswordConfirm", false);
-
-    checkBox.disabled = true;
-    checkBox.checked = false;
+    handleErrorSet(
+      "checkBox",
+      "fieldPasswordConfirm",
+      "confirmPassword",
+      false,
+      "Password not Matched!"
+    );
   }
 }
-// Qw123456
 
 function updateVarible(inWord, realVar) {
   if (inWord.length > realVar.length) {
@@ -104,7 +94,7 @@ function onPasswordInput(input) {
 
 function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
-    newUser.nuPassword = inPassword;
+    newUser.nuPassword = realPassword;
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
     console.log("Ja valid");
   } else {
@@ -112,6 +102,7 @@ function onPasswordBlur(inPassword) {
     console.log("not valid");
   }
 }
+
 function validatePasswordTooltip(inPassword) {
   toggleVisibilityIcon();
   const rules = checkPasswordRules(inPassword);
@@ -120,10 +111,11 @@ function validatePasswordTooltip(inPassword) {
     "inPasswordConfirm",
     "fieldPassword",
     "passwordTooltip",
-    (isPasswordValid(rules)),
+    isPasswordValid(rules),
     isPasswordValid(rules) ? "" : msg
   );
 }
+
 function isPasswordValid(rules) {
   return rules.minLength && rules.hasLower && rules.hasNumber;
 }
