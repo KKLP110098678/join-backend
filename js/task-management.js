@@ -102,14 +102,14 @@ let tasks = [
   }
 ];
 
-// Prioritäts-Icons Mapping
+// Priority icons mapping
 const priorityIcons = {
   urgent: "/assets/icon/taskManagement/urgent.svg",
   medium: "/assets/icon/taskManagement/medium.svg",
   low: "/assets/icon/taskManagement/low.svg"
 };
 
-// Prioritäts-Labels Mapping
+// Priority labels mapping
 const priorityLabels = {
   urgent: "High Priority",
   medium: "Medium Priority",
@@ -263,7 +263,7 @@ function filterTasks(searchTerm) {
   tasks = currentTasks;
 }
 
-// Globale Event Handler Funktionen für inline Events
+// Global event handler functions for inline events
 function handleSearchClick() {
   const searchInput = document.getElementById('task-search');
   if (searchInput) {

@@ -54,7 +54,13 @@ function handleFormSubmit(event) {
   if (validateForm()) {
     // Get form data
     let formData = new FormData(document.getElementById('task-form'));
-    let taskData = Object.fromEntries(formData);
+    let taskData = {};
+    let entries = formData.entries();
+    let entry = entries.next();
+    while (!entry.done) {
+      taskData[entry.value[0]] = entry.value[1];
+      entry = entries.next();
+    }
 
     console.log('Task created:', taskData);
 

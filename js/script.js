@@ -1,4 +1,4 @@
-// Der Farbwechsel wird jetzt in der Loadingscreen() Funktion nach der Generierung durchgeführt
+// Color change is now performed in the Loadingscreen() function after generation
 function Loadingscreen() {
   // Check if user is returning from registration page
 
