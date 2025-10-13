@@ -4,8 +4,6 @@ async function handleRegisterUser(event) {
   event.preventDefault();
   try {
     await addNewUser(newUser);
-    console.log(newUser);
-
     showSuccessAndRedirect();
   } catch (error) {
     console.error("Error registering user:", error);

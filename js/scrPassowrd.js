@@ -21,7 +21,6 @@ function onPasswordIconClick() {
   if (realPassword.length === 0) return;
 
   passeordVisible = !passeordVisible;
-  // input.value = passeordVisible ? realPassword : "*".repeat(realPassword.length);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
 }
@@ -96,10 +95,8 @@ function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
     newUser.nuPassword = realPassword;
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
-    console.log("Ja valid");
   } else {
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
-    console.log("not valid");
   }
 }
 
