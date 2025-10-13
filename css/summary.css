@@ -81,6 +81,21 @@
 
 .square-to-do {
   background: rgba(210, 227, 255, 1);
+  color: black;
+}
+
+.square-to-do:hover {
+  background: #ffffff;
+  .card-number {
+    color: #4589ff;
+  }
+}
+
+.square-to-do:active {
+  background: #005DFF;
+  .card-number, .card-label {
+    color: white;
+  }
 }
 
 .square-urgency,
