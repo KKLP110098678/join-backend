@@ -208,3 +208,43 @@
 .card-number {
   color: black;
 }
+
+/* Hover Styles für Elemente außer urgency und to-do */
+.square-board:hover,
+.square-progress:hover,
+.square-feedback:hover,
+.square-done:hover {
+  background: #005DFF;
+}
+
+.square-board:hover,
+.square-progress:hover,
+.square-feedback:hover,
+.square-done:hover {
+  .card-number {
+    color: white;
+  }
+
+  .card-label {
+    color: white;
+  }
+}
+
+.square-board:active,
+.square-progress:active,
+.square-feedback:active,
+.square-done:active {
+  background: white;
+}
+
+.square-board:active,
+.square-progress:active,
+.square-feedback:active,
+.square-done:active {
+  .card-number {
+    color: black;
+  }
+  .card-label {
+    color: #4589ff;
+  }
+}
