@@ -1,16 +1,21 @@
-function toggleOverlay(menu) {
-    const overlay = document.querySelector('.blur-overlay');
+function toggleOverlay(menuId) {
+    let overlay = document.getElementById('blur-overlay');
     overlay.classList.toggle('active');
-    menu = document.querySelector(menu);
+    let cleanMenuId = menuId.replace('#', '');
+    let menu = document.getElementById(cleanMenuId);
     menu.classList.toggle('open');
 }
 
 function closeAllMenus() {
-    const menus = document.querySelectorAll('#add-task-menu, #edit-contact-menu, #add-contact-menu, #details-overlay');
-    const overlay = document.querySelector('.blur-overlay');
+    let addTaskMenu = document.getElementById('add-task-menu');
+    let editContactMenu = document.getElementById('edit-contact-menu');
+    let addContactMenu = document.getElementById('add-contact-menu');
+    let detailsOverlay = document.getElementById('details-overlay');
+    let overlay = document.getElementById('blur-overlay');
 
-    menus.forEach(menu => {
-        menu.classList.remove('open');
-    });
+    addTaskMenu.classList.remove('open');
+    editContactMenu.classList.remove('open');
+    addContactMenu.classList.remove('open');
+    detailsOverlay.classList.remove('open');
     overlay.classList.remove('active');
 }

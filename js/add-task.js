@@ -4,26 +4,24 @@ function clearForm() {
   let form = document.getElementById('task-form');
   form.reset();
 
-  // Clear any error messages
-  let errorMessages = document.getElementsByClassName('error-message');
-  for (let i = 0; i < errorMessages.length; i++) {
-    errorMessages[i].classList.add('d-none');
-  }
+  let titleError = document.getElementById('title-error-message');
+  let dateError = document.getElementById('date-error-message');
 
-  // Remove error classes from form groups
-  let formGroups = document.getElementsByClassName('form-group');
-  for (let i = 0; i < formGroups.length; i++) {
-    formGroups[i].classList.remove('error');
-  }
+  titleError.classList.add('d-none');
+  dateError.classList.add('d-none');
+
+  let titleGroup = document.getElementById('title-form-group');
+  let dateGroup = document.getElementById('date-form-group');
+
+  titleGroup.classList.remove('error');
+  dateGroup.classList.remove('error');
 }
 
 function validateForm() {
   let isValid = true;
-
-  // Validate title
   let title = document.getElementById('task-title');
-  let titleGroup = title.closest('.form-group');
-  let titleError = titleGroup.querySelector('.error-message');
+  let titleGroup = document.getElementById('title-form-group');
+  let titleError = document.getElementById('title-error-message');
 
   if (title.value.trim() === '') {
     titleGroup.classList.add('error');
@@ -34,10 +32,9 @@ function validateForm() {
     titleError.classList.add('d-none');
   }
 
-  // Validate due date
   let date = document.getElementById('task-date');
-  let dateGroup = date.closest('.form-group');
-  let dateError = dateGroup.querySelector('.error-message');
+  let dateGroup = document.getElementById('date-form-group');
+  let dateError = document.getElementById('date-error-message');
 
   if (date.value === '') {
     dateGroup.classList.add('error');
@@ -80,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
   let titleInput = document.getElementById('task-title');
   if (titleInput) {
     titleInput.addEventListener('blur', function() {
-      let titleGroup = titleInput.closest('.form-group');
-      let titleError = titleGroup.querySelector('.error-message');
+      let titleGroup = document.getElementById('title-form-group');
+      let titleError = document.getElementById('title-error-message');
 
       if (titleInput.value.trim() === '') {
         titleGroup.classList.add('error');
@@ -97,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
   let dateInput = document.getElementById('task-date');
   if (dateInput) {
     dateInput.addEventListener('blur', function() {
-      let dateGroup = dateInput.closest('.form-group');
-      let dateError = dateGroup.querySelector('.error-message');
+      let dateGroup = document.getElementById('date-form-group');
+      let dateError = document.getElementById('date-error-message');
 
       if (dateInput.value === '') {
         dateGroup.classList.add('error');

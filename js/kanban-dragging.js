@@ -10,10 +10,16 @@ function handleDragStart(event, element) {
 function handleDragEnd(element) {
     element.classList.remove('dragging');
     draggedElement = null;
-    
-    document.querySelectorAll('.kanban-column').forEach(column => {
-        column.classList.remove('drag-over', 'drag-active');
-    });
+
+    let todoColumn = document.getElementById('todo');
+    let inProgressColumn = document.getElementById('in-progress');
+    let awaitFeedbackColumn = document.getElementById('await-feedback');
+    let doneColumn = document.getElementById('done');
+
+    todoColumn.classList.remove('drag-over', 'drag-active');
+    inProgressColumn.classList.remove('drag-over', 'drag-active');
+    awaitFeedbackColumn.classList.remove('drag-over', 'drag-active');
+    doneColumn.classList.remove('drag-over', 'drag-active');
 }
 
 function handleDragOver(event) {
@@ -50,18 +56,31 @@ function handleDrop(event, element) {
 }
 
 function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll('.task-card:not(.dragging)')];
-    
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        
-        if (offset < 0 && offset > closest.offset) {
-            return { offset: offset, element: child };
-        } else {
-            return closest;
+    let draggableElements = [];
+    let children = container.children;
+
+    for (let i = 0; i < children.length; i++) {
+        let child = children[i];
+        if (child.classList.contains('task-card') && !child.classList.contains('dragging')) {
+            draggableElements.push(child);
         }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    let closestElement = null;
+    let closestOffset = Number.NEGATIVE_INFINITY;
+
+    for (let i = 0; i < draggableElements.length; i++) {
+        let child = draggableElements[i];
+        let box = child.getBoundingClientRect();
+        let offset = y - box.top - box.height / 2;
+
+        if (offset < 0 && offset > closestOffset) {
+            closestOffset = offset;
+            closestElement = child;
+        }
+    }
+
+    return closestElement;
 }
 
 function updateTaskStatusInDrag(taskElement, columnId) {

@@ -166,24 +166,38 @@ function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, 
 }
 
 function renderAllTasks() {
-  const columns = ['todo', 'in-progress', 'await-feedback', 'done'];
+  let todoColumn = document.getElementById('todo');
+  let inProgressColumn = document.getElementById('in-progress');
+  let awaitFeedbackColumn = document.getElementById('await-feedback');
+  let doneColumn = document.getElementById('done');
 
-  columns.forEach(columnId => {
-    const column = document.getElementById(columnId);
-    if (column) {
-      const taskCards = column.querySelectorAll('.task-card');
-      taskCards.forEach(card => card.remove());
-    }
-  });
+  clearColumnTaskCards(todoColumn);
+  clearColumnTaskCards(inProgressColumn);
+  clearColumnTaskCards(awaitFeedbackColumn);
+  clearColumnTaskCards(doneColumn);
 
-  tasks.forEach(task => {
-    const columnId = task.status;
-    const column = document.getElementById(columnId);
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
+    let columnId = task.status;
+    let column = document.getElementById(columnId);
 
     if (column) {
       column.insertAdjacentHTML('beforeend', generateTaskCardHTML(task));
     }
-  });
+  }
+}
+
+function clearColumnTaskCards(column) {
+  if (!column) {
+    return;
+  }
+  let children = column.children;
+  for (let i = children.length - 1; i >= 0; i--) {
+    let child = children[i];
+    if (child.classList.contains('task-card')) {
+      child.remove();
+    }
+  }
 }
 
 function findTaskById(taskId) {
