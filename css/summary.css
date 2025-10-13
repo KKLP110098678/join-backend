@@ -14,12 +14,27 @@
 .summary-square {
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  transform-origin: center center;
+  position: relative;
+}
+
+.summary-square-zoom-wrapper {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform-origin: center center;
 }
 
 .summary-square:hover {
   border-radius: 0 30px 30px 30px !important;
-  scale: 1.024;
-  transform-origin: center center;
+  transform: scale(1.05);
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.summary-square:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
 }
 
 .summary-square-box {
@@ -29,18 +44,26 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  overflow: visible;
+  z-index: 1;
 }
 
 .top-row {
   display: flex;
   justify-content: space-between;
   gap: 32px;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 
 .bottom-row {
   display: flex;
   justify-content: space-between;
   gap: 32px;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 
 .square-urgency {
@@ -209,7 +232,6 @@
   color: black;
 }
 
-/* Hover Styles für Elemente außer urgency und to-do */
 .square-board:hover,
 .square-progress:hover,
 .square-feedback:hover,
@@ -247,4 +269,44 @@
   .card-label {
     color: #4589ff;
   }
+}
+
+.summary-square {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.summary-square:hover {
+  /* Erweiterte Zoom-Eigenschaften */
+  animation: zoomIn 0.3s ease-out forwards;
+}
+
+.summary-square:not(:hover) {
+  animation: zoomOut 0.3s ease-in forwards;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  }
+  to {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  to {
+    transform: scale(1);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.summary-square-zoom-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
