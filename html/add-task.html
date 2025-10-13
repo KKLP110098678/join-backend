@@ -61,7 +61,7 @@
       </section>
       <section id="main-content" class="main-content">
         <div class="task-form-container">
-          <form id="task-form" class="task-form">
+          <form id="task-form" class="task-form" onsubmit="handleFormSubmit(event)">
             <div class="form-group" id="title-form-group">
               <label for="task-title"></label>
               <input
@@ -70,6 +70,7 @@
                 name="task_title"
                 placeholder="Enter a title"
                 required
+                onblur="handleTitleBlur()"
               />
               <div class="error-message d-none" id="title-error-message">This field is required</div>
             </div>
@@ -93,6 +94,7 @@
                 name="due_date"
                 id="task-date"
                 placeholder="dd/mm/yyyy"
+                onblur="handleDateBlur()"
               />
               <div class="error-message d-none" id="date-error-message">This field is required</div>
             </div>

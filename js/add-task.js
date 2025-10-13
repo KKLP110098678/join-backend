@@ -66,44 +66,30 @@ function handleFormSubmit(event) {
   }
 }
 
-// Initialize form when page loads
-document.addEventListener('DOMContentLoaded', function() {
-  let form = document.getElementById('task-form');
-  if (form) {
-    form.addEventListener('submit', handleFormSubmit);
-  }
-
-  // Add real-time validation for title field
+function handleTitleBlur() {
   let titleInput = document.getElementById('task-title');
-  if (titleInput) {
-    titleInput.addEventListener('blur', function() {
-      let titleGroup = document.getElementById('title-form-group');
-      let titleError = document.getElementById('title-error-message');
+  let titleGroup = document.getElementById('title-form-group');
+  let titleError = document.getElementById('title-error-message');
 
-      if (titleInput.value.trim() === '') {
-        titleGroup.classList.add('error');
-        titleError.classList.remove('d-none');
-      } else {
-        titleGroup.classList.remove('error');
-        titleError.classList.add('d-none');
-      }
-    });
+  if (titleInput.value.trim() === '') {
+    titleGroup.classList.add('error');
+    titleError.classList.remove('d-none');
+  } else {
+    titleGroup.classList.remove('error');
+    titleError.classList.add('d-none');
   }
+}
 
-  // Add real-time validation for date field
+function handleDateBlur() {
   let dateInput = document.getElementById('task-date');
-  if (dateInput) {
-    dateInput.addEventListener('blur', function() {
-      let dateGroup = document.getElementById('date-form-group');
-      let dateError = document.getElementById('date-error-message');
+  let dateGroup = document.getElementById('date-form-group');
+  let dateError = document.getElementById('date-error-message');
 
-      if (dateInput.value === '') {
-        dateGroup.classList.add('error');
-        dateError.classList.remove('d-none');
-      } else {
-        dateGroup.classList.remove('error');
-        dateError.classList.add('d-none');
-      }
-    });
+  if (dateInput.value === '') {
+    dateGroup.classList.add('error');
+    dateError.classList.remove('d-none');
+  } else {
+    dateGroup.classList.remove('error');
+    dateError.classList.add('d-none');
   }
-});
+}

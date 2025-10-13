@@ -100,18 +100,3 @@ function updateTaskStatusInDrag(taskElement, columnId) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .task-card.dragging {
-            opacity: 0.5;
-            transform: rotate(5deg);
-        }
-        
-        .kanban-column.drag-over {
-            background-color: #e3f2fd !important;
-            border: 2px dashed #2196f3 !important;
-        }
-    `;
-    document.head.appendChild(style);
-});
