@@ -17,9 +17,12 @@
           <img src="../assets/icon/logowhiteheader.svg" alt="" />
         </div>
       </header>
-      <!-- onsubmit="handleRegisterUser(event);" -->
       <main>
-        <form class="register-form" action="../index.html">
+        <!-- action="../index.html" -->
+        <form
+          class="register-form"
+          onsubmit="handleRegisterUser(event)"
+        >
           <a class="back-button-link" href="./login.html" title="back">
             <img
               class="back-button singup-back-button"
@@ -69,8 +72,9 @@
                     <input
                       id="inPassword"
                       type="text"
+                      disabled
                       placeholder="Password"
-                      oninput="validatePasswordTooltip(this.value)"
+                      oninput="onPasswordInput(this)"
                       onblur="onPasswordBlur(this.value)"
                     />
                     <img
@@ -88,7 +92,8 @@
                       id="inPasswordConfirm"
                       type="text"
                       placeholder="Confirm password"
-                      oninput="onInputConfirmPassword(event)"
+                      oninput="onInputConfirmPassword(this)"
+                      onblur="isPasswordMatching()"
                       disabled
                     />
                     <img
@@ -121,12 +126,7 @@
               </div>
             </div>
             <div class="btnContainer">
-              <button
-                id="btnSignup"
-                class="btn-no-icon"
-                onclick="handleSubmit(event)"
-                type="submit"
-              >
+              <button id="btnSignup" class="btn-no-icon" type="submit" disabled >
                 Sign up
               </button>
             </div>

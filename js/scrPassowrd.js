@@ -1,34 +1,16 @@
 let realPassword = "";
-let isVisible = false;
+let passeordVisible = false;
 
 let realConfirmPassword = "";
 let confirmVisible = false;
-
-function onPasswordInput(event) {
-  const input = event.target;
-  const value = input.value;
-
-  if (value.length > realPassword.length) {
-    const added = value.slice(realPassword.length);
-    realPassword += added;
-  } else if (value.length < realPassword.length) {
-    realPassword = realPassword.slice(0, value.length);
-  }
-
-  input.value = isVisible ? realPassword : "*".repeat(realPassword.length);
-
-  toggleVisibilityIcon();
-  setBorderColor("fieldPassword", false);
-  validatePasswordTooltip(realPassword);
-}
 
 function toggleVisibilityIcon() {
   const icon = document.getElementById("passwordIcon");
   if (realPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
-    isVisible = false;
+    passeordVisible = false;
   } else {
-    icon.src = isVisible
+    icon.src = passeordVisible
       ? "../assets/icon/sign/visibility.svg"
       : "../assets/icon/sign/visibility_off.svg";
   }
@@ -38,9 +20,9 @@ function onPasswordIconClick() {
   const input = document.getElementById("inPassword");
   if (realPassword.length === 0) return;
 
-  isVisible = !isVisible;
-  input.value = isVisible ? realPassword : "*".repeat(realPassword.length);
-
+  passeordVisible = !passeordVisible;
+  // input.value = passeordVisible ? realPassword : "*".repeat(realPassword.length);
+  passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
 }
 
@@ -56,84 +38,82 @@ function updateConfirmIconByState() {
   }
 }
 
-function onInputConfirmPassword(event) {
-  const input = event.target;
-  const value = input.value;
-  if (value.length > realConfirmPassword.length) {
-    const added = value.slice(realConfirmPassword.length);
-    realConfirmPassword += added;
-  } else if (value.length < realConfirmPassword.length) {
-    realConfirmPassword = realConfirmPassword.slice(0, value.length);
-  }
-  input.value = confirmVisible
-    ? realConfirmPassword
-    : "*".repeat(realConfirmPassword.length);
+function onInputConfirmPassword(input) {
+  const inConfirmWord = input.value;
+  realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
+  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
-  isPasswordMatching(realConfirmPassword);
 }
 
 function onClickConfirmPasswordIcon() {
   const input = document.getElementById("inPasswordConfirm");
-  if (realConfirmPassword.length === 0) return;
   confirmVisible = !confirmVisible;
-  input.value = confirmVisible
-    ? realConfirmPassword
-    : "*".repeat(realConfirmPassword.length);
   updateConfirmIconByState();
+  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
 }
 
-// Qw123456
-function isPasswordMatching(confirmPassword) {
-  const checkBox = document.getElementById("checkBox");
-  const error = document.getElementById("confirmPassword");
-  if (!confirmPassword) return;
-
-  if (newUser.nuPassword === confirmPassword) {
-    error.textContent = "";
-    error.classList.add("d-none");
-    checkBox.disabled = false;
-    checkBox.checked = false;
-    removeBorderColor("fieldPasswordConfirm");
+function isPasswordMatching() {
+  if (!realConfirmPassword) return;
+  if (realPassword === realConfirmPassword) {
+    handleErrorSet("checkBox", "fieldPasswordConfirm", "confirmPassword", true);
   } else {
-    error.textContent = "Password not Matched!";
-    error.classList.remove("d-none");
-    setBorderColor("fieldPasswordConfirm", false);
-
-    checkBox.disabled = true;
-    checkBox.checked = false;
+    handleErrorSet(
+      "checkBox",
+      "fieldPasswordConfirm",
+      "confirmPassword",
+      false,
+      "Password not Matched!"
+    );
   }
 }
-// Qw123456
+
+function updateVarible(inWord, realVar) {
+  if (inWord.length > realVar.length) {
+    const added = inWord.slice(realVar.length);
+    realVar += added;
+  } else if (inWord.length < realVar.length) {
+    realVar = realVar.slice(0, inWord.length);
+  }
+  return realVar;
+}
+
+function hedienWord(inWord, isVisible, realWord) {
+  if (realWord.length === 0) return isVisible;
+  inWord.value = isVisible ? realWord : "*".repeat(realWord.length);
+  return isVisible;
+}
+
+function onPasswordInput(input) {
+  const inPassWord = input.value;
+  realPassword = updateVarible(inPassWord, realPassword);
+  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  toggleVisibilityIcon();
+  setBorderColor("fieldPassword", false);
+  validatePasswordTooltip(realPassword);
+}
+
+function onPasswordBlur(inPassword) {
+  if (checkPasswordRules(inPassword)) {
+    newUser.nuPassword = realPassword;
+    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
+    console.log("Ja valid");
+  } else {
+    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
+    console.log("not valid");
+  }
+}
 
 function validatePasswordTooltip(inPassword) {
+  toggleVisibilityIcon();
   const rules = checkPasswordRules(inPassword);
   const msg = buildPasswordMessage(rules);
   handleErrorSet(
-    "",
+    "inPasswordConfirm",
     "fieldPassword",
     "passwordTooltip",
     isPasswordValid(rules),
     isPasswordValid(rules) ? "" : msg
   );
-}
-
-function onPasswordBlur(inPassword) {
-  if (isPasswordValid(checkPasswordRules(inPassword))) {
-    newUser.nuPassword = inPassword;
-    handleErrorSet(
-      "inPasswordConfirm",
-      "fieldPassword",
-      "passwordTooltip",
-      true
-    );
-  } else {
-    handleErrorSet(
-      "inPasswordConfirm",
-      "fieldPassword",
-      "passwordTooltip",
-      false
-    );
-  }
 }
 
 function isPasswordValid(rules) {
