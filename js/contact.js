@@ -46,33 +46,69 @@ function getInitials(name) {
 }
 
 function groupContactsByAlphabet() {
-    const sortedContacts = [...contacts].sort((a, b) => a.name.localeCompare(b.name));
-    const groupedContacts = {};
-    
-    sortedContacts.forEach((contact, index) => {
-        const firstLetter = contact.name.charAt(0).toUpperCase();
+    let sortedContacts = [];
+    for (let i = 0; i < contacts.length; i++) {
+        sortedContacts.push(contacts[i]);
+    }
+
+    for (let i = 0; i < sortedContacts.length - 1; i++) {
+        for (let j = 0; j < sortedContacts.length - i - 1; j++) {
+            if (sortedContacts[j].name.localeCompare(sortedContacts[j + 1].name) > 0) {
+                let temp = sortedContacts[j];
+                sortedContacts[j] = sortedContacts[j + 1];
+                sortedContacts[j + 1] = temp;
+            }
+        }
+    }
+
+    let groupedContacts = {};
+    for (let i = 0; i < sortedContacts.length; i++) {
+        let contact = sortedContacts[i];
+        let firstLetter = contact.name.charAt(0).toUpperCase();
         if (!groupedContacts[firstLetter]) {
             groupedContacts[firstLetter] = [];
         }
-        groupedContacts[firstLetter].push({ contact, originalIndex: contacts.indexOf(contact) });
-    });
-    
+        let originalIndex = -1;
+        for (let j = 0; j < contacts.length; j++) {
+            if (contacts[j] === contact) {
+                originalIndex = j;
+                break;
+            }
+        }
+        groupedContacts[firstLetter].push({ contact: contact, originalIndex: originalIndex });
+    }
+
     return groupedContacts;
 }
 
 function renderContactList() {
-    const contactList = document.getElementById('contact-list');
+    let contactList = document.getElementById('contact-list');
     contactList.innerHTML = '';
-    
-    const groupedContacts = groupContactsByAlphabet();
-    const alphabeticalKeys = Object.keys(groupedContacts).sort();
-    
-    alphabeticalKeys.forEach(letter => {
+
+    let groupedContacts = groupContactsByAlphabet();
+    let alphabeticalKeys = Object.keys(groupedContacts);
+
+    for (let i = 0; i < alphabeticalKeys.length - 1; i++) {
+        for (let j = 0; j < alphabeticalKeys.length - i - 1; j++) {
+            if (alphabeticalKeys[j] > alphabeticalKeys[j + 1]) {
+                let temp = alphabeticalKeys[j];
+                alphabeticalKeys[j] = alphabeticalKeys[j + 1];
+                alphabeticalKeys[j + 1] = temp;
+            }
+        }
+    }
+
+    for (let i = 0; i < alphabeticalKeys.length; i++) {
+        let letter = alphabeticalKeys[i];
         contactList.innerHTML += getAlphabetHeaderTemplate(letter);
-        groupedContacts[letter].forEach(({ contact, originalIndex }) => {
+        let contactsInGroup = groupedContacts[letter];
+        for (let j = 0; j < contactsInGroup.length; j++) {
+            let contactItem = contactsInGroup[j];
+            let contact = contactItem.contact;
+            let originalIndex = contactItem.originalIndex;
             contactList.innerHTML += getContactCardTemplate(contact, originalIndex);
-        });
-    });
+        }
+    }
 }
 
 function getAlphabetHeaderTemplate(letter) {

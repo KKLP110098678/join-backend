@@ -123,18 +123,25 @@ const categoryToId = {
 };
 
 function generateTaskCardHTML(task) {
-  const assignedUsersHTML = task.assignedTo.map(user =>
-    `<div class="user-avatar-sm">${user}</div>`
-  ).join('');
+  let assignedUsersHTML = '';
+  for (let i = 0; i < task.assignedTo.length; i++) {
+    assignedUsersHTML += '<div class="user-avatar-sm">' + task.assignedTo[i] + '</div>';
+  }
 
-  const categoryId = categoryToId[task.category] || "user-story";
-  const priorityIcon = priorityIcons[task.priority];
-  const priorityLabel = priorityLabels[task.priority];
+  let categoryId = categoryToId[task.category] || "user-story";
+  let priorityIcon = priorityIcons[task.priority];
+  let priorityLabel = priorityLabels[task.priority];
 
-  const completedSubtasks = task.subtasks.filter(subtask => subtask.completed).length;
-  const totalSubtasks = task.subtasks.length;
-  const subtaskProgress = totalSubtasks > 0 ? `${completedSubtasks}/${totalSubtasks} Subtasks` : '';
-  const progressInPercent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+  let completedSubtasks = 0;
+  for (let i = 0; i < task.subtasks.length; i++) {
+    if (task.subtasks[i].completed) {
+      completedSubtasks++;
+    }
+  }
+
+  let totalSubtasks = task.subtasks.length;
+  let subtaskProgress = totalSubtasks > 0 ? completedSubtasks + '/' + totalSubtasks + ' Subtasks' : '';
+  let progressInPercent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
   return getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskProgress, totalSubtasks, progressInPercent);
 }
 
@@ -201,7 +208,12 @@ function clearColumnTaskCards(column) {
 }
 
 function findTaskById(taskId) {
-  return tasks.find(task => task.id === taskId);
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id === taskId) {
+      return tasks[i];
+    }
+  }
+  return null;
 }
 
 function updateTaskStatus(taskId, newStatus) {
@@ -219,7 +231,13 @@ function addTask(newTask) {
 }
 
 function deleteTask(taskId) {
-  const taskIndex = tasks.findIndex(task => task.id === taskId);
+  let taskIndex = -1;
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id === taskId) {
+      taskIndex = i;
+      break;
+    }
+  }
   if (taskIndex > -1) {
     tasks.splice(taskIndex, 1);
     renderAllTasks();
@@ -227,13 +245,19 @@ function deleteTask(taskId) {
 }
 
 function filterTasks(searchTerm) {
-  const filteredTasks = tasks.filter(task =>
-    task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    task.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    task.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  let filteredTasks = [];
+  let lowerSearchTerm = searchTerm.toLowerCase();
 
-  const currentTasks = tasks;
+  for (let i = 0; i < tasks.length; i++) {
+    let task = tasks[i];
+    if (task.title.toLowerCase().includes(lowerSearchTerm) ||
+        task.description.toLowerCase().includes(lowerSearchTerm) ||
+        task.category.toLowerCase().includes(lowerSearchTerm)) {
+      filteredTasks.push(task);
+    }
+  }
+
+  let currentTasks = tasks;
   tasks = filteredTasks;
   renderAllTasks();
   tasks = currentTasks;
@@ -277,9 +301,22 @@ function showTaskDetails(taskId) {
 }
 
 function getTaskDetailsTemplate(task) {
-  const categoryId = categoryToId[task.category] || "user-story";
-  const priorityIcon = priorityIcons[task.priority];
-  const priorityLabel = priorityLabels[task.priority];
+  let categoryId = categoryToId[task.category] || "user-story";
+  let priorityIcon = priorityIcons[task.priority];
+  let priorityLabel = priorityLabels[task.priority];
+
+  let subtasksHTML = '';
+  for (let i = 0; i < task.subtasks.length; i++) {
+    let subtask = task.subtasks[i];
+    let completedClass = subtask.completed ? 'completed' : '';
+    subtasksHTML += '<li class="' + completedClass + '">' + subtask.text + '</li>';
+  }
+
+  let assignedUsersHTML = '';
+  for (let i = 0; i < task.assignedTo.length; i++) {
+    assignedUsersHTML += '<div class="user-avatar-sm">' + task.assignedTo[i] + '</div>';
+  }
+
   return `
     <div class="details-card">
       <div class="details-header">
@@ -297,15 +334,13 @@ function getTaskDetailsTemplate(task) {
         <div class="details-subtasks">
           <h3>Subtasks</h3>
           <ul>
-            ${task.subtasks.map(subtask => `
-              <li class="${subtask.completed ? 'completed' : ''}">${subtask.text}</li>
-            `).join('')}
+            ${subtasksHTML}
           </ul>
         </div>
         <div class="details-assigned">
           <h3>Assigned To</h3>
           <div class="task-users">
-            ${task.assignedTo.map(user => `<div class="user-avatar-sm">${user}</div>`).join('')}
+            ${assignedUsersHTML}
           </div>
         </div>
         <div class="details-priority">
