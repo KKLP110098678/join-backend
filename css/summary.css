@@ -8,7 +8,6 @@
   width: 912px;
   height: 591px;
   text-align: center;
-
   position: relative;
 }
 
@@ -63,6 +62,19 @@
   }
   .vertical-divider {
     background-color: #4589ff;
+  }
+}
+
+.square-urgency:active {
+  background: #005DFF;
+  color: white;
+
+  .vertical-divider {
+    background-color: white;
+  }
+
+  .urgent-icon img {
+    border: solid 3px white;
   }
 }
 
