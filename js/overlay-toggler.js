@@ -1,13 +1,9 @@
 function toggleOverlay(menuId) {
     let overlay = document.getElementById('blur-overlay');
-    if (overlay) {
-        overlay.classList.toggle('active');
-    }
+    overlay.classList.toggle('active');
     let cleanMenuId = menuId.replace('#', '');
     let menu = document.getElementById(cleanMenuId);
-    if (menu) {
-        menu.classList.toggle('open');
-    }
+    menu.classList.toggle('open');
 }
 
 function closeAllMenus() {
@@ -17,9 +13,9 @@ function closeAllMenus() {
     let detailsOverlay = document.getElementById('details-overlay');
     let overlay = document.getElementById('blur-overlay');
 
-    if (addTaskMenu) addTaskMenu.classList.remove('open');
-    if (editContactMenu) editContactMenu.classList.remove('open');
-    if (addContactMenu) addContactMenu.classList.remove('open');
-    if (detailsOverlay) detailsOverlay.classList.remove('open');
-    if (overlay) overlay.classList.remove('active');
+    addTaskMenu.classList.remove('open');
+    editContactMenu.classList.remove('open');
+    addContactMenu.classList.remove('open');
+    detailsOverlay.classList.remove('open');
+    overlay.classList.remove('active');
 }
