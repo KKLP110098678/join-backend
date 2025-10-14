@@ -119,24 +119,6 @@ a {
   padding-bottom: 16px;
 }
 
-
-.custom-checkbox {
-  display: flex;
-  align-items: center;
-}
-
-.custom-checkbox input[type="checkbox"] {
-  display: none;
-}
-
-
-.custom-checkbox img {
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  margin-right: 8px;
-}
-
 #checkboxContainer {
   display: flex;
   justify-content: center;
@@ -147,8 +129,39 @@ a {
 
 }
 
-#checkBox:checked {
-  background-color: #4589ff;
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+#privacy-checkbox {
+  content: "";
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+#privacy-checkbox::before {
+  content: "";
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url(..//assets/icon/sign/unchecked.svg);
+}
+
+#privacy-checkbox:checked::before {
+  content: "";
+  position: absolute;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url(..//assets/icon/sign/checked.svg);
 }
 
 .btnContainer {
@@ -228,10 +241,6 @@ input:-webkit-autofill {
   font-weight: 400;
   font-size: 23px;
   animation: fadeIn 0.4s ease-in-out;
-}
-
-.d-none {
-  display: none;
 }
 
 @keyframes fadeIn {

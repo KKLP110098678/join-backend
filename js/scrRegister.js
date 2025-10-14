@@ -71,7 +71,7 @@ function validateEmailFormat(inEmail) {
   return true;
 }
 
-function toggleCheckBox() {
+/* function toggleCheckBox() {
   const checkBox = document.getElementById("checkBox");
   const checkBoxImage = document.getElementById("checkBoxImage");
   if (checkBox.disabled) return;
@@ -91,7 +91,7 @@ function toggleCheckBox() {
       "Please accept the Privacy policy"
     );
   }
-}
+} */
 
 function handleErrorSet(
   nextFieldId,
