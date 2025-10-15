@@ -71,28 +71,6 @@ function validateEmailFormat(inEmail) {
   return true;
 }
 
-function toggleCheckBox() {
-  const checkBox = document.getElementById("checkBox");
-  const checkBoxImage = document.getElementById("checkBoxImage");
-  if (checkBox.disabled) return;
-  checkBox.checked = !checkBox.checked;
-  if (checkBox.checked) {
-    checkBox.checked = false;
-    checkBoxImage.src = "../assets/icon/sign/checked.svg";
-    handleErrorSet("btnSignup", "checkBox", "checkBoxError", true);
-  } else {
-    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
-    checkBox.checked = true;
-    handleErrorSet(
-      "btnSignup",
-      "checkBox",
-      "checkBoxError",
-      false,
-      "Please accept the Privacy policy"
-    );
-  }
-}
-
 function handleErrorSet(
   nextFieldId,
   fieldId,
