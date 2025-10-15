@@ -11,7 +11,7 @@
   gap: 35px;
 }
 
-.logoHeader {
+.logo-header {
   position: absolute;
   width: 100px;
   top: 80px;
@@ -31,7 +31,7 @@
   padding: 48px 88px;
 }
 
-.headReg {
+.head-reg {
   text-align: center;
   font-weight: bold;
   font-size: 48px;
@@ -43,7 +43,7 @@
   border: 2px solid var(--color-light-blue);
 }
 
-.mainReg {
+.main-reg {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,11 +54,11 @@
   margin: 0 auto;
 }
 
-.mainReg > div {
+.main-reg > div {
   width: 100%;
 }
 
-.fieldContainer {
+.field-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
@@ -84,7 +84,7 @@
   margin-left: 12px;
 }
 
-.btnContainer {
+.btn-container {
   display: flex;
   gap: 35px;
   padding-top: 32px;
@@ -93,22 +93,22 @@
   width: 100%;
 }
 
-.btnContainer .btn-no-icon,
-.btnContainer .btn-secondary {
+.btn-container .btn-no-icon,
+.btn-container .btn-secondary {
   white-space: nowrap;
   padding: 12px 20px;
   font-size: 21px;
   width: 177px;
 }
 
-.footContainer {
+.foot-container {
   display: flex;
   flex-direction: row;
   gap: 16px;
   justify-content: space-between;
 }
 
-.footContainer a {
+.foot-container a {
   color: #42526e;
   font-size: 16px;
 }
