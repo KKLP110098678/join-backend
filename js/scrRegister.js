@@ -71,6 +71,22 @@ function validateEmailFormat(inEmail) {
   return true;
 }
 
+function toggleCheckBox(event) {
+  let checkBox = document.getElementById("privacy-checkbox");
+  if (checkBox.disabled) {
+    event.preventDefault();
+    return;
+  }
+  setTimeout(function () {
+    let signUpButton = document.getElementById("btnSignup");
+    if (checkBox.checked) {
+      signUpButton.disabled = false;
+    } else {
+      signUpButton.disabled = true;
+    }
+  }, 0);
+}
+
 function handleErrorSet(
   nextFieldId,
   fieldId,
@@ -105,10 +121,13 @@ function toggleErrorMessage(elementId, isValid, message = "") {
 }
 
 function toggleNextElement(eleID, status) {
-  const el = document.getElementById(eleID);
+  console.log("toggleNextElement called:", eleID, "status:", status);
+  let el = document.getElementById(eleID);
+  console.log("Element found:", el);
   if (!el) return;
   if (status) {
     el.disabled = false;
+    console.log("Element enabled! disabled =", el.disabled);
     el.focus();
   } else {
     el.disabled = true;
