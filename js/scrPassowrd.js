@@ -38,7 +38,7 @@ function updateConfirmIconByState() {
 }
 
 function onInputConfirmPassword(input) {
-  setBorderColor('fieldPasswordConfirm',true);
+  setBorderColor("fieldPasswordConfirm", true);
   const inConfirmWord = input.value;
   realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
@@ -96,7 +96,7 @@ function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
     newUser.nuPassword = realPassword;
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
-    removeBorderColor('fieldPassword')
+    removeBorderColor("fieldPassword");
   } else {
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
   }
@@ -113,7 +113,7 @@ function validatePasswordTooltip(inPassword) {
     isPasswordValid(rules),
     isPasswordValid(rules) ? "" : msg
   );
-  if (rules) {
+  if (isPasswordValid(rules)) {
     setBorderColor("fieldPassword", true);
   }
 }
