@@ -12,7 +12,8 @@
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
     <div id="loginLogoContainer"></div>
-    <div class="text-center login-header">
+<div class="logInMainContainer">
+      <header class="text-center login-header">
       <p class="login-header-text">Not a Join user?</p>
       <a
         href="register.html"
@@ -20,47 +21,56 @@
         onclick="sessionStorage.setItem('fromLogin', 'true');"
         >Sign up</a
       >
+    </header>
+    <main id="logInContainer" >
+      <form id="loginForm" class="logInForm" action="./summary.html">
+        <div>
+          <div class="headReg">
+            <span>Log in</span>
+            <div class="separator"></div>
+          </div>
+          <div>
+            <div class="mainLoginForm">
+              <div class="fieldContainer">
+                <div id="fieldEmail" class="input-icon-container">
+                  <input
+                    id="inEmail"
+                    type="email"
+                    placeholder="E-Mail"
+                    required
+                    oninput="setBorderColor('fieldEmail',true)"
+                    onblur="isUserExistByEmail(this.value)"
+                  />
+                  <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
+                </div>
+                <small id="emailError" class="d-none msgError"></small>
+              </div>
+              <div class="fieldContainer">
+                <div id="fieldPassword" class="input-icon-container">
+                  <input
+                    id="inPassword"
+                    type="text"
+                    disabled
+                    placeholder="Password"
+                  />
+                  <img
+                    id="passwordIcon"
+                    src="../assets/icon/sign/lock.svg"
+                    alt="password icon"
+                    onclick="onPasswordIconClick()"
+                  />
+                </div>
+                <small id="passwordTooltip" class="d-none msgError"></small>
+              </div>
+            </div>
+          </div>
 
-    </div>
-    <main id="logInMainContainer" class="register-main-container">
-      <form id="logInForm" class="register-form" action="./summary.html">
-        <h1>Log in</h1>
-                <div class="fieldContainer">
-                  <div id="fieldEmail" class="input-icon-container">
-                    <input
-                      id="inEmail"
-                      type="email"
-                      placeholder="E-Mail"
-                      required
-                      oninput="setBorderColor('fieldEmail',true)"
-                      onblur="isUserExistByEmail(this.value)"
-                    />
-                    <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
-                  </div>
-                  <small id="emailError" class="d-none msgError"></small>
-                </div>
-                <div class="fieldContainer">
-                  <div id="fieldPassword" class="input-icon-container">
-                    <input
-                      id="inPassword"
-                      type="text"
-                      disabled
-                      placeholder="Password"
-                    />
-                    <img
-                      id="passwordIcon"
-                      src="../assets/icon/sign/lock.svg"
-                      alt="password icon"
-                      onclick="onPasswordIconClick()"
-                    />
-                  </div>
-                  <small id="passwordTooltip" class="d-none msgError"></small>
-                </div>
-        <div class="logInButtons">
-          <button class="btn-no-icon logInButton" type="submit">Login</button>
-          <button class="btn-secondary logInButton" type="submit">
-            Guest log in
-          </button>
+          <div class="btnContainer">
+            <button class="btn-no-icon logInButton" type="submit">Login</button>
+            <button class="btn-secondary logInButton" type="submit">
+              Guest log in
+            </button>
+          </div>
         </div>
       </form>
     </main>
@@ -72,6 +82,7 @@
         <a href="/html/impressum.html">Legal notice</a>
       </p>
     </footer>
+</div>
     <script src="../js/script.js"></script>
   </body>
 </html>
