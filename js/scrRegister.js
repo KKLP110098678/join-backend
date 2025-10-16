@@ -129,7 +129,6 @@ function toggleNextElement(eleID, status) {
   if (!el) return;
   if (status) {
     el.disabled = false;
-    el.focus();
   } else {
     el.disabled = true;
   }
