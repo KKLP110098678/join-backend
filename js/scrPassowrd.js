@@ -91,14 +91,14 @@ function onPasswordInput(input) {
   validatePasswordTooltip(realPassword);
 }
 
-function onPasswordBlur(inPassword) {
-  if (checkPasswordRules(inPassword)) {
-    newUser.nuPassword = realPassword;
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
-  } else {
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
-  }
-}
+// function onPasswordBlur(inPassword) {
+//   if (checkPasswordRules(inPassword)) {
+//     newUser.nuPassword = realPassword;
+//     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
+//   } else {
+//     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
+//   }
+// }
 
 function validatePasswordTooltip(inPassword) {
   toggleVisibilityIcon();
@@ -111,6 +111,9 @@ function validatePasswordTooltip(inPassword) {
     isPasswordValid(rules),
     isPasswordValid(rules) ? "" : msg
   );
+  // if (isPasswordValid(rules)) {
+  //   setBorderColor("fieldPassword", true);
+  // }
 }
 
 function isPasswordValid(rules) {
