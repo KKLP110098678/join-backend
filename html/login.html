@@ -38,21 +38,22 @@
               <div>
                 <div class="field-container">
                   <div class="input-icon-container">
-                    <input type="text" placeholder="Email" required />
+                    <input id="emailInput" type="email" placeholder="Email" required />
                     <img src="../assets/icon/logIn/mail.svg" alt="Email Icon" />
                   </div>
                 </div>
                 <div class="field-container">
                   <div class="input-icon-container">
-                    <input type="password" placeholder="Password" required />
+                    <input id="passwordInput" type="password" placeholder="Password" required />
                     <img src="../assets/icon/logIn/lock.svg" alt="Password Icon" />
                   </div>
                 </div>
+                <div id="errorMessage" style="color: #FF3D00; margin-top: 10px; display: none; font-size: 14px;"></div>
               </div>
             </div>
             <div class="btn-container">
               <button class="btn-no-icon" type="submit">Log in</button>
-              <button class="btn-secondary" type="button">Guest log in</button>
+              <a href="./summary.html" class="btn-secondary" onclick="setGuestSession()">Guest log in</a>
             </div>
           </div>
         </form>
@@ -69,6 +70,10 @@
         </div>
       </footer>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../scrDB/dbConfig.js"></script>
+    <script src="../js/login.js"></script>
     <script src="../js/script.js"></script>
   </body>
 </html>
