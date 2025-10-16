@@ -10,23 +10,22 @@
   </head>
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
-    <div id="loginLogoContainer"></div>
     
+    <header>
+      <div class="logo-header">
+        <img src="../assets/icon/logowhiteheader.svg" alt="" />
+      </div>
+      <div class="text-center login-header">
+        <p class="login-header-text">Not a Join user?</p>
+        <a
+          href="register.html"
+          class="btn-no-icon"
+          onclick="sessionStorage.setItem('fromLogin', 'true');"
+          >Sign up</a
+        >
+      </div>
+    </header>
     <div class="register-main-container">
-      <header>
-        <div class="logo-header">
-          <img src="../assets/icon/logowhiteheader.svg" alt="" />
-        </div>
-        <div class="text-center login-header">
-          <p class="login-header-text">Not a Join user?</p>
-          <a
-            href="register.html"
-            class="btn-no-icon"
-            onclick="sessionStorage.setItem('fromLogin', 'true');"
-            >Sign up</a
-          >
-        </div>
-      </header>
       
       <main>
         <form id="logInForm" class="register-form" action="./summary.html">
