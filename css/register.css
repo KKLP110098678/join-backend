@@ -153,15 +153,19 @@ a {
 
 .btnContainer {
   padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
 }
 
 #btnSignup {
-  display: block;
-  margin: 0 auto;
+  /* display: block;
+  margin: 0 auto; */
   white-space: nowrap;
   padding: 12px 20px;
   font-size: 24px;
-  gap: 10px;
+  /* gap: 10px; */
 }
 
 
