@@ -47,3 +47,20 @@ async function isUserEmailTaken(inEmail) {
     return false;
   }
 }
+async function findUserByCardinal(ibjToFind) {
+  try {
+    const usersRef = firebase.database().ref("users");
+    const snapshot = await usersRef.once("value");
+    const users = snapshot.val();
+    if (!users) return null;
+    for (let key in users) {
+      if (users[key].email === ibjToFind.email && users[key].password === ibjToFind.password) {
+        return users[key];
+      }
+    }
+    return null;
+  } catch (error) {
+    console.error("Worng email or password:", error);
+    return null;
+  }
+}
