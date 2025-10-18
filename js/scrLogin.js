@@ -1,4 +1,4 @@
-let ibjToFind = { email: "", password: "" };
+let objToFind = { email: "", password: "" };
 function findUserByEmail(inEmail) {
   const user = users.find((user) => user.email === email);
   if (user) {
@@ -12,14 +12,14 @@ function findUserByEmail(inEmail) {
 // checkPassword
 function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
-    ibjToFind.email = inEmail;
+    objToFind.email = inEmail;
     handleErrorSet("inPassword", "fieldEmail", "emailError", true);
   }
 }
 
 function getPassword(inPassword) {
   realPassword = updateVarible(inPassword, realPassword);
-  passeordVisible = hedienWord(inPassword, passeordVisible, realPassword);
+  objToFind.password = realPassword;
   removeBorderColor("fieldPassword");
 }
 
@@ -44,3 +44,7 @@ function passwordInput(input) {
 //     "Please enter a valid Password!"
 //   );
 // }
+
+function handelLogIn() {
+  
+} 

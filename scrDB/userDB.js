@@ -47,14 +47,16 @@ async function isUserEmailTaken(inEmail) {
     return false;
   }
 }
-async function findUserByCardinal(ibjToFind) {
+async function findUserByCardinal(objToFind) {
   try {
     const usersRef = firebase.database().ref("users");
     const snapshot = await usersRef.once("value");
     const users = snapshot.val();
     if (!users) return null;
     for (let key in users) {
-      if (users[key].email === ibjToFind.email && users[key].password === ibjToFind.password) {
+      if (users[key].email === objToFind.email && users[key].password === objToFind.password) {
+        console.log("User " , users[key]);
+        
         return users[key];
       }
     }
