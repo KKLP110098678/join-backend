@@ -11,9 +11,36 @@ function findUserByEmail(inEmail) {
 }
 // checkPassword
 function getEmail(inEmail) {
-  ibjToFind.email = inEmail;
+  if (validateEmailFormat(inEmail)) {
+    ibjToFind.email = inEmail;
+    handleErrorSet("inPassword", "fieldEmail", "emailError", true);
+  }
 }
+
 function getPassword(inPassword) {
-  ibjToFind.password = inPassword;
+  realPassword = updateVarible(inPassword, realPassword);
+  passeordVisible = hedienWord(inPassword, passeordVisible, realPassword);
+  removeBorderColor("fieldPassword");
 }
+
 function checkCardinal() {}
+
+function passwordInput(input) {
+  const inPassWord = input.value;
+  realPassword = updateVarible(inPassWord, realPassword);
+  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  toggleVisibilityIcon();
+  setBorderColor("fieldPassword", true);
+}
+
+// in login func
+//    if (!inPassword) {
+//   console.log("pass");
+//   handleErrorSet(
+//     "",
+//     "inPassword",
+//     "fieldPassword",
+//     false,
+//     "Please enter a valid Password!"
+//   );
+// }
