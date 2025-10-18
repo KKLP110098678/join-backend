@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
+    <link rel="stylesheet" href="../css/logIn.css" />
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
-    <link rel="stylesheet" href="../css/logIn.css" />
   </head>
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
@@ -15,12 +15,8 @@
     <div class="logInMainContainer">
       <header class="text-center login-header">
         <p class="login-header-text">Not a Join user?</p>
-        <a
-          href="register.html"
-          class="btn-no-icon"
-          >Sign up</a
-          >
-          <!-- onclick="sessionStorage.setItem('fromLogin', 'true');" -->
+        <a href="register.html" class="btn-no-icon">Sign up</a>
+        <!-- onclick="sessionStorage.setItem('fromLogin', 'true');" -->
       </header>
       <main id="logInContainer">
         <form id="loginForm" class="logInForm" action="./summary.html">
