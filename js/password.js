@@ -94,10 +94,8 @@ function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
     newUser.nuPassword = realPassword;
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
-    console.log("Ja valid");
   } else {
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
-    console.log("not valid");
   }
 }
 
