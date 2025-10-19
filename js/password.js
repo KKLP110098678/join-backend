@@ -21,8 +21,7 @@ function onPasswordIconClick() {
   if (realPassword.length === 0) return;
 
   passeordVisible = !passeordVisible;
-  // input.value = passeordVisible ? realPassword : "*".repeat(realPassword.length);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  passeordVisible = hideWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
 }
 
@@ -41,7 +40,7 @@ function updateConfirmIconByState() {
 function onInputConfirmPassword(input) {
   const inConfirmWord = input.value;
   realConfirmPassword = updateVariable(inConfirmWord, realConfirmPassword);
-  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
 }
 
@@ -49,7 +48,7 @@ function onClickConfirmPasswordIcon() {
   const input = document.getElementById("inPasswordConfirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
-  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
 }
 
 function isPasswordMatching() {
@@ -76,7 +75,7 @@ function updateVariable(inWord, realVar) {
   return realVar;
 }
 
-function hedienWord(inWord, isVisible, realWord) {
+function hideWord(inWord, isVisible, realWord) {
   if (realWord.length === 0) return isVisible;
   inWord.value = isVisible ? realWord : "*".repeat(realWord.length);
   return isVisible;
@@ -85,7 +84,7 @@ function hedienWord(inWord, isVisible, realWord) {
 function onPasswordInput(input) {
   const inPassWord = input.value;
   realPassword = updateVariable(inPassWord, realPassword);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  passeordVisible = hideWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("fieldPassword", false);
   validatePasswordTooltip(realPassword);
