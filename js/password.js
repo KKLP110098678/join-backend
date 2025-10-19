@@ -21,8 +21,7 @@ function onPasswordIconClick() {
   if (realPassword.length === 0) return;
 
   passeordVisible = !passeordVisible;
-  // input.value = passeordVisible ? realPassword : "*".repeat(realPassword.length);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  passeordVisible = hideWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
 }
 
@@ -40,8 +39,8 @@ function updateConfirmIconByState() {
 
 function onInputConfirmPassword(input) {
   const inConfirmWord = input.value;
-  realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
-  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+  realConfirmPassword = updateVariable(inConfirmWord, realConfirmPassword);
+  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
 }
 
@@ -49,13 +48,12 @@ function onClickConfirmPasswordIcon() {
   const input = document.getElementById("inPasswordConfirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
-  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
 }
 
 function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
-    console.log("Password matched! Enabling checkbox...");
     handleErrorSet("privacy-checkbox", "fieldPasswordConfirm", "confirmPassword", true);
   } else {
     handleErrorSet(
@@ -63,12 +61,11 @@ function isPasswordMatching() {
       "fieldPasswordConfirm",
       "confirmPassword",
       false,
-      "Password not Matched!"
+      "Passwords do not match!"
     );
   }
 }
-
-function updateVarible(inWord, realVar) {
+function updateVariable(inWord, realVar) {
   if (inWord.length > realVar.length) {
     const added = inWord.slice(realVar.length);
     realVar += added;
@@ -78,7 +75,7 @@ function updateVarible(inWord, realVar) {
   return realVar;
 }
 
-function hedienWord(inWord, isVisible, realWord) {
+function hideWord(inWord, isVisible, realWord) {
   if (realWord.length === 0) return isVisible;
   inWord.value = isVisible ? realWord : "*".repeat(realWord.length);
   return isVisible;
@@ -86,8 +83,8 @@ function hedienWord(inWord, isVisible, realWord) {
 
 function onPasswordInput(input) {
   const inPassWord = input.value;
-  realPassword = updateVarible(inPassWord, realPassword);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  realPassword = updateVariable(inPassWord, realPassword);
+  passeordVisible = hideWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("fieldPassword", false);
   validatePasswordTooltip(realPassword);

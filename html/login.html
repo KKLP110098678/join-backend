@@ -4,51 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/mainContent.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
-    <link rel="stylesheet" href="../css/logIn.css" />
-    <!-- <link rel="stylesheet" href="../css/cssTest.css"> -->
   </head>
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
-    <div id="loginLogoContainer"></div>
-    <div class="text-center login-header">
-      <p class="login-header-text">Not a Join user?</p>
-      <a
-        href="register.html"
-        class="btn-no-icon"
-        onclick="sessionStorage.setItem('fromLogin', 'true');"
-        >Sign up</a
-      >
+
+    <header>
+      <div class="logo-header">
+        <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
+      </div>
+      <div class="text-center login-header">
+        <p class="login-header-text">Not a Join user?</p>
+        <a
+          href="register.html"
+          class="btn-no-icon"
+          onclick="sessionStorage.setItem('fromLogin', 'true');"
+          >Sign up</a
+        >
+      </div>
+    </header>
+    <div class="register-main-container">
+      <main>
+        <form id="logInForm" class="register-form" action="./summary.html">
+          <div>
+            <div class="head-reg">
+              <span>Log in</span>
+              <div class="separator"></div>
+            </div>
+            <div class="main-reg">
+              <div>
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      id="emailInput"
+                      type="email"
+                      placeholder="Email"
+                      required
+                    />
+                    <img src="../assets/icon/logIn/mail.svg" alt="Email Icon" />
+                  </div>
+                </div>
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      id="passwordInput"
+                      type="password"
+                      placeholder="Password"
+                      required
+                    />
+                    <img
+                      src="../assets/icon/logIn/lock.svg"
+                      alt="Password Icon"
+                    />
+                  </div>
+                </div>
+                <div id="errorMessage"></div>
+              </div>
+            </div>
+            <div class="btn-container">
+              <button class="btn-no-icon" type="submit">Log in</button>
+              <a
+                href="./summary.html"
+                class="btn-secondary"
+                onclick="setGuestSession()"
+                >Guest log in</a
+              >
+            </div>
+          </div>
+        </form>
+      </main>
+
+      <footer>
+        <div class="foot-container">
+          <p>
+            <a href="/html/datenschutz.html">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="/html/impressum.html">Legal Notice</a>
+          </p>
+        </div>
+      </footer>
     </div>
-    <main id="logInMainContainer" class="logInMainContainer">
-      <form id="logInForm" class="logInForm" action="./summary.html">
-        <h1>Log in</h1>
-        <div class="input-icon-container">
-          <input type="text" placeholder="Email" />
-          <img src="../assets/icon/logIn/mail.svg" alt="Email Icon" />
-        </div>
-        <div class="input-icon-container">
-          <input type="password" placeholder="Password" />
-          <img src="../assets/icon/logIn/lock.svg" alt="Password Icon" />
-        </div>
-        <div class="logInButtons">
-          <button class="btn-no-icon logInButton" type="submit">Login</button>
-          <button class="btn-secondary logInButton" type="submit">
-            Guest log in
-          </button>
-        </div>
-      </form>
-    </main>
-    <footer id="login-legal-footer" class="legal-footer">
-      <p class="footer-links">
-        <a href="/html/datenschutz.html">Privacy Policy</a>
-      </p>
-      <p class="footer-links">
-        <a href="/html/impressum.html">Legal notice</a>
-      </p>
-    </footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../scrDB/dbConfig.js"></script>
+    <script src="../js/login.js"></script>
     <script src="../js/script.js"></script>
   </body>
 </html>
