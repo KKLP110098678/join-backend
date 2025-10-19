@@ -1,7 +1,7 @@
 const CONFIG = {
   routes: {
-    login: "../html/login.html"  // Default login redirect path
-  }
+    login: "../html/login.html", // Default login redirect path
+  },
 };
 
 const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
