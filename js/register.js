@@ -140,9 +140,14 @@ function toggleErrorMessage(elementId, isValid, message = "") {
   if (isValid) {
     el.classList.add("d-none");
     el.textContent = "";
+    el.innerHTML = "";
   } else {
     el.classList.remove("d-none");
-    el.textContent = message;
+    if (elementId === "password-tooltip") {
+      el.innerHTML = message;
+    } else {
+      el.textContent = message;
+    }
   }
 }
 
@@ -177,7 +182,7 @@ function removeBorderColor(inID) {
     console.warn(`removeBorderColor: element with id "${inID}" not found.`);
     return;
   }
-  feldInput.classList.remove("validInput", "invalidInput");
+  feldInput.classList.remove("valid-input", "invalid-input");
 }
 
 function setBorderColor(inID, status) {
@@ -187,11 +192,11 @@ function setBorderColor(inID, status) {
     return;
   }
 
-  feldInput.classList.remove("validInput", "invalidInput");
+  feldInput.classList.remove("valid-input", "invalid-input");
 
   if (status) {
-    feldInput.classList.add("validInput");
+    feldInput.classList.add("valid-input");
   } else {
-    feldInput.classList.add("invalidInput");
+    feldInput.classList.add("invalid-input");
   }
 }

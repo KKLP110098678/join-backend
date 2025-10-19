@@ -109,13 +109,23 @@ function onPasswordBlur(inPassword, userObject, password) {
 function validatePasswordTooltip(inPassword) {
   const rules = checkPasswordRules(inPassword);
   const msg = buildPasswordMessage(rules);
+  const isValid = isPasswordValid(rules);
+  
   handleErrorSet(
     "in-password-confirm",
     "field-password",
     "password-tooltip",
-    isPasswordValid(rules),
-    isPasswordValid(rules) ? "" : msg
+    isValid,
+    isValid ? "" : msg
   );
+  
+  // Set HTML content directly for password tooltip
+  if (!isValid) {
+    const tooltipElement = document.getElementById("password-tooltip");
+    if (tooltipElement) {
+      tooltipElement.innerHTML = msg;
+    }
+  }
 }
 
 function isPasswordValid(rules) {
@@ -123,17 +133,14 @@ function isPasswordValid(rules) {
 }
 
 function buildPasswordMessage(rules) {
-  let message = "";
-  message += `<span class="${rules.minLength ? "valid" : "invalid"}">
+  return`<span class="${rules.minLength ? "valid" : "invalid"}">
                 At least 8 characters
-              </span><br>`;
-  message += `<span class="${rules.hasLower ? "valid" : "invalid"}">
+              </span><br>
+<span class="${rules.hasLower ? "valid" : "invalid"}">
                 At least one lowercase letter
-              </span><br>`;
-  message += `<span class="${rules.hasNumber ? "valid" : "invalid"}">
+              </span><br><span class="${rules.hasNumber ? "valid" : "invalid"}">
                 At least one number
               </span><br>`;
-  return message;
 }
 
 function checkPasswordRules(password) {
