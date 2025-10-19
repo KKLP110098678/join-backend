@@ -16,9 +16,6 @@
 .logo-header {
   width: 100px;
   margin-top: 1rem;
-  top: 80px;
-  left: 77px;
-  /* Removed absolute positioning to participate in flex layout */
 }
 
 .register-form {
@@ -228,7 +225,7 @@
   }
 
   100% {
-    top: 78px;
+    top: 80px;
     left: 78px;
     width: 100px;
     height: 122px;
