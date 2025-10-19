@@ -242,3 +242,11 @@
     opacity: 1;
   }
 }
+
+/* Error message styling */
+#errorMessage {
+  color: #ff3d00;
+  margin-top: 10px;
+  display: none;
+  font-size: 14px;
+}
