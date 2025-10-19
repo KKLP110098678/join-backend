@@ -95,11 +95,10 @@ function onPasswordInput(input) {
   validatePasswordTooltip(realPassword);
 }
 
-function onPasswordBlur(inPassword, userObject, password) {
+function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
-    if (userObject) {
-      userObject.nuPassword = password;
-    }
+    // Save the real password to newUser object
+    newUser.nuPassword = realPassword;
     handleErrorSet("in-password-confirm", "in-password", "password-tooltip", true);
   } else {
     handleErrorSet("in-password-confirm", "in-password", "password-tooltip", false);
