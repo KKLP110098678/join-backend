@@ -62,7 +62,7 @@ function isPasswordMatching() {
       "fieldPasswordConfirm",
       "confirmPassword",
       false,
-      "Password not Matched!"
+      "Your passwords don't match. Please try again."
     );
   }
 }

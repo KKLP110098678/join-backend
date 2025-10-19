@@ -16,7 +16,6 @@
       <header class="text-center login-header">
         <p class="login-header-text">Not a Join user?</p>
         <a href="register.html" class="btn-no-icon">Sign up</a>
-        <!-- onclick="sessionStorage.setItem('fromLogin', 'true');" -->
       </header>
       <main id="logInContainer">
         <form id="loginForm" class="logInForm" action="./summary.html">
@@ -64,8 +63,11 @@
             </div>
 
             <div class="btnContainer">
-              <button class="btn-no-icon logInButton" type="submit"
-              onclick="handelLogIn()">
+              <button
+                class="btn-no-icon logInButton"
+                type="submit"
+                onclick="handelLogIn()"
+              >
                 Login
               </button>
               <button class="btn-secondary logInButton" type="submit">

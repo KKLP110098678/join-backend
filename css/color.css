@@ -2,6 +2,7 @@
   --color-blue: #2a3647;
   --color-black-light: #091931;
   --color-light-blue: rgba(69, 137, 255, 1);
+  --color-blue-hover :rgba(0, 93, 255, 1);
   --color-orange: #ff7a00;
   --color-turquoise: #1fd7c1;
   --color-green: #14452f;
@@ -13,7 +14,7 @@
   --color-orange-dark: #ff4646;
   --color-black: black;
   --color-white: white;
-  --color-red: red;
+  --color-red: rgba(230, 0, 38, 1);
   --color-grey: #d1d1d1;
   --color-grey-light: rgba(209, 209, 209, 1);
   --color-font-white: rgba(255, 255, 255, 1);
