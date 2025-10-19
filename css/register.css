@@ -40,7 +40,7 @@ a {
   height: 37px;
 }
 
-.logoHeader {
+.logo-header {
   position: absolute;
   width: 100px;
   top: 80px;
@@ -60,7 +60,7 @@ a {
   padding: 48px 88px;
 }
 
-.headReg {
+.head-reg {
   text-align: center;
   font-weight: bold;
   font-size: 48px;
@@ -72,7 +72,7 @@ a {
   border: 2px solid var(--color-light-blue);
 }
 
-.mainReg {
+.main-reg {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,13 +83,13 @@ a {
   margin: 0 auto;
 }
 
-.mainReg>div {
+.main-reg>div {
   width: 100%;
 
 }
 
 
-.fieldContainer {
+.field-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
@@ -104,12 +104,12 @@ a {
   border-bottom: 1px solid var(--color-red);
 }
 
-#confirmPasswordIcon,
-#passwordIcon {
+#confirm-password-icon,
+#password-icon {
   cursor: pointer;
 }
 
-#checkboxContainer {
+#checkbox-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -154,11 +154,11 @@ a {
   background-image: url(..//assets/icon/sign/checked.svg);
 }
 
-.btnContainer {
+.btn-container {
   padding-top: 10px;
 }
 
-#btnSignup {
+#btn-signup {
   display: block;
   margin: 0 auto;
   white-space: nowrap;
@@ -168,20 +168,20 @@ a {
 }
 
 
-.msgError {
+.msg-error {
   color: red;
   text-align: left;
   font-size: 12px;
 }
 
-.footContainer {
+.foot-container {
   display: flex;
   flex-direction: row;
   gap: 16px;
   justify-content: space-between;
 }
 
-.footContainer a {
+.foot-container a {
   color: var(--color-font-white);
   font-size: 16px;
 

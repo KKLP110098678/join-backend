@@ -5,7 +5,7 @@ let realConfirmPassword = "";
 let confirmVisible = false;
 
 function toggleVisibilityIcon() {
-  const icon = document.getElementById("passwordIcon");
+  const icon = document.getElementById("password-icon");
   if (realPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
     passwordVisible = false;
@@ -17,7 +17,7 @@ function toggleVisibilityIcon() {
 }
 
 function onPasswordIconClick() {
-  const input = document.getElementById("inPassword");
+  const input = document.getElementById("in-password");
   if (realPassword.length === 0) return;
 
   passwordVisible = !passwordVisible;
@@ -26,7 +26,7 @@ function onPasswordIconClick() {
 }
 
 function updateConfirmIconByState() {
-  const icon = document.getElementById("confirmPasswordIcon");
+  const icon = document.getElementById("confirm-password-icon");
   if (realConfirmPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
     confirmVisible = false;
@@ -45,7 +45,7 @@ function onInputConfirmPassword(input) {
 }
 
 function onClickConfirmPasswordIcon() {
-  const input = document.getElementById("inPasswordConfirm");
+  const input = document.getElementById("in-password-confirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
   hideWord(input, confirmVisible, realConfirmPassword);
@@ -56,15 +56,15 @@ function isPasswordMatching() {
   if (realPassword === realConfirmPassword) {
     handleErrorSet(
       "privacy-checkbox",
-      "fieldPasswordConfirm",
-      "confirmPassword",
+      "field-password-confirm",
+      "confirm-password",
       true
     );
   } else {
     handleErrorSet(
       "privacy-checkbox",
-      "fieldPasswordConfirm",
-      "confirmPassword",
+      "field-password-confirm",
+      "confirm-password",
       false,
       "Passwords do not match!"
     );
@@ -91,7 +91,7 @@ function onPasswordInput(input) {
   realPassword = updateVariable(inPassWord, realPassword);
   hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
-  setBorderColor("fieldPassword", false);
+  setBorderColor("field-password", false);
   validatePasswordTooltip(realPassword);
 }
 
@@ -100,9 +100,9 @@ function onPasswordBlur(inPassword, userObject, password) {
     if (userObject) {
       userObject.nuPassword = password;
     }
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
+    handleErrorSet("in-password-confirm", "in-password", "password-tooltip", true);
   } else {
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
+    handleErrorSet("in-password-confirm", "in-password", "password-tooltip", false);
   }
 }
 
@@ -110,9 +110,9 @@ function validatePasswordTooltip(inPassword) {
   const rules = checkPasswordRules(inPassword);
   const msg = buildPasswordMessage(rules);
   handleErrorSet(
-    "inPasswordConfirm",
-    "fieldPassword",
-    "passwordTooltip",
+    "in-password-confirm",
+    "field-password",
+    "password-tooltip",
     isPasswordValid(rules),
     isPasswordValid(rules) ? "" : msg
   );

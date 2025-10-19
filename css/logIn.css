@@ -266,7 +266,7 @@
 }
 
 /* Error message styling */
-#errorMessage {
+#error-message {
   color: #ff3d00;
   margin-top: 10px;
   display: none;

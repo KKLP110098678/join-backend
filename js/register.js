@@ -26,9 +26,9 @@ async function handleRegisterUser(event) {
 async function isUserExistByName(inName) {
   if (!inName || !inName.trim()) {
     handleErrorSet(
-      "inEmail",
-      "fieldName",
-      "usernameError",
+      "in-email",
+      "field-name",
+      "username-error",
       false,
       "Username cannot be empty"
     );
@@ -37,16 +37,16 @@ async function isUserExistByName(inName) {
   const exists = await isUserNameTaken(inName);
   if (exists) {
     handleErrorSet(
-      "inEmail",
-      "fieldName",
-      "usernameError",
+      "in-email",
+      "field-name",
+      "username-error",
       false,
       "Username already exists!"
     );
     return false;
   } else {
     newUser.nuName = inName;
-    handleErrorSet("inEmail", "fieldName", "usernameError", true);
+    handleErrorSet("in-email", "field-name", "username-error", true);
     return true;
   }
 }
@@ -60,23 +60,23 @@ async function isUserExistByEmail(inEmail) {
     const exists = await isUserEmailTaken(inEmail);
     if (exists) {
       handleErrorSet(
-        "inPassword",
-        "fieldEmail",
-        "emailError",
+        "in-password",
+        "field-email",
+        "email-error",
         false,
         "E-Mail already exists!"
       );
       return false;
     }
     newUser.nuEmail = inEmail;
-    handleErrorSet("inPassword", "fieldEmail", "emailError", true);
+    handleErrorSet("in-password", "field-email", "email-error", true);
     return true;
   } catch (error) {
     console.error("Error validating email:", error);
     handleErrorSet(
-      "inPassword",
-      "fieldEmail",
-      "emailError",
+      "in-password",
+      "field-email",
+      "email-error",
       false,
       "Error validating email. Please try again."
     );
@@ -90,9 +90,9 @@ function validateEmailFormat(inEmail) {
     /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
   if (!emailRegex.test(inEmail)) {
     handleErrorSet(
-      "inPassword",
-      "fieldEmail",
-      "emailError",
+      "in-password",
+      "field-email",
+      "email-error",
       false,
       "Please enter a valid E-Mail!"
     );
@@ -108,7 +108,7 @@ function toggleCheckBox(event) {
     return;
   }
   setTimeout(function () {
-    let signUpButton = document.getElementById("btnSignup");
+    let signUpButton = document.getElementById("btn-signup");
     if (checkBox.checked) {
       signUpButton.disabled = false;
     } else {
@@ -158,7 +158,7 @@ function toggleNextElement(eleID, status) {
 }
 
 function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
-  const overlay = document.getElementById("successOverlay");
+  const overlay = document.getElementById("success-overlay");
   if (!overlay) {
     console.error("Success overlay not found");
     window.location.href = redirectPath;

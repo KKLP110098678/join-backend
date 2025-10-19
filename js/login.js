@@ -20,9 +20,9 @@
  * await loginUser();
  */
 async function loginUser() {
-  const email = document.getElementById("emailInput").value.trim();
-  const password = document.getElementById("passwordInput").value;
-  const errorMessage = document.getElementById("errorMessage");
+  const email = document.getElementById("email-input").value.trim();
+  const password = document.getElementById("password-input").value;
+  const errorMessage = document.getElementById("error-message");
 
   // Reset error message
   errorMessage.style.display = "none";
@@ -93,7 +93,7 @@ async function loginUser() {
  * showError('Email or password is incorrect.');
  */
 function showError(message) {
-  const errorMessage = document.getElementById("errorMessage");
+  const errorMessage = document.getElementById("error-message");
   if (!errorMessage) {
     console.warn("Error message element not found in the DOM");
     return;
@@ -135,7 +135,7 @@ function setGuestSession() {
  * initLoginForm();
  */
 function initLoginForm() {
-  const loginForm = document.getElementById("logInForm");
+  const loginForm = document.getElementById("log-in-form");
 
   if (loginForm) {
     loginForm.addEventListener("submit", async function (event) {

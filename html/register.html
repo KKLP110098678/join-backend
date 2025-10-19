@@ -13,7 +13,7 @@
   <body>
     <div class="register-main-container">
       <header>
-        <div class="logoHeader">
+        <div class="logo-header">
           <img src="../assets/icon/logowhiteheader.svg" alt="" />
         </div>
       </header>
@@ -28,45 +28,45 @@
           </a>
 
           <div>
-            <div class="headReg">
+            <div class="head-reg">
               <span>Sign up</span>
               <div class="separator"></div>
             </div>
-            <div class="mainReg">
+            <div class="main-reg">
               <div>
-                <div class="fieldContainer">
-                  <div id="fieldName" class="input-icon-container">
+                <div class="field-container">
+                  <div id="field-name" class="input-icon-container">
                     <input
-                      id="inName"
+                      id="in-name"
                       type="text"
                       placeholder="Name"
-                      oninput="setBorderColor('fieldName',true)"
+                      oninput="setBorderColor('field-name',true)"
                       onblur="isUserExistByName(this.value)"
                       required
                     />
                     <img src="../assets/icon/sign/person.svg" alt="name" />
                   </div>
-                  <small id="usernameError" class="d-none msgError"></small>
+                  <small id="username-error" class="d-none msg-error"></small>
                 </div>
-                <div class="fieldContainer">
-                  <div id="fieldEmail" class="input-icon-container">
+                <div class="field-container">
+                  <div id="field-email" class="input-icon-container">
                     <input
-                      id="inEmail"
+                      id="in-email"
                       type="email"
                       placeholder="E-Mail"
                       required
-                      oninput="setBorderColor('fieldEmail',true)"
+                      oninput="setBorderColor('field-email',true)"
                       onblur="isUserExistByEmail(this.value)"
                       disabled
                     />
                     <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
                   </div>
-                  <small id="emailError" class="d-none msgError"></small>
+                  <small id="email-error" class="d-none msg-error"></small>
                 </div>
-                <div class="fieldContainer">
-                  <div id="fieldPassword" class="input-icon-container">
+                <div class="field-container">
+                  <div id="field-password" class="input-icon-container">
                     <input
-                      id="inPassword"
+                      id="in-password"
                       type="text"
                       disabled
                       placeholder="Password"
@@ -74,18 +74,18 @@
                       onblur="onPasswordBlur(this.value)"
                     />
                     <img
-                      id="passwordIcon"
+                      id="password-icon"
                       src="../assets/icon/sign/lock.svg"
                       alt="password icon"
                       onclick="onPasswordIconClick()"
                     />
                   </div>
-                  <small id="passwordTooltip" class="d-none msgError"></small>
+                  <small id="password-tooltip" class="d-none msg-error"></small>
                 </div>
-                <div class="fieldContainer">
-                  <div id="fieldPasswordConfirm" class="input-icon-container">
+                <div class="field-container">
+                  <div id="field-password-confirm" class="input-icon-container">
                     <input
-                      id="inPasswordConfirm"
+                      id="in-password-confirm"
                       type="text"
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
@@ -93,16 +93,16 @@
                       disabled
                     />
                     <img
-                      id="confirmPasswordIcon"
+                      id="confirm-password-icon"
                       src="../assets/icon/sign/lock.svg"
                       alt="confirm password icon"
                       onclick="onClickConfirmPasswordIcon()"
                     />
                   </div>
-                  <small id="confirmPassword" class="d-none msgError"></small>
+                  <small id="confirm-password" class="d-none msg-error"></small>
                 </div>
               </div>
-              <div id="checkboxContainer">
+              <div id="checkbox-container">
                 <label class="custom-checkbox" onclick="toggleCheckBox(event)">
                   <input id="privacy-checkbox" type="checkbox" disabled />
                   <span>
@@ -112,11 +112,11 @@
                     >
                   </span>
                 </label>
-                <small id="checkBoxError" class="d-none msgError"></small>
+                <small id="checkbox-error" class="d-none msg-error"></small>
               </div>
             </div>
-            <div class="btnContainer">
-              <button id="btnSignup" class="btn-no-icon" type="submit" disabled>
+            <div class="btn-container">
+              <button id="btn-signup" class="btn-no-icon" type="submit" disabled>
                 Sign up
               </button>
             </div>
@@ -124,7 +124,7 @@
         </form>
       </main>
       <footer>
-        <div class="footContainer">
+        <div class="foot-container">
           <p>
             <a href="/html/datenschutz.html">Privacy Policy</a>
           </p>
@@ -134,7 +134,7 @@
         </div>
       </footer>
     </div>
-    <div id="successOverlay" class="ol-end d-none">
+    <div id="success-overlay" class="ol-end d-none">
       <div class="ol-end-content">
         <p>You Signed Up successfully</p>
       </div>
