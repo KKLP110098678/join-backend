@@ -24,7 +24,6 @@
   flex-direction: column;
   align-items: center;
   background-color: var(--color-font-white);
-  width: 90%;
   max-width: 598px;
   min-height: 448px;
   border-radius: 30px;
@@ -135,11 +134,13 @@
 
 /* Login-Header in der neuen Struktur */
 .login-header {
+  position: absolute;
+  top: 67px;
+  right: 86px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 20px;
-  margin-top: 20px;
 }
 
 .login-header-text {
