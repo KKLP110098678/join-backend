@@ -40,7 +40,7 @@ function updateConfirmIconByState() {
 
 function onInputConfirmPassword(input) {
   const inConfirmWord = input.value;
-  realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
+  realConfirmPassword = updateVariable(inConfirmWord, realConfirmPassword);
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
 }
@@ -55,7 +55,6 @@ function onClickConfirmPasswordIcon() {
 function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
-    console.log("Password matched! Enabling checkbox...");
     handleErrorSet("privacy-checkbox", "fieldPasswordConfirm", "confirmPassword", true);
   } else {
     handleErrorSet(
@@ -63,12 +62,11 @@ function isPasswordMatching() {
       "fieldPasswordConfirm",
       "confirmPassword",
       false,
-      "Password not Matched!"
+      "Passwords do not match!"
     );
   }
 }
-
-function updateVarible(inWord, realVar) {
+function updateVariable(inWord, realVar) {
   if (inWord.length > realVar.length) {
     const added = inWord.slice(realVar.length);
     realVar += added;
@@ -86,7 +84,7 @@ function hedienWord(inWord, isVisible, realWord) {
 
 function onPasswordInput(input) {
   const inPassWord = input.value;
-  realPassword = updateVarible(inPassWord, realPassword);
+  realPassword = updateVariable(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("fieldPassword", false);
