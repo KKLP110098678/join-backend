@@ -1,4 +1,10 @@
-const newUser = [{ nuName: "", nuEmail: "", nuPassword: "" }];
+const CONFIG = {
+  routes: {
+    login: "../html/login.html"  // Default login redirect path
+  }
+};
+
+const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
 
 async function handleRegisterUser(event) {
   event.preventDefault();
@@ -9,11 +15,25 @@ async function handleRegisterUser(event) {
     showSuccessAndRedirect();
   } catch (error) {
     console.error("Error registering user:", error);
+    const errorOverlay = document.getElementById("errorMessage");
+    if (errorOverlay) {
+      errorOverlay.textContent = "Registration failed. Please try again.";
+      errorOverlay.classList.remove("d-none");
+    }
   }
 }
 
 async function isUserExistByName(inName) {
-  if (!inName || !inName.trim()) return false;
+  if (!inName || !inName.trim()) {
+    handleErrorSet(
+      "inEmail",
+      "fieldName",
+      "usernameError",
+      false,
+      "Username cannot be empty"
+    );
+    return false;
+  }
   const exists = await isUserNameTaken(inName);
   if (exists) {
     handleErrorSet(
@@ -52,12 +72,22 @@ async function isUserExistByEmail(inEmail) {
     handleErrorSet("inPassword", "fieldEmail", "emailError", true);
     return true;
   } catch (error) {
+    console.error("Error validating email:", error);
+    handleErrorSet(
+      "inPassword",
+      "fieldEmail",
+      "emailError",
+      false,
+      "Error validating email. Please try again."
+    );
     return false;
   }
 }
 
 function validateEmailFormat(inEmail) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // RFC 5322 compliant email regex that handles most valid email formats
+  const emailRegex =
+    /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
   if (!emailRegex.test(inEmail)) {
     handleErrorSet(
       "inPassword",
@@ -112,44 +142,51 @@ function toggleErrorMessage(elementId, isValid, message = "") {
     el.textContent = "";
   } else {
     el.classList.remove("d-none");
-    if (/<[a-z][\s\S]*>/i.test(message)) {
-      el.innerHTML = message;
-    } else {
-      el.textContent = message;
-    }
+    el.textContent = message;
   }
 }
 
 function toggleNextElement(eleID, status) {
-  console.log("toggleNextElement called:", eleID, "status:", status);
   let el = document.getElementById(eleID);
-  console.log("Element found:", el);
   if (!el) return;
   if (status) {
     el.disabled = false;
-    console.log("Element enabled! disabled =", el.disabled);
     el.focus();
   } else {
     el.disabled = true;
   }
 }
 
-function showSuccessAndRedirect() {
+function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
   const overlay = document.getElementById("successOverlay");
+  if (!overlay) {
+    console.error("Success overlay not found");
+    window.location.href = redirectPath;
+    return;
+  }
   overlay.classList.remove("d-none");
 
-  setTimeout(() => {
-    window.location.href = "../html/login.html";
+  setTimeout(function () {
+    window.location.href = redirectPath;
   }, 2000);
 }
 
 function removeBorderColor(inID) {
   const feldInput = document.getElementById(inID);
+  if (!feldInput) {
+    console.warn(`removeBorderColor: element with id "${inID}" not found.`);
+    return;
+  }
   feldInput.classList.remove("validInput", "invalidInput");
 }
 
 function setBorderColor(inID, status) {
   const feldInput = document.getElementById(inID);
+  if (!feldInput) {
+    console.warn(`setBorderColor: element with id "${inID}" not found.`);
+    return;
+  }
+
   feldInput.classList.remove("validInput", "invalidInput");
 
   if (status) {

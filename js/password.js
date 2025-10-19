@@ -1,5 +1,5 @@
 let realPassword = "";
-let passeordVisible = false;
+let passwordVisible = false;
 
 let realConfirmPassword = "";
 let confirmVisible = false;
@@ -8,9 +8,9 @@ function toggleVisibilityIcon() {
   const icon = document.getElementById("passwordIcon");
   if (realPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
-    passeordVisible = false;
+    passwordVisible = false;
   } else {
-    icon.src = passeordVisible
+    icon.src = passwordVisible
       ? "../assets/icon/sign/visibility.svg"
       : "../assets/icon/sign/visibility_off.svg";
   }
@@ -20,8 +20,8 @@ function onPasswordIconClick() {
   const input = document.getElementById("inPassword");
   if (realPassword.length === 0) return;
 
-  passeordVisible = !passeordVisible;
-  passeordVisible = hideWord(input, passeordVisible, realPassword);
+  passwordVisible = !passwordVisible;
+  hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
 }
 
@@ -40,7 +40,7 @@ function updateConfirmIconByState() {
 function onInputConfirmPassword(input) {
   const inConfirmWord = input.value;
   realConfirmPassword = updateVariable(inConfirmWord, realConfirmPassword);
-  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
+  hideWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
 }
 
@@ -48,13 +48,18 @@ function onClickConfirmPasswordIcon() {
   const input = document.getElementById("inPasswordConfirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
-  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
+  hideWord(input, confirmVisible, realConfirmPassword);
 }
 
 function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
-    handleErrorSet("privacy-checkbox", "fieldPasswordConfirm", "confirmPassword", true);
+    handleErrorSet(
+      "privacy-checkbox",
+      "fieldPasswordConfirm",
+      "confirmPassword",
+      true
+    );
   } else {
     handleErrorSet(
       "privacy-checkbox",
@@ -84,15 +89,17 @@ function hideWord(inWord, isVisible, realWord) {
 function onPasswordInput(input) {
   const inPassWord = input.value;
   realPassword = updateVariable(inPassWord, realPassword);
-  passeordVisible = hideWord(input, passeordVisible, realPassword);
+  hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("fieldPassword", false);
   validatePasswordTooltip(realPassword);
 }
 
-function onPasswordBlur(inPassword) {
+function onPasswordBlur(inPassword, userObject, password) {
   if (checkPasswordRules(inPassword)) {
-    newUser.nuPassword = realPassword;
+    if (userObject) {
+      userObject.nuPassword = password;
+    }
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
   } else {
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
@@ -100,7 +107,6 @@ function onPasswordBlur(inPassword) {
 }
 
 function validatePasswordTooltip(inPassword) {
-  toggleVisibilityIcon();
   const rules = checkPasswordRules(inPassword);
   const msg = buildPasswordMessage(rules);
   handleErrorSet(
