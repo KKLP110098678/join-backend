@@ -60,9 +60,9 @@ async function findUserByCardinal(objToFind) {
         return users[key];
       }
     }
-    return null;
+    return false;
   } catch (error) {
     console.error("Worng email or password:", error);
-    return null;
+    return false;
   }
 }
