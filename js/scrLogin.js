@@ -31,6 +31,7 @@ function passwordInput(input) {
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("fieldPassword", true);
+  objToFind.password=realPassword;
 }
 
 // in login func
@@ -46,5 +47,12 @@ function passwordInput(input) {
 // }
 
 function handelLogIn() {
-  
+  if (findUserByCardinal(objToFind)) {
+    console.log(' it found');
+    
+  }else{
+    
+    console.log(' it not found');
+  }
+
 } 
