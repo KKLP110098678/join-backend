@@ -31,28 +31,16 @@ function passwordInput(input) {
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("fieldPassword", true);
-  objToFind.password=realPassword;
+  objToFind.password = realPassword;
 }
 
-// in login func
-//    if (!inPassword) {
-//   console.log("pass");
-//   handleErrorSet(
-//     "",
-//     "inPassword",
-//     "fieldPassword",
-//     false,
-//     "Please enter a valid Password!"
-//   );
-// }
+async function handelLogIn() {
+  const user = await findUserByCardinal(objToFind);
 
-function handelLogIn() {
-  if (findUserByCardinal(objToFind)) {
-    console.log(' it found');
-    
-  }else{
-    
-    console.log(' it not found');
+  if (user) {
+    console.log("it found", user);
+    window.location.href="../html/summary.html";
+  } else {
+    console.log("it not found");
   }
-
-} 
+}

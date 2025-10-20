@@ -47,6 +47,7 @@ async function isUserEmailTaken(inEmail) {
     return false;
   }
 }
+
 async function findUserByCardinal(objToFind) {
   try {
     const usersRef = firebase.database().ref("users");
