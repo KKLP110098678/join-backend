@@ -38,8 +38,15 @@ async function handelLogIn() {
   const user = await findUserByCardinal(objToFind);
 
   if (user) {
-    console.log("it found", user);
-    window.location.href="../html/summary.html";
+    sessionStorage.setItem("userEmail", user.email);
+    // sessionStorage.setItem("userId", userId);
+    sessionStorage.setItem("userName", user.name);
+    sessionStorage.setItem("password", user.password);
+
+    sessionStorage.setItem("isLoggedIn", "true");
+    sessionStorage.setItem("isGuest", "false");
+
+    window.location.href = "../html/summary.html";
   } else {
     console.log("it not found");
   }
