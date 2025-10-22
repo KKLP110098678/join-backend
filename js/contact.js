@@ -45,12 +45,78 @@ function getInitials(name) {
     }
 }
 
+function groupContactsByAlphabet() {
+    let sortedContacts = [];
+    for (let i = 0; i < contacts.length; i++) {
+        sortedContacts.push(contacts[i]);
+    }
+
+    for (let i = 0; i < sortedContacts.length - 1; i++) {
+        for (let j = 0; j < sortedContacts.length - i - 1; j++) {
+            if (sortedContacts[j].name.localeCompare(sortedContacts[j + 1].name) > 0) {
+                let temp = sortedContacts[j];
+                sortedContacts[j] = sortedContacts[j + 1];
+                sortedContacts[j + 1] = temp;
+            }
+        }
+    }
+
+    let groupedContacts = {};
+    for (let i = 0; i < sortedContacts.length; i++) {
+        let contact = sortedContacts[i];
+        let firstLetter = contact.name.charAt(0).toUpperCase();
+        if (!groupedContacts[firstLetter]) {
+            groupedContacts[firstLetter] = [];
+        }
+        let originalIndex = -1;
+        for (let j = 0; j < contacts.length; j++) {
+            if (contacts[j] === contact) {
+                originalIndex = j;
+                break;
+            }
+        }
+        groupedContacts[firstLetter].push({ contact: contact, originalIndex: originalIndex });
+    }
+
+    return groupedContacts;
+}
+
 function renderContactList() {
-    const contactList = document.getElementById('contact-list');
+    let contactList = document.getElementById('contact-list');
     contactList.innerHTML = '';
-    contacts.forEach((contact, index) => {
-        contactList.innerHTML += getContactCardTemplate(contact, index);
-    });
+
+    let groupedContacts = groupContactsByAlphabet();
+    let alphabeticalKeys = Object.keys(groupedContacts);
+
+    for (let i = 0; i < alphabeticalKeys.length - 1; i++) {
+        for (let j = 0; j < alphabeticalKeys.length - i - 1; j++) {
+            if (alphabeticalKeys[j] > alphabeticalKeys[j + 1]) {
+                let temp = alphabeticalKeys[j];
+                alphabeticalKeys[j] = alphabeticalKeys[j + 1];
+                alphabeticalKeys[j + 1] = temp;
+            }
+        }
+    }
+
+    for (let i = 0; i < alphabeticalKeys.length; i++) {
+        let letter = alphabeticalKeys[i];
+        contactList.innerHTML += getAlphabetHeaderTemplate(letter);
+        let contactsInGroup = groupedContacts[letter];
+        for (let j = 0; j < contactsInGroup.length; j++) {
+            let contactItem = contactsInGroup[j];
+            let contact = contactItem.contact;
+            let originalIndex = contactItem.originalIndex;
+            contactList.innerHTML += getContactCardTemplate(contact, originalIndex);
+        }
+    }
+}
+
+function getAlphabetHeaderTemplate(letter) {
+    return `
+        <div class="alphabet-header">
+            <h3>${letter}</h3>
+        </div>
+    `;
 }
 
 function getContactCardTemplate(contact, index) {
@@ -75,7 +141,11 @@ function showContactDetails(index) {
     const avatarColor = getAvatarColor(contact.name);
     const initials = getInitials(contact.name);
     const contactDetails = document.getElementById('contact-details');
-    contactDetails.innerHTML = `
+    contactDetails.innerHTML = getContactDetailsTemplate(contact, index, avatarColor, initials);
+}
+
+function getContactDetailsTemplate(contact, index, avatarColor, initials) {
+    return `
         <div class="contact-header d-flex">
             <div class="user-avatar-lg" style="background-color: ${avatarColor};"><div>${initials}</div></div>
             <div>
@@ -104,22 +174,7 @@ function showContactDetails(index) {
             <a href="tel:${contact.phone}">${contact.phone}</a>
         </div>
     `;
-}
 
-function toggleAddContactMenu() {
-    const menu = document.querySelector('#add-contact-menu');
-    const overlay = document.querySelector('.blur-overlay');
-    
-    menu.classList.toggle('open');
-    overlay.classList.toggle('active');
-}
-
-function toggleEditContactMenu() {
-    const menu = document.querySelector('#edit-contact-menu');
-    const overlay = document.querySelector('.blur-overlay');
-
-    menu.classList.toggle('open');
-    overlay.classList.toggle('active');
 }
 
 function editContact(index) {
@@ -127,26 +182,30 @@ function editContact(index) {
     const form = document.getElementById('edit-contact-form');
     form.onsubmit = (event) => updateContact(event, index);
     form.innerHTML = getEditContactFormTemplate(contact);
-    toggleEditContactMenu();
+    toggleOverlay('#edit-contact-menu');
 }
 
 function getEditContactFormTemplate(contact) {
     return `
         <div class="input-icon-container">
             <input type="text" id="edit-contact-name" value="${contact.name}" required />
-            <img src="/assets/img/person.svg" alt="name" class="overlay-image" />
+            <img src="/assets/icon/sign/person.svg" alt="name" class="overlay-image" />
         </div>
         <div class="input-icon-container">
             <input type="email" id="edit-contact-email" value="${contact.email}" required />
-            <img src="/assets/img/mail.svg" alt="email" class="overlay-image" />
+            <img src="/assets/icon/sign/mail.svg" alt="email" class="overlay-image" />
         </div>
         <div class="input-icon-container">
             <input type="text" id="edit-contact-phone" value="${contact.phone}" required />
-            <img src="/assets/img/phone.svg" alt="phone" class="overlay-image" />
+            <img src="/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
         </div>
         <div class="form-buttons">
             <button type="button" onclick="deleteContact(${contacts.indexOf(contact)})" class="btn-secondary-with-icon">Delete</button>
-            <button type="submit" class="btn-with-icon">Save</button>
+            <button type="submit" class="btn-with-icon">Save
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.55021 9.15L14.0252 0.675C14.2252 0.475 14.4627 0.375 14.7377 0.375C15.0127 0.375 15.2502 0.475 15.4502 0.675C15.6502 0.875 15.7502 1.1125 15.7502 1.3875C15.7502 1.6625 15.6502 1.9 15.4502 2.1L6.25021 11.3C6.05021 11.5 5.81687 11.6 5.55021 11.6C5.28354 11.6 5.05021 11.5 4.85021 11.3L0.550207 7C0.350207 6.8 0.254374 6.5625 0.262707 6.2875C0.27104 6.0125 0.375207 5.775 0.575207 5.575C0.775207 5.375 1.01271 5.275 1.28771 5.275C1.56271 5.275 1.80021 5.375 2.00021 5.575L5.55021 9.15Z" fill="white"/>
+                </svg>
+            </button>
         </div>
     `;
 }
@@ -164,19 +223,10 @@ function updateContact(event, editContactIndex) {
     };
 
     contacts[editContactIndex] = updatedContact;
+    activeContactIndex = editContactIndex;
     renderContactList();
     showContactDetails(editContactIndex);
     closeAllMenus();
-}
-
-function closeAllMenus() {
-    const addMenu = document.querySelector('#add-contact-menu');
-    const editMenu = document.querySelector('#edit-contact-menu');
-    const overlay = document.querySelector('.blur-overlay');
-
-    addMenu.classList.remove('open');
-    editMenu.classList.remove('open');
-    overlay.classList.remove('active');
 }
 
 function deleteContact(index) {
@@ -201,6 +251,7 @@ function addContact(event) {
 
     contacts.push(newContact);
     renderContactList();
-    showContactDetails(contacts.length - 1);
+    const newContactIndex = contacts.length - 1;
+    showContactDetails(newContactIndex);
     closeAllMenus();
 }

@@ -1,6 +1,4 @@
-
 /**
- * 
  * @fileoverview Summary module for Join Kanban Project Management Tool
  * Manages the summary page with personalized greeting and session management
  * @author Join Development Team
