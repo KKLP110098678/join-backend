@@ -14,6 +14,7 @@ function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
     objToFind.email = inEmail;
     handleErrorSet("inPassword", "fieldEmail", "emailError", true);
+    return true;
   }
 }
 
@@ -23,7 +24,29 @@ function getPassword(inPassword) {
   removeBorderColor("fieldPassword");
 }
 
-function checkCardinal() {}
+function checkCardinal() {
+  if (objToFind.email === "") {
+    handleErrorSet(
+      "inPassword",
+      "fieldEmail",
+      "emailError",
+      false,
+      "Please enter a valid E-Mail!"
+    );
+    return false;
+  } else if (objToFind.password === "") {
+    toggleErrorMessage(
+      "passwordTooltip",
+      false,
+      "Please enter a valid password!"
+    );
+    setBorderColor("fieldPassword", false);
+    return false;
+  } else {
+    toggleErrorMessage("passwordTooltip", true, "");
+    return true;
+  }
+}
 
 function passwordInput(input) {
   const inPassWord = input.value;
@@ -35,19 +58,21 @@ function passwordInput(input) {
 }
 
 async function handelLogIn() {
-  const user = await findUserByCardinal(objToFind);
+  if (checkCardinal()) {
+    const user = await findUserByCardinal(objToFind);
 
-  if (user) {
-    sessionStorage.setItem("userEmail", user.email);
-    // sessionStorage.setItem("userId", userId);
-    sessionStorage.setItem("userName", user.name);
-    sessionStorage.setItem("password", user.password);
+    if (user) {
+      sessionStorage.setItem("userEmail", user.email);
+      // sessionStorage.setItem("userId", userId);
+      sessionStorage.setItem("userName", user.name);
+      sessionStorage.setItem("password", user.password);
 
-    sessionStorage.setItem("isLoggedIn", "true");
-    sessionStorage.setItem("isGuest", "false");
+      sessionStorage.setItem("isLoggedIn", "true");
+      sessionStorage.setItem("isGuest", "false");
 
-    window.location.href = "../html/summary.html";
-  } else {
-    console.log("it not found");
+      window.location.href = "../html/summary.html";
+    } else {
+      console.log("it not found");
+    }
   }
 }

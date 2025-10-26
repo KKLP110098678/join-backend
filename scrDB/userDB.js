@@ -56,8 +56,6 @@ async function findUserByCardinal(objToFind) {
     if (!users) return null;
     for (let key in users) {
       if (users[key].email === objToFind.email && users[key].password === objToFind.password) {
-        console.log("User " , users[key]);
-        
         return users[key];
       }
     }
