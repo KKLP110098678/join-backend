@@ -1,3 +1,4 @@
+const currentUser = { currentName: "", currentEmail: "", currentPassword: "" };
 async function addNewUser(newUser) {
   try {
     const usersRef = firebase.database().ref("users");
@@ -55,7 +56,10 @@ async function findUserByCardinal(objToFind) {
     const users = snapshot.val();
     if (!users) return null;
     for (let key in users) {
-      if (users[key].email === objToFind.email && users[key].password === objToFind.password) {
+      if (
+        users[key].email === objToFind.email &&
+        users[key].password === objToFind.password
+      ) {
         return users[key];
       }
     }
@@ -64,4 +68,14 @@ async function findUserByCardinal(objToFind) {
     console.error("Worng email or password:", error);
     return false;
   }
+}
+
+function updateCurrentUser(dbUser) {
+  if (!dbUser) return;
+
+  currentUser.currentName = dbUser.name;
+  currentUser.currentEmail = dbUser.email;
+  currentUser.currentPassword = dbUser.password;
+
+  sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
 }

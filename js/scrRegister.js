@@ -1,4 +1,4 @@
-const newUser = [{ nuName: "", nuEmail: "", nuPassword: "" }];
+const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
 
 async function handleRegisterUser(event) {
   event.preventDefault();
