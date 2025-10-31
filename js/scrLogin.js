@@ -1,14 +1,5 @@
 let objToFind = { email: "", password: "" };
-function findUserByEmail(inEmail) {
-  const user = users.find((user) => user.email === email);
-  if (user) {
-    // User found, handle login
-    handleUserFound(user);
-  } else {
-    // User not found, show error
-    handleUserNotFound();
-  }
-}
+
 // checkPassword
 function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
@@ -21,7 +12,9 @@ function getEmail(inEmail) {
 function getPassword(inPassword) {
   realPassword = updateVarible(inPassword, realPassword);
   objToFind.password = realPassword;
-  removeBorderColor("fieldPassword");
+  // removeBorderColor("fieldPassword");
+  handleErrorSet("checkBox", "fieldPassword", "passwordTooltip", true);
+
 }
 
 function checkCardinal() {
@@ -66,6 +59,33 @@ async function handelLogIn() {
       window.location.href = "../html/summary.html";
     } else {
       console.log("it not found");
+      handleWrongCardinal()
     }
+  }
+}
+
+function handleWrongCardinal() {
+  const message = "Check your email and password. Please try again.";
+  setBorderColor('fieldEmail',false);
+  setBorderColor('fieldPassword',false);
+  toggleErrorMessage("passwordTooltip",false,message);
+
+}
+
+function toggleRememberMe() {
+  const checkBox = document.getElementById("checkBox");
+  const checkBoxImage = document.getElementById("checkBoxImage");
+  if (realPassword==="") {
+    return;
+  }
+  if (checkBox.disabled) return;
+  checkBox.checked = !checkBox.checked;
+  if (checkBox.checked) {
+    checkBox.checked = false;
+    checkBoxImage.src = "../assets/icon/sign/checked.svg";
+  } else {
+    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
+    checkBox.checked = true;
+    
   }
 }

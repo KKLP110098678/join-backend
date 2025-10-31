@@ -18,8 +18,7 @@
         <a href="register.html" class="btn-no-icon">Sign up</a>
       </header>
       <main id="logInContainer">
-        <!-- <form id="loginForm" class="logInForm" action="./summary.html"> -->
-        <form id="loginForm" class="logInForm" action="./summary.html" >
+        <form id="loginForm" class="logInForm" action="./summary.html">
           <div>
             <div class="headReg">
               <span>Log in</span>
@@ -62,10 +61,22 @@
                 </div>
               </div>
             </div>
+            <div id="checkboxContainer">
+              <label class="custom-checkbox">
+                <input id="checkBox" type="checkbox" disabled />
+                <img
+                  id="checkBoxImage"
+                  src="../assets/icon/sign/unchacked.svg"
+                  alt="checkbox image"
+                  onclick="toggleRememberMe()"
+                />
 
+                <span class="color-dark-blue">Remember me </span>
+              </label>
+            </div>
             <div class="btnContainer">
               <button
-              id="btnLogin"
+                id="btnLogin"
                 class="btn-no-icon logInButton"
                 type="button"
                 onclick="handelLogIn()"
