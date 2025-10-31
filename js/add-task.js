@@ -66,6 +66,7 @@ function saveTask(event) {
     console.log('Task created:', taskData);
 
     tasks.push(taskData);
+    console.log('Updated tasks:', tasks);
     renderAllTasks();
     alert('Task created successfully!');
 
