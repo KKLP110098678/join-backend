@@ -221,15 +221,6 @@ function updateTaskStatus(taskId, newStatus) {
   task.status = newStatus;
 }
 
-function addTask(newTask) {
-  if (!newTask.id) {
-    newTask.id = `task-${Date.now()}`;
-  }
-
-  tasks.push(newTask);
-  renderAllTasks();
-}
-
 function deleteTask(taskId) {
   let taskIndex = -1;
   for (let i = 0; i < tasks.length; i++) {

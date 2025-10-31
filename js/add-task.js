@@ -48,7 +48,8 @@ function validateForm() {
   return isValid;
 }
 
-function handleFormSubmit(event) {
+function saveTask(event) {
+  console.log(event)
   event.preventDefault();
 
   if (validateForm()) {
@@ -64,7 +65,8 @@ function handleFormSubmit(event) {
 
     console.log('Task created:', taskData);
 
-    // Here you would typically send the data to your backend
+    tasks.push(taskData);
+    renderAllTasks();
     alert('Task created successfully!');
 
     // Clear form after successful submission
