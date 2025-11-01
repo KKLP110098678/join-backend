@@ -226,7 +226,7 @@
       <div class="add-task-main">
         <form id="task-form" onsubmit="saveTask(event)">
           <div class="form-group" id="title-form-group">
-            <label for="title">Title</label>
+            <label for="task-title">Title</label>
             <input type="text" id="task-title" name="title" required />
             <div class="error-message" id="title-error-message">This field is required</div>
           </div>
@@ -320,6 +320,30 @@
               <option value="User Story">User Story</option>
             </select>
           </div>
+          <div class="form-group">
+              <label for="add-subtask"
+                >Subtasks <span class="optional">(optional)</span></label
+              >
+              <div class="subtask-input-container">
+                <input
+                  type="text"
+                  name="subtasks"
+                  id="add-subtask"
+                  placeholder="Add new subtask"
+                />
+                <button type="button" class="add-subtask-btn" onclick="addSubtask()">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 6V18M6 12H18"
+                      stroke="#2A3647"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <ul class="subtask-list" id="subtask-list"></ul>
+            </div>
           <button type="submit">Add Task</button>
         </form>
       </div>

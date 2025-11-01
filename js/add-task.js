@@ -72,6 +72,7 @@ function saveTask(event) {
 
     // Clear form after successful submission
     clearForm();
+    closeAllMenus();
   }
 }
 

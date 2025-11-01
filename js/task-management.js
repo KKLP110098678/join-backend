@@ -524,3 +524,16 @@ function getEditTaskTemplate(task) {
           </form>
         `;
 }
+
+function addSubtask() {
+  let subtaskList = document.getElementById('subtask-list');
+  let subtaskInput = document.getElementById('add-subtask');
+  let subtaskText = subtaskInput.value.trim();
+
+  if (subtaskText) {
+    let listItem = document.createElement('li');
+    listItem.textContent = subtaskText;
+    subtaskList.appendChild(listItem);
+    subtaskInput.value = '';
+  }
+}
