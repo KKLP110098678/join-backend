@@ -10,31 +10,47 @@
 
 }
 
+.login-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 67px;
+  right: 86px;
+  gap: 35px;
+  color: var(--color-light-blue);
+}
+
+.login-header-text {
+  font-size: 23px;
+}
+
 .logInForm {
   position: relative;
+  top: 48px;
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--color-font-white);
-  width: 598px;
-  min-height: 348px;
+  width: 652px;
+  min-height: 448px;
   border-radius: 30px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   padding: 48px 88px;
+  gap: 39px;
 }
 
-.mainLoginForm {
+.input-fields-container {
+  gap: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
   width: 422px;
-  margin: 0 auto;
 }
 
-.mainLoginForm>div {
+.input-fields-container>div {
   width: 100%;
 }
 
@@ -47,6 +63,11 @@
   padding: 12px 21px;
 }
 
+.input-icon-container img {
+  width: 24px;
+  height: 24px;
+}
+
 .input-icon-container input {
   font-size: 19px;
   flex: 1;
@@ -56,33 +77,21 @@
 }
 
 .input-icon-container input::placeholder {
-color: var(--color-grey-light);
-opacity: 0.8;
-}
-.logInButton {
-  margin: 10px 0 0;
-}
-
-.login-header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: absolute;
-  top: 67px;
-  right: 86px;
-  gap: 20px;
+  color: var(--color-grey-light);
+  opacity: 0.8;
 }
 
 .legal-footer {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   bottom: 20px;
   position: absolute;
+  font-size: 16px;
 }
 
 footer a {
-  color: rgba(66, 82, 110, 1);
+  color: var(--color-light-blue);
 }
 
 .loader {

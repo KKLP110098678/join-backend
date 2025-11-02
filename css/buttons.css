@@ -1,3 +1,8 @@
+button {
+  font-size: 23px;
+  cursor: pointer;
+}
+
 .btn-add {
   color: white;
   padding: 16px 10px;

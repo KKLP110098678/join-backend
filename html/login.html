@@ -15,86 +15,82 @@
     <div class="logInMainContainer">
       <header class="text-center login-header">
         <p class="login-header-text">Not a Join user?</p>
-        <a href="register.html" class="btn-no-icon">Sign up</a>
+        <a href="register.html" class="btn-signup">Sign up</a>
       </header>
       <main id="logInContainer">
         <form id="loginForm" class="logInForm" action="./summary.html">
-          <div>
-            <div class="headReg">
-              <span>Log in</span>
-              <div class="separator"></div>
-            </div>
-            <div>
-              <div class="mainLoginForm">
-                <div class="fieldContainer">
-                  <div id="fieldEmail" class="input-icon-container">
-                    <input
-                      id="inEmail"
-                      type="email"
-                      placeholder="E-Mail"
-                      required
-                      oninput="emailInput()"
-                      onblur="getEmail(this.value)"
-                    />
-                    <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
-                  </div>
-                  <small id="emailError" class="d-none msgError"></small>
-                </div>
-                <div class="fieldContainer">
-                  <div id="fieldPassword" class="input-icon-container">
-                    <input
-                      id="inPassword"
-                      type="text"
-                      disabled
-                      placeholder="Password"
-                      oninput="passwordInput(this)"
-                      onblur="getPassword(this.value)"
-                    />
-                    <img
-                      id="passwordIcon"
-                      src="../assets/icon/sign/lock.svg"
-                      alt="password icon"
-                      onclick="onPasswordIconClick()"
-                    />
-                  </div>
-                  <small id="passwordTooltip" class="d-none msgError"></small>
-                </div>
-              </div>
-            </div>
-            <div id="checkboxContainer">
-              <label class="custom-checkbox">
-                <input id="checkBox" type="checkbox" disabled />
-                <img
-                  id="checkBoxImage"
-                  src="../assets/icon/sign/unchacked.svg"
-                  alt="checkbox image"
-                  onclick="toggleRememberMe()"
+          <div class="headReg">
+            <span>Log in</span>
+            <div class="separator"></div>
+          </div>
+          <div class="input-fields-container">
+            <div class="fieldContainer">
+              <div id="fieldEmail" class="input-icon-container">
+                <input
+                  id="inEmail"
+                  type="email"
+                  placeholder="E-Mail"
+                  required
+                  oninput="emailInput()"
+                  onblur="getEmail(this.value)"
                 />
+                <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
+              </div>
+              <small id="emailError" class="d-none msgError"></small>
+            </div>
+            <div class="fieldContainer">
+              <div id="fieldPassword" class="input-icon-container">
+                <input
+                  id="inPassword"
+                  type="text"
+                  disabled
+                  placeholder="Password"
+                  oninput="passwordInput(this)"
+                  onblur="getPassword(this.value)"
+                />
+                <img
+                  id="passwordIcon"
+                  src="../assets/icon/sign/lock.svg"
+                  alt="password icon"
+                  onclick="onPasswordIconClick()"
+                />
+              </div>
+              <small id="passwordTooltip" class="d-none msgError"></small>
+            </div>
+          </div>
+          <div id="checkboxContainer">
+            <label class="custom-checkbox">
+              <input id="checkBox" type="checkbox" disabled />
+              <img
+                id="checkBoxImage"
+                src="../assets/icon/sign/unchacked.svg"
+                alt="checkbox image"
+                onclick="toggleRememberMe()"
+              />
 
-                <span class="color-dark-blue">Remember me </span>
-              </label>
-            </div>
-            <div class="btnContainer">
-              <button
-                id="btnLogin"
-                class="btn-no-icon logInButton"
-                type="button"
-                onclick="handelLogIn()"
-              >
-                Login
-              </button>
-              <button class="btn-secondary logInButton" type="submit">
-                Guest log in
-              </button>
-            </div>
+              <span class="color-light-blue">Remember me </span>
+            </label>
+          </div>
+          <div class="btnContainer">
+            <button
+              id="btnLogin"
+              class="btn-no-icon "
+              type="button"
+              onclick="handelLogIn()"
+            >
+              Log in
+            </button>
+            <button class="btn-secondary " type="submit">
+              Guest log in
+            </button>
           </div>
         </form>
       </main>
-      <footer id="login-legal-footer" class="legal-footer">
-        <p class="footer-links">
+      <footer class="legal-footer">
+        <p>
           <a href="/html/datenschutz.html">Privacy Policy</a>
         </p>
-        <p class="footer-links">
+        <p>
           <a href="/html/impressum.html">Legal notice</a>
         </p>
       </footer>
