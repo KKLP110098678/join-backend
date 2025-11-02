@@ -15,7 +15,7 @@
       type="image/x-icon"
     />
   </head>
-  <body>
+  <body onload="populateAssignedToDropdown()">
     <header class="header d-flex">
       <a href="./login.html"
         ><img src="/assets/icon/logo-white.svg" alt="Logo" height="56px"
@@ -180,16 +180,28 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="user-select"
-                >Assigned to <span class="optional">(optional)</span></label
-              >
-              <select id="user-select" name="assigned_to">
-                <option value="">Select contacts to assign</option>
-                <option value="user1">User One</option>
-                <option value="user2">User Two</option>
-                <option value="user3">User Three</option>
-              </select>
+            <div class="form-group" id="assigned-to-form-group">
+              <label for="assigned-to">Assigned To <span class="optional">(optional)</span></label>
+              <div class="custom-dropdown" id="assigned-to">
+                <div class="dropdown-input-container">
+                  <input 
+                    type="text" 
+                    class="dropdown-input" 
+                    placeholder="Select contacts to assign"
+                    readonly
+                    onclick="toggleAssignedDropdown()"
+                  />
+                  <button type="button" class="dropdown-toggle-btn" onclick="toggleAssignedDropdown()">
+                    <svg class="dropdown-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                      <path d="M1 1L7 7L13 1" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+                <div class="dropdown-list d-none" id="assigned-to-list">
+                  <!-- Will be populated dynamically -->
+                </div>
+                <input type="hidden" name="assignedTo" id="assigned-to-input" />
+              </div>
             </div>
 
             <div class="form-group">
@@ -212,7 +224,7 @@
                   id="add-subtask"
                   placeholder="Add new subtask"
                 />
-                <button type="button" class="add-subtask-btn">
+                <button type="button" class="add-subtask-btn" onclick="addSubtask()">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M12 6V18M6 12H18"
@@ -235,6 +247,9 @@
         </div>
       </section>
     </main>
-    <script src="./js/add-task.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/contact.js"></script>
+    <script src="/js/task-management.js"></script>
+    <script src="/js/add-task.js"></script>
   </body>
 </html>

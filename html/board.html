@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/mainContent.css" />
     <link rel="stylesheet" href="/css/sidebarContent.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
+    <link rel="stylesheet" href="/css/task.css" />
     <link rel="stylesheet" href="/css/board.css" />
     <link rel="stylesheet" href="/css/overlays.css" />
     <link
@@ -95,7 +96,7 @@
           </div>
           <button
             class="btn-add"
-            onclick="toggleOverlay('.add-task-menu')"
+            onclick="setTargetColumn('todo'); toggleOverlay('.add-task-menu')"
           >
             New Task +
           </button>
@@ -111,7 +112,7 @@
           >
             <div class="kanban-header d-flex">
               <h2>To Do</h2>
-              <button class="btn-add-icon">
+              <button class="btn-add-icon" onclick="setTargetColumn('todo'); toggleOverlay('.add-task-menu')">
                 <svg
                   width="25"
                   height="24"
@@ -136,7 +137,7 @@
           >
             <div class="kanban-header d-flex">
               <h2>In Progress</h2>
-              <button class="btn-add-icon">
+              <button class="btn-add-icon" onclick="setTargetColumn('in-progress'); toggleOverlay('.add-task-menu')">
                 <svg
                   width="25"
                   height="24"
@@ -161,7 +162,7 @@
           >
             <div class="kanban-header d-flex">
               <h2>Awaiting Feedback</h2>
-              <button class="btn-add-icon">
+              <button class="btn-add-icon" onclick="setTargetColumn('await-feedback'); toggleOverlay('.add-task-menu')">
                 <svg
                   width="25"
                   height="24"
@@ -186,7 +187,7 @@
           >
             <div class="kanban-header d-flex">
               <h2>Done</h2>
-              <button class="btn-add-icon">
+              <button class="btn-add-icon" onclick="setTargetColumn('done'); toggleOverlay('.add-task-menu')">
                 <svg
                   width="25"
                   height="24"
@@ -228,7 +229,7 @@
           <div class="form-group" id="title-form-group">
             <label for="task-title">Title</label>
             <input type="text" id="task-title" name="title" required />
-            <div class="error-message" id="title-error-message">This field is required</div>
+            <div class="error-message d-none" id="title-error-message">This field is required</div>
           </div>
           <div class="form-group" id="description-form-group">
             <label for="description">Description <span>(optional)</span></label>
@@ -237,7 +238,7 @@
           <div class="form-group" id="date-form-group">
             <label for="task-date">Due Date</label>
             <input type="date" id="task-date" name="task-date" required />
-            <div class="error-message" id="date-error-message">This field is required</div>
+            <div class="error-message d-none" id="date-error-message">This field is required</div>
           </div>
           <div class="form-group" id="priority-form-group">
             <div class="radio-to-btn d-flex">
@@ -304,13 +305,27 @@
             </div>
           </div>
           <div class="form-group" id="assigned-to-form-group">
-            <label for="assignedTo">Assigned To</label>
-            <select name="assignedTo" id="assignedTo" required>
-              <option value="" disabled selected>Select assignee</option>
-              <option value="JD">JD</option>
-              <option value="Alex">Alex</option>
-              <option value="Chris">Chris</option>
-            </select>
+            <label for="assigned-to">Assigned To</label>
+            <div class="custom-dropdown" id="assigned-to">
+              <div class="dropdown-input-container">
+                <input 
+                  type="text" 
+                  class="dropdown-input" 
+                  placeholder="Select contacts to assign"
+                  readonly
+                  onclick="toggleAssignedDropdown()"
+                />
+                <button type="button" class="dropdown-toggle-btn" onclick="toggleAssignedDropdown()">
+                  <svg class="dropdown-arrow" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                    <path d="M1 1L7 7L13 1" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="dropdown-list d-none" id="assigned-to-list">
+                <!-- Will be populated dynamically -->
+              </div>
+              <input type="hidden" name="assignedTo" id="assigned-to-input" />
+            </div>
           </div>
           <div class="form-group" id="category-form-group">
             <label for="category">Category</label>
@@ -344,13 +359,14 @@
               </div>
               <ul class="subtask-list" id="subtask-list"></ul>
             </div>
-          <button type="submit">Add Task</button>
+          <button type="submit" class="btn-with-icon">Add Task</button>
         </form>
       </div>
     </div>
     <div class="details-overlay" id="details-overlay">
     </div>
     <script src="/js/script.js"></script>
+    <script src="/js/contact.js"></script>
     <script src="/js/task-management.js"></script>
     <script src="/js/kanban-dragging.js"></script>
     <script src="/js/overlay-toggler.js"></script>
