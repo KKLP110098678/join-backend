@@ -41,12 +41,17 @@ function checkCardinal() {
   }
 }
 
+function emailInput() {
+  setBorderColor('fieldEmail',true);
+  toggleErrorMessage("emailError",true,"")
+}
 function passwordInput(input) {
   const inPassWord = input.value;
   realPassword = updateVarible(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("fieldPassword", true);
+  toggleErrorMessage("passwordTooltip",true,"")
   objToFind.password = realPassword;
 }
 
