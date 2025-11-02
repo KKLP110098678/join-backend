@@ -121,7 +121,44 @@ document.addEventListener('click', function(event) {
   if (dropdown && !dropdown.contains(event.target) && dropdownList) {
     dropdownList.classList.add('d-none');
   }
+  
+  let categoryDropdown = document.getElementById('category');
+  let categoryList = document.getElementById('category-list');
+  
+  if (categoryDropdown && !categoryDropdown.contains(event.target) && categoryList) {
+    categoryList.classList.add('d-none');
+  }
 });
+
+/**
+ * Toggles the category dropdown
+ */
+function toggleCategoryDropdown() {
+  let dropdownList = document.getElementById('category-list');
+  if (dropdownList) {
+    dropdownList.classList.toggle('d-none');
+  }
+}
+
+/**
+ * Selects a category and updates the input
+ */
+function selectCategory(categoryName) {
+  let input = document.getElementById('category-input');
+  let hiddenInput = document.getElementById('category-hidden');
+  
+  if (input) {
+    input.value = categoryName;
+  }
+  if (hiddenInput) {
+    hiddenInput.value = categoryName;
+  }
+  
+  let dropdownList = document.getElementById('category-list');
+  if (dropdownList) {
+    dropdownList.classList.add('d-none');
+  }
+}
 
 /**
  * Generates a unique task ID
@@ -153,6 +190,7 @@ function clearForm() {
   clearFormErrors();
   clearSubtasks();
   clearSelectedUsers();
+  clearCategory();
 }
 
 function clearFormErrors() {
@@ -182,6 +220,18 @@ function clearSelectedUsers() {
     checkboxes[i].checked = false;
   }
   updateDropdownPlaceholder();
+}
+
+function clearCategory() {
+  let categoryInput = document.getElementById('category-input');
+  let categoryHidden = document.getElementById('category-hidden');
+  
+  if (categoryInput) {
+    categoryInput.value = '';
+  }
+  if (categoryHidden) {
+    categoryHidden.value = '';
+  }
 }
 
 function validateForm() {
@@ -280,8 +330,8 @@ function mapPriorityValue(value) {
 }
 
 function getSelectedCategory() {
-  let categorySelect = document.getElementById('task-category') || document.getElementById('category');
-  return categorySelect ? categorySelect.value : 'User Story';
+  let categoryHidden = document.getElementById('category-hidden');
+  return categoryHidden && categoryHidden.value ? categoryHidden.value : 'User Story';
 }
 
 function getAssignedUserInitials() {
