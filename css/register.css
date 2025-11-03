@@ -29,7 +29,7 @@ a {
   font-size: 23px;
 }
 
-.btn-signup:hover{
+.btn-signup:hover {
   background-color: var(--color-blue-hover);
 }
 
@@ -42,9 +42,6 @@ a {
   height: 100vh;
   max-width: 1920px;
   padding-top: 48px;
-  margin: 0 auto;
-  gap: 35px;
-
 }
 
 .back-button-link {
@@ -55,7 +52,7 @@ a {
   height: 37px;
 }
 
-.logoHeader {
+.logo-header {
   position: absolute;
   width: 100px;
   top: 80px;
@@ -64,19 +61,13 @@ a {
 
 .register-form {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: var(--color-font-white);
-  width: 598px;
-  min-height: 607px;
   border-radius: 30px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
-  /* gap: 35px; */
   padding: 48px 88px;
 }
 
-.headReg {
+.head-reg {
   text-align: center;
   font-weight: bold;
   font-size: 48px;
@@ -90,13 +81,20 @@ a {
   border-radius: 25px;
 }
 
-.mainReg {
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.main-reg {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   width: 422px;
   min-height: 324px;
+  gap: 16px;
   margin: 0 auto;
 }
 
@@ -125,18 +123,10 @@ a {
   cursor: pointer;
 }
 
-
-#checkbox-container {
-  display: flex;
-  justify-content: center;
-  font-size: 22px;
-  align-items: center;
-  padding-bottom: 16px;
-}
-
-
 .custom-checkbox {
   display: flex;
+  justify-content: center;
+  font-size: 16px;
   align-items: center;
 }
 
@@ -152,15 +142,7 @@ a {
   margin-right: 8px;
 }
 
-#checkboxContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
-  /* padding-bottom: 16px; */
 
-}
 
 #checkBox:checked {
   background-color: #4589ff;
@@ -199,6 +181,10 @@ a {
   flex-direction: row;
   gap: 16px;
   justify-content: space-between;
+  bottom: 2px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .footContainer a {
@@ -238,10 +224,6 @@ input:-webkit-autofill {
   font-weight: 400;
   font-size: 23px;
   animation: fadeIn 0.4s ease-in-out;
-}
-
-.d-none {
-  display: none;
 }
 
 @keyframes fadeIn {
