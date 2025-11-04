@@ -181,7 +181,7 @@ a {
   flex-direction: row;
   gap: 16px;
   justify-content: space-between;
-  bottom: 2px;
+  bottom: 7px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
