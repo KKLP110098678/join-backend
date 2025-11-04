@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <title>Sign Up</title>
   </head>
 
@@ -70,9 +72,9 @@
                       type="text"
                       disabled
                       placeholder="Password"
+                      onblur="onPasswordBlur()"
                       oninput="onPasswordInput(this)"
-                      onblur="onPasswordBlur(this.value)"
-                    />
+                      />
                     <img
                       id="passwordIcon"
                       src="../assets/icon/sign/lock.svg"

@@ -92,14 +92,23 @@ function onPasswordInput(input) {
   validatePasswordTooltip(realPassword);
 }
 
-function onPasswordBlur(inPassword) {
-  if (checkPasswordRules(inPassword)) {
+function onPasswordBlur() {
+  const rules = checkPasswordRules(realPassword)
+  if (isPasswordValid(rules)) {
     newUser.nuPassword = realPassword;
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
     removeBorderColor("fieldPassword");
   } else {
     handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
   }
+}
+
+function checkPasswordRules(password) {
+  return {
+    minLength: password.length > 7,
+    hasLower: /[a-z]/.test(password),
+    hasNumber: /[0-9]/.test(password),
+  };
 }
 
 function validatePasswordTooltip(inPassword) {
@@ -111,8 +120,10 @@ function validatePasswordTooltip(inPassword) {
     "fieldPassword",
     "passwordTooltip",
     isPasswordValid(rules),
-    isPasswordValid(rules) ? "" : msg
+    msg
+    // isPasswordValid(rules) ? "" : msg
   );
+  
   if (isPasswordValid(rules)) {
     setBorderColor("fieldPassword", true);
   }
@@ -120,9 +131,10 @@ function validatePasswordTooltip(inPassword) {
 
 function isPasswordValid(rules) {
   return rules.minLength && rules.hasLower && rules.hasNumber;
+
 }
 
-function buildPasswordMessage(rules) {
+  function buildPasswordMessage(rules) {
   let message = "";
   message += `<span class="${rules.minLength ? "valid" : "invalid"}">
                 At least 8 characters
@@ -134,12 +146,4 @@ function buildPasswordMessage(rules) {
                 At least one number
               </span><br>`;
   return message;
-}
-
-function checkPasswordRules(password) {
-  return {
-    minLength: password.length > 7,
-    hasLower: /[a-z]/.test(password),
-    hasNumber: /[0-9]/.test(password),
-  };
 }
