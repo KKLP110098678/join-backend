@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Sign Up</title>
   </head>
@@ -42,7 +45,7 @@
                       id="inName"
                       type="text"
                       placeholder="Name"
-                      oninput="setBorderColor('fieldName',true)"
+                      oninput="restInputField('fieldName','usernameError')"
                       onblur="isUserExistByName(this.value)"
                       required
                     />
@@ -57,7 +60,7 @@
                       type="email"
                       placeholder="E-Mail"
                       required
-                      oninput="setBorderColor('fieldEmail',true)"
+                      oninput="restInputField('fieldEmail','emailError')"
                       onblur="isUserExistByEmail(this.value)"
                       disabled
                     />
@@ -74,7 +77,7 @@
                       placeholder="Password"
                       onblur="onPasswordBlur()"
                       oninput="onPasswordInput(this)"
-                      />
+                    />
                     <img
                       id="passwordIcon"
                       src="../assets/icon/sign/lock.svg"
@@ -124,7 +127,12 @@
               </div>
             </div>
             <div class="btnContainer">
-              <button id="btnSignup" class="btn-no-icon" type="submit" disabled>
+              <button
+                id="btnSignup"
+                class="btn-no-icon"
+                type="button"
+                onclick="handleRegisterUser()"
+              >
                 Sign up
               </button>
             </div>
