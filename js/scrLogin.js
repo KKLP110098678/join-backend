@@ -1,6 +1,5 @@
 let objToFind = { email: "", password: "" };
 
-// checkPassword
 function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
     objToFind.email = inEmail;
@@ -12,7 +11,6 @@ function getEmail(inEmail) {
 function getPassword(inPassword) {
   realPassword = updateVarible(inPassword, realPassword);
   objToFind.password = realPassword;
-  // removeBorderColor("fieldPassword");
   handleErrorSet("checkBox", "fieldPassword", "passwordTooltip", true);
 
 }
@@ -41,17 +39,12 @@ function checkCardinal() {
   }
 }
 
-function emailInput() {
-  setBorderColor('fieldEmail',true);
-  toggleErrorMessage("emailError",true,"")
-}
 function passwordInput(input) {
   const inPassWord = input.value;
   realPassword = updateVarible(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
-  setBorderColor("fieldPassword", true);
-  toggleErrorMessage("passwordTooltip",true,"")
+  restInputField('fieldPassword', 'passwordTooltip');
   objToFind.password = realPassword;
 }
 
