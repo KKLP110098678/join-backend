@@ -1,7 +1,23 @@
 const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
 
-async function handleRegisterUser(event) {
-  event.preventDefault();
+function checkEmptyInputs() {
+  if (!checkInputName()) {
+    console.log("checkInputName");
+
+    return false;
+  } else if (!checkInputEmail()) {
+    console.log("checkInputEmail");
+    return false;
+  } else if (!checkInputPassword()) {
+    return false;
+  }
+  return true;
+}
+
+async function handleRegisterUser() {
+  if (!checkEmptyInputs()) {
+    return;
+  }
   try {
     await addNewUser(newUser);
     showSuccessAndRedirect();
@@ -10,21 +26,54 @@ async function handleRegisterUser(event) {
   }
 }
 
-async function isUserExistByName(inName) {
-  if (!inName || !inName.trim()) return false;
-  const exists = await isUserNameTaken(inName);
-  if (exists) {
+function checkInputName() {
+  if (newUser.nuName === "") {
+    console.log(newUser.nuName);
+    
     handleErrorSet(
       "inEmail",
       "fieldName",
       "usernameError",
       false,
-      "Username already exists!"
+      "Please enter a valid Username!"
     );
     return false;
   } else {
+    return true;
+  }
+}
+async function isUserExistByName(inName) {
+  if (!inName || !inName.trim()) return false;
+  try {
+    const exists = await isUserNameTaken(inName);
+    if (exists) {
+      handleErrorSet(
+        "inEmail",
+        "fieldName",
+        "usernameError",
+        false,
+        "Username already exists!"
+      );
+      return false;
+    }
     newUser.nuName = inName;
     handleErrorSet("inEmail", "fieldName", "usernameError", true);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+function checkInputEmail() {
+  if (newUser.nuEmail === "") {
+    handleErrorSet(
+      "inPassword",
+      "fieldEmail",
+      "emailError",
+      false,
+      "Please enter a valid E-Mail!"
+    );
+    return false;
+  } else {
     return true;
   }
 }
@@ -68,6 +117,23 @@ function validateEmailFormat(inEmail) {
   }
   return true;
 }
+
+function checkInputPassword() {
+  if (newUser.nuPassword === "") {
+    handleErrorSet(
+      "inPasswordConfirm",
+      "fieldPassword",
+      "passwordTooltip",
+      false,
+      "Please enter a valid Password!"
+    );
+    return false;
+  } else {
+    return true;
+  }
+}
+function checkInputConfirmPassword(params) {}
+function checkAcceptTerms(params) {}
 
 function toggleCheckBox() {
   const checkBox = document.getElementById("checkBox");
@@ -157,4 +223,8 @@ function setBorderColor(inID, status) {
   } else {
     feldInput.classList.add("invalidInput");
   }
+}
+function restInputField(idField, idMsgError) {
+  setBorderColor(idField, true);
+  toggleErrorMessage(idMsgError, true, "");
 }
