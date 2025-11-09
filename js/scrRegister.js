@@ -212,3 +212,19 @@ function showSuccessAndRedirect() {
     window.location.href = "../html/login.html";
   }, 2000);
 }
+
+function checkAcceptTerms() {
+  const checkBox = document.getElementById("checkBox");
+  if (!checkBox.checked) {
+    handleErrorSet(
+      "btnSignup",
+      "checkBox",
+      "checkBoxError",
+      false,
+      "Please accept the Privacy policy"
+    );
+    return false;
+  } else {
+    return true;
+  }
+}
