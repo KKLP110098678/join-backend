@@ -40,6 +40,7 @@ a {
   justify-content: space-around;
   background-color: var(--color-light-blue);
   height: 100vh;
+  max-width: 1920px;
   padding-top: 48px;
 }
 
@@ -122,58 +123,29 @@ a {
   cursor: pointer;
 }
 
-
-#checkbox-container {
-  display: flex;
-  justify-content: center;
-  font-size: 22px;
-  align-items: center;
-  padding-bottom: 16px;
-}
-
-#checkboxContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
-  padding-bottom: 16px;
-
-}
-
 .custom-checkbox {
   display: flex;
+  justify-content: center;
+  font-size: 16px;
   align-items: center;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+
+.custom-checkbox img {
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  user-select: none;
+  margin-right: 8px;
 }
 
-#privacy-checkbox {
-  content: "";
-  position: relative;
-  width: 24px;
-  height: 24px;
-}
 
-#privacy-checkbox::before {
-  content: "";
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/unchecked.svg);
-}
 
-#privacy-checkbox:checked::before {
-  content: "";
-  position: absolute;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/checked.svg);
+#checkBox:checked {
+  background-color: #4589ff;
 }
 
 .btnContainer {

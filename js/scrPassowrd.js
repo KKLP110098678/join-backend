@@ -107,11 +107,10 @@ function updateConfirmIconByState() {
 function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
-    console.log("Password matched! Enabling checkbox...");
-    handleErrorSet("privacy-checkbox", "fieldPasswordConfirm", "confirmPassword", true);
+    handleErrorSet("checkBox", "fieldPasswordConfirm", "confirmPassword", true);
   } else {
     handleErrorSet(
-      "privacy-checkbox",
+      "checkBox",
       "fieldPasswordConfirm",
       "confirmPassword",
       false,
