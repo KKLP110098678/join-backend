@@ -3,26 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/logIn.css" />
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Sign Up</title>
   </head>
 
   <body>
     <div class="register-main-container">
       <header>
-        <div class="logoHeader">
+        <div class="logo-header">
           <img src="../assets/icon/logowhiteheader.svg" alt="" />
         </div>
       </header>
       <main>
-        <!-- action="../index.html" -->
-        <form
-          class="register-form"
-          onsubmit="handleRegisterUser(event)"
-        >
+        <form class="register-form" onsubmit="handleRegisterUser(event)">
           <a class="back-button-link" href="./login.html" title="back">
             <img
               class="back-button singup-back-button"
@@ -31,20 +32,20 @@
             />
           </a>
 
-          <div>
-            <div class="headReg">
+          <div class="form-content">
+            <div class="head-reg">
               <span>Sign up</span>
               <div class="separator"></div>
             </div>
-            <div class="mainReg">
-              <div>
+            <div class="main-reg">
+              <div class="input-fields-container">
                 <div class="fieldContainer">
                   <div id="fieldName" class="input-icon-container">
                     <input
                       id="inName"
                       type="text"
                       placeholder="Name"
-                      oninput="setBorderColor('fieldName',true)"
+                      oninput="restInputField('fieldName','usernameError')"
                       onblur="isUserExistByName(this.value)"
                       required
                     />
@@ -59,7 +60,7 @@
                       type="email"
                       placeholder="E-Mail"
                       required
-                      oninput="setBorderColor('fieldEmail',true)"
+                      oninput="restInputField('fieldEmail','emailError')"
                       onblur="isUserExistByEmail(this.value)"
                       disabled
                     />
@@ -74,8 +75,8 @@
                       type="text"
                       disabled
                       placeholder="Password"
+                      onblur="onPasswordBlur()"
                       oninput="onPasswordInput(this)"
-                      onblur="onPasswordBlur(this.value)"
                     />
                     <img
                       id="passwordIcon"
@@ -120,7 +121,12 @@
               </div>
             </div>
             <div class="btnContainer">
-              <button id="btnSignup" class="btn-no-icon" type="submit" disabled >
+              <button
+                id="btnSignup"
+                class="btn-no-icon"
+                type="button"
+                onclick="handleRegisterUser()"
+              >
                 Sign up
               </button>
             </div>

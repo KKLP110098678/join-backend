@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
 
 }
 
@@ -19,6 +19,20 @@ a {
   display: block !important;
 }
 
+
+.btn-signup {
+  color: var(--color-font-white);
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-light-blue);
+  font-size: 23px;
+}
+
+.btn-signup:hover {
+  background-color: var(--color-blue-hover);
+}
+
 .register-main-container {
   display: flex;
   flex-direction: column;
@@ -27,9 +41,6 @@ a {
   background-color: var(--color-light-blue);
   height: 100vh;
   padding-top: 48px;
-  margin: 0 auto;
-  gap: 35px;
-
 }
 
 .back-button-link {
@@ -40,7 +51,7 @@ a {
   height: 37px;
 }
 
-.logoHeader {
+.logo-header {
   position: absolute;
   width: 100px;
   top: 80px;
@@ -49,18 +60,13 @@ a {
 
 .register-form {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: var(--color-font-white);
-  width: 598px;
-  min-height: 607px;
   border-radius: 30px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   padding: 48px 88px;
 }
 
-.headReg {
+.head-reg {
   text-align: center;
   font-weight: bold;
   font-size: 48px;
@@ -68,18 +74,26 @@ a {
 
 .separator {
   width: 150px;
-  margin: 16px auto;
+  margin: auto;
+  margin-top: 16px;
   border: 2px solid var(--color-light-blue);
+  border-radius: 25px;
 }
 
-.mainReg {
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.main-reg {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
   width: 422px;
   min-height: 324px;
+  gap: 16px;
   margin: 0 auto;
 }
 
@@ -92,7 +106,6 @@ a {
 .fieldContainer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
 }
 
 .validInput {
@@ -164,23 +177,23 @@ a {
 }
 
 .btnContainer {
-  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+
 }
 
 #btnSignup {
-  display: block;
-  margin: 0 auto;
   white-space: nowrap;
   padding: 12px 20px;
   font-size: 24px;
-  gap: 10px;
 }
 
 
 .msgError {
-  color: red;
+  color: var(--color-red);
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .valid {
@@ -188,24 +201,23 @@ a {
 }
 
 .invalid {
-  color: red;
+  color: var(--color-red);
 }
-
-
 
 .footContainer {
   display: flex;
   flex-direction: row;
   gap: 16px;
   justify-content: space-between;
+  bottom: 7px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
-
-
 
 .footContainer a {
   color: var(--color-font-white);
   font-size: 16px;
-
 }
 
 input:-webkit-autofill {

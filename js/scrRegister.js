@@ -1,32 +1,83 @@
-const newUser = [{ nuName: "", nuEmail: "", nuPassword: "" }];
+const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
 
-async function handleRegisterUser(event) {
-  event.preventDefault();
+function checkEmptyInputs() {
+  if (!checkInputName()) {
+    return false;
+  } else if (!checkInputEmail()) {
+    return false;
+  } else if (!checkInputPassword()) {
+    return false;
+  } else if (!checkInputConfirmPassword()) {
+    return false;
+  } else if (!checkAcceptTerms()) {
+    return false;
+  }
+
+  return true;
+}
+
+async function handleRegisterUser() {
+  if (!checkEmptyInputs()) {
+    return;
+  }
   try {
     await addNewUser(newUser);
-    console.log(newUser);
-
     showSuccessAndRedirect();
   } catch (error) {
     console.error("Error registering user:", error);
   }
 }
 
-async function isUserExistByName(inName) {
-  if (!inName || !inName.trim()) return false;
-  const exists = await isUserNameTaken(inName);
-  if (exists) {
+function checkInputName() {
+  const inName = document.getElementById("inName").value.trim();
+  if (inName === "") {
     handleErrorSet(
       "inEmail",
       "fieldName",
       "usernameError",
       false,
-      "Username already exists!"
+      "Please enter a valid Username!"
     );
     return false;
   } else {
+    return true;
+  }
+}
+
+async function isUserExistByName(inName) {
+  if (!inName || !inName.trim()) return false;
+  try {
+    const exists = await isUserNameTaken(inName);
+    if (exists) {
+      handleErrorSet(
+        "inEmail",
+        "fieldName",
+        "usernameError",
+        false,
+        "Username already exists!"
+      );
+      return false;
+    }
     newUser.nuName = inName;
     handleErrorSet("inEmail", "fieldName", "usernameError", true);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+function checkInputEmail() {
+  const inEmail = document.getElementById("inEmail").value.trim();
+  if (inEmail === "") {
+    handleErrorSet(
+      "inPassword",
+      "fieldEmail",
+      "emailError",
+      false,
+      "Please enter a valid E-Mail!"
+    );
+    return false;
+  } else {
     return true;
   }
 }
@@ -106,7 +157,6 @@ function handleErrorSet(
 function toggleErrorMessage(elementId, isValid, message = "") {
   const el = document.getElementById(elementId);
   if (!el) return;
-
   if (isValid) {
     el.classList.add("d-none");
     el.textContent = "";
@@ -134,15 +184,6 @@ function toggleNextElement(eleID, status) {
   }
 }
 
-function showSuccessAndRedirect() {
-  const overlay = document.getElementById("successOverlay");
-  overlay.classList.remove("d-none");
-
-  setTimeout(() => {
-    window.location.href = "../html/login.html";
-  }, 2000);
-}
-
 function removeBorderColor(inID) {
   const feldInput = document.getElementById(inID);
   feldInput.classList.remove("validInput", "invalidInput");
@@ -151,10 +192,23 @@ function removeBorderColor(inID) {
 function setBorderColor(inID, status) {
   const feldInput = document.getElementById(inID);
   feldInput.classList.remove("validInput", "invalidInput");
-
   if (status) {
     feldInput.classList.add("validInput");
   } else {
     feldInput.classList.add("invalidInput");
   }
+}
+
+function restInputField(idField, idMsgError) {
+  setBorderColor(idField, true);
+  toggleErrorMessage(idMsgError, true, "");
+}
+
+function showSuccessAndRedirect() {
+  const overlay = document.getElementById("successOverlay");
+  overlay.classList.remove("d-none");
+
+  setTimeout(() => {
+    window.location.href = "../html/login.html";
+  }, 2000);
 }
