@@ -20,6 +20,7 @@ button {
 }
 
 .btn-secondary-with-icon {
+  font-size: 23px;
   background-color: white;
   border-radius: 10px;
   padding: 16px 10px;
@@ -73,6 +74,7 @@ button {
 }
 
 .btn-with-icon {
+  font-size: 23px;
   color: white;
   border: none;
   border-radius: 10px;
@@ -96,6 +98,7 @@ button {
   background-color: white;
   display: flex;
   align-items: center;
+  flex-direction: row;
   gap: 16px;
   color: rgba(66, 82, 110, 1);
 }
@@ -107,7 +110,6 @@ button {
 .btn-menu:active {
   background-color: #d2e3ff;
 }
-
 
 .btn-menu img {
   width: 24px;
@@ -134,12 +136,11 @@ button {
 }
 
 .btn-add-icon:active {
-  border: solid 1px #ABABAB;
+  border: solid 1px #ababab;
 }
 
 .btn-add-icon:active svg {
-  fill: #ABABAB;
-
+  fill: #ababab;
 }
 
 .btn-close {
@@ -153,6 +154,19 @@ button {
 
 .btn-close:hover {
   background-color: #4589ff;
+}
+
+.btn-close-white {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+}
+
+.btn-close-white:hover {
+  background-color: #e3eeff;
 }
 
 .text-btn-with-icon {
@@ -172,4 +186,59 @@ button {
 
 .text-btn-with-icon:hover path {
   fill: #005dff;
+}
+
+.radio-to-btn input {
+  display: none;
+}
+
+.radio-to-btn label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border-radius: 10px;
+  width: 136px;
+  gap: 10px;
+  padding: 10px 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: solid 2px transparent;
+}
+
+.radio-to-btn input:checked + label {
+  color: white !important;
+  path {
+    transition: all 0.3s ease;
+    fill: #ffffff !important;
+  }
+}
+
+label.low-priority:hover {
+  border-bottom: #7ae229 2px solid;
+}
+
+label.medium-priority:hover {
+  border-bottom: #ffa800 2px solid;
+}
+
+label.urgent-priority:hover {
+  border-bottom: #ff3d00 2px solid;
+}
+
+.radio-to-btn input:checked + label.low-priority {
+  background-color: #7ae229 !important;
+}
+
+.radio-to-btn input:checked + label.medium-priority {
+  background-color: #ffa800 !important;
+}
+
+.radio-to-btn input:checked + label.urgent-priority {
+  background-color: #ff3d00 !important;
+}
+
+.radio-to-btn {
+  background-color: white;
 }
