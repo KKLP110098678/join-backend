@@ -1,4 +1,4 @@
-// Der Farbwechsel wird jetzt in der Loadingscreen() Funktion nach der Generierung durchgeführt
+// Color change is now performed in the Loadingscreen() function after generation
 function Loadingscreen() {
   // Check if user is returning from registration page
 
@@ -35,11 +35,14 @@ function Loadingscreen() {
         logoElement.style.transform = "none";
 
         // Set final color (blue) for the paths and disable their animations
-        const paths = logoElement.querySelectorAll("path");
-        paths.forEach((path) => {
-          path.style.fill = "#4589FF";
-          path.style.animation = "none";
-        });
+        let paths = logoElement.children;
+        for (let i = 0; i < paths.length; i++) {
+          let path = paths[i];
+          if (path.tagName.toLowerCase() === 'path') {
+            path.style.fill = "#4589FF";
+            path.style.animation = "none";
+          }
+        }
       }
     }
     return;

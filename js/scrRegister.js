@@ -121,42 +121,20 @@ function validateEmailFormat(inEmail) {
   return true;
 }
 
-function checkAcceptTerms() {
-  const checkBox = document.getElementById("checkBox");
-  if (!checkBox.checked) {
-    handleErrorSet(
-      "btnSignup",
-      "checkBox",
-      "checkBoxError",
-      false,
-      "Please accept the Privacy policy"
-    );
-    return false;
-  } else {
-    return true;
+function toggleCheckBox(event) {
+  let checkBox = document.getElementById("privacy-checkbox");
+  if (checkBox.disabled) {
+    event.preventDefault();
+    return;
   }
-}
-
-function toggleCheckBox() {
-  const checkBox = document.getElementById("checkBox");
-  const checkBoxImage = document.getElementById("checkBoxImage");
-  if (checkBox.disabled) return;
-  checkBox.checked = !checkBox.checked;
-  if (checkBox.checked) {
-    checkBox.checked = false;
-    checkBoxImage.src = "../assets/icon/sign/checked.svg";
-    handleErrorSet("btnSignup", "checkBox", "checkBoxError", true);
-  } else {
-    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
-    checkBox.checked = true;
-    handleErrorSet(
-      "btnSignup",
-      "checkBox",
-      "checkBoxError",
-      false,
-      "Please accept the Privacy policy"
-    );
-  }
+  setTimeout(function () {
+    let signUpButton = document.getElementById("btnSignup");
+    if (checkBox.checked) {
+      signUpButton.disabled = false;
+    } else {
+      signUpButton.disabled = true;
+    }
+  }, 0);
 }
 
 function handleErrorSet(
@@ -192,10 +170,14 @@ function toggleErrorMessage(elementId, isValid, message = "") {
 }
 
 function toggleNextElement(eleID, status) {
-  const el = document.getElementById(eleID);
+  console.log("toggleNextElement called:", eleID, "status:", status);
+  let el = document.getElementById(eleID);
+  console.log("Element found:", el);
   if (!el) return;
   if (status) {
     el.disabled = false;
+    console.log("Element enabled! disabled =", el.disabled);
+    el.focus();
   } else {
     el.disabled = true;
   }
