@@ -4,15 +4,40 @@ let passeordVisible = false;
 let realConfirmPassword = "";
 let confirmVisible = false;
 
-function toggleVisibilityIcon() {
-  const icon = document.getElementById("passwordIcon");
-  if (realPassword.length === 0) {
-    icon.src = "../assets/icon/sign/lock.svg";
-    passeordVisible = false;
+
+
+function checkInputPassword() {
+  if (newUser.nuPassword === "") {
+    handleErrorSet(
+      "inPasswordConfirm",
+      "fieldPassword",
+      "passwordTooltip",
+      false,
+      "Please enter a valid Password!"
+    );
+    return false;
   } else {
-    icon.src = passeordVisible
-      ? "../assets/icon/sign/visibility.svg"
-      : "../assets/icon/sign/visibility_off.svg";
+    return true;
+  }
+}
+
+function onPasswordInput(input) {
+  const inPassWord = input.value;
+  realPassword = updateVarible(inPassWord, realPassword);
+  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  toggleVisibilityIcon();
+  setBorderColor("fieldPassword", false);
+  validatePasswordTooltip(realPassword);
+}
+
+function onPasswordBlur() {
+  const rules = checkPasswordRules(realPassword)
+  if (isPasswordValid(rules)) {
+    newUser.nuPassword = realPassword;
+    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
+    removeBorderColor("fieldPassword");
+  } else {
+    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
   }
 }
 
@@ -25,20 +50,35 @@ function onPasswordIconClick() {
   toggleVisibilityIcon();
 }
 
-function updateConfirmIconByState() {
-  const icon = document.getElementById("confirmPasswordIcon");
-  if (realConfirmPassword.length === 0) {
+function toggleVisibilityIcon() {
+  const icon = document.getElementById("passwordIcon");
+  if (realPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
-    confirmVisible = false;
+    passeordVisible = false;
   } else {
-    icon.src = confirmVisible
+    icon.src = passeordVisible
       ? "../assets/icon/sign/visibility.svg"
       : "../assets/icon/sign/visibility_off.svg";
   }
 }
 
+function checkInputConfirmPassword() {
+  if (realConfirmPassword === ""){
+        handleErrorSet(
+      "checkBox",
+      "fieldPasswordConfirm",
+      "confirmPassword",
+      false,
+      "Please Enter a valid confirm Password."
+    );
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function onInputConfirmPassword(input) {
-  setBorderColor("fieldPasswordConfirm", true);
+  restInputField('fieldPasswordConfirm','confirmPassword');
   const inConfirmWord = input.value;
   realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
@@ -50,6 +90,18 @@ function onClickConfirmPasswordIcon() {
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+}
+
+function updateConfirmIconByState() {
+  const icon = document.getElementById("confirmPasswordIcon");
+  if (realConfirmPassword.length === 0) {
+    icon.src = "../assets/icon/sign/lock.svg";
+    confirmVisible = false;
+  } else {
+    icon.src = confirmVisible
+      ? "../assets/icon/sign/visibility.svg"
+      : "../assets/icon/sign/visibility_off.svg";
+  }
 }
 
 function isPasswordMatching() {
@@ -83,26 +135,6 @@ function hedienWord(inWord, isVisible, realWord) {
   return isVisible;
 }
 
-function onPasswordInput(input) {
-  const inPassWord = input.value;
-  realPassword = updateVarible(inPassWord, realPassword);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
-  toggleVisibilityIcon();
-  setBorderColor("fieldPassword", false);
-  validatePasswordTooltip(realPassword);
-}
-
-function onPasswordBlur() {
-  const rules = checkPasswordRules(realPassword)
-  if (isPasswordValid(rules)) {
-    newUser.nuPassword = realPassword;
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
-    removeBorderColor("fieldPassword");
-  } else {
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
-  }
-}
-
 function checkPasswordRules(password) {
   return {
     minLength: password.length > 7,
@@ -121,9 +153,7 @@ function validatePasswordTooltip(inPassword) {
     "passwordTooltip",
     isPasswordValid(rules),
     msg
-    // isPasswordValid(rules) ? "" : msg
   );
-  
   if (isPasswordValid(rules)) {
     setBorderColor("fieldPassword", true);
   }
@@ -131,7 +161,6 @@ function validatePasswordTooltip(inPassword) {
 
 function isPasswordValid(rules) {
   return rules.minLength && rules.hasLower && rules.hasNumber;
-
 }
 
   function buildPasswordMessage(rules) {

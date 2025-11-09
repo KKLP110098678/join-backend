@@ -2,15 +2,17 @@ const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
 
 function checkEmptyInputs() {
   if (!checkInputName()) {
-    console.log("checkInputName");
-
     return false;
   } else if (!checkInputEmail()) {
-    console.log("checkInputEmail");
     return false;
   } else if (!checkInputPassword()) {
     return false;
+  } else if (!checkInputConfirmPassword()) {
+    return false;
+  } else if (!checkAcceptTerms()) {
+    return false;
   }
+
   return true;
 }
 
@@ -27,9 +29,8 @@ async function handleRegisterUser() {
 }
 
 function checkInputName() {
-  if (newUser.nuName === "") {
-    console.log(newUser.nuName);
-    
+  const inName = document.getElementById("inName").value.trim();
+  if (inName === "") {
     handleErrorSet(
       "inEmail",
       "fieldName",
@@ -42,6 +43,7 @@ function checkInputName() {
     return true;
   }
 }
+
 async function isUserExistByName(inName) {
   if (!inName || !inName.trim()) return false;
   try {
@@ -63,8 +65,10 @@ async function isUserExistByName(inName) {
     return false;
   }
 }
+
 function checkInputEmail() {
-  if (newUser.nuEmail === "") {
+  const inEmail = document.getElementById("inEmail").value.trim();
+  if (inEmail === "") {
     handleErrorSet(
       "inPassword",
       "fieldEmail",
@@ -118,22 +122,21 @@ function validateEmailFormat(inEmail) {
   return true;
 }
 
-function checkInputPassword() {
-  if (newUser.nuPassword === "") {
+function checkAcceptTerms() {
+  const checkBox = document.getElementById("checkBox");
+  if (!checkBox.checked) {
     handleErrorSet(
-      "inPasswordConfirm",
-      "fieldPassword",
-      "passwordTooltip",
+      "btnSignup",
+      "checkBox",
+      "checkBoxError",
       false,
-      "Please enter a valid Password!"
+      "Please accept the Privacy policy"
     );
     return false;
   } else {
     return true;
   }
 }
-function checkInputConfirmPassword(params) {}
-function checkAcceptTerms(params) {}
 
 function toggleCheckBox() {
   const checkBox = document.getElementById("checkBox");
@@ -176,7 +179,6 @@ function handleErrorSet(
 function toggleErrorMessage(elementId, isValid, message = "") {
   const el = document.getElementById(elementId);
   if (!el) return;
-
   if (isValid) {
     el.classList.add("d-none");
     el.textContent = "";
@@ -200,15 +202,6 @@ function toggleNextElement(eleID, status) {
   }
 }
 
-function showSuccessAndRedirect() {
-  const overlay = document.getElementById("successOverlay");
-  overlay.classList.remove("d-none");
-
-  setTimeout(() => {
-    window.location.href = "../html/login.html";
-  }, 2000);
-}
-
 function removeBorderColor(inID) {
   const feldInput = document.getElementById(inID);
   feldInput.classList.remove("validInput", "invalidInput");
@@ -217,14 +210,23 @@ function removeBorderColor(inID) {
 function setBorderColor(inID, status) {
   const feldInput = document.getElementById(inID);
   feldInput.classList.remove("validInput", "invalidInput");
-
   if (status) {
     feldInput.classList.add("validInput");
   } else {
     feldInput.classList.add("invalidInput");
   }
 }
+
 function restInputField(idField, idMsgError) {
   setBorderColor(idField, true);
   toggleErrorMessage(idMsgError, true, "");
+}
+
+function showSuccessAndRedirect() {
+  const overlay = document.getElementById("successOverlay");
+  overlay.classList.remove("d-none");
+
+  setTimeout(() => {
+    window.location.href = "../html/login.html";
+  }, 2000);
 }
