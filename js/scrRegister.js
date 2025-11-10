@@ -12,7 +12,6 @@ function checkEmptyInputs() {
   } else if (!checkAcceptTerms()) {
     return false;
   }
-
   return true;
 }
 
