@@ -16,7 +16,7 @@
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
     <div id="loginLogoContainer"></div>
-    <div class="logInMainContainer">
+    <div class="logIn-container">
       <header class="text-center login-header">
         <p class="login-header-text">Not a Join user?</p>
         <a href="register.html" class="btn-signup">Sign up</a>
@@ -40,7 +40,7 @@
                 />
                 <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
               </div>
-              <small id="emailError" class="d-none msgError"></small>
+              <small id="emailError" class="d-none msg-error"></small>
             </div>
             <div class="fieldContainer">
               <div id="fieldPassword" class="input-icon-container">
@@ -59,7 +59,7 @@
                   onclick="onPasswordIconClick()"
                 />
               </div>
-              <small id="passwordTooltip" class="d-none msgError"></small>
+              <small id="passwordTooltip" class="d-none msg-error"></small>
             </div>
           </div>
           <div id="checkboxContainer">
@@ -75,7 +75,7 @@
               <span class="color-light-blue">Remember me </span>
             </label>
           </div>
-          <div class="btnContainer">
+          <div class="btn-container">
             <button
               id="btnLogin"
               class="btn-no-icon"
@@ -84,7 +84,13 @@
             >
               Log in
             </button>
-            <button class="btn-secondary" type="button" onclick="setGuestSession()">Guest log in</button>
+            <button
+              class="btn-secondary"
+              type="button"
+              onclick="setGuestSession()"
+            >
+              Guest log in
+            </button>
           </div>
         </form>
       </main>

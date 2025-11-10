@@ -97,12 +97,6 @@ a {
   margin: 0 auto;
 }
 
-.mainReg>div {
-  width: 100%;
-
-}
-
-
 .fieldContainer {
   display: flex;
   flex-direction: column;
@@ -147,7 +141,7 @@ a {
   background-color: #4589ff;
 }
 
-.btnContainer {
+.btn-container {
   display: flex;
   justify-content: center;
   gap: 35px;
@@ -161,7 +155,7 @@ a {
 }
 
 
-.msgError {
+.msg-error {
   color: var(--color-red);
   text-align: left;
   font-size: 14px;
@@ -175,7 +169,7 @@ a {
   color: var(--color-red);
 }
 
-.footContainer {
+.footer-container {
   display: flex;
   flex-direction: row;
   gap: 16px;
@@ -186,7 +180,7 @@ a {
   transform: translateX(-50%);
 }
 
-.footContainer a {
+.footer-container a {
   color: var(--color-font-white);
   font-size: 16px;
 }
