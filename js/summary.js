@@ -1,28 +1,10 @@
 /**
  * @fileoverview Summary module for Join Kanban Project Management Tool
- * Manages the summary page with personalized greeting and session management
+ * Manages the summary page with personalized greeting
+ * Session management is handled by script.js
  * @author Join Development Team
  * @version 1.0.0
  */
-
-/**
- * Checks if the user is logged in
- * Redirects to login page if no active session exists
- * 
- * @function checkSession
- * @returns {void}
- * 
- * @example
- * // Called automatically when page loads
- * checkSession();
- */
-function checkSession() {
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-    
-    if (!isLoggedIn) {
-        window.location.href = './login.html';
-    }
-}
 
 /**
  * Returns the appropriate time-of-day greeting
@@ -89,7 +71,7 @@ function updateGreeting() {
 
 /**
  * Initializes the summary page
- * Performs session check and updates the greeting
+ * Updates the greeting (session check is handled by script.js)
  * Called automatically when page loads
  * 
  * @function initSummary
@@ -100,7 +82,6 @@ function updateGreeting() {
  * initSummary();
  */
 function initSummary() {
-    checkSession();
     updateGreeting();
 }
 
