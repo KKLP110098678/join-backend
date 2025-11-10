@@ -12,7 +12,6 @@ function getPassword(inPassword) {
   realPassword = updateVarible(inPassword, realPassword);
   objToFind.password = realPassword;
   handleErrorSet("checkBox", "fieldPassword", "passwordTooltip", true);
-
 }
 
 function checkCardinal() {
@@ -44,7 +43,7 @@ function passwordInput(input) {
   realPassword = updateVarible(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
-  restInputField('fieldPassword', 'passwordTooltip');
+  restInputField("fieldPassword", "passwordTooltip");
   objToFind.password = realPassword;
 }
 
@@ -57,23 +56,22 @@ async function handelLogIn() {
       window.location.href = "../html/summary.html";
     } else {
       console.log("it not found");
-      handleWrongCardinal()
+      handleWrongCardinal();
     }
   }
 }
 
 function handleWrongCardinal() {
   const message = "Check your email and password. Please try again.";
-  setBorderColor('fieldEmail',false);
-  setBorderColor('fieldPassword',false);
-  toggleErrorMessage("passwordTooltip",false,message);
-
+  setBorderColor("fieldEmail", false);
+  setBorderColor("fieldPassword", false);
+  toggleErrorMessage("passwordTooltip", false, message);
 }
 
 function toggleRememberMe() {
   const checkBox = document.getElementById("checkBox");
   const checkBoxImage = document.getElementById("checkBoxImage");
-  if (realPassword==="") {
+  if (realPassword === "") {
     return;
   }
   if (checkBox.disabled) return;
@@ -84,6 +82,26 @@ function toggleRememberMe() {
   } else {
     checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
     checkBox.checked = true;
-    
   }
+}
+
+/**
+ * Sets session data for a guest user
+ * Stores predefined guest credentials in SessionStorage
+ * Called when the user clicks on "Guest log in"
+ *
+ * @function setGuestSession
+ * @returns {void}
+ *
+ * @example
+ * // Triggered by onclick event in HTML
+ * setGuestSession();
+ */
+function setGuestSession() {
+  sessionStorage.setItem("userEmail", "guest@join.com");
+  sessionStorage.setItem("userId", "guest");
+  sessionStorage.setItem("userName", "Guest");
+  sessionStorage.setItem("isLoggedIn", "true");
+  sessionStorage.setItem("isGuest", "true");
+  window.location.href = "../html/summary.html";
 }
