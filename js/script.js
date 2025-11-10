@@ -1,7 +1,7 @@
 // Color change is now performed in the Loadingscreen() function after generation
 function Loadingscreen() {
   // Check if user is returning from registration page
-
+init();
   const skipAnimation = sessionStorage.getItem("skipAnimation");
 
   if (skipAnimation === "true") {

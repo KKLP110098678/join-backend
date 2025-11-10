@@ -1,4 +1,32 @@
-const currentUser = { currentName: "", currentEmail: "", currentPassword: "" };
+
+let rememberMe = false;
+let objToFind = { email: "", password: "" };
+
+
+function init() {
+  const savedUser = getUserFromLS();
+  if (savedUser) {
+    objToFind.email = savedUser.currentEmail;
+    objToFind.password = savedUser.currentPassword;
+    rememberMe = true;
+    setSavedEmail(savedUser.currentEmail);
+    setSavedPassword(savedUser.currentPassword);
+    setRememberMe();
+  }
+}
+
+function setSavedEmail(emailFromLS) {
+  const inEmail = document.getElementById("inEmail");
+  inEmail.value = emailFromLS;
+}
+
+function setSavedPassword(passwordFromLS) {
+  const iputPass = document.getElementById("inPassword");
+  realPassword = passwordFromLS;
+  toggleVisibilityIcon();
+  hedienWord(iputPass, false, realPassword);
+}
+
 async function addNewUser(newUser) {
   try {
     const usersRef = firebase.database().ref("users");
@@ -70,12 +98,41 @@ async function findUserByCardinal(objToFind) {
   }
 }
 
-function updateCurrentUser(dbUser) {
+function updateCurrentUser(dbUser, rememberMe) {
   if (!dbUser) return;
 
+  if (rememberMe) {
+    saveUserInLS(dbUser);
+  } else {
+    removeUserFromLS();
+  }
+  const currentUser ={};
   currentUser.currentName = dbUser.name;
   currentUser.currentEmail = dbUser.email;
   currentUser.currentPassword = dbUser.password;
-
   sessionStorage.setItem("currentUser", JSON.stringify(currentUser));
+}
+
+function saveUserInLS(objToSave) {
+  const userLS = {
+    currentName: objToSave.name,
+    currentEmail: objToSave.email,
+    currentPassword: objToSave.password,
+  };
+
+  localStorage.setItem("savedUser", JSON.stringify(userLS));
+}
+
+function getUserFromLS() {
+  const saved = localStorage.getItem("savedUser");
+  if (!saved) {
+    return null;
+  }
+
+  const user = JSON.parse(saved);
+  return user;
+}
+
+function removeUserFromLS() {
+  localStorage.removeItem("savedUser");
 }

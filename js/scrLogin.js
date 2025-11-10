@@ -1,5 +1,3 @@
-let objToFind = { email: "", password: "" };
-
 function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
     objToFind.email = inEmail;
@@ -12,6 +10,29 @@ function getPassword(inPassword) {
   realPassword = updateVarible(inPassword, realPassword);
   objToFind.password = realPassword;
   handleErrorSet("checkBox", "fieldPassword", "passwordTooltip", true);
+}
+
+function passwordInput(input) {
+  const inPassWord = input.value;
+  realPassword = updateVarible(inPassWord, realPassword);
+  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  toggleVisibilityIcon();
+  restInputField("fieldPassword", "passwordTooltip");
+  objToFind.password = realPassword;
+}
+
+async function handelLogIn() {
+  if (checkCardinal()) {
+    const user = await findUserByCardinal(objToFind);
+
+    if (user) {
+      updateCurrentUser(user, rememberMe);
+      window.location.href = "../html/summary.html";
+    } else {
+      handleWrongCardinal();
+      toggleRememberMe();
+    }
+  }
 }
 
 function checkCardinal() {
@@ -38,29 +59,6 @@ function checkCardinal() {
   }
 }
 
-function passwordInput(input) {
-  const inPassWord = input.value;
-  realPassword = updateVarible(inPassWord, realPassword);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
-  toggleVisibilityIcon();
-  restInputField("fieldPassword", "passwordTooltip");
-  objToFind.password = realPassword;
-}
-
-async function handelLogIn() {
-  if (checkCardinal()) {
-    const user = await findUserByCardinal(objToFind);
-
-    if (user) {
-      updateCurrentUser(user);
-      window.location.href = "../html/summary.html";
-    } else {
-      console.log("it not found");
-      handleWrongCardinal();
-    }
-  }
-}
-
 function handleWrongCardinal() {
   const message = "Check your email and password. Please try again.";
   setBorderColor("fieldEmail", false);
@@ -71,20 +69,24 @@ function handleWrongCardinal() {
 function toggleRememberMe() {
   const checkBox = document.getElementById("checkBox");
   const checkBoxImage = document.getElementById("checkBoxImage");
-  if (realPassword === "") {
-    return;
-  }
+
+  if (realPassword === "") return;
   if (checkBox.disabled) return;
-  checkBox.checked = !checkBox.checked;
-  if (checkBox.checked) {
-    checkBox.checked = false;
-    checkBoxImage.src = "../assets/icon/sign/checked.svg";
-  } else {
-    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
-    checkBox.checked = true;
-  }
+  rememberMe = !rememberMe;
+
+  checkBox.checked = rememberMe;
+  checkBoxImage.src = rememberMe
+    ? "../assets/icon/sign/checked.svg"
+    : "../assets/icon/sign/unchacked.svg";
 }
 
+function setRememberMe() {
+  const chBox = document.getElementById("checkBox");
+  chBox.checked = true;
+  chBox.disabled = false;
+  const checkBoxImage = document.getElementById("checkBoxImage");
+  checkBoxImage.src = "../assets/icon/sign/checked.svg";
+}
 /**
  * Sets session data for a guest user
  * Stores predefined guest credentials in SessionStorage
@@ -98,10 +100,16 @@ function toggleRememberMe() {
  * setGuestSession();
  */
 function setGuestSession() {
-  sessionStorage.setItem("userEmail", "guest@join.com");
-  sessionStorage.setItem("userId", "guest");
-  sessionStorage.setItem("userName", "Guest");
-  sessionStorage.setItem("isLoggedIn", "true");
-  sessionStorage.setItem("isGuest", "true");
+  sessionStorage.removeItem("currentUser");
+  const guestUser = {
+    userEmail: "guest@join.com",
+    userId: "guest",
+    userName: "Guest",
+    isLoggedIn: false,
+    isGuest: true,
+  };
+
+  sessionStorage.setItem("currentUser", JSON.stringify(guestUser));
+
   window.location.href = "../html/summary.html";
 }
