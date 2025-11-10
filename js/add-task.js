@@ -14,7 +14,6 @@ let selectedUsers = [];
  */
 function populateAssignedToDropdown() {
   let dropdownList = document.getElementById('assigned-to-list');
-  if (!dropdownList) return;
   
   clearDropdownList(dropdownList);
   
@@ -56,13 +55,8 @@ function toggleAssignedDropdown() {
   let dropdownList = document.getElementById('assigned-to-list');
   let arrow = document.querySelector('.dropdown-arrow');
   
-  if (dropdownList) {
-    dropdownList.classList.toggle('d-none');
-  }
-  
-  if (arrow) {
-    arrow.parentElement.parentElement.parentElement.classList.toggle('open');
-  }
+  dropdownList.classList.toggle('d-none');
+  arrow.parentElement.parentElement.parentElement.classList.toggle('open');
 }
 
 /**
@@ -72,8 +66,6 @@ function toggleUserSelection(userName, event) {
   if (event) event.stopPropagation();
   
   let checkbox = findUserCheckbox(userName);
-  if (!checkbox) return;
-  
   checkbox.checked = !checkbox.checked;
   updateSelectedUsersArray(userName, checkbox.checked);
   updateDropdownPlaceholder();
@@ -99,8 +91,6 @@ function updateSelectedUsersArray(userName, isChecked) {
 function updateDropdownPlaceholder() {
   let input = document.querySelector('.dropdown-input');
   
-  if (!input) return;
-  
   if (selectedUsers.length === 0) {
     input.value = '';
     input.placeholder = 'Select contacts to assign';
@@ -120,6 +110,7 @@ document.addEventListener('click', function(event) {
   
   if (dropdown && !dropdown.contains(event.target) && dropdownList) {
     dropdownList.classList.add('d-none');
+    dropdown.classList.remove('open');
   }
   
   let categoryDropdown = document.getElementById('category');
@@ -127,6 +118,7 @@ document.addEventListener('click', function(event) {
   
   if (categoryDropdown && !categoryDropdown.contains(event.target) && categoryList) {
     categoryList.classList.add('d-none');
+    categoryDropdown.classList.remove('open');
   }
 });
 
@@ -135,9 +127,10 @@ document.addEventListener('click', function(event) {
  */
 function toggleCategoryDropdown() {
   let dropdownList = document.getElementById('category-list');
-  if (dropdownList) {
-    dropdownList.classList.toggle('d-none');
-  }
+  let categoryDropdown = document.getElementById('category');
+  
+  dropdownList.classList.toggle('d-none');
+  categoryDropdown.classList.toggle('open');
 }
 
 /**
@@ -146,18 +139,13 @@ function toggleCategoryDropdown() {
 function selectCategory(categoryName) {
   let input = document.getElementById('category-input');
   let hiddenInput = document.getElementById('category-hidden');
-  
-  if (input) {
-    input.value = categoryName;
-  }
-  if (hiddenInput) {
-    hiddenInput.value = categoryName;
-  }
-  
   let dropdownList = document.getElementById('category-list');
-  if (dropdownList) {
-    dropdownList.classList.add('d-none');
-  }
+  let categoryDropdown = document.getElementById('category');
+  
+  input.value = categoryName;
+  hiddenInput.value = categoryName;
+  dropdownList.classList.add('d-none');
+  categoryDropdown.classList.remove('open');
 }
 
 /**
@@ -199,17 +187,15 @@ function clearFormErrors() {
   let titleGroup = document.getElementById('title-form-group');
   let dateGroup = document.getElementById('date-form-group');
 
-  if (titleError) titleError.classList.add('d-none');
-  if (dateError) dateError.classList.add('d-none');
-  if (titleGroup) titleGroup.classList.remove('error');
-  if (dateGroup) dateGroup.classList.remove('error');
+  titleError.classList.add('d-none');
+  dateError.classList.add('d-none');
+  titleGroup.classList.remove('error');
+  dateGroup.classList.remove('error');
 }
 
 function clearSubtasks() {
   let subtaskList = document.getElementById('subtask-list');
-  if (subtaskList) {
-    subtaskList.innerHTML = '';
-  }
+  subtaskList.innerHTML = '';
   currentSubtasks = [];
 }
 
@@ -226,12 +212,8 @@ function clearCategory() {
   let categoryInput = document.getElementById('category-input');
   let categoryHidden = document.getElementById('category-hidden');
   
-  if (categoryInput) {
-    categoryInput.value = '';
-  }
-  if (categoryHidden) {
-    categoryHidden.value = '';
-  }
+  categoryInput.value = '';
+  categoryHidden.value = '';
 }
 
 function validateForm() {
@@ -308,7 +290,7 @@ function createTaskFromForm() {
 
 function getDescriptionValue() {
   let descriptionField = document.getElementById('description');
-  return descriptionField ? descriptionField.value.trim() : '';
+  return descriptionField.value.trim();
 }
 
 function getSelectedPriority() {
