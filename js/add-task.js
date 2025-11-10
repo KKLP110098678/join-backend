@@ -260,7 +260,7 @@ function saveTask(event) {
   if (validateForm()) {
     let newTask = createTaskFromForm();
     tasks.push(newTask);
-    
+    saveTasksToSession();
     handleTaskSaveSuccess();
   }
 }
@@ -332,14 +332,30 @@ function getFilteredSubtasks() {
 }
 
 function handleTaskSaveSuccess() {
-  renderAllTasks();
-  alert('Task created successfully!');
-  clearForm();
-  targetColumnStatus = 'todo';
+  let isOnAddTaskPage = window.location.pathname.includes('add-task.html');
   
-  if (typeof closeAllMenus === 'function') {
-    closeAllMenus();
+  if (isOnAddTaskPage) {
+    showSuccessOverlay();
+    setTimeout(function() {
+      window.location.href = 'board.html';
+    }, 1500);
+  } else {
+    renderAllTasks();
+    showSuccessOverlay();
+    setTimeout(function() {
+      clearForm();
+      targetColumnStatus = 'todo';
+      
+      if (typeof closeAllMenus === 'function') {
+        closeAllMenus();
+      }
+    }, 1500);
   }
+}
+
+function showSuccessOverlay() {
+  let overlay = document.getElementById('success-overlay');
+  overlay.classList.remove('d-none');
 }
 
 function handleTitleBlur() {

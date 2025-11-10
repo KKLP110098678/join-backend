@@ -1,4 +1,4 @@
-let tasks = [
+let tasks = loadTasksFromSession() || [
   {
     id: "task-1",
     title: "Kochwelt Page & Recipe Recommender",
@@ -673,4 +673,20 @@ function findContactByInitials(initials) {
     }
   }
   return initials;
+}
+
+/**
+ * Saves tasks to sessionStorage
+ */
+function saveTasksToSession() {
+  sessionStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+/**
+ * Loads tasks from sessionStorage
+ * @returns {Array|null} Tasks array or null if not found
+ */
+function loadTasksFromSession() {
+  let storedTasks = sessionStorage.getItem('tasks');
+  return storedTasks ? JSON.parse(storedTasks) : null;
 }
