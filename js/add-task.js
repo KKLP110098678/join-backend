@@ -41,9 +41,11 @@ function createDropdownItemHTML(contact, index) {
   
   return `
     <div class="dropdown-item" onclick="toggleUserSelection('${contact.name}', event)">
-      <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
-      <label for="user-${index}">${contact.name}</label>
-      <input type="checkbox" id="user-${index}" value="${contact.name}" onclick="event.stopPropagation();">
+      <label class="d-flex dropdown-item-label" for="user-${index}">
+        <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
+        ${contact.name}
+        <input type="checkbox" id="user-${index}" value="${contact.name}">
+      </label>
     </div>
   `;
 }
@@ -64,11 +66,10 @@ function toggleAssignedDropdown() {
  */
 function toggleUserSelection(userName, event) {
   if (event) event.stopPropagation();
-  
   let checkbox = findUserCheckbox(userName);
-  checkbox.checked = !checkbox.checked;
   updateSelectedUsersArray(userName, checkbox.checked);
   updateDropdownPlaceholder();
+  console.log("funktion wird ausgeführt");
 }
 
 function findUserCheckbox(userName) {
