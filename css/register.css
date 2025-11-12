@@ -2,8 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", Arial, sans-serif;
-
+  font-family: "Open Sans", sans-serif;
 }
 
 a {
@@ -19,6 +18,20 @@ a {
   display: block !important;
 }
 
+
+.btn-signup {
+  color: var(--color-font-white);
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--color-light-blue);
+  font-size: 23px;
+}
+
+.btn-signup:hover {
+  background-color: var(--color-blue-hover);
+}
+
 .register-main-container {
   display: flex;
   flex-direction: column;
@@ -26,10 +39,8 @@ a {
   justify-content: space-around;
   background-color: var(--color-light-blue);
   height: 100vh;
+  max-width: 1920px;
   padding-top: 48px;
-  margin: 0 auto;
-  gap: 35px;
-
 }
 
 .back-button-link {
@@ -49,12 +60,7 @@ a {
 
 .register-form {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: var(--color-font-white);
-  width: 598px;
-  min-height: 607px;
   border-radius: 30px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   padding: 48px 88px;
@@ -68,8 +74,16 @@ a {
 
 .separator {
   width: 150px;
-  margin: 16px auto;
+  margin: auto;
+  margin-top: 16px;
   border: 2px solid var(--color-light-blue);
+  border-radius: 25px;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
 }
 
 .main-reg {
@@ -77,22 +91,15 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
   width: 422px;
   min-height: 324px;
+  gap: 16px;
   margin: 0 auto;
 }
-
-.main-reg>div {
-  width: 100%;
-
-}
-
 
 .field-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
 }
 
 .valid-input {
@@ -109,82 +116,73 @@ a {
   cursor: pointer;
 }
 
-#checkbox-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
-  padding-bottom: 16px;
-
-}
-
 .custom-checkbox {
   display: flex;
+  justify-content: center;
+  font-size: 16px;
   align-items: center;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+
+.custom-checkbox img {
+  width: 24px;
+  height: 24px;
   cursor: pointer;
-  user-select: none;
+  margin-right: 8px;
 }
 
-#privacy-checkbox {
-  content: "";
-  position: relative;
-  width: 24px;
-  height: 24px;
-}
 
-#privacy-checkbox::before {
-  content: "";
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/unchecked.svg);
-}
 
-#privacy-checkbox:checked::before {
-  content: "";
-  position: absolute;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/checked.svg);
+#checkBox:checked {
+  background-color: #4589ff;
 }
 
 .btn-container {
-  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+
 }
 
 #btn-signup {
-  display: block;
-  margin: 0 auto;
   white-space: nowrap;
   padding: 12px 20px;
   font-size: 24px;
-  gap: 10px;
 }
 
 
 .msg-error {
-  color: red;
+  color: var(--color-red);
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
 }
 
-.foot-container {
+.valid {
+  color: green;
+}
+
+.invalid {
+  color: var(--color-red);
+}
+
+.footer-container {
   display: flex;
   flex-direction: row;
   gap: 16px;
   justify-content: space-between;
+  bottom: 7px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.foot-container a {
+.footer-container a {
   color: var(--color-font-white);
   font-size: 16px;
-
 }
 
 input:-webkit-autofill {

@@ -4,93 +4,112 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/logIn.css" />
+    <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
-
-    <header>
-      <div class="logo-header">
-        <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
-      </div>
-      <div class="text-center login-header">
+    <div id="loginLogoContainer"></div>
+    <div class="logIn-container">
+      <header class="text-center login-header">
         <p class="login-header-text">Not a Join user?</p>
-        <a
-          href="register.html"
-          class="btn-no-icon"
-          onclick="sessionStorage.setItem('fromLogin', 'true');"
-          >Sign up</a
-        >
-      </div>
-    </header>
-    <div class="register-main-container">
-      <main>
-        <form id="log-in-form" class="register-form" action="./summary.html">
-          <div>
-            <div class="head-reg">
-              <span>Log in</span>
-              <div class="separator"></div>
-            </div>
-            <div class="main-reg">
-              <div class="form-field">
-                <div class="field-container">
-                  <div class="input-icon-container">
-                    <input
-                      id="email-input"
-                      type="email"
-                      placeholder="Email"
-                      required
-                    />
-                    <img src="../assets/icon/logIn/mail.svg" alt="Email Icon" />
-                  </div>
-                </div>
-                <div class="field-container">
-                  <div class="input-icon-container">
-                    <input
-                      id="password-input"
-                      type="password"
-                      placeholder="Password"
-                      required
-                    />
-                    <img
-                      src="../assets/icon/logIn/lock.svg"
-                      alt="Password Icon"
-                    />
-                  </div>
-                </div>
-                <div id="error-message"></div>
+        <a href="register.html" class="btn-signup">Sign up</a>
+      </header>
+      <main id="logInContainer">
+        <form id="loginForm" class="logIn-form" action="./summary.html">
+          <div class="head-reg">
+            <span>Log in</span>
+            <div class="separator"></div>
+          </div>
+          <div class="input-fields-container">
+            <div class="fieldContainer">
+              <div id="fieldEmail" class="input-icon-container">
+                <input
+                  id="inEmail"
+                  type="email"
+                  placeholder="E-Mail"
+                  required
+                  oninput="restInputField('fieldEmail','emailError')"
+                  onblur="getEmail(this.value)"
+                />
+                <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
               </div>
+              <small id="emailError" class="d-none msg-error"></small>
             </div>
-            <div class="btn-container">
-              <button class="btn-no-icon" type="submit">Log in</button>
-              <a
-                href="./summary.html"
-                class="btn-secondary"
-                onclick="setGuestSession()"
-                >Guest log in</a
-              >
+            <div class="fieldContainer">
+              <div id="fieldPassword" class="input-icon-container">
+                <input
+                  id="inPassword"
+                  type="text"
+                  disabled
+                  placeholder="Password"
+                  oninput="passwordInput(this)"
+                  onblur="getPassword(this.value)"
+                />
+                <img
+                  id="passwordIcon"
+                  src="../assets/icon/sign/lock.svg"
+                  alt="password icon"
+                  onclick="onPasswordIconClick()"
+                />
+              </div>
+              <small id="passwordTooltip" class="d-none msg-error"></small>
             </div>
+          </div>
+          <div id="checkboxContainer">
+            <label class="custom-checkbox">
+              <input id="checkBox" type="checkbox" disabled />
+              <img
+                id="checkBoxImage"
+                src="../assets/icon/sign/unchacked.svg"
+                alt="checkbox image"
+                onclick="toggleRememberMe()"
+              />
+
+              <span class="color-light-blue">Remember me </span>
+            </label>
+          </div>
+          <div class="btn-container">
+            <button
+              id="btnLogin"
+              class="btn-no-icon"
+              type="button"
+              onclick="handelLogIn()"
+            >
+              Log in
+            </button>
+            <button
+              class="btn-secondary"
+              type="button"
+              onclick="setGuestSession()"
+            >
+              Guest log in
+            </button>
           </div>
         </form>
       </main>
-
-      <footer>
-        <div class="foot-container">
-          <p>
-            <a href="datenschutz.html">Privacy Policy</a>
-          </p>
-          <p>
-            <a href="impressum.html">Legal Notice</a>
-          </p>
-        </div>
+      <footer class="legal-footer">
+        <p>
+          <a href="/html/datenschutz.html">Privacy Policy</a>
+        </p>
+        <p>
+          <a href="/html/impressum.html">Legal notice</a>
+        </p>
       </footer>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../scrDB/dbConfig.js"></script>
-    <script src="../js/login.js"></script>
+    <script src="../scrDB/userDB.js"></script>
+    <script src="../js/scrRegister.js"></script>
+    <script src="../js/scrPassowrd.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/scrLogin.js"></script>
   </body>
 </html>

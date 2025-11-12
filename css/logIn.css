@@ -1,75 +1,57 @@
-/* Login-spezifische Anpassungen für die register-main-container Struktur */
-.register-main-container {
+.logIn-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  background-color: #ffffff;
+  justify-content: center;
+  background-color: var(--color-white);
   height: 100vh;
-  height: 100dvh;
-  padding-top: 48px;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 2rem;
-  gap: clamp(1.5rem, 3vh, 2.5rem);
+
 }
 
-.logo-header {
-  width: 100px;
-  margin-top: 1rem;
+.login-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 67px;
+  right: 86px;
+  gap: 35px;
+  color: var(--color-light-blue);
 }
 
-.register-form {
+.login-header-text {
+  font-size: 23px;
+}
+
+.logIn-form {
   position: relative;
+  top: 48px;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--color-font-white);
-  max-width: 598px;
+  width: 652px;
   min-height: 448px;
   border-radius: 30px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   padding: 48px 88px;
+  gap: 39px;
 }
 
-@media (max-width: 640px) {
-  .register-form {
-    padding: 24px 20px;
-    border-radius: 16px;
-  }
-}
-
-.head-reg {
-  text-align: center;
-  font-weight: bold;
-  font-size: 48px;
-}
-
-.separator {
-  width: 150px;
-  margin: 16px auto;
-  border: 2px solid var(--color-light-blue);
-}
-
-.main-reg {
+.input-fields-container {
+  gap: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  width: 100%;
-  max-width: 422px;
-  min-height: 200px;
-  margin: 0 auto;
+  width: 422px;
 }
 
-.main-reg .form-field {
+.input-fields-container>div {
   width: 100%;
-}
-
-.field-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
 }
 
 .input-icon-container {
@@ -77,79 +59,40 @@
   align-items: center;
   border-bottom: 1px solid var(--color-grey-light);
   justify-content: space-around;
+  margin-bottom: 3px;
   padding: 12px 21px;
 }
 
+.input-icon-container img {
+  width: 24px;
+  height: 24px;
+}
+
 .input-icon-container input {
+  font-size: 19px;
   flex: 1;
   border: none;
   outline: none;
   background: transparent;
-  font-size: 1rem;
 }
 
-.input-icon-container img {
-  margin-left: 12px;
+.input-icon-container input::placeholder {
+  color: var(--color-grey-light);
+  opacity: 0.8;
 }
 
-.btn-container {
+.legal-footer {
   display: flex;
-  gap: 35px;
-  padding-top: 32px;
-  align-items: center;
   justify-content: center;
-  width: 100%;
-}
-
-.btn-container .btn-no-icon,
-.btn-container .btn-secondary {
-  white-space: nowrap;
-  padding: 12px 20px;
-  font-size: 21px;
-}
-
-.foot-container {
-  display: flex;
-  flex-direction: row;
   gap: 16px;
-  justify-content: space-between;
-}
-
-.foot-container a {
-  color: #42526e;
-  font-size: 16px;
-}
-
-@media (max-width: 480px) {
-  .foot-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .foot-container a {
-    font-size: 14px;
-  }
-}
-
-/* Login-Header in der neuen Struktur */
-.login-header {
+  bottom: 20px;
   position: absolute;
-  top: 67px;
-  right: 86px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 20px;
-}
-
-.login-header-text {
-  margin: 0;
-  color: #42526e;
   font-size: 16px;
 }
 
-/* Footer-Styling wird bereits durch .footContainer abgedeckt */
+footer a {
+  color: var(--color-light-blue);
+}
 
 .loader {
   position: fixed;
@@ -162,7 +105,6 @@
   align-items: center;
   z-index: 1000;
   pointer-events: none;
-
   animation-delay: 2s;
 }
 

@@ -48,7 +48,7 @@ if (document.readyState === 'loading') {
 
 function Loadingscreen() {
   // Check if user is returning from registration page
-
+init();
   const skipAnimation = sessionStorage.getItem("skipAnimation");
 
   if (skipAnimation === "true") {

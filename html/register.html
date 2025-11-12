@@ -3,10 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/logIn.css" />
     <link rel="stylesheet" href="../css/register.css" />
     <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/buttons.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Sign Up</title>
   </head>
 
@@ -27,20 +32,20 @@
             />
           </a>
 
-          <div>
+          <div class="form-content">
             <div class="head-reg">
               <span>Sign up</span>
               <div class="separator"></div>
             </div>
             <div class="main-reg">
-              <div>
-                <div class="field-container">
-                  <div id="field-name" class="input-icon-container">
+              <div class="input-fields-container">
+                <div class="fieldContainer">
+                  <div id="fieldName" class="input-icon-container">
                     <input
                       id="in-name"
                       type="text"
                       placeholder="Name"
-                      oninput="setBorderColor('field-name',true)"
+                      oninput="restInputField('fieldName','usernameError')"
                       onblur="isUserExistByName(this.value)"
                       required
                     />
@@ -55,7 +60,7 @@
                       type="email"
                       placeholder="E-Mail"
                       required
-                      oninput="setBorderColor('field-email',true)"
+                      oninput="restInputField('fieldEmail','emailError')"
                       onblur="isUserExistByEmail(this.value)"
                       disabled
                     />
@@ -70,8 +75,8 @@
                       type="text"
                       disabled
                       placeholder="Password"
+                      onblur="onPasswordBlur()"
                       oninput="onPasswordInput(this)"
-                      onblur="onPasswordBlur(this.value)"
                     />
                     <img
                       id="password-icon"
@@ -124,7 +129,7 @@
         </form>
       </main>
       <footer>
-        <div class="foot-container">
+        <div class="footer-container">
           <p>
             <a href="/html/datenschutz.html">Privacy Policy</a>
           </p>
