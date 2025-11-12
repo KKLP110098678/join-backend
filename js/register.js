@@ -1,3 +1,13 @@
+const CONFIG = {
+  routes: {
+    login: "../html/login.html", // Default login redirect path
+  },
+};
+
+const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
+
+async function handleRegisterUser(event) {
+  event.preventDefault();
 const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
 
 /**
@@ -60,22 +70,10 @@ async function handleRegisterUser() {
   }
 }
 
-/**
- * Validates the username input field in the registration form.
- *
- * This function checks if the username field is empty.
- * If it's empty, an error message is displayed using `handleErrorSet`.
- * Otherwise, the input is considered valid.
- *
- * @function checkInputName
- * @returns {boolean} Returns `true` if the username is valid, otherwise `false`.
- *
- * @see handleErrorSet - Displays an error message and updates the input field state.
- */
-
-function checkInputName() {
-  const inName = document.getElementById("inName").value.trim();
-  if (inName === "") {
+async function isUserExistByName(inName) {
+  if (!inName || !inName.trim()) return false;
+  const exists = await isUserNameTaken(inName);
+  if (exists) {
     handleErrorSet(
       "inEmail",
       "fieldName",
@@ -108,14 +106,23 @@ function checkInputName() {
  */
 
 async function isUserExistByName(inName) {
-  if (!inName || !inName.trim()) return false;
+  if (!inName || !inName.trim()) {
+    handleErrorSet(
+      "in-email",
+      "field-name",
+      "username-error",
+      false,
+      "Username cannot be empty"
+    );
+    return false;
+  }
   try {
     const exists = await isUserNameTaken(inName);
     if (exists) {
       handleErrorSet(
-        "inEmail",
-        "fieldName",
-        "usernameError",
+        "in-email",
+        "field-name",
+        "username-error",
         false,
         "Username already exists!"
       );
@@ -178,6 +185,26 @@ function checkInputEmail() {
  * @see handleErrorSet - Displays or clears error messages for the email field.
  */
 
+/**
+ * Checks asynchronously whether an email already exists in the database or user list.
+ *
+ * This function first validates the provided email format using `validateEmailFormat`.
+ * If the format is valid, it checks if the email is already in use through `isUserEmailTaken`.
+ * Displays an appropriate error message via `handleErrorSet` if the email exists.
+ * Otherwise, assigns the email to `newUser.nuEmail` and clears any previous error.
+ *
+ * @async
+ * @function isUserExistByEmail
+ * @param {string} inEmail - The email address to validate and check for existence.
+ * @returns {Promise<boolean>} Resolves to `true` if the email is valid and not taken, otherwise `false`.
+ *
+ * @throws {Error} Returns `false` in case of any unexpected error during validation or lookup.
+ *
+ * @see validateEmailFormat - Validates that the email follows a proper format.
+ * @see isUserEmailTaken - Checks if an email already exists in storage or database.
+ * @see handleErrorSet - Displays or clears error messages for the email field.
+ */
+
 async function isUserExistByEmail(inEmail) {
   if (!inEmail || !inEmail.trim()) return false;
   try {
@@ -187,18 +214,26 @@ async function isUserExistByEmail(inEmail) {
     const exists = await isUserEmailTaken(inEmail);
     if (exists) {
       handleErrorSet(
-        "inPassword",
-        "fieldEmail",
-        "emailError",
+        "in-password",
+        "field-email",
+        "email-error",
         false,
         "E-Mail already exists!"
       );
       return false;
     }
     newUser.nuEmail = inEmail;
-    handleErrorSet("inPassword", "fieldEmail", "emailError", true);
+    handleErrorSet("in-password", "field-email", "email-error", true);
     return true;
   } catch (error) {
+    console.error("Error validating email:", error);
+    handleErrorSet(
+      "in-password",
+      "field-email",
+      "email-error",
+      false,
+      "Error validating email. Please try again."
+    );
     return false;
   }
 }
@@ -217,12 +252,14 @@ async function isUserExistByEmail(inEmail) {
  * @see handleErrorSet - Displays an error message when the email format is invalid.
  */
 function validateEmailFormat(inEmail) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // RFC 5322 compliant email regex that handles most valid email formats
+  const emailRegex =
+    /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
   if (!emailRegex.test(inEmail)) {
     handleErrorSet(
-      "inPassword",
-      "fieldEmail",
-      "emailError",
+      "in-password",
+      "field-email",
+      "email-error",
       false,
       "Please enter a valid E-Mail!"
     );
@@ -354,9 +391,10 @@ function toggleErrorMessage(elementId, isValid, message = "") {
   if (isValid) {
     el.classList.add("d-none");
     el.textContent = "";
+    el.innerHTML = "";
   } else {
     el.classList.remove("d-none");
-    if (/<[a-z][\s\S]*>/i.test(message)) {
+    if (elementId === "password-tooltip") {
       el.innerHTML = message;
     } else {
       el.textContent = message;
@@ -398,6 +436,20 @@ function toggleNextElement(eleID, status) {
  *
  * @returns {void} This function does not return a value.
  */
+function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
+  const overlay = document.getElementById("success-overlay");
+  if (!overlay) {
+    console.error("Success overlay not found");
+    window.location.href = redirectPath;
+    return;
+  }
+  overlay.classList.remove("d-none");
+
+  setTimeout(function () {
+    window.location.href = redirectPath;
+  }, 2000);
+}
+
 function removeBorderColor(inID) {
   const feldInput = document.getElementById(inID);
   feldInput.classList.remove("validInput", "invalidInput");
@@ -419,49 +471,15 @@ function removeBorderColor(inID) {
  */
 function setBorderColor(inID, status) {
   const feldInput = document.getElementById(inID);
-  feldInput.classList.remove("validInput", "invalidInput");
+  if (!feldInput) {
+    console.warn(`setBorderColor: element with id "${inID}" not found.`);
+    return;
+  }
+
+  feldInput.classList.remove("valid-input", "invalid-input");
   if (status) {
-    feldInput.classList.add("validInput");
+    feldInput.classList.add("valid-input");
   } else {
     feldInput.classList.add("invalidInput");
   }
-}
-
-/**
- * Resets an input field's validation state and clears its associated error message.
- *
- * This function sets the input field's border to a valid state and hides any error message
- * associated with it.
- *
- * @function restInputField
- * @param {string} idField - The ID of the input field to reset.
- * @param {string} idMsgError - The ID of the error message element to clear.
- *
- * @returns {void} This function does not return a value.
- *
- * @see setBorderColor - Updates the input field's border style.
- * @see toggleErrorMessage - Hides or clears the error message.
- */
-function restInputField(idField, idMsgError) {
-  setBorderColor(idField, true);
-  toggleErrorMessage(idMsgError, true, "");
-}
-
-/**
- * Displays a success overlay and redirects the user to the login page after a short delay.
- *
- * This function shows an overlay element with the ID "successOverlay" by removing the "d-none" class.
- * After 2 seconds, it automatically redirects the user to the login page.
- *
- * @function showSuccessAndRedirect
- *
- * @returns {void} This function does not return a value.
- */
-function showSuccessAndRedirect() {
-  const overlay = document.getElementById("successOverlay");
-  overlay.classList.remove("d-none");
-
-  setTimeout(() => {
-    window.location.href = "../html/login.html";
-  }, 2000);
-}
+}}

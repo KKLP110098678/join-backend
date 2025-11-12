@@ -97,22 +97,22 @@ a {
   margin: 0 auto;
 }
 
-.fieldContainer {
+.field-container {
   display: flex;
   flex-direction: column;
 }
 
-.validInput {
+.valid-input {
   border-bottom: 1px solid var(--color-light-blue);
 
 }
 
-.invalidInput {
+.invalid-input {
   border-bottom: 1px solid var(--color-red);
 }
 
-#confirmPasswordIcon,
-#passwordIcon {
+#confirm-password-icon,
+#password-icon {
   cursor: pointer;
 }
 
@@ -148,7 +148,7 @@ a {
 
 }
 
-#btnSignup {
+#btn-signup {
   white-space: nowrap;
   padding: 12px 20px;
   font-size: 24px;

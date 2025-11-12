@@ -109,7 +109,7 @@ footer a {
 }
 
 .loader::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -168,7 +168,7 @@ footer a {
   }
 
   100% {
-    top: 78px;
+    top: 80px;
     left: 78px;
     width: 100px;
     height: 122px;
@@ -203,4 +203,16 @@ footer a {
   100% {
     opacity: 1;
   }
+}
+
+/* Error message styling */
+#error-message {
+  color: #ff3d00;
+  margin-top: 10px;
+  display: none;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
 }

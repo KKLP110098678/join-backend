@@ -71,7 +71,7 @@
           fill="white" />
       </svg>
     </div>
-    <form id="add-contact-form" class="d-flex" onsubmit="addContact(event)">
+    <form id="add-contact-form" onsubmit="addContact(event)">
       <div class="input-icon-container">
         <input type="text" id="add-contact-name" placeholder="Name" required />
         <img src="/assets/icon/sign/person.svg" alt="name" class="overlay-image" />
@@ -85,7 +85,7 @@
         <img src="/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
       </div>
       <div class="form-buttons">
-        <button type="button" class="btn-secondary-with-icon" onclick="toggleAddContactMenu()">Cancel
+        <button type="button" class="btn-secondary-with-icon" onclick="closeAllMenus()">Cancel
           <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M7.00081 6.50008L12.2438 11.7431M1.75781 11.7431L7.00081 6.50008L1.75781 11.7431ZM12.2438 1.25708L6.99981 6.50008L12.2438 1.25708ZM6.99981 6.50008L1.75781 1.25708L6.99981 6.50008Z"
@@ -113,8 +113,9 @@
           fill="white" />
       </svg>
     </div>
-    <form class="d-flex" id="edit-contact-form"></form>
+    <form id="edit-contact-form"></form>
   </div>
+  <script src="/js/script.js"></script>
   <script src="/js/contact.js"></script>
   <script src="/js/overlay-toggler.js"></script>
 </body>
