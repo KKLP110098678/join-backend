@@ -14,7 +14,7 @@
 function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
     objToFind.email = inEmail;
-    handleErrorSet("inPassword", "fieldEmail", "emailError", true);
+    handleErrorSet("inPassword", "field-email", "emailError", true);
     return true;
   }
 }
@@ -114,7 +114,7 @@ function checkCardinal() {
   if (objToFind.email === "") {
     handleErrorSet(
       "inPassword",
-      "fieldEmail",
+      "field-email",
       "emailError",
       false,
       "Please enter a valid E-Mail!"
@@ -148,7 +148,7 @@ function checkCardinal() {
  */
 function handleWrongCardinal() {
   const message = "Check your email and password. Please try again.";
-  setBorderColor("fieldEmail", false);
+  setBorderColor("field-email", false);
   setBorderColor("fieldPassword", false);
   toggleErrorMessage("passwordTooltip", false, message);
 }

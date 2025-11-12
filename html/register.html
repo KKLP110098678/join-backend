@@ -44,27 +44,27 @@
             <div class="main-reg">
               <div class="input-fields-container">
                 <div class="field-container">
-                  <div id="fieldName" class="input-icon-container">
+                  <div id="field-name" class="input-icon-container">
                     <input
-                      id="inName"
+                      id="in-name"
                       type="text"
                       placeholder="Name"
-                      oninput="restInputField('fieldName','usernameError')"
+                      oninput="restInputField('field-name','username-error')"
                       onblur="isUserExistByName(this.value)"
                       required
                     />
                     <img src="../assets/icon/sign/person.svg" alt="name" />
                   </div>
-                  <small id="usernameError" class="d-none msg-error"></small>
+                  <small id="username-error" class="d-none msg-error"></small>
                 </div>
                 <div class="field-container">
-                  <div id="fieldEmail" class="input-icon-container">
+                  <div id="field-email" class="input-icon-container">
                     <input
                       id="inEmail"
                       type="email"
                       placeholder="E-Mail"
                       required
-                      oninput="restInputField('fieldEmail','emailError')"
+                      oninput="restInputField('field-email','emailError')"
                       onblur="isUserExistByEmail(this.value)"
                       disabled
                     />

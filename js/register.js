@@ -79,12 +79,12 @@ async function handleRegisterUser() {
  */
 
 function checkInputName() {
-  const inName = document.getElementById("inName").value.trim();
+  const inName = document.getElementById("in-name").value.trim();
   if (inName === "") {
     handleErrorSet(
       "inEmail",
-      "fieldName",
-      "usernameError",
+      "field-name",
+      "username-error",
       false,
       "Please enter a valid Username!"
     );
@@ -119,15 +119,15 @@ async function isUserExistByName(inName) {
     if (exists) {
       handleErrorSet(
         "inEmail",
-        "fieldName",
-        "usernameError",
+        "field-name",
+        "username-error",
         false,
         "Username already exists!"
       );
       return false;
     }
     newUser.nuName = inName;
-    handleErrorSet("inEmail", "fieldName", "usernameError", true);
+    handleErrorSet("inEmail", "field-name", "username-error", true);
     return true;
   } catch (error) {
     return false;
@@ -152,7 +152,7 @@ function checkInputEmail() {
   if (inEmail === "") {
     handleErrorSet(
       "inPassword",
-      "fieldEmail",
+      "field-email",
       "emailError",
       false,
       "Please enter a valid E-Mail!"
@@ -193,7 +193,7 @@ async function isUserExistByEmail(inEmail) {
     if (exists) {
       handleErrorSet(
         "inPassword",
-        "fieldEmail",
+        "field-email",
         "emailError",
         false,
         "E-Mail already exists!"
@@ -201,7 +201,7 @@ async function isUserExistByEmail(inEmail) {
       return false;
     }
     newUser.nuEmail = inEmail;
-    handleErrorSet("inPassword", "fieldEmail", "emailError", true);
+    handleErrorSet("inPassword", "field-email", "emailError", true);
     return true;
   } catch (error) {
     return false;
@@ -226,7 +226,7 @@ function validateEmailFormat(inEmail) {
   if (!emailRegex.test(inEmail)) {
     handleErrorSet(
       "inPassword",
-      "fieldEmail",
+      "field-email",
       "emailError",
       false,
       "Please enter a valid E-Mail!"
