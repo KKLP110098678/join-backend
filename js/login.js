@@ -165,7 +165,7 @@ function handleWrongCardinal() {
  */
 function toggleRememberMe() {
   const checkBox = document.getElementById("checkBox");
-  const checkBoxImage = document.getElementById("checkBoxImage");
+  const checkBoxImage = document.getElementById("checkBox-image");
 
   if (realPassword === "") return;
   if (checkBox.disabled) return;
@@ -190,7 +190,7 @@ function setRememberMe() {
   const chBox = document.getElementById("checkBox");
   chBox.checked = true;
   chBox.disabled = false;
-  const checkBoxImage = document.getElementById("checkBoxImage");
+  const checkBoxImage = document.getElementById("checkBox-image");
   checkBoxImage.src = "../assets/icon/sign/checked.svg";
 }
 

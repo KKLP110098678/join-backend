@@ -94,7 +94,7 @@
                 <div class="field-container">
                   <div id="field-password-confirm" class="input-icon-container">
                     <input
-                      id="inPasswordConfirm"
+                      id="in-password-confirm"
                       type="text"
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
@@ -102,20 +102,23 @@
                       disabled
                     />
                     <img
-                      id="confirmPasswordIcon"
+                      id="confirm-password-icon"
                       src="../assets/icon/sign/lock.svg"
                       alt="confirm password icon"
                       onclick="onClickConfirmPasswordIcon()"
                     />
                   </div>
-                  <small id="confirmPassword" class="d-none msg-error"></small>
+                  <small
+                    id="confirm-password-error"
+                    class="d-none msg-error"
+                  ></small>
                 </div>
               </div>
-              <div id="checkboxContainer">
+              <div>
                 <label class="custom-checkbox">
                   <input id="checkBox" type="checkbox" disabled />
                   <img
-                    id="checkBoxImage"
+                    id="checkBox-image"
                     src="../assets/icon/sign/unchacked.svg"
                     alt="checkbox image"
                     onclick="toggleCheckBox()"
@@ -127,7 +130,7 @@
                     >
                   </span>
                 </label>
-                <small id="checkBoxError" class="d-none msg-error"></small>
+                <small id="checkBox-error" class="d-none msg-error"></small>
               </div>
             </div>
             <div class="btn-container">

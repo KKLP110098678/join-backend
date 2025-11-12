@@ -39,7 +39,7 @@ let confirmVisible = false;
 function checkInputPassword() {
   if (newUser.nuPassword === "") {
     handleErrorSet(
-      "inPasswordConfirm",
+      "in-password-confirm",
       "field-password",
       "passwor-tooltip",
       false,
@@ -96,11 +96,16 @@ function onPasswordBlur() {
   const rules = checkPasswordRules(realPassword);
   if (isPasswordValid(rules)) {
     newUser.nuPassword = realPassword;
-    handleErrorSet("inPasswordConfirm", "in-password", "passwor-tooltip", true);
+    handleErrorSet(
+      "in-password-confirm",
+      "in-password",
+      "passwor-tooltip",
+      true
+    );
     removeBorderColor("field-password");
   } else {
     handleErrorSet(
-      "inPasswordConfirm",
+      "in-password-confirm",
       "in-password",
       "passwor-tooltip",
       false
@@ -166,7 +171,7 @@ function checkInputConfirmPassword() {
     handleErrorSet(
       "checkBox",
       "field-password-confirm",
-      "confirmPassword",
+      "confirm-password-error",
       false,
       "Please Enter a valid confirm Password."
     );
@@ -192,7 +197,7 @@ function checkInputConfirmPassword() {
  * @see updateConfirmIconByState - Updates the visibility icon for the confirmation password field.
  */
 function onInputConfirmPassword(input) {
-  restInputField("field-password-confirm", "confirmPassword");
+  restInputField("field-password-confirm", "confirm-password-error");
   const inConfirmWord = input.value;
   realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
@@ -212,7 +217,7 @@ function onInputConfirmPassword(input) {
  * @see updateConfirmIconByState - Updates the visibility icon for the confirmation password field.
  */
 function onClickConfirmPasswordIcon() {
-  const input = document.getElementById("inPasswordConfirm");
+  const input = document.getElementById("in-password-confirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
@@ -228,7 +233,7 @@ function onClickConfirmPasswordIcon() {
  * @returns {void} This function does not return a value.
  */
 function updateConfirmIconByState() {
-  const icon = document.getElementById("confirmPasswordIcon");
+  const icon = document.getElementById("confirm-password-icon");
   if (realConfirmPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
     confirmVisible = false;
@@ -257,14 +262,14 @@ function isPasswordMatching() {
     handleErrorSet(
       "checkBox",
       "field-password-confirm",
-      "confirmPassword",
+      "confirm-password-error",
       true
     );
   } else {
     handleErrorSet(
       "checkBox",
       "field-password-confirm",
-      "confirmPassword",
+      "confirm-password-error",
       false,
       "Your passwords don't match. Please try again."
     );
@@ -355,7 +360,7 @@ function validatePasswordTooltip(inPassword) {
   const rules = checkPasswordRules(inPassword);
   const msg = buildPasswordMessage(rules);
   handleErrorSet(
-    "inPasswordConfirm",
+    "in-password-confirm",
     "field-password",
     "passwor-tooltip",
     isPasswordValid(rules),

@@ -254,7 +254,7 @@ function checkAcceptTerms() {
     handleErrorSet(
       "btnSignup",
       "checkBox",
-      "checkBoxError",
+      "checkBox-error",
       false,
       "Please accept the Privacy policy"
     );
@@ -268,7 +268,7 @@ function checkAcceptTerms() {
  * Toggles the state of the terms acceptance checkbox and updates its visual indicator.
  *
  * This function switches the `checked` state of the checkbox with id "checkBox"
- * and updates the associated image "checkBoxImage" to reflect the current state.
+ * and updates the associated image "checkBox-image" to reflect the current state.
  * It also triggers `handleErrorSet` to show or clear error messages depending on whether
  * the user has accepted the privacy policy.
  *
@@ -280,20 +280,20 @@ function checkAcceptTerms() {
  */
 function toggleCheckBox() {
   const checkBox = document.getElementById("checkBox");
-  const checkBoxImage = document.getElementById("checkBoxImage");
+  const checkBoxImage = document.getElementById("checkBox-image");
   if (checkBox.disabled) return;
   checkBox.checked = !checkBox.checked;
   if (checkBox.checked) {
     checkBox.checked = false;
     checkBoxImage.src = "../assets/icon/sign/checked.svg";
-    handleErrorSet("btnSignup", "checkBox", "checkBoxError", true);
+    handleErrorSet("btnSignup", "checkBox", "checkBox-error", true);
   } else {
     checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
     checkBox.checked = true;
     handleErrorSet(
       "btnSignup",
       "checkBox",
-      "checkBoxError",
+      "checkBox-error",
       false,
       "Please accept the Privacy policy"
     );
