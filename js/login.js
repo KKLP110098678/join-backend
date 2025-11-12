@@ -79,7 +79,7 @@ function passwordInput(input) {
  * @see findUserByCardinal - Searches for the user in the database/storage.
  * @see updateCurrentUser - Updates the current user state and optionally stores them in localStorage.
  * @see handleWrongCardinal - Handles the case when the login credentials are incorrect.
- * @see toggleRememberMe - Toggles the "Remember Me" checkbox state.
+ * @see removeRememberMe - remove the "Remember Me" checkbox state.
  */
 async function handelLogIn() {
   if (checkCardinal()) {
@@ -90,7 +90,7 @@ async function handelLogIn() {
       window.location.href = "../html/summary.html";
     } else {
       handleWrongCardinal();
-      toggleRememberMe();
+      removeRememberMe();
     }
   }
 }
@@ -175,6 +175,29 @@ function toggleRememberMe() {
   checkBoxImage.src = rememberMe
     ? "../assets/icon/sign/checked.svg"
     : "../assets/icon/sign/unchacked.svg";
+}
+
+/**
+ * Removes the "Remember Me" selection by unchecking the checkbox and updating its visual state.
+ * 
+ * @function removeRememberMe
+ * @description
+ * This function resets the "Remember Me" feature by setting the `rememberMe` variable to `false`, 
+ * unchecking the corresponding checkbox, and updating the checkbox image to the unchecked icon.
+ * It also includes safeguards to prevent execution if the password is empty or the checkbox is disabled.
+ *
+ * @returns {void} This function does not return a value.
+ */
+function removeRememberMe() {
+  const checkBox = document.getElementById("checkbox");
+  const checkBoxImage = document.getElementById("checkBox-image");
+
+  if (realPassword === "") return;
+  if (checkBox.disabled) return;
+  rememberMe = false;
+
+  checkBox.checked = rememberMe;
+  checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
 }
 
 /**
