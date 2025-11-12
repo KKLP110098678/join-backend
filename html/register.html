@@ -26,7 +26,7 @@
         <form class="register-form" onsubmit="handleRegisterUser(event)">
           <a class="back-button-link" href="./login.html" title="back">
             <img
-              class="back-button signup-back-button"
+              class="back-button singup-back-button"
               alt="backImg"
               src="../assets/icon/sign/back.svg"
             />
@@ -39,10 +39,10 @@
             </div>
             <div class="main-reg">
               <div class="input-fields-container">
-                <div class="fieldContainer">
+                <div class="field-container">
                   <div id="fieldName" class="input-icon-container">
                     <input
-                      id="in-name"
+                      id="inName"
                       type="text"
                       placeholder="Name"
                       oninput="restInputField('fieldName','usernameError')"
@@ -51,12 +51,12 @@
                     />
                     <img src="../assets/icon/sign/person.svg" alt="name" />
                   </div>
-                  <small id="username-error" class="d-none msg-error"></small>
+                  <small id="usernameError" class="d-none msg-error"></small>
                 </div>
                 <div class="field-container">
-                  <div id="field-email" class="input-icon-container">
+                  <div id="fieldEmail" class="input-icon-container">
                     <input
-                      id="in-email"
+                      id="inEmail"
                       type="email"
                       placeholder="E-Mail"
                       required
@@ -66,12 +66,12 @@
                     />
                     <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
                   </div>
-                  <small id="email-error" class="d-none msg-error"></small>
+                  <small id="emailError" class="d-none msg-error"></small>
                 </div>
                 <div class="field-container">
-                  <div id="field-password" class="input-icon-container">
+                  <div id="fieldPassword" class="input-icon-container">
                     <input
-                      id="in-password"
+                      id="inPassword"
                       type="text"
                       disabled
                       placeholder="Password"
@@ -79,18 +79,18 @@
                       oninput="onPasswordInput(this)"
                     />
                     <img
-                      id="password-icon"
+                      id="passwordIcon"
                       src="../assets/icon/sign/lock.svg"
                       alt="password icon"
                       onclick="onPasswordIconClick()"
                     />
                   </div>
-                  <small id="password-tooltip" class="d-none msg-error"></small>
+                  <small id="passwordTooltip" class="d-none msg-error"></small>
                 </div>
                 <div class="field-container">
-                  <div id="field-password-confirm" class="input-icon-container">
+                  <div id="fieldPasswordConfirm" class="input-icon-container">
                     <input
-                      id="in-password-confirm"
+                      id="inPasswordConfirm"
                       type="text"
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
@@ -98,18 +98,24 @@
                       disabled
                     />
                     <img
-                      id="confirm-password-icon"
+                      id="confirmPasswordIcon"
                       src="../assets/icon/sign/lock.svg"
                       alt="confirm password icon"
                       onclick="onClickConfirmPasswordIcon()"
                     />
                   </div>
-                  <small id="confirm-password" class="d-none msg-error"></small>
+                  <small id="confirmPassword" class="d-none msg-error"></small>
                 </div>
               </div>
-              <div id="checkbox-container">
-                <label class="custom-checkbox" onclick="toggleCheckBox(event)">
-                  <input id="privacy-checkbox" type="checkbox" disabled />
+              <div id="checkboxContainer">
+                <label class="custom-checkbox">
+                  <input id="checkBox" type="checkbox" disabled />
+                  <img
+                    id="checkBoxImage"
+                    src="../assets/icon/sign/unchacked.svg"
+                    alt="checkbox image"
+                    onclick="toggleCheckBox()"
+                  />
                   <span>
                     I accept the
                     <span class="color-dark-blue"
@@ -117,11 +123,16 @@
                     >
                   </span>
                 </label>
-                <small id="checkbox-error" class="d-none msg-error"></small>
+                <small id="checkBoxError" class="d-none msg-error"></small>
               </div>
             </div>
             <div class="btn-container">
-              <button id="btn-signup" class="btn-no-icon" type="submit" disabled>
+              <button
+                id="btnSignup"
+                class="btn-no-icon"
+                type="button"
+                onclick="handleRegisterUser()"
+              >
                 Sign up
               </button>
             </div>
@@ -139,15 +150,15 @@
         </div>
       </footer>
     </div>
-    <div id="success-overlay" class="ol-end d-none">
+    <div id="successOverlay" class="ol-end d-none">
       <div class="ol-end-content">
         <p>You Signed Up successfully</p>
       </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="../scrDB/dbConfig.js"></script>
-    <script src="../scrDB/userDB.js"></script>
+    <script src="../scrDB/dbconfig.js"></script>
+    <script src="../scrDB/userdb.js"></script>
     <script src="../js/register.js"></script>
     <script src="../js/password.js"></script>
   </body>

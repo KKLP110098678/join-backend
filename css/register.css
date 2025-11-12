@@ -102,17 +102,17 @@ a {
   flex-direction: column;
 }
 
-.valid-input {
+.validInput {
   border-bottom: 1px solid var(--color-light-blue);
 
 }
 
-.invalid-input {
+.invalidInput {
   border-bottom: 1px solid var(--color-red);
 }
 
-#confirm-password-icon,
-#password-icon {
+#confirmPasswordIcon,
+#passwordIcon {
   cursor: pointer;
 }
 
@@ -148,7 +148,7 @@ a {
 
 }
 
-#btn-signup {
+#btnSignup {
   white-space: nowrap;
   padding: 12px 20px;
   font-size: 24px;

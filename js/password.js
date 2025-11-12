@@ -134,12 +134,12 @@ function onPasswordIconClick() {
  * @returns {void} This function does not return a value.
  */
 function toggleVisibilityIcon() {
-  const icon = document.getElementById("password-icon");
+  const icon = document.getElementById("passwordIcon");
   if (realPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
-    passwordVisible = false;
+    passeordVisible = false;
   } else {
-    icon.src = passwordVisible
+    icon.src = passeordVisible
       ? "../assets/icon/sign/visibility.svg"
       : "../assets/icon/sign/visibility_off.svg";
   }
@@ -224,7 +224,7 @@ function onClickConfirmPasswordIcon() {
  * @returns {void} This function does not return a value.
  */
 function updateConfirmIconByState() {
-  const icon = document.getElementById("confirm-password-icon");
+  const icon = document.getElementById("confirmPasswordIcon");
   if (realConfirmPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
     confirmVisible = false;
@@ -342,10 +342,9 @@ function checkPasswordRules(password) {
  * @see setBorderColor - Updates the input field border style based on validation.
  */
 function validatePasswordTooltip(inPassword) {
+  toggleVisibilityIcon();
   const rules = checkPasswordRules(inPassword);
   const msg = buildPasswordMessage(rules);
-  const isValid = isPasswordValid(rules);
-  
   handleErrorSet(
     "inPasswordConfirm",
     "fieldPassword",
@@ -394,12 +393,15 @@ function isPasswordValid(rules) {
  * @returns {string} HTML string representing the password validation message.
  */
 function buildPasswordMessage(rules) {
-  return`<span class="${rules.minLength ? "valid" : "invalid"}">
+  let message = "";
+  message += `<span class="${rules.minLength ? "valid" : "invalid"}">
                 At least 8 characters
-              </span><br>
-<span class="${rules.hasLower ? "valid" : "invalid"}">
+              </span><br>`;
+  message += `<span class="${rules.hasLower ? "valid" : "invalid"}">
                 At least one lowercase letter
-              </span><br><span class="${rules.hasNumber ? "valid" : "invalid"}">
+              </span><br>`;
+  message += `<span class="${rules.hasNumber ? "valid" : "invalid"}">
                 At least one number
               </span><br>`;
+  return message;
 }
