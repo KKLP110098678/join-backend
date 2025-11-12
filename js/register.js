@@ -67,77 +67,13 @@ async function handleRegisterUser() {
     showSuccessAndRedirect();
   } catch (error) {
     console.error("Error registering user:", error);
-    const errorOverlay = document.getElementById("errorMessage");
-    if (errorOverlay) {
-      errorOverlay.textContent = "Registration failed. Please try again.";
-      errorOverlay.classList.remove("d-none");
-    }
   }
 }
 
-/**
- * Validates the username input field in the registration form.
- *
- * This function checks if the username field is empty.
- * If it's empty, an error message is displayed using `handleErrorSet`.
- * Otherwise, the input is considered valid.
- *
- * @function checkInputName
- * @returns {boolean} Returns `true` if the username is valid, otherwise `false`.
- *
- * @see handleErrorSet - Displays an error message and updates the input field state.
- */
-
-function checkInputName() {
-  const inName = document.getElementById("inName").value.trim();
-  if (inName === "") {
-    handleErrorSet(
-      "inEmail",
-      "fieldName",
-      "usernameError",
-      false,
-      "Please enter a valid Username!"
-    );
-    return false;
-  } else {
-    return true;
-  }
-}
-
-/**
- * Checks asynchronously whether a username already exists in the database or user list.
- *
- * This function trims and validates the provided username, then calls `isUserNameTaken`
- * to verify if it's already in use. If the username exists, an error message is displayed
- * using `handleErrorSet`. If it's available, the username is assigned to `newUser.nuName`.
- *
- * @async
- * @function isUserExistByName
- * @param {string} inName - The username input to validate and check for existence.
- * @returns {Promise<boolean>} Resolves to `true` if the username is available, otherwise `false`.
- *
- * @throws {Error} Returns `false` in case of any error during the check.
- *
- * @see isUserNameTaken - Checks if a username already exists in storage or database.
- * @see handleErrorSet - Displays or clears an error message for the username field.
- */
-
-/**
- * Validates the username input field in the registration form.
- *
- * This function checks if the username field is empty.
- * If it's empty, an error message is displayed using `handleErrorSet`.
- * Otherwise, the input is considered valid.
- *
- * @function checkInputName
- * @returns {boolean} Returns `true` if the username is valid, otherwise `false`.
- *
- * @see handleErrorSet - Displays an error message and updates the input field state.
- */
-
-function checkInputName() {
-  const inName = document.getElementById("inName").value.trim();
-  if (inName === "") {
+async function isUserExistByName(inName) {
+  if (!inName || !inName.trim()) return false;
+  const exists = await isUserNameTaken(inName);
+  if (exists) {
     handleErrorSet(
       "inEmail",
       "fieldName",
@@ -544,84 +480,6 @@ function setBorderColor(inID, status) {
   if (status) {
     feldInput.classList.add("valid-input");
   } else {
-    feldInput.classList.add("invalid-input");
+    feldInput.classList.add("invalidInput");
   }
-}
-
-/**
- * Resets an input field's validation state and clears its associated error message.
- *
- * This function sets the input field's border to a valid state and hides any error message
- * associated with it.
- *
- * @function restInputField
- * @param {string} idField - The ID of the input field to reset.
- * @param {string} idMsgError - The ID of the error message element to clear.
- *
- * @returns {void} This function does not return a value.
- *
- * @see setBorderColor - Updates the input field's border style.
- * @see toggleErrorMessage - Hides or clears the error message.
- */
-function restInputField(idField, idMsgError) {
-  setBorderColor(idField, true);
-  toggleErrorMessage(idMsgError, true, "");
-}
-
-/**
- * Displays a success overlay and redirects the user to the login page after a short delay.
- *
- * This function shows an overlay element with the ID "successOverlay" by removing the "d-none" class.
- * After 2 seconds, it automatically redirects the user to the login page.
- *
- * @function showSuccessAndRedirect
- *
- * @returns {void} This function does not return a value.
- */
-function showSuccessAndRedirect() {
-  const overlay = document.getElementById("successOverlay");
-  overlay.classList.remove("d-none");
-
-  setTimeout(() => {
-    window.location.href = "../html/login.html";
-  }, 2000);
-}
-
-/**
- * Resets an input field's validation state and clears its associated error message.
- *
- * This function sets the input field's border to a valid state and hides any error message
- * associated with it.
- *
- * @function restInputField
- * @param {string} idField - The ID of the input field to reset.
- * @param {string} idMsgError - The ID of the error message element to clear.
- *
- * @returns {void} This function does not return a value.
- *
- * @see setBorderColor - Updates the input field's border style.
- * @see toggleErrorMessage - Hides or clears the error message.
- */
-function restInputField(idField, idMsgError) {
-  setBorderColor(idField, true);
-  toggleErrorMessage(idMsgError, true, "");
-}
-
-/**
- * Displays a success overlay and redirects the user to the login page after a short delay.
- *
- * This function shows an overlay element with the ID "successOverlay" by removing the "d-none" class.
- * After 2 seconds, it automatically redirects the user to the login page.
- *
- * @function showSuccessAndRedirect
- *
- * @returns {void} This function does not return a value.
- */
-function showSuccessAndRedirect() {
-  const overlay = document.getElementById("successOverlay");
-  overlay.classList.remove("d-none");
-
-  setTimeout(() => {
-    window.location.href = "../html/login.html";
-  }, 2000);
 }}

@@ -40,11 +40,11 @@ function logout() {
 }
 
 // Initialize session check on page load
-if (document.readyState === 'loading') {
+/* if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initProtectedPage);
 } else {
   initProtectedPage();
-}
+} */
 
 function Loadingscreen() {
   // Check if user is returning from registration page
