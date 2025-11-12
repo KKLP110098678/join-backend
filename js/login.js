@@ -35,7 +35,7 @@ function getEmail(inEmail) {
 function getPassword(inPassword) {
   realPassword = updateVarible(inPassword, realPassword);
   objToFind.password = realPassword;
-  handleErrorSet("checkBox", "field-password", "passwor-tooltip", true);
+  handleErrorSet("checkbox", "field-password", "passwor-tooltip", true);
 }
 
 /**
@@ -164,7 +164,7 @@ function handleWrongCardinal() {
  * @returns {void} This function does not return a value.
  */
 function toggleRememberMe() {
-  const checkBox = document.getElementById("checkBox");
+  const checkBox = document.getElementById("checkbox");
   const checkBoxImage = document.getElementById("checkBox-image");
 
   if (realPassword === "") return;
@@ -187,7 +187,7 @@ function toggleRememberMe() {
  * @returns {void} This function does not return a value.
  */
 function setRememberMe() {
-  const chBox = document.getElementById("checkBox");
+  const chBox = document.getElementById("checkbox");
   chBox.checked = true;
   chBox.disabled = false;
   const checkBoxImage = document.getElementById("checkBox-image");

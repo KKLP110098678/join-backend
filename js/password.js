@@ -169,7 +169,7 @@ function toggleVisibilityIcon() {
 function checkInputConfirmPassword() {
   if (realConfirmPassword === "") {
     handleErrorSet(
-      "checkBox",
+      "checkbox",
       "field-password-confirm",
       "confirm-password-error",
       false,
@@ -260,14 +260,14 @@ function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
     handleErrorSet(
-      "checkBox",
+      "checkbox",
       "field-password-confirm",
       "confirm-password-error",
       true
     );
   } else {
     handleErrorSet(
-      "checkBox",
+      "checkbox",
       "field-password-confirm",
       "confirm-password-error",
       false,

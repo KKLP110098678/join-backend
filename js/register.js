@@ -239,7 +239,7 @@ function validateEmailFormat(inEmail) {
 /**
  * Checks whether the user has accepted the privacy policy or terms.
  *
- * This function verifies if the checkbox with id "checkBox" is checked.
+ * This function verifies if the checkbox with id "checkbox" is checked.
  * If the user hasn't accepted the terms, it displays an error message using `handleErrorSet`.
  * Otherwise, the acceptance is considered valid.
  *
@@ -249,11 +249,11 @@ function validateEmailFormat(inEmail) {
  * @see handleErrorSet - Displays an error message if the terms are not accepted.
  */
 function checkAcceptTerms() {
-  const checkBox = document.getElementById("checkBox");
+  const checkBox = document.getElementById("checkbox");
   if (!checkBox.checked) {
     handleErrorSet(
       "btn-signup",
-      "checkBox",
+      "checkbox",
       "checkBox-error",
       false,
       "Please accept the Privacy policy"
@@ -267,7 +267,7 @@ function checkAcceptTerms() {
 /**
  * Toggles the state of the terms acceptance checkbox and updates its visual indicator.
  *
- * This function switches the `checked` state of the checkbox with id "checkBox"
+ * This function switches the `checked` state of the checkbox with id "checkbox"
  * and updates the associated image "checkBox-image" to reflect the current state.
  * It also triggers `handleErrorSet` to show or clear error messages depending on whether
  * the user has accepted the privacy policy.
@@ -279,20 +279,20 @@ function checkAcceptTerms() {
  * @see handleErrorSet - Updates or clears the error message based on the checkbox state.
  */
 function toggleCheckBox() {
-  const checkBox = document.getElementById("checkBox");
+  const checkBox = document.getElementById("checkbox");
   const checkBoxImage = document.getElementById("checkBox-image");
   if (checkBox.disabled) return;
   checkBox.checked = !checkBox.checked;
   if (checkBox.checked) {
     checkBox.checked = false;
     checkBoxImage.src = "../assets/icon/sign/checked.svg";
-    handleErrorSet("btn-signup", "checkBox", "checkBox-error", true);
+    handleErrorSet("btn-signup", "checkbox", "checkBox-error", true);
   } else {
     checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
     checkBox.checked = true;
     handleErrorSet(
       "btn-signup",
-      "checkBox",
+      "checkbox",
       "checkBox-error",
       false,
       "Please accept the Privacy policy"
