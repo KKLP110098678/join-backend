@@ -1,4 +1,3 @@
-
 /**
  * Stores the actual password entered by the user.
  * Used for validation and toggling visibility in the password input field.
@@ -28,8 +27,8 @@ let confirmVisible = false;
 /**
  * Validates the password input field in the registration form.
  *
- * This function checks if the password stored in `newUser.nuPassword` is empty.  
- * If the password is empty, it displays an error message using `handleErrorSet`.  
+ * This function checks if the password stored in `newUser.nuPassword` is empty.
+ * If the password is empty, it displays an error message using `handleErrorSet`.
  * Otherwise, the password is considered valid.
  *
  * @function checkInputPassword
@@ -41,7 +40,7 @@ function checkInputPassword() {
   if (newUser.nuPassword === "") {
     handleErrorSet(
       "inPasswordConfirm",
-      "fieldPassword",
+      "field-password",
       "passwordTooltip",
       false,
       "Please enter a valid Password!"
@@ -56,7 +55,7 @@ function checkInputPassword() {
  * Handles password input events in the registration form.
  *
  * This function updates the internal `realPassword` variable with the current input value,
- * manages password visibility using `hedienWord`, updates the visibility icon, 
+ * manages password visibility using `hedienWord`, updates the visibility icon,
  * sets the input field border style, and validates the password tooltip.
  *
  * @function onPasswordInput
@@ -74,7 +73,7 @@ function onPasswordInput(input) {
   realPassword = updateVarible(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
-  setBorderColor("fieldPassword", false);
+  setBorderColor("field-password", false);
   validatePasswordTooltip(realPassword);
 }
 
@@ -94,13 +93,18 @@ function onPasswordInput(input) {
  * @see removeBorderColor - Clears the validation border styling for the password field.
  */
 function onPasswordBlur() {
-  const rules = checkPasswordRules(realPassword)
+  const rules = checkPasswordRules(realPassword);
   if (isPasswordValid(rules)) {
     newUser.nuPassword = realPassword;
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", true);
-    removeBorderColor("fieldPassword");
+    handleErrorSet("inPasswordConfirm", "in-password", "passwordTooltip", true);
+    removeBorderColor("field-password");
   } else {
-    handleErrorSet("inPasswordConfirm", "inPassword", "passwordTooltip", false);
+    handleErrorSet(
+      "inPasswordConfirm",
+      "in-password",
+      "passwordTooltip",
+      false
+    );
   }
 }
 
@@ -117,7 +121,7 @@ function onPasswordBlur() {
  * @see toggleVisibilityIcon - Updates the visibility icon for the password field.
  */
 function onPasswordIconClick() {
-  const input = document.getElementById("inPassword");
+  const input = document.getElementById("in-password");
   if (realPassword.length === 0) return;
   passeordVisible = !passeordVisible;
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
@@ -148,8 +152,8 @@ function toggleVisibilityIcon() {
 /**
  * Validates the confirmation password input field in the registration form.
  *
- * This function checks if `realConfirmPassword` is empty.  
- * If empty, it displays an error message using `handleErrorSet`.  
+ * This function checks if `realConfirmPassword` is empty.
+ * If empty, it displays an error message using `handleErrorSet`.
  * Otherwise, the confirmation password is considered valid.
  *
  * @function checkInputConfirmPassword
@@ -238,8 +242,8 @@ function updateConfirmIconByState() {
 /**
  * Checks if the confirmation password matches the main password.
  *
- * This function compares `realPassword` and `realConfirmPassword`.  
- * If they match, it clears any error message for the confirmation field.  
+ * This function compares `realPassword` and `realConfirmPassword`.
+ * If they match, it clears any error message for the confirmation field.
  * If they do not match, it sets an error message using `handleErrorSet`.
  *
  * @function isPasswordMatching
@@ -347,13 +351,13 @@ function validatePasswordTooltip(inPassword) {
   const msg = buildPasswordMessage(rules);
   handleErrorSet(
     "inPasswordConfirm",
-    "fieldPassword",
+    "field-password",
     "passwordTooltip",
     isPasswordValid(rules),
     msg
   );
   if (isPasswordValid(rules)) {
-    setBorderColor("fieldPassword", true);
+    setBorderColor("field-password", true);
   }
 }
 

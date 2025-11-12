@@ -14,7 +14,7 @@
 function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
     objToFind.email = inEmail;
-    handleErrorSet("inPassword", "field-email", "emailError", true);
+    handleErrorSet("in-password", "field-email", "email-error", true);
     return true;
   }
 }
@@ -35,7 +35,7 @@ function getEmail(inEmail) {
 function getPassword(inPassword) {
   realPassword = updateVarible(inPassword, realPassword);
   objToFind.password = realPassword;
-  handleErrorSet("checkBox", "fieldPassword", "passwordTooltip", true);
+  handleErrorSet("checkBox", "field-password", "passwordTooltip", true);
 }
 
 /**
@@ -59,7 +59,7 @@ function passwordInput(input) {
   realPassword = updateVarible(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
-  restInputField("fieldPassword", "passwordTooltip");
+  restInputField("field-password", "passwordTooltip");
   objToFind.password = realPassword;
 }
 
@@ -113,9 +113,9 @@ async function handelLogIn() {
 function checkCardinal() {
   if (objToFind.email === "") {
     handleErrorSet(
-      "inPassword",
+      "in-password",
       "field-email",
-      "emailError",
+      "email-error",
       false,
       "Please enter a valid E-Mail!"
     );
@@ -126,7 +126,7 @@ function checkCardinal() {
       false,
       "Please enter a valid password!"
     );
-    setBorderColor("fieldPassword", false);
+    setBorderColor("field-password", false);
     return false;
   } else {
     toggleErrorMessage("passwordTooltip", true, "");
@@ -149,7 +149,7 @@ function checkCardinal() {
 function handleWrongCardinal() {
   const message = "Check your email and password. Please try again.";
   setBorderColor("field-email", false);
-  setBorderColor("fieldPassword", false);
+  setBorderColor("field-password", false);
   toggleErrorMessage("passwordTooltip", false, message);
 }
 

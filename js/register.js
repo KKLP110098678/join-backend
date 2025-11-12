@@ -82,7 +82,7 @@ function checkInputName() {
   const inName = document.getElementById("in-name").value.trim();
   if (inName === "") {
     handleErrorSet(
-      "inEmail",
+      "in-email",
       "field-name",
       "username-error",
       false,
@@ -118,7 +118,7 @@ async function isUserExistByName(inName) {
     const exists = await isUserNameTaken(inName);
     if (exists) {
       handleErrorSet(
-        "inEmail",
+        "in-email",
         "field-name",
         "username-error",
         false,
@@ -127,7 +127,7 @@ async function isUserExistByName(inName) {
       return false;
     }
     newUser.nuName = inName;
-    handleErrorSet("inEmail", "field-name", "username-error", true);
+    handleErrorSet("in-email", "field-name", "username-error", true);
     return true;
   } catch (error) {
     return false;
@@ -148,12 +148,12 @@ async function isUserExistByName(inName) {
  */
 
 function checkInputEmail() {
-  const inEmail = document.getElementById("inEmail").value.trim();
+  const inEmail = document.getElementById("in-email").value.trim();
   if (inEmail === "") {
     handleErrorSet(
-      "inPassword",
+      "in-password",
       "field-email",
-      "emailError",
+      "email-error",
       false,
       "Please enter a valid E-Mail!"
     );
@@ -192,16 +192,16 @@ async function isUserExistByEmail(inEmail) {
     const exists = await isUserEmailTaken(inEmail);
     if (exists) {
       handleErrorSet(
-        "inPassword",
+        "in-password",
         "field-email",
-        "emailError",
+        "email-error",
         false,
         "E-Mail already exists!"
       );
       return false;
     }
     newUser.nuEmail = inEmail;
-    handleErrorSet("inPassword", "field-email", "emailError", true);
+    handleErrorSet("in-password", "field-email", "email-error", true);
     return true;
   } catch (error) {
     return false;
@@ -225,9 +225,9 @@ function validateEmailFormat(inEmail) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(inEmail)) {
     handleErrorSet(
-      "inPassword",
+      "in-password",
       "field-email",
-      "emailError",
+      "email-error",
       false,
       "Please enter a valid E-Mail!"
     );

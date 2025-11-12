@@ -1,7 +1,5 @@
-
 let rememberMe = false;
 let objToFind = { email: "", password: "" };
-
 
 function init() {
   const savedUser = getUserFromLS();
@@ -16,12 +14,12 @@ function init() {
 }
 
 function setSavedEmail(emailFromLS) {
-  const inEmail = document.getElementById("inEmail");
+  const inEmail = document.getElementById("in-email");
   inEmail.value = emailFromLS;
 }
 
 function setSavedPassword(passwordFromLS) {
-  const iputPass = document.getElementById("inPassword");
+  const iputPass = document.getElementById("in-password");
   realPassword = passwordFromLS;
   toggleVisibilityIcon();
   hedienWord(iputPass, false, realPassword);
@@ -106,7 +104,7 @@ function updateCurrentUser(dbUser, rememberMe) {
   } else {
     removeUserFromLS();
   }
-  const currentUser ={};
+  const currentUser = {};
   currentUser.currentName = dbUser.name;
   currentUser.currentEmail = dbUser.email;
   currentUser.currentPassword = dbUser.password;
