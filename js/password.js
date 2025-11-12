@@ -41,7 +41,7 @@ function checkInputPassword() {
     handleErrorSet(
       "inPasswordConfirm",
       "field-password",
-      "passwordTooltip",
+      "passwor-tooltip",
       false,
       "Please enter a valid Password!"
     );
@@ -96,13 +96,13 @@ function onPasswordBlur() {
   const rules = checkPasswordRules(realPassword);
   if (isPasswordValid(rules)) {
     newUser.nuPassword = realPassword;
-    handleErrorSet("inPasswordConfirm", "in-password", "passwordTooltip", true);
+    handleErrorSet("inPasswordConfirm", "in-password", "passwor-tooltip", true);
     removeBorderColor("field-password");
   } else {
     handleErrorSet(
       "inPasswordConfirm",
       "in-password",
-      "passwordTooltip",
+      "passwor-tooltip",
       false
     );
   }
@@ -138,7 +138,7 @@ function onPasswordIconClick() {
  * @returns {void} This function does not return a value.
  */
 function toggleVisibilityIcon() {
-  const icon = document.getElementById("passwordIcon");
+  const icon = document.getElementById("password-icon");
   if (realPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
     passeordVisible = false;
@@ -165,7 +165,7 @@ function checkInputConfirmPassword() {
   if (realConfirmPassword === "") {
     handleErrorSet(
       "checkBox",
-      "fieldPasswordConfirm",
+      "field-password-confirm",
       "confirmPassword",
       false,
       "Please Enter a valid confirm Password."
@@ -192,7 +192,7 @@ function checkInputConfirmPassword() {
  * @see updateConfirmIconByState - Updates the visibility icon for the confirmation password field.
  */
 function onInputConfirmPassword(input) {
-  restInputField("fieldPasswordConfirm", "confirmPassword");
+  restInputField("field-password-confirm", "confirmPassword");
   const inConfirmWord = input.value;
   realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
@@ -254,11 +254,16 @@ function updateConfirmIconByState() {
 function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
-    handleErrorSet("checkBox", "fieldPasswordConfirm", "confirmPassword", true);
+    handleErrorSet(
+      "checkBox",
+      "field-password-confirm",
+      "confirmPassword",
+      true
+    );
   } else {
     handleErrorSet(
       "checkBox",
-      "fieldPasswordConfirm",
+      "field-password-confirm",
       "confirmPassword",
       false,
       "Your passwords don't match. Please try again."
@@ -352,7 +357,7 @@ function validatePasswordTooltip(inPassword) {
   handleErrorSet(
     "inPasswordConfirm",
     "field-password",
-    "passwordTooltip",
+    "passwor-tooltip",
     isPasswordValid(rules),
     msg
   );
