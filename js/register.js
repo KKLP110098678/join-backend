@@ -252,7 +252,7 @@ function checkAcceptTerms() {
   const checkBox = document.getElementById("checkBox");
   if (!checkBox.checked) {
     handleErrorSet(
-      "btnSignup",
+      "btn-signup",
       "checkBox",
       "checkBox-error",
       false,
@@ -286,12 +286,12 @@ function toggleCheckBox() {
   if (checkBox.checked) {
     checkBox.checked = false;
     checkBoxImage.src = "../assets/icon/sign/checked.svg";
-    handleErrorSet("btnSignup", "checkBox", "checkBox-error", true);
+    handleErrorSet("btn-signup", "checkBox", "checkBox-error", true);
   } else {
     checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
     checkBox.checked = true;
     handleErrorSet(
-      "btnSignup",
+      "btn-signup",
       "checkBox",
       "checkBox-error",
       false,
@@ -455,7 +455,7 @@ function restInputField(idField, idMsgError) {
 /**
  * Displays a success overlay and redirects the user to the login page after a short delay.
  *
- * This function shows an overlay element with the ID "successOverlay" by removing the "d-none" class.
+ * This function shows an overlay element with the ID "success-overlay" by removing the "d-none" class.
  * After 2 seconds, it automatically redirects the user to the login page.
  *
  * @function showSuccessAndRedirect
@@ -463,7 +463,7 @@ function restInputField(idField, idMsgError) {
  * @returns {void} This function does not return a value.
  */
 function showSuccessAndRedirect() {
-  const overlay = document.getElementById("successOverlay");
+  const overlay = document.getElementById("success-overlay");
   overlay.classList.remove("d-none");
 
   setTimeout(() => {
