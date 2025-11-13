@@ -122,6 +122,11 @@ function setGuestSession() {
   sessionStorage.setItem("isGuest", "true");
 }
 
+function loginAsGuest() {
+  setGuestSession();
+  window.location.href = "./summary.html";
+}
+
 /**
  * Initializes the login form with event listeners
  * Binds the submit event to the loginUser function

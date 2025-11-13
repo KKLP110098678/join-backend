@@ -6,6 +6,14 @@ const CONFIG = {
 
 const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
 
+// Validation state tracker
+const validationState = {
+  name: false,
+  email: false,
+  password: false,
+  confirmPassword: false
+};
+
 async function handleRegisterUser(event) {
   event.preventDefault();
   try {
@@ -32,6 +40,8 @@ async function isUserExistByName(inName) {
       false,
       "Username cannot be empty"
     );
+    validationState.name = false;
+    checkAllFieldsValid();
     return false;
   }
   const exists = await isUserNameTaken(inName);
@@ -43,18 +53,28 @@ async function isUserExistByName(inName) {
       false,
       "Username already exists!"
     );
+    validationState.name = false;
+    checkAllFieldsValid();
     return false;
   } else {
     newUser.nuName = inName;
     handleErrorSet("in-email", "field-name", "username-error", true);
+    validationState.name = true;
+    checkAllFieldsValid();
     return true;
   }
 }
 
 async function isUserExistByEmail(inEmail) {
-  if (!inEmail || !inEmail.trim()) return false;
+  if (!inEmail || !inEmail.trim()) {
+    validationState.email = false;
+    checkAllFieldsValid();
+    return false;
+  }
   try {
     if (!validateEmailFormat(inEmail)) {
+      validationState.email = false;
+      checkAllFieldsValid();
       return false;
     }
     const exists = await isUserEmailTaken(inEmail);
@@ -66,10 +86,14 @@ async function isUserExistByEmail(inEmail) {
         false,
         "E-Mail already exists!"
       );
+      validationState.email = false;
+      checkAllFieldsValid();
       return false;
     }
     newUser.nuEmail = inEmail;
     handleErrorSet("in-password", "field-email", "email-error", true);
+    validationState.email = true;
+    checkAllFieldsValid();
     return true;
   } catch (error) {
     console.error("Error validating email:", error);
@@ -80,6 +104,8 @@ async function isUserExistByEmail(inEmail) {
       false,
       "Error validating email. Please try again."
     );
+    validationState.email = false;
+    checkAllFieldsValid();
     return false;
   }
 }
@@ -186,5 +212,20 @@ function setBorderColor(inID, status) {
     feldInput.classList.add("valid-input");
   } else {
     feldInput.classList.add("invalid-input");
+  }
+}
+
+/**
+ * Checks if all input fields are valid and enables the checkbox if so
+ */
+function checkAllFieldsValid() {
+  const allValid = validationState.name && 
+                   validationState.email && 
+                   validationState.password && 
+                   validationState.confirmPassword;
+  
+  const checkBox = document.getElementById("privacy-checkbox");
+  if (checkBox) {
+    checkBox.disabled = !allValid;
   }
 }

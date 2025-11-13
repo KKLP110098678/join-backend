@@ -60,6 +60,10 @@ function isPasswordMatching() {
       "confirm-password",
       true
     );
+    if (typeof validationState !== 'undefined') {
+      validationState.confirmPassword = true;
+      checkAllFieldsValid();
+    }
   } else {
     handleErrorSet(
       "privacy-checkbox",
@@ -68,6 +72,10 @@ function isPasswordMatching() {
       false,
       "Passwords do not match!"
     );
+    if (typeof validationState !== 'undefined') {
+      validationState.confirmPassword = false;
+      checkAllFieldsValid();
+    }
   }
 }
 function updateVariable(inWord, realVar) {
@@ -100,8 +108,16 @@ function onPasswordBlur(inPassword) {
     // Save the real password to newUser object
     newUser.nuPassword = realPassword;
     handleErrorSet("in-password-confirm", "in-password", "password-tooltip", true);
+    if (typeof validationState !== 'undefined') {
+      validationState.password = true;
+      checkAllFieldsValid();
+    }
   } else {
     handleErrorSet("in-password-confirm", "in-password", "password-tooltip", false);
+    if (typeof validationState !== 'undefined') {
+      validationState.password = false;
+      checkAllFieldsValid();
+    }
   }
 }
 
@@ -117,6 +133,12 @@ function validatePasswordTooltip(inPassword) {
     isValid,
     isValid ? "" : msg
   );
+  
+  // Update validation state
+  if (typeof validationState !== 'undefined') {
+    validationState.password = isValid;
+    checkAllFieldsValid();
+  }
   
   // Set HTML content directly for password tooltip
   if (!isValid) {
