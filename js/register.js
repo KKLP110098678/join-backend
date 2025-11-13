@@ -129,7 +129,6 @@ function handleErrorSet(
   } else {
     setBorderColor(fieldId, false);
   }
-  toggleNextElement(nextFieldId, status);
   toggleErrorMessage(errorId, status, errorMessage);
 }
 
@@ -148,17 +147,6 @@ function toggleErrorMessage(elementId, isValid, message = "") {
     } else {
       el.textContent = message;
     }
-  }
-}
-
-function toggleNextElement(eleID, status) {
-  let el = document.getElementById(eleID);
-  if (!el) return;
-  if (status) {
-    el.disabled = false;
-    el.focus();
-  } else {
-    el.disabled = true;
   }
 }
 

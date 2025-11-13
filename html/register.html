@@ -56,9 +56,8 @@
                       type="email"
                       placeholder="E-Mail"
                       required
-                      oninput="setBorderColor('field-email',true)"
+                      oninput="restInputField('field-email','email-error')"
                       onblur="isUserExistByEmail(this.value)"
-                      disabled
                     />
                     <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
                   </div>
@@ -69,7 +68,6 @@
                     <input
                       id="in-password"
                       type="text"
-                      disabled
                       placeholder="Password"
                       oninput="onPasswordInput(this)"
                       onblur="onPasswordBlur(this.value)"
@@ -91,7 +89,6 @@
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
                       onblur="isPasswordMatching()"
-                      disabled
                     />
                     <img
                       id="confirm-password-icon"
