@@ -111,8 +111,8 @@ a {
   border-bottom: 1px solid var(--color-red);
 }
 
-#confirmPasswordIcon,
-#passwordIcon {
+#confirm-password-icon,
+#password-icon {
   cursor: pointer;
 }
 
@@ -137,7 +137,7 @@ a {
 
 
 
-#checkBox:checked {
+#checkbox:checked {
   background-color: #4589ff;
 }
 
@@ -148,7 +148,7 @@ a {
 
 }
 
-#btnSignup {
+#btn-signup {
   white-space: nowrap;
   padding: 12px 20px;
   font-size: 24px;

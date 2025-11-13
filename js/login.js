@@ -165,7 +165,7 @@ function handleWrongCardinal() {
  */
 function toggleRememberMe() {
   const checkBox = document.getElementById("checkbox");
-  const checkBoxImage = document.getElementById("checkBox-image");
+  const checkBoxImage = document.getElementById("checkbox-image");
 
   if (realPassword === "") return;
   if (checkBox.disabled) return;
@@ -179,10 +179,10 @@ function toggleRememberMe() {
 
 /**
  * Removes the "Remember Me" selection by unchecking the checkbox and updating its visual state.
- * 
+ *
  * @function removeRememberMe
  * @description
- * This function resets the "Remember Me" feature by setting the `rememberMe` variable to `false`, 
+ * This function resets the "Remember Me" feature by setting the `rememberMe` variable to `false`,
  * unchecking the corresponding checkbox, and updating the checkbox image to the unchecked icon.
  * It also includes safeguards to prevent execution if the password is empty or the checkbox is disabled.
  *
@@ -190,7 +190,7 @@ function toggleRememberMe() {
  */
 function removeRememberMe() {
   const checkBox = document.getElementById("checkbox");
-  const checkBoxImage = document.getElementById("checkBox-image");
+  const checkBoxImage = document.getElementById("checkbox-image");
 
   if (realPassword === "") return;
   if (checkBox.disabled) return;
@@ -213,7 +213,7 @@ function setRememberMe() {
   const chBox = document.getElementById("checkbox");
   chBox.checked = true;
   chBox.disabled = false;
-  const checkBoxImage = document.getElementById("checkBox-image");
+  const checkBoxImage = document.getElementById("checkbox-image");
   checkBoxImage.src = "../assets/icon/sign/checked.svg";
 }
 
