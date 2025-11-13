@@ -102,12 +102,12 @@ a {
   flex-direction: column;
 }
 
-.validInput {
+.valid-input {
   border-bottom: 1px solid var(--color-light-blue);
 
 }
 
-.invalidInput {
+.invalid-input {
   border-bottom: 1px solid var(--color-red);
 }
 

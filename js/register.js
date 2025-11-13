@@ -395,7 +395,7 @@ function toggleNextElement(eleID, status) {
 /**
  * Removes validation border styles from the specified input element.
  *
- * This function removes the CSS classes "validInput" and "invalidInput"
+ * This function removes the CSS classes "valid-input" and "invalid-input"
  * from the element, effectively clearing any previous visual validation indicators.
  *
  * @function removeBorderColor
@@ -405,16 +405,16 @@ function toggleNextElement(eleID, status) {
  */
 function removeBorderColor(inID) {
   const feldInput = document.getElementById(inID);
-  feldInput.classList.remove("validInput", "invalidInput");
+  feldInput.classList.remove("valid-input", "invalid-input");
 }
 
 /**
  * Sets the validation border style on the specified input element.
  *
- * This function first removes any existing validation classes ("validInput" and "invalidInput"),
+ * This function first removes any existing validation classes ("valid-input" and "invalid-input"),
  * then applies the appropriate class based on the `status` parameter:
- * - If `status` is `true`, the "validInput" class is added.
- * - If `status` is `false`, the "invalidInput" class is added.
+ * - If `status` is `true`, the "valid-input" class is added.
+ * - If `status` is `false`, the "invalid-input" class is added.
  *
  * @function setBorderColor
  * @param {string} inID - The ID of the input element to apply border styles to.
@@ -424,11 +424,11 @@ function removeBorderColor(inID) {
  */
 function setBorderColor(inID, status) {
   const feldInput = document.getElementById(inID);
-  feldInput.classList.remove("validInput", "invalidInput");
+  feldInput.classList.remove("valid-input", "invalid-input");
   if (status) {
-    feldInput.classList.add("validInput");
+    feldInput.classList.add("valid-input");
   } else {
-    feldInput.classList.add("invalidInput");
+    feldInput.classList.add("invalid-input");
   }
 }
 
