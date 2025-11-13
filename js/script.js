@@ -37,6 +37,7 @@ function initProtectedPage() {
 function logout() {
   sessionStorage.clear();
   window.location.href = '/html/login.html';
+  sessionStorage.setItem('skipAnimation', 'true');
 }
 
 // Initialize session check on page load
