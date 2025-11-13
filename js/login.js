@@ -22,18 +22,18 @@ function getEmail(inEmail) {
 /**
  * Processes and updates the main password input.
  *
- * This function updates the internal `realPassword` variable using `updateVarible`,
+ * This function updates the internal `realPassword` variable using `updateVariable`,
  * stores it in `objToFind.password`, and clears any related error message.
  *
  * @function getPassword
  * @param {string} inPassword - The password input to process and store.
  * @returns {void} This function does not return a value.
  *
- * @see updateVarible - Updates the stored password variable based on input changes.
+ * @see updateVariable - Updates the stored password variable based on input changes.
  * @see handleErrorSet - Clears or sets error messages for the password field.
  */
 function getPassword(inPassword) {
-  realPassword = updateVarible(inPassword, realPassword);
+  realPassword = updateVariable(inPassword, realPassword);
   objToFind.password = realPassword;
   handleErrorSet("checkbox", "field-password", "passwor-tooltip", true);
 }
@@ -49,14 +49,14 @@ function getPassword(inPassword) {
  * @param {HTMLInputElement} input - The password input element being typed into.
  * @returns {void} This function does not return a value.
  *
- * @see updateVarible - Updates the stored password variable based on input changes.
+ * @see updateVariable - Updates the stored password variable based on input changes.
  * @see hedienWord - Toggles masking of the password input.
  * @see toggleVisibilityIcon - Updates the password visibility icon.
  * @see restInputField - Resets the input field border and error message.
  */
 function passwordInput(input) {
   const inPassWord = input.value;
-  realPassword = updateVarible(inPassWord, realPassword);
+  realPassword = updateVariable(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   restInputField("field-password", "passwor-tooltip");

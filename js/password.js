@@ -62,7 +62,7 @@ function checkInputPassword() {
  * @param {HTMLInputElement} input - The password input element being typed into.
  * @returns {void} This function does not return a value.
  *
- * @see updateVarible - Updates the stored password variable.
+ * @see updateVariable - Updates the stored password variable.
  * @see hedienWord - Toggles masking of the password input.
  * @see toggleVisibilityIcon - Updates the password visibility icon.
  * @see setBorderColor - Sets the input field's border style.
@@ -70,7 +70,7 @@ function checkInputPassword() {
  */
 function onPasswordInput(input) {
   const inPassWord = input.value;
-  realPassword = updateVarible(inPassWord, realPassword);
+  realPassword = updateVariable(inPassWord, realPassword);
   passeordVisible = hedienWord(input, passeordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("field-password", false);
@@ -192,14 +192,14 @@ function checkInputConfirmPassword() {
  * @returns {void} This function does not return a value.
  *
  * @see restInputField - Resets the input field border and error message.
- * @see updateVarible - Updates the stored confirmation password variable.
+ * @see updateVariable - Updates the stored confirmation password variable.
  * @see hedienWord - Toggles masking of the confirmation password input.
  * @see updateConfirmIconByState - Updates the visibility icon for the confirmation password field.
  */
 function onInputConfirmPassword(input) {
   restInputField("field-password-confirm", "confirm-password-error");
   const inConfirmWord = input.value;
-  realConfirmPassword = updateVarible(inConfirmWord, realConfirmPassword);
+  realConfirmPassword = updateVariable(inConfirmWord, realConfirmPassword);
   confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
 }
@@ -283,12 +283,12 @@ function isPasswordMatching() {
  * - If characters were added, it appends the new portion to `realVar`.
  * - If characters were removed, it slices `realVar` to match the new length.
  *
- * @function updateVarible
+ * @function updateVariable
  * @param {string} inWord - The current input string.
  * @param {string} realVar - The stored string variable to update.
  * @returns {string} The updated string reflecting the changes from `inWord`.
  */
-function updateVarible(inWord, realVar) {
+function updateVariable(inWord, realVar) {
   if (inWord.length > realVar.length) {
     const added = inWord.slice(realVar.length);
     realVar += added;
