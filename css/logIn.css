@@ -101,13 +101,6 @@
   width: 100%;
 }
 
-.btn-container .btn-no-icon,
-.btn-container .btn-secondary {
-  white-space: nowrap;
-  padding: 12px 20px;
-  font-size: 21px;
-}
-
 .foot-container {
   display: flex;
   flex-direction: row;

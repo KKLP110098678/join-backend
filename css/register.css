@@ -158,16 +158,6 @@ a {
   padding-top: 10px;
 }
 
-#btn-signup {
-  display: block;
-  margin: 0 auto;
-  white-space: nowrap;
-  padding: 12px 20px;
-  font-size: 24px;
-  gap: 10px;
-}
-
-
 .msg-error {
   color: red;
   text-align: left;

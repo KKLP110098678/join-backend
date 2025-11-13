@@ -34,6 +34,7 @@
 }
 
 .btn-no-icon {
+  font-size: 23px;
   color: white;
   padding: 10px 35px;
   border-radius: 8px;
@@ -51,6 +52,7 @@
 }
 
 .btn-secondary {
+  font-size: 23px;
   background-color: white;
   border-radius: 8px;
   padding: 10px 35px;
