@@ -30,7 +30,6 @@ body {
     padding: 124px 23px 66px 23px;
 }
 
-
 .sidenav {
     flex-direction: column;
     gap: 10px;
@@ -43,4 +42,19 @@ a {
     text-align: left;
     flex-direction: column;
     gap: 15px;
+}
+
+.selected-link {
+    background-color: var(--color-light-blue);
+    padding: 8px;
+    border-radius: 10px;
+    width: 126px;
+    color: var(--color-font-white);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pad-8 {
+    padding: 8px;
+
 }
