@@ -288,7 +288,7 @@ function toggleCheckBox() {
     checkBoxImage.src = "../assets/icon/sign/checked.svg";
     handleErrorSet("btn-signup", "checkbox", "checkbox-error", true);
   } else {
-    checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
+    checkBoxImage.src = "../assets/icon/sign/unchecked.svg";
     checkBox.checked = true;
     handleErrorSet(
       "btn-signup",

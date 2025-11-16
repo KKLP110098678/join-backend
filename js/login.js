@@ -174,7 +174,7 @@ function toggleRememberMe() {
   checkBox.checked = rememberMe;
   checkBoxImage.src = rememberMe
     ? "../assets/icon/sign/checked.svg"
-    : "../assets/icon/sign/unchacked.svg";
+    : "../assets/icon/sign/unchecked.svg";
 }
 
 /**
@@ -197,7 +197,7 @@ function removeRememberMe() {
   rememberMe = false;
 
   checkBox.checked = rememberMe;
-  checkBoxImage.src = "../assets/icon/sign/unchacked.svg";
+  checkBoxImage.src = "../assets/icon/sign/unchecked.svg";
 }
 
 /**
