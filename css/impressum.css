@@ -58,3 +58,22 @@ a {
     padding: 8px;
 
 }
+
+.m-top-72 {
+    margin: 72px 0px;
+}
+
+h2 {
+    font-weight: 700;
+    color: var(--color-blue-hover);
+    margin: 35px 0px 10px 0px;
+}
+
+h3 {
+    color: var(--color-light-blue);
+    font-size: 19px;
+}
+
+ul {
+    margin-left: 32px;
+}
