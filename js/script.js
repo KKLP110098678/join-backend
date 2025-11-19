@@ -6,10 +6,10 @@
  * @returns {boolean} True if user is logged in, false otherwise
  */
 function checkSession() {
-  const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-  
-  if (!isLoggedIn || isLoggedIn !== 'true') {
-    window.location.href = '/html/login.html';
+  const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+  if (!isLoggedIn || isLoggedIn !== "true") {
+    window.location.href = "/html/login.html";
     return false;
   }
   return true;
@@ -21,10 +21,17 @@ function checkSession() {
  */
 function initProtectedPage() {
   const currentPage = window.location.pathname;
-  const protectedPages = ['/html/summary.html', '/html/add-task.html', '/html/board.html', '/html/contacts.html'];
-  
-  const isProtectedPage = protectedPages.some(page => currentPage.includes(page));
-  
+  const protectedPages = [
+    "/html/summary.html",
+    "/html/add-task.html",
+    "/html/board.html",
+    "/html/contacts.html",
+  ];
+
+  const isProtectedPage = protectedPages.some((page) =>
+    currentPage.includes(page)
+  );
+
   if (isProtectedPage) {
     checkSession();
   }
@@ -36,7 +43,7 @@ function initProtectedPage() {
  */
 function logout() {
   sessionStorage.clear();
-  window.location.href = '/html/login.html';
+  window.location.href = "/html/login.html";
 }
 
 // Initialize session check on page load
@@ -48,7 +55,9 @@ function logout() {
 
 function Loadingscreen() {
   // Check if user is returning from registration page
-init();
+  sessionStorage.setItem("isLoggedIn", "false");
+
+  init();
   const skipAnimation = sessionStorage.getItem("skipAnimation");
 
   if (skipAnimation === "true") {
@@ -85,7 +94,7 @@ init();
         let paths = logoElement.children;
         for (let i = 0; i < paths.length; i++) {
           let path = paths[i];
-          if (path.tagName.toLowerCase() === 'path') {
+          if (path.tagName.toLowerCase() === "path") {
             path.style.fill = "#4589FF";
             path.style.animation = "none";
           }
@@ -127,4 +136,3 @@ function getLoadingscreenDesktop() {
 
   `;
 }
-
