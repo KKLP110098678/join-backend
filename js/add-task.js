@@ -69,7 +69,6 @@ function toggleUserSelection(userName, event) {
   let checkbox = findUserCheckbox(userName);
   updateSelectedUsersArray(userName, checkbox.checked);
   updateDropdownPlaceholder();
-  console.log("funktion wird ausgeführt");
 }
 
 function findUserCheckbox(userName) {
