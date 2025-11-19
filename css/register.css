@@ -37,6 +37,15 @@ a {
   top: 60px;
   width: 37px;
   height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.back-button-link:hover {
+  background-color: #E3EEFF;
 }
 
 .register-form {
