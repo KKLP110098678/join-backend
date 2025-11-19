@@ -61,12 +61,7 @@ function Loadingscreen() {
     if (loader) {
       // Set transparent background (skip background animation)
       loader.style.background = "transparent";
-      // Generate logo HTML based on screen size
-      if (window.innerWidth <= 600) {
-        loader.innerHTML = getLoadingscreenMobile();
-      } else {
-        loader.innerHTML = getLoadingscreenDesktop();
-      }
+      loader.innerHTML = getLoadingscreen();
 
       // Position logo in final state immediately
       const logoElement = document.getElementById("loader-image-white");
