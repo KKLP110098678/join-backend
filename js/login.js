@@ -229,15 +229,20 @@ function setRememberMe() {
  */
 function setGuestSession() {
   sessionStorage.removeItem("currentUser");
-  const guestUser = {
-    userEmail: "guest@join.com",
-    userId: "guest",
-    userName: "Guest",
-    isLoggedIn: false,
-    isGuest: true,
-  };
+  // const guestUser = {
+  //   userEmail: "guest@join.com",
+  //   userId: "guest",
+  //   userName: "Guest",
+  //   isLoggedIn: false,
+  //   isGuest: true,
+  // };
 
-  sessionStorage.setItem("currentUser", JSON.stringify(guestUser));
+  // sessionStorage.setItem("currentUser", JSON.stringify(guestUser));
+  sessionStorage.setItem("userEmail", "guest@join.com");
+  sessionStorage.setItem("userId", "guest");
+  sessionStorage.setItem("userName", "Guest");
+  sessionStorage.setItem("isLoggedIn", "true");
+  sessionStorage.setItem("isGuest", "true");
 
   window.location.href = "../html/summary.html";
 }
