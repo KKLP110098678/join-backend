@@ -41,10 +41,10 @@ function createDropdownItemHTML(contact, index) {
   
   return `
     <div class="dropdown-item" onclick="toggleUserSelection('${contact.name}', event)">
-      <label class="d-flex dropdown-item-label" for="user-${index}">
+      <label class="d-flex dropdown-item-label custom-checkbox" for="user-${index}">
         <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
         ${contact.name}
-        <input type="checkbox" id="user-${index}" value="${contact.name}">
+        <input type="checkbox" class="checkbox-masked" id="user-${index}" value="${contact.name}">
       </label>
     </div>
   `;
