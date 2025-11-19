@@ -35,7 +35,7 @@ async function isUserNameTaken(userName) {
   }
 }
 
-async function isUserEmailTaken(inEmail) {
+async function isUserEmailTaken(inputEmail) {
   try {
     const usersRef = firebase.database().ref("users");
 
@@ -45,7 +45,7 @@ async function isUserEmailTaken(inEmail) {
     if (!users) return false;
 
     for (let key in users) {
-      if (users[key].email === inEmail) {
+      if (users[key].email === inputEmail) {
         return true;
       }
     }
