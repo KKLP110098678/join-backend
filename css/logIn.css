@@ -1,3 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+
+}
+
 /* Login-spezifische Anpassungen für die register-main-container Struktur */
 .register-main-container {
   display: flex;
@@ -5,19 +13,17 @@
   align-items: center;
   justify-content: space-around;
   background-color: #ffffff;
-  height: 100vh;
   height: 100dvh;
-  padding-top: 48px;
   margin: 0 auto;
-  padding: 2rem;
   gap: clamp(1.5rem, 3vh, 2.5rem);
 }
-
 .logo-header {
-  width: 100px;
-  margin-top: 1rem;
+  position: absolute;
+  width: 101px;
+  height: 122px;
+  top: 80px;
+  left: 77px;
 }
-
 .register-form {
   position: relative;
   display: flex;
@@ -220,8 +226,8 @@
 
   100% {
     top: 80px;
-    left: 78px;
-    width: 100px;
+    left: 77px;
+    width: 101px;
     height: 122px;
     transform: none;
   }

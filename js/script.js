@@ -71,9 +71,9 @@ function Loadingscreen() {
 
         // Position and style in final state
         logoElement.style.position = "absolute";
-        logoElement.style.top = "78px";
-        logoElement.style.left = "88px";
-        logoElement.style.width = "100px";
+        logoElement.style.top = "80px";
+        logoElement.style.left = "77px";
+        logoElement.style.width = "101px";
         logoElement.style.height = "122px";
         logoElement.style.transform = "none";
 
