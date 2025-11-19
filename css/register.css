@@ -109,51 +109,6 @@ a {
   cursor: pointer;
 }
 
-#checkbox-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
-  padding-bottom: 16px;
-
-}
-
-.custom-checkbox {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-}
-
-#privacy-checkbox {
-  content: "";
-  position: relative;
-  width: 24px;
-  height: 24px;
-}
-
-#privacy-checkbox::before {
-  content: "";
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/unchecked.svg);
-}
-
-#privacy-checkbox:checked::before {
-  content: "";
-  position: absolute;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/checked.svg);
-}
-
 .btn-container {
   padding-top: 10px;
 }
