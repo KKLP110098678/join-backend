@@ -8,8 +8,8 @@ function initStaticPages() {
   }
 }
 
-function renderLoginSidbar() {
-  emptySidebar = document.getElementById("sidebar-section");
+function renderLoginSidbar(seite) {
+  emptySidebar = document.getElementById("sidebar-nav");
   emptySidebar.innerHTML = "";
   emptySidebar.innerHTML = `
       <nav class="sidenav d-flex">
@@ -20,11 +20,6 @@ function renderLoginSidbar() {
           />Log In</a
         >
       </nav>
-      <div class="sidebar-footer d-flex">
-        <a href="/html/datenschutz.html" class="selected-link"
-          >Privacy Policy</a
-        >
-        <a href="/html/impressum.html" class="pad-8">Legal Notice</a>
-      </div>
+
   `;
 }
