@@ -20,6 +20,7 @@
  * await loginUser();
  */
 async function loginUser() {
+  sessionStorage.clear();
   const email = document.getElementById("email-input").value.trim();
   const password = document.getElementById("password-input").value;
   const errorMessage = document.getElementById("error-message");

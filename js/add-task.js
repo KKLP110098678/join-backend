@@ -154,18 +154,29 @@ function selectCategory(categoryName) {
 }
 
 /**
- * Generates a unique task ID
- * @returns {string} Unique task ID in format "task-X"
+ * Generates a unique task ID for guest users
+ * For logged-in users, Firebase will generate the ID automatically
+ * @returns {string} Unique task ID in format "task-X" for guests, or temporary ID for logged-in users
  */
 function generateTaskId() {
-  let maxId = 0;
-  for (let i = 0; i < tasks.length; i++) {
-    let taskIdNum = parseInt(tasks[i].id.split("-")[1]);
-    if (taskIdNum > maxId) {
-      maxId = taskIdNum;
+  const isGuest = sessionStorage.getItem("isGuest") === "true";
+  
+  if (isGuest) {
+    // Guest user: Generate sequential ID
+    let maxId = 0;
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].id.startsWith("task-")) {
+        let taskIdNum = parseInt(tasks[i].id.split("-")[1]);
+        if (taskIdNum > maxId) {
+          maxId = taskIdNum;
+        }
+      }
     }
+    return "task-" + (maxId + 1);
+  } else {
+    // Logged-in user: Return temporary ID (Firebase will replace it)
+    return "temp-" + Date.now();
   }
-  return "task-" + (maxId + 1);
 }
 
 /**
