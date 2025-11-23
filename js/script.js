@@ -61,12 +61,7 @@ function Loadingscreen() {
     if (loader) {
       // Set transparent background (skip background animation)
       loader.style.background = "transparent";
-      // Generate logo HTML based on screen size
-      if (window.innerWidth <= 600) {
-        loader.innerHTML = getLoadingscreenMobile();
-      } else {
-        loader.innerHTML = getLoadingscreenDesktop();
-      }
+      loader.innerHTML = getLoadingscreen();
 
       // Position logo in final state immediately
       const logoElement = document.getElementById("loader-image-white");
@@ -76,9 +71,9 @@ function Loadingscreen() {
 
         // Position and style in final state
         logoElement.style.position = "absolute";
-        logoElement.style.top = "78px";
-        logoElement.style.left = "88px";
-        logoElement.style.width = "100px";
+        logoElement.style.top = "80px";
+        logoElement.style.left = "77px";
+        logoElement.style.width = "101px";
         logoElement.style.height = "122px";
         logoElement.style.transform = "none";
 

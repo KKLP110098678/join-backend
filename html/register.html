@@ -21,7 +21,6 @@
         <form class="register-form" onsubmit="handleRegisterUser(event)">
           <a class="back-button-link" href="./login.html" title="back">
             <img
-              class="back-button signup-back-button"
               alt="backImg"
               src="../assets/icon/sign/back.svg"
               onclick="sessionStorage.setItem('skipAnimation', 'true');"
@@ -38,7 +37,7 @@
                 <div class="field-container">
                   <div id="field-name" class="input-icon-container">
                     <input
-                      id="in-name"
+                      id="input-name"
                       type="text"
                       placeholder="Name"
                       oninput="setBorderColor('field-name',true)"
@@ -52,7 +51,7 @@
                 <div class="field-container">
                   <div id="field-email" class="input-icon-container">
                     <input
-                      id="in-email"
+                      id="input-email"
                       type="email"
                       placeholder="E-Mail"
                       required
@@ -65,7 +64,7 @@
                 <div class="field-container">
                   <div id="field-password" class="input-icon-container">
                     <input
-                      id="in-password"
+                      id="input-password"
                       type="text"
                       placeholder="Password"
                       oninput="onPasswordInput(this)"
@@ -83,7 +82,7 @@
                 <div class="field-container">
                   <div id="field-password-confirm" class="input-icon-container">
                     <input
-                      id="in-password-confirm"
+                      id="input-password-confirm"
                       type="text"
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
@@ -99,9 +98,9 @@
                   <small id="confirm-password" class="d-none msg-error"></small>
                 </div>
               </div>
-              <div id="checkbox-container">
+              <div class="checkbox-container">
                 <label class="custom-checkbox" onclick="toggleCheckBox(event)">
-                  <input id="privacy-checkbox" type="checkbox" disabled />
+                  <input id="privacy-checkbox" class="checkbox-masked" type="checkbox" disabled />
                   <span>
                     I accept the
                     <span class="color-dark-blue"

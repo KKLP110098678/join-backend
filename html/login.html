@@ -11,20 +11,17 @@
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
 
-    <header>
-      <div class="logo-header">
-        <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
-      </div>
-      <div class="text-center login-header">
-        <p class="login-header-text">Not a Join user?</p>
-        <a
-          href="register.html"
-          class="btn-no-icon"
-          >Sign up</a
-        >
-      </div>
-    </header>
     <div class="register-main-container">
+      <header>
+        <div class="text-center login-header">
+          <p class="login-header-text">Not a Join user?</p>
+          <a
+            href="register.html"
+            class="btn-no-icon"
+            >Sign up</a
+          >
+        </div>
+      </header>
       <main>
         <form id="log-in-form" class="register-form" action="./summary.html">
           <div>
@@ -62,6 +59,15 @@
                 <div id="error-message"></div>
               </div>
             </div>
+            <div class="checkbox-container">
+                <label class="custom-checkbox">
+                  <input id="remember-me-checkbox" class="checkbox-masked" type="checkbox" disabled />
+                  <span>
+                    Remember me
+                  </span>
+                </label>
+                <small id="checkbox-error" class="d-none msg-error"></small>
+              </div>
             <div class="btn-container">
               <button class="btn-no-icon" type="submit">Log in</button>
               <button

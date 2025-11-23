@@ -4,7 +4,7 @@ const CONFIG = {
   },
 };
 
-const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
+const newUser = { name: "", email: "", password: "" };
 
 // Validation state tracker
 const validationState = {
@@ -18,8 +18,6 @@ async function handleRegisterUser(event) {
   event.preventDefault();
   try {
     await addNewUser(newUser);
-    console.log(newUser);
-
     showSuccessAndRedirect();
   } catch (error) {
     console.error("Error registering user:", error);
@@ -31,10 +29,9 @@ async function handleRegisterUser(event) {
   }
 }
 
-async function isUserExistByName(inName) {
-  if (!inName || !inName.trim()) {
+async function isUserExistByName(inputName) {
+  if (!inputName || !inputName.trim()) {
     handleErrorSet(
-      "in-email",
       "field-name",
       "username-error",
       false,
@@ -44,10 +41,9 @@ async function isUserExistByName(inName) {
     checkAllFieldsValid();
     return false;
   }
-  const exists = await isUserNameTaken(inName);
+  const exists = await isUserNameTaken(inputName);
   if (exists) {
     handleErrorSet(
-      "in-email",
       "field-name",
       "username-error",
       false,
@@ -57,30 +53,29 @@ async function isUserExistByName(inName) {
     checkAllFieldsValid();
     return false;
   } else {
-    newUser.nuName = inName;
-    handleErrorSet("in-email", "field-name", "username-error", true);
+    newUser.name = inputName;
+    handleErrorSet("field-name", "username-error", true);
     validationState.name = true;
     checkAllFieldsValid();
     return true;
   }
 }
 
-async function isUserExistByEmail(inEmail) {
-  if (!inEmail || !inEmail.trim()) {
+async function isUserExistByEmail(inputEmail) {
+  if (!inputEmail || !inputEmail.trim()) {
     validationState.email = false;
     checkAllFieldsValid();
     return false;
   }
   try {
-    if (!validateEmailFormat(inEmail)) {
+    if (!validateEmailFormat(inputEmail)) {
       validationState.email = false;
       checkAllFieldsValid();
       return false;
     }
-    const exists = await isUserEmailTaken(inEmail);
+    const exists = await isUserEmailTaken(inputEmail);
     if (exists) {
       handleErrorSet(
-        "in-password",
         "field-email",
         "email-error",
         false,
@@ -90,15 +85,14 @@ async function isUserExistByEmail(inEmail) {
       checkAllFieldsValid();
       return false;
     }
-    newUser.nuEmail = inEmail;
-    handleErrorSet("in-password", "field-email", "email-error", true);
+    newUser.email = inputEmail;
+    handleErrorSet("field-email", "email-error", true);
     validationState.email = true;
     checkAllFieldsValid();
     return true;
   } catch (error) {
     console.error("Error validating email:", error);
     handleErrorSet(
-      "in-password",
       "field-email",
       "email-error",
       false,
@@ -110,13 +104,12 @@ async function isUserExistByEmail(inEmail) {
   }
 }
 
-function validateEmailFormat(inEmail) {
+function validateEmailFormat(inputEmail) {
   // RFC 5322 compliant email regex that handles most valid email formats
   const emailRegex =
     /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/i;
-  if (!emailRegex.test(inEmail)) {
+  if (!emailRegex.test(inputEmail)) {
     handleErrorSet(
-      "in-password",
       "field-email",
       "email-error",
       false,
@@ -128,14 +121,14 @@ function validateEmailFormat(inEmail) {
 }
 
 function toggleCheckBox(event) {
-  let checkBox = document.getElementById("privacy-checkbox");
-  if (checkBox.disabled) {
+  let checkbox = document.getElementById("privacy-checkbox");
+  if (checkbox.disabled) {
     event.preventDefault();
     return;
   }
   setTimeout(function () {
     let signUpButton = document.getElementById("btn-signup");
-    if (checkBox.checked) {
+    if (checkbox.checked) {
       signUpButton.disabled = false;
     } else {
       signUpButton.disabled = true;
@@ -144,7 +137,6 @@ function toggleCheckBox(event) {
 }
 
 function handleErrorSet(
-  nextFieldId,
   fieldId,
   errorId,
   status,
@@ -190,28 +182,28 @@ function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
   }, 2000);
 }
 
-function removeBorderColor(inID) {
-  const feldInput = document.getElementById(inID);
-  if (!feldInput) {
-    console.warn(`removeBorderColor: element with id "${inID}" not found.`);
+function removeBorderColor(inputField) {
+  const fieldInput = document.getElementById(inputField);
+  if (!fieldInput) {
+    console.warn(`removeBorderColor: element with id "${inputField}" not found.`);
     return;
   }
-  feldInput.classList.remove("valid-input", "invalid-input");
+  fieldInput.classList.remove("valid-input", "invalid-input");
 }
 
-function setBorderColor(inID, status) {
-  const feldInput = document.getElementById(inID);
-  if (!feldInput) {
-    console.warn(`setBorderColor: element with id "${inID}" not found.`);
+function setBorderColor(inputField, status) {
+  const fieldInput = document.getElementById(inputField);
+  if (!fieldInput) {
+    console.warn(`setBorderColor: element with id "${inputField}" not found.`);
     return;
   }
 
-  feldInput.classList.remove("valid-input", "invalid-input");
+  fieldInput.classList.remove("valid-input", "invalid-input");
 
   if (status) {
-    feldInput.classList.add("valid-input");
+    fieldInput.classList.add("valid-input");
   } else {
-    feldInput.classList.add("invalid-input");
+    fieldInput.classList.add("invalid-input");
   }
 }
 
@@ -224,8 +216,8 @@ function checkAllFieldsValid() {
                    validationState.password && 
                    validationState.confirmPassword;
   
-  const checkBox = document.getElementById("privacy-checkbox");
-  if (checkBox) {
-    checkBox.disabled = !allValid;
+  const checkbox = document.getElementById("privacy-checkbox");
+  if (checkbox) {
+    checkbox.disabled = !allValid;
   }
 }

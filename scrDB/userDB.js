@@ -3,9 +3,9 @@ async function addNewUser(newUser) {
     const usersRef = firebase.database().ref("users");
     const newUserRef = usersRef.push();
     await newUserRef.set({
-      name: newUser.nuName,
-      email: newUser.nuEmail,
-      password: newUser.nuPassword,
+      name: newUser.name,
+      email: newUser.email,
+      password: newUser.password,
     });
     // return newUserRef; if i want to use it later
   } catch (error) {
@@ -35,7 +35,7 @@ async function isUserNameTaken(userName) {
   }
 }
 
-async function isUserEmailTaken(inEmail) {
+async function isUserEmailTaken(inputEmail) {
   try {
     const usersRef = firebase.database().ref("users");
 
@@ -45,7 +45,7 @@ async function isUserEmailTaken(inEmail) {
     if (!users) return false;
 
     for (let key in users) {
-      if (users[key].email === inEmail) {
+      if (users[key].email === inputEmail) {
         return true;
       }
     }

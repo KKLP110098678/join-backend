@@ -17,7 +17,7 @@ function toggleVisibilityIcon() {
 }
 
 function onPasswordIconClick() {
-  const input = document.getElementById("in-password");
+  const input = document.getElementById("input-password");
   if (realPassword.length === 0) return;
 
   passwordVisible = !passwordVisible;
@@ -38,14 +38,14 @@ function updateConfirmIconByState() {
 }
 
 function onInputConfirmPassword(input) {
-  const inConfirmWord = input.value;
-  realConfirmPassword = updateVariable(inConfirmWord, realConfirmPassword);
+  const inputConfirmWord = input.value;
+  realConfirmPassword = updateVariable(inputConfirmWord, realConfirmPassword);
   hideWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
 }
 
 function onClickConfirmPasswordIcon() {
-  const input = document.getElementById("in-password-confirm");
+  const input = document.getElementById("input-password-confirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
   hideWord(input, confirmVisible, realConfirmPassword);
@@ -55,7 +55,6 @@ function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
     handleErrorSet(
-      "privacy-checkbox",
       "field-password-confirm",
       "confirm-password",
       true
@@ -66,7 +65,6 @@ function isPasswordMatching() {
     }
   } else {
     handleErrorSet(
-      "privacy-checkbox",
       "field-password-confirm",
       "confirm-password",
       false,
@@ -78,25 +76,25 @@ function isPasswordMatching() {
     }
   }
 }
-function updateVariable(inWord, realVar) {
-  if (inWord.length > realVar.length) {
-    const added = inWord.slice(realVar.length);
+function updateVariable(inputWord, realVar) {
+  if (inputWord.length > realVar.length) {
+    const added = inputWord.slice(realVar.length);
     realVar += added;
-  } else if (inWord.length < realVar.length) {
-    realVar = realVar.slice(0, inWord.length);
+  } else if (inputWord.length < realVar.length) {
+    realVar = realVar.slice(0, inputWord.length);
   }
   return realVar;
 }
 
-function hideWord(inWord, isVisible, realWord) {
+function hideWord(inputWord, isVisible, realWord) {
   if (realWord.length === 0) return isVisible;
-  inWord.value = isVisible ? realWord : "*".repeat(realWord.length);
+  inputWord.value = isVisible ? realWord : "*".repeat(realWord.length);
   return isVisible;
 }
 
 function onPasswordInput(input) {
-  const inPassWord = input.value;
-  realPassword = updateVariable(inPassWord, realPassword);
+  const inputPassword = input.value;
+  realPassword = updateVariable(inputPassword, realPassword);
   hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("field-password", false);
@@ -106,14 +104,14 @@ function onPasswordInput(input) {
 function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
     // Save the real password to newUser object
-    newUser.nuPassword = realPassword;
-    handleErrorSet("in-password-confirm", "in-password", "password-tooltip", true);
+    newUser.password = realPassword;
+    handleErrorSet("field-password", "password-tooltip", true);
     if (typeof validationState !== 'undefined') {
       validationState.password = true;
       checkAllFieldsValid();
     }
   } else {
-    handleErrorSet("in-password-confirm", "in-password", "password-tooltip", false);
+    handleErrorSet("field-password", "password-tooltip", false);
     if (typeof validationState !== 'undefined') {
       validationState.password = false;
       checkAllFieldsValid();
@@ -121,13 +119,12 @@ function onPasswordBlur(inPassword) {
   }
 }
 
-function validatePasswordTooltip(inPassword) {
-  const rules = checkPasswordRules(inPassword);
+function validatePasswordTooltip(inputPassword) {
+  const rules = checkPasswordRules(inputPassword);
   const msg = buildPasswordMessage(rules);
   const isValid = isPasswordValid(rules);
   
   handleErrorSet(
-    "in-password-confirm",
     "field-password",
     "password-tooltip",
     isValid,

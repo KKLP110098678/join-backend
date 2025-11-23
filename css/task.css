@@ -364,3 +364,37 @@
 .remove-subtask-btn:hover svg path {
   stroke: #ff3d00;
 }
+
+
+.custom-checkbox {
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-masked {
+  content: "";
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox-masked::before {
+  content: "";
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url(..//assets/icon/sign/unchecked.svg);
+}
+
+.checkbox-masked:checked::before {
+  content: "";
+  position: absolute;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url(..//assets/icon/sign/checked.svg);
+}
