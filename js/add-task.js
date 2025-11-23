@@ -1,7 +1,7 @@
 // Add Task Form Functionality
 
 // Global variable to store the target column status
-let targetColumnStatus = 'todo';
+let targetColumnStatus = "todo";
 
 // Global array to store subtasks
 let currentSubtasks = [];
@@ -13,18 +13,18 @@ let selectedUsers = [];
  * Populates the assignedTo dropdown with checkboxes from contacts array
  */
 function populateAssignedToDropdown() {
-  let dropdownList = document.getElementById('assigned-to-list');
-  
+  let dropdownList = document.getElementById("assigned-to-list");
+
   clearDropdownList(dropdownList);
-  
-  if (typeof contacts !== 'undefined') {
+
+  if (typeof contacts !== "undefined") {
     addContactsToDropdown(dropdownList);
   }
 }
 
 function clearDropdownList(dropdownList) {
-  dropdownList.innerHTML = '';
-  dropdownList.classList.add('d-none');
+  dropdownList.innerHTML = "";
+  dropdownList.classList.add("d-none");
 }
 
 function addContactsToDropdown(dropdownList) {
@@ -38,7 +38,7 @@ function addContactsToDropdown(dropdownList) {
 function createDropdownItemHTML(contact, index) {
   let initials = getInitials(contact.name);
   let avatarColor = getAvatarColor(contact.name);
-  
+
   return `
     <div class="dropdown-item" onclick="toggleUserSelection('${contact.name}', event)">
       <label class="d-flex dropdown-item-label custom-checkbox" for="user-${index}">
@@ -54,11 +54,11 @@ function createDropdownItemHTML(contact, index) {
  * Toggles the assigned to dropdown
  */
 function toggleAssignedDropdown() {
-  let dropdownList = document.getElementById('assigned-to-list');
-  let arrow = document.querySelector('.dropdown-arrow');
-  
-  dropdownList.classList.toggle('d-none');
-  arrow.parentElement.parentElement.parentElement.classList.toggle('open');
+  let dropdownList = document.getElementById("assigned-to-list");
+  let arrow = document.querySelector(".dropdown-arrow");
+
+  dropdownList.classList.toggle("d-none");
+  arrow.parentElement.parentElement.parentElement.classList.toggle("open");
 }
 
 /**
@@ -72,8 +72,9 @@ function toggleUserSelection(userName, event) {
 }
 
 function findUserCheckbox(userName) {
-  return Array.from(document.querySelectorAll('.dropdown-item input[type="checkbox"]'))
-    .find(cb => cb.value === userName);
+  return Array.from(
+    document.querySelectorAll('.dropdown-item input[type="checkbox"]')
+  ).find((cb) => cb.value === userName);
 }
 
 function updateSelectedUsersArray(userName, isChecked) {
@@ -89,11 +90,11 @@ function updateSelectedUsersArray(userName, isChecked) {
  * Updates the dropdown input text based on selected users
  */
 function updateDropdownPlaceholder() {
-  let input = document.querySelector('.dropdown-input');
-  
+  let input = document.querySelector(".dropdown-input");
+
   if (selectedUsers.length === 0) {
-    input.value = '';
-    input.placeholder = 'Select contacts to assign';
+    input.value = "";
+    input.placeholder = "Select contacts to assign";
   } else if (selectedUsers.length === 1) {
     input.value = selectedUsers[0];
   } else {
@@ -104,21 +105,25 @@ function updateDropdownPlaceholder() {
 /**
  * Close dropdown when clicking outside
  */
-document.addEventListener('click', function(event) {
-  let dropdown = document.getElementById('assigned-to');
-  let dropdownList = document.getElementById('assigned-to-list');
-  
+document.addEventListener("click", function (event) {
+  let dropdown = document.getElementById("assigned-to");
+  let dropdownList = document.getElementById("assigned-to-list");
+
   if (dropdown && !dropdown.contains(event.target) && dropdownList) {
-    dropdownList.classList.add('d-none');
-    dropdown.classList.remove('open');
+    dropdownList.classList.add("d-none");
+    dropdown.classList.remove("open");
   }
-  
-  let categoryDropdown = document.getElementById('category');
-  let categoryList = document.getElementById('category-list');
-  
-  if (categoryDropdown && !categoryDropdown.contains(event.target) && categoryList) {
-    categoryList.classList.add('d-none');
-    categoryDropdown.classList.remove('open');
+
+  let categoryDropdown = document.getElementById("category");
+  let categoryList = document.getElementById("category-list");
+
+  if (
+    categoryDropdown &&
+    !categoryDropdown.contains(event.target) &&
+    categoryList
+  ) {
+    categoryList.classList.add("d-none");
+    categoryDropdown.classList.remove("open");
   }
 });
 
@@ -126,26 +131,26 @@ document.addEventListener('click', function(event) {
  * Toggles the category dropdown
  */
 function toggleCategoryDropdown() {
-  let dropdownList = document.getElementById('category-list');
-  let categoryDropdown = document.getElementById('category');
-  
-  dropdownList.classList.toggle('d-none');
-  categoryDropdown.classList.toggle('open');
+  let dropdownList = document.getElementById("category-list");
+  let categoryDropdown = document.getElementById("category");
+
+  dropdownList.classList.toggle("d-none");
+  categoryDropdown.classList.toggle("open");
 }
 
 /**
  * Selects a category and updates the input
  */
 function selectCategory(categoryName) {
-  let input = document.getElementById('category-input');
-  let hiddenInput = document.getElementById('category-hidden');
-  let dropdownList = document.getElementById('category-list');
-  let categoryDropdown = document.getElementById('category');
-  
+  let input = document.getElementById("category-input");
+  let hiddenInput = document.getElementById("category-hidden");
+  let dropdownList = document.getElementById("category-list");
+  let categoryDropdown = document.getElementById("category");
+
   input.value = categoryName;
   hiddenInput.value = categoryName;
-  dropdownList.classList.add('d-none');
-  categoryDropdown.classList.remove('open');
+  dropdownList.classList.add("d-none");
+  categoryDropdown.classList.remove("open");
 }
 
 /**
@@ -155,12 +160,12 @@ function selectCategory(categoryName) {
 function generateTaskId() {
   let maxId = 0;
   for (let i = 0; i < tasks.length; i++) {
-    let taskIdNum = parseInt(tasks[i].id.split('-')[1]);
+    let taskIdNum = parseInt(tasks[i].id.split("-")[1]);
     if (taskIdNum > maxId) {
       maxId = taskIdNum;
     }
   }
-  return 'task-' + (maxId + 1);
+  return "task-" + (maxId + 1);
 }
 
 /**
@@ -168,11 +173,11 @@ function generateTaskId() {
  * @param {string} status - The status/column where task should be added (todo, in-progress, await-feedback, done)
  */
 function setTargetColumn(status) {
-  targetColumnStatus = status || 'todo';
+  targetColumnStatus = status || "todo";
 }
 
 function clearForm() {
-  let form = document.getElementById('task-form');
+  let form = document.getElementById("task-form");
   form.reset();
 
   clearFormErrors();
@@ -182,26 +187,28 @@ function clearForm() {
 }
 
 function clearFormErrors() {
-  let titleError = document.getElementById('title-error-message');
-  let dateError = document.getElementById('date-error-message');
-  let titleGroup = document.getElementById('title-form-group');
-  let dateGroup = document.getElementById('date-form-group');
+  let titleError = document.getElementById("title-error-message");
+  let dateError = document.getElementById("date-error-message");
+  let titleGroup = document.getElementById("title-form-group");
+  let dateGroup = document.getElementById("date-form-group");
 
-  titleError.classList.add('d-none');
-  dateError.classList.add('d-none');
-  titleGroup.classList.remove('error');
-  dateGroup.classList.remove('error');
+  titleError.classList.add("d-none");
+  dateError.classList.add("d-none");
+  titleGroup.classList.remove("error");
+  dateGroup.classList.remove("error");
 }
 
 function clearSubtasks() {
-  let subtaskList = document.getElementById('subtask-list');
-  subtaskList.innerHTML = '';
+  let subtaskList = document.getElementById("subtask-list");
+  subtaskList.innerHTML = "";
   currentSubtasks = [];
 }
 
 function clearSelectedUsers() {
   selectedUsers = [];
-  let checkboxes = document.querySelectorAll('.dropdown-item input[type="checkbox"]');
+  let checkboxes = document.querySelectorAll(
+    '.dropdown-item input[type="checkbox"]'
+  );
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].checked = false;
   }
@@ -209,11 +216,11 @@ function clearSelectedUsers() {
 }
 
 function clearCategory() {
-  let categoryInput = document.getElementById('category-input');
-  let categoryHidden = document.getElementById('category-hidden');
-  
-  categoryInput.value = '';
-  categoryHidden.value = '';
+  let categoryInput = document.getElementById("category-input");
+  let categoryHidden = document.getElementById("category-hidden");
+
+  categoryInput.value = "";
+  categoryHidden.value = "";
 }
 
 function validateForm() {
@@ -223,58 +230,57 @@ function validateForm() {
 }
 
 function validateTitleField() {
-  let title = document.getElementById('task-title');
-  let titleGroup = document.getElementById('title-form-group');
-  let titleError = document.getElementById('title-error-message');
+  let title = document.getElementById("task-title");
+  let titleGroup = document.getElementById("title-form-group");
+  let titleError = document.getElementById("title-error-message");
 
-  if (title.value.trim() === '') {
-    titleGroup.classList.add('error');
-    titleError.classList.remove('d-none');
+  if (title.value.trim() === "") {
+    titleGroup.classList.add("error");
+    titleError.classList.remove("d-none");
     return false;
   } else {
-    titleGroup.classList.remove('error');
-    titleError.classList.add('d-none');
+    titleGroup.classList.remove("error");
+    titleError.classList.add("d-none");
     return true;
   }
 }
 
 function validateDateField() {
-  let date = document.getElementById('task-date');
-  let dateGroup = document.getElementById('date-form-group');
-  let dateError = document.getElementById('date-error-message');
+  let date = document.getElementById("task-date");
+  let dateGroup = document.getElementById("date-form-group");
+  let dateError = document.getElementById("date-error-message");
 
-  if (date.value === '') {
-    dateGroup.classList.add('error');
-    dateError.classList.remove('d-none');
+  if (date.value === "") {
+    dateGroup.classList.add("error");
+    dateError.classList.remove("d-none");
     return false;
   } else {
-    dateGroup.classList.remove('error');
-    dateError.classList.add('d-none');
+    dateGroup.classList.remove("error");
+    dateError.classList.add("d-none");
     return true;
   }
 }
 
-function saveTask(event) {
+async function saveTask(event) {
   event.preventDefault();
 
   if (validateForm()) {
     let newTask = createTaskFromForm();
-    tasks.push(newTask);
-    saveTasksToSession();
+    await addNewTask(newTask);
     handleTaskSaveSuccess();
   }
 }
 
 function createTaskFromForm() {
   let taskId = generateTaskId();
-  let title = document.getElementById('task-title').value.trim();
+  let title = document.getElementById("task-title").value.trim();
   let description = getDescriptionValue();
-  let dueDate = document.getElementById('task-date').value;
+  let dueDate = document.getElementById("task-date").value;
   let priority = getSelectedPriority();
   let category = getSelectedCategory();
   let assignedTo = getAssignedUserInitials();
   let subtasks = getFilteredSubtasks();
-  
+
   return {
     id: taskId,
     title: title,
@@ -284,36 +290,38 @@ function createTaskFromForm() {
     priority: priority,
     status: targetColumnStatus,
     subtasks: subtasks,
-    dueDate: dueDate
+    dueDate: dueDate,
   };
 }
 
 function getDescriptionValue() {
-  let descriptionField = document.getElementById('description');
+  let descriptionField = document.getElementById("description");
   return descriptionField.value.trim();
 }
 
 function getSelectedPriority() {
-  let priorityRadios = document.getElementsByName('priority');
+  let priorityRadios = document.getElementsByName("priority");
   for (let i = 0; i < priorityRadios.length; i++) {
     if (priorityRadios[i].checked) {
       return mapPriorityValue(priorityRadios[i].value);
     }
   }
-  return 'medium';
+  return "medium";
 }
 
 function mapPriorityValue(value) {
   let lowerValue = value.toLowerCase();
-  if (lowerValue === 'high') return 'urgent';
-  if (lowerValue === 'medium') return 'medium';
-  if (lowerValue === 'low') return 'low';
-  return 'medium';
+  if (lowerValue === "high") return "urgent";
+  if (lowerValue === "medium") return "medium";
+  if (lowerValue === "low") return "low";
+  return "medium";
 }
 
 function getSelectedCategory() {
-  let categoryHidden = document.getElementById('category-hidden');
-  return categoryHidden && categoryHidden.value ? categoryHidden.value : 'User Story';
+  let categoryHidden = document.getElementById("category-hidden");
+  return categoryHidden && categoryHidden.value
+    ? categoryHidden.value
+    : "User Story";
 }
 
 function getAssignedUserInitials() {
@@ -326,27 +334,27 @@ function getAssignedUserInitials() {
 }
 
 function getFilteredSubtasks() {
-  return currentSubtasks.filter(function(subtask) {
+  return currentSubtasks.filter(function (subtask) {
     return subtask !== null;
   });
 }
 
 function handleTaskSaveSuccess() {
-  let isOnAddTaskPage = window.location.pathname.includes('add-task.html');
-  
+  let isOnAddTaskPage = window.location.pathname.includes("add-task.html");
+
   if (isOnAddTaskPage) {
     showSuccessOverlay();
-    setTimeout(function() {
-      window.location.href = 'board.html';
+    setTimeout(function () {
+      window.location.href = "board.html";
     }, 1500);
   } else {
     renderAllTasks();
     showSuccessOverlay();
-    setTimeout(function() {
+    setTimeout(function () {
       clearForm();
-      targetColumnStatus = 'todo';
-      
-      if (typeof closeAllMenus === 'function') {
+      targetColumnStatus = "todo";
+
+      if (typeof closeAllMenus === "function") {
         closeAllMenus();
       }
     }, 1500);
@@ -354,34 +362,34 @@ function handleTaskSaveSuccess() {
 }
 
 function showSuccessOverlay() {
-  let overlay = document.getElementById('success-overlay');
-  overlay.classList.remove('d-none');
+  let overlay = document.getElementById("success-overlay");
+  overlay.classList.remove("d-none");
 }
 
 function handleTitleBlur() {
-  let titleInput = document.getElementById('task-title');
-  let titleGroup = document.getElementById('title-form-group');
-  let titleError = document.getElementById('title-error-message');
+  let titleInput = document.getElementById("task-title");
+  let titleGroup = document.getElementById("title-form-group");
+  let titleError = document.getElementById("title-error-message");
 
-  if (titleInput.value.trim() === '') {
-    titleGroup.classList.add('error');
-    titleError.classList.remove('d-none');
+  if (titleInput.value.trim() === "") {
+    titleGroup.classList.add("error");
+    titleError.classList.remove("d-none");
   } else {
-    titleGroup.classList.remove('error');
-    titleError.classList.add('d-none');
+    titleGroup.classList.remove("error");
+    titleError.classList.add("d-none");
   }
 }
 
 function handleDateBlur() {
-  let dateInput = document.getElementById('task-date');
-  let dateGroup = document.getElementById('date-form-group');
-  let dateError = document.getElementById('date-error-message');
+  let dateInput = document.getElementById("task-date");
+  let dateGroup = document.getElementById("date-form-group");
+  let dateError = document.getElementById("date-error-message");
 
-  if (dateInput.value === '') {
-    dateGroup.classList.add('error');
-    dateError.classList.remove('d-none');
+  if (dateInput.value === "") {
+    dateGroup.classList.add("error");
+    dateError.classList.remove("d-none");
   } else {
-    dateGroup.classList.remove('error');
-    dateError.classList.add('d-none');
+    dateGroup.classList.remove("error");
+    dateError.classList.add("d-none");
   }
 }

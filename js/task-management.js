@@ -1,125 +1,127 @@
-let tasks = loadTasksFromSession() || [
-  {
-    id: "task-1",
-    title: "Kochwelt Page & Recipe Recommender",
-    description: "Build start page with recipe recommendation.",
-    category: "User Story",
-    assignedTo: ["JD", "MS"],
-    priority: "urgent",
-    status: "todo",
-    subtasks: [
-      { text: "Implement Recipe Recommender", completed: false },
-      { text: "Start Page Layout", completed: true }
-    ],
-    dueDate: "2024-05-10"
-  },
-  {
-    id: "task-2",
-    title: "HTML Base Template Creation",
-    description: "Create reusable HTML base templates for all pages.",
-    category: "User Story",
-    assignedTo: ["AB"],
-    priority: "medium",
-    status: "todo",
-    subtasks: [
-      { text: "Header Template", completed: false },
-      { text: "Footer Template", completed: false },
-      { text: "Navigation Template", completed: true }
-    ],
-    dueDate: "2024-05-12"
-  },
-  {
-    id: "task-3",
-    title: "CSS Architecture Planning",
-    description: "Plan and structure CSS architecture for the project.",
-    category: "User Story",
-    assignedTo: ["CG", "DK", "LM"],
-    priority: "low",
-    status: "in-progress",
-    subtasks: [
-      { text: "Define CSS Variables", completed: true },
-      { text: "Create Component Structure", completed: false }
-    ],
-    dueDate: "2024-05-15"
-  },
-  {
-    id: "task-4",
-    title: "JavaScript Functions",
-    description: "Implement core JavaScript functionality.",
-    category: "Technical Task",
-    assignedTo: ["NG"],
-    priority: "urgent",
-    status: "in-progress",
-    subtasks: [
-      { text: "Event Handlers", completed: false },
-      { text: "Data Management", completed: false }
-    ],
-    dueDate: "2024-05-08"
-  },
-  {
-    id: "task-5",
-    title: "Daily Kanban Board",
-    description: "Create a functional Kanban board for task management.",
-    category: "User Story",
-    assignedTo: ["PQ", "RS"],
-    priority: "medium",
-    status: "await-feedback",
-    subtasks: [
-      { text: "Drag & Drop Functionality", completed: true },
-      { text: "Task Card Design", completed: true },
-      { text: "Status Management", completed: false }
-    ],
-    dueDate: "2024-05-20"
-  },
-  {
-    id: "task-6",
-    title: "Contact Management System",
-    description: "Develop a comprehensive contact management system.",
-    category: "User Story",
-    assignedTo: ["TV"],
-    priority: "low",
-    status: "done",
-    subtasks: [
-      { text: "Contact List View", completed: true },
-      { text: "Contact Form", completed: true }
-    ],
-    dueDate: "2024-05-05"
-  },
-  {
-    id: "task-7",
-    title: "Database Integration",
-    description: "Set up database connection and data persistence.",
-    category: "Technical Task",
-    assignedTo: ["WX", "YZ"],
-    priority: "medium",
-    status: "done",
-    subtasks: [
-      { text: "Database Schema", completed: true },
-      { text: "API Endpoints", completed: true },
-      { text: "Data Validation", completed: true }
-    ],
-    dueDate: "2024-05-03"
-  }
-];
+let tasks =
+  loadTasksFromSession() ||
+  [
+    // {
+    //   id: "task-1",
+    //   title: "Kochwelt Page & Recipe Recommender",
+    //   description: "Build start page with recipe recommendation.",
+    //   category: "User Story",
+    //   assignedTo: ["JD", "MS"],
+    //   priority: "urgent",
+    //   status: "todo",
+    //   subtasks: [
+    //     { text: "Implement Recipe Recommender", completed: false },
+    //     { text: "Start Page Layout", completed: true }
+    //   ],
+    //   dueDate: "2024-05-10"
+    // },
+    // {
+    //   id: "task-2",
+    //   title: "HTML Base Template Creation",
+    //   description: "Create reusable HTML base templates for all pages.",
+    //   category: "User Story",
+    //   assignedTo: ["AB"],
+    //   priority: "medium",
+    //   status: "todo",
+    //   subtasks: [
+    //     { text: "Header Template", completed: false },
+    //     { text: "Footer Template", completed: false },
+    //     { text: "Navigation Template", completed: true }
+    //   ],
+    //   dueDate: "2024-05-12"
+    // },
+    // {
+    //   id: "task-3",
+    //   title: "CSS Architecture Planning",
+    //   description: "Plan and structure CSS architecture for the project.",
+    //   category: "User Story",
+    //   assignedTo: ["CG", "DK", "LM"],
+    //   priority: "low",
+    //   status: "in-progress",
+    //   subtasks: [
+    //     { text: "Define CSS Variables", completed: true },
+    //     { text: "Create Component Structure", completed: false }
+    //   ],
+    //   dueDate: "2024-05-15"
+    // },
+    // {
+    //   id: "task-4",
+    //   title: "JavaScript Functions",
+    //   description: "Implement core JavaScript functionality.",
+    //   category: "Technical Task",
+    //   assignedTo: ["NG"],
+    //   priority: "urgent",
+    //   status: "in-progress",
+    //   subtasks: [
+    //     { text: "Event Handlers", completed: false },
+    //     { text: "Data Management", completed: false }
+    //   ],
+    //   dueDate: "2024-05-08"
+    // },
+    // {
+    //   id: "task-5",
+    //   title: "Daily Kanban Board",
+    //   description: "Create a functional Kanban board for task management.",
+    //   category: "User Story",
+    //   assignedTo: ["PQ", "RS"],
+    //   priority: "medium",
+    //   status: "await-feedback",
+    //   subtasks: [
+    //     { text: "Drag & Drop Functionality", completed: true },
+    //     { text: "Task Card Design", completed: true },
+    //     { text: "Status Management", completed: false }
+    //   ],
+    //   dueDate: "2024-05-20"
+    // },
+    // {
+    //   id: "task-6",
+    //   title: "Contact Management System",
+    //   description: "Develop a comprehensive contact management system.",
+    //   category: "User Story",
+    //   assignedTo: ["TV"],
+    //   priority: "low",
+    //   status: "done",
+    //   subtasks: [
+    //     { text: "Contact List View", completed: true },
+    //     { text: "Contact Form", completed: true }
+    //   ],
+    //   dueDate: "2024-05-05"
+    // },
+    // {
+    //   id: "task-7",
+    //   title: "Database Integration",
+    //   description: "Set up database connection and data persistence.",
+    //   category: "Technical Task",
+    //   assignedTo: ["WX", "YZ"],
+    //   priority: "medium",
+    //   status: "done",
+    //   subtasks: [
+    //     { text: "Database Schema", completed: true },
+    //     { text: "API Endpoints", completed: true },
+    //     { text: "Data Validation", completed: true }
+    //   ],
+    //   dueDate: "2024-05-03"
+    // }
+  ];
 
 // Priority icons mapping
 const priorityIcons = {
   urgent: "/assets/icon/taskManagement/urgent.svg",
   medium: "/assets/icon/taskManagement/medium.svg",
-  low: "/assets/icon/taskManagement/low.svg"
+  low: "/assets/icon/taskManagement/low.svg",
 };
 
 // Priority labels mapping
 const priorityLabels = {
   urgent: "High Priority",
   medium: "Medium Priority",
-  low: "Low Priority"
+  low: "Low Priority",
 };
 
 // Kategorie-zu-CSS-ID Mapping
 const categoryToId = {
   "User Story": "user-story",
-  "Technical Task": "technical-task"
+  "Technical Task": "technical-task",
 };
 
 function generateTaskCardHTML(task) {
@@ -128,15 +130,22 @@ function generateTaskCardHTML(task) {
   let priorityIcon = priorityIcons[task.priority];
   let priorityLabel = priorityLabels[task.priority];
   let subtaskData = calculateSubtaskProgress(task.subtasks);
-  
-  return getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskData);
+
+  return getTaskCardTemplate(
+    task,
+    assignedUsersHTML,
+    categoryId,
+    priorityIcon,
+    priorityLabel,
+    subtaskData
+  );
 }
 
 function generateAssignedUsersHTML(assignedToArray) {
-  let html = '';
+  let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     let initials = getInitials(assignedToArray[i]);
-    html += '<div class="user-avatar-sm">' + initials + '</div>';
+    html += '<div class="user-avatar-sm">' + initials + "</div>";
   }
   return html;
 }
@@ -150,15 +159,26 @@ function calculateSubtaskProgress(subtasks) {
   }
 
   let totalSubtasks = subtasks.length;
-  let subtaskProgress = totalSubtasks > 0 ? completedSubtasks + '/' + totalSubtasks + ' Subtasks' : '';
-  let progressInPercent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-  
+  let subtaskProgress =
+    totalSubtasks > 0
+      ? completedSubtasks + "/" + totalSubtasks + " Subtasks"
+      : "";
+  let progressInPercent =
+    totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+
   return { subtaskProgress, totalSubtasks, progressInPercent };
 }
 
-function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskData) {
+function getTaskCardTemplate(
+  task,
+  assignedUsersHTML,
+  categoryId,
+  priorityIcon,
+  priorityLabel,
+  subtaskData
+) {
   let { subtaskProgress, totalSubtasks, progressInPercent } = subtaskData;
-  
+
   return `
     <div class="task-card" draggable="true" data-task-id="${task.id}" 
          ondragstart="handleDragStart(event, this)" 
@@ -171,7 +191,11 @@ function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, 
         <div class="progress-container d-flex">
           <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
         </div>
-        ${totalSubtasks > 0 ? `<div class="task-subtasks">${subtaskProgress}</div>` : ''}
+        ${
+          totalSubtasks > 0
+            ? `<div class="task-subtasks">${subtaskProgress}</div>`
+            : ""
+        }
       </div>
       <div class="task-footer d-flex">
         <div class="task-users">
@@ -186,10 +210,10 @@ function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, 
 }
 
 function renderAllTasks() {
-  if (typeof populateAssignedToDropdown === 'function') {
+  if (typeof populateAssignedToDropdown === "function") {
     populateAssignedToDropdown();
   }
-  
+
   let columns = getKanbanColumns();
   clearAllColumns(columns);
   renderTasksInColumns();
@@ -197,10 +221,10 @@ function renderAllTasks() {
 
 function getKanbanColumns() {
   return {
-    todo: document.getElementById('todo'),
-    inProgress: document.getElementById('in-progress'),
-    awaitFeedback: document.getElementById('await-feedback'),
-    done: document.getElementById('done')
+    todo: document.getElementById("todo"),
+    inProgress: document.getElementById("in-progress"),
+    awaitFeedback: document.getElementById("await-feedback"),
+    done: document.getElementById("done"),
   };
 }
 
@@ -216,7 +240,7 @@ function renderTasksInColumns() {
     let task = tasks[i];
     let column = document.getElementById(task.status);
     if (column) {
-      column.insertAdjacentHTML('beforeend', generateTaskCardHTML(task));
+      column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
     }
   }
 }
@@ -228,7 +252,7 @@ function clearColumnTaskCards(column) {
   let children = column.children;
   for (let i = children.length - 1; i >= 0; i--) {
     let child = children[i];
-    if (child.classList.contains('task-card')) {
+    if (child.classList.contains("task-card")) {
       child.remove();
     }
   }
@@ -281,9 +305,11 @@ function getFilteredTasks(searchTerm) {
 }
 
 function taskMatchesSearchTerm(task, searchTerm) {
-  return task.title.toLowerCase().includes(searchTerm) ||
-         task.description.toLowerCase().includes(searchTerm) ||
-         task.category.toLowerCase().includes(searchTerm);
+  return (
+    task.title.toLowerCase().includes(searchTerm) ||
+    task.description.toLowerCase().includes(searchTerm) ||
+    task.category.toLowerCase().includes(searchTerm)
+  );
 }
 
 function renderFilteredTasks(filteredTasks) {
@@ -295,10 +321,10 @@ function renderFilteredTasks(filteredTasks) {
 
 // Global event handler functions for inline events
 function handleSearchClick() {
-  const searchInput = document.getElementById('task-search');
+  const searchInput = document.getElementById("task-search");
   if (searchInput) {
     const searchTerm = searchInput.value.trim();
-    if (searchTerm === '') {
+    if (searchTerm === "") {
       renderAllTasks();
     } else {
       filterTasks(searchTerm);
@@ -307,9 +333,9 @@ function handleSearchClick() {
 }
 
 function handleSearchKeypress(event) {
-  if (event.key === 'Enter') {
+  if (event.key === "Enter") {
     const searchTerm = event.target.value.trim();
-    if (searchTerm === '') {
+    if (searchTerm === "") {
       renderAllTasks();
     } else {
       filterTasks(searchTerm);
@@ -318,16 +344,16 @@ function handleSearchKeypress(event) {
 }
 
 function handleSearchInput(event) {
-  if (event.target.value.trim() === '') {
+  if (event.target.value.trim() === "") {
     renderAllTasks();
   }
 }
 
 function showTaskDetails(taskId) {
   const task = findTaskById(taskId);
-  const detailsOverlay = document.getElementById('details-overlay');
+  const detailsOverlay = document.getElementById("details-overlay");
   detailsOverlay.innerHTML = getTaskDetailsTemplate(task);
-  toggleOverlay('#details-overlay');
+  toggleOverlay("#details-overlay");
 }
 
 function getTaskDetailsTemplate(task) {
@@ -337,21 +363,28 @@ function getTaskDetailsTemplate(task) {
   let subtasksHTML = generateSubtasksHTML(task.subtasks);
   let assignedUsersHTML = generateAssignedUsersDetailsHTML(task.assignedTo);
 
-  return createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML, priorityIcon, priorityLabel);
+  return createDetailsTemplate(
+    task,
+    categoryId,
+    subtasksHTML,
+    assignedUsersHTML,
+    priorityIcon,
+    priorityLabel
+  );
 }
 
 function generateSubtasksHTML(subtasks) {
-  let html = '';
+  let html = "";
   for (let i = 0; i < subtasks.length; i++) {
     let subtask = subtasks[i];
-    let completedClass = subtask.completed ? 'completed' : '';
-    html += '<li class="' + completedClass + '">' + subtask.text + '</li>';
+    let completedClass = subtask.completed ? "completed" : "";
+    html += '<li class="' + completedClass + '">' + subtask.text + "</li>";
   }
   return html;
 }
 
 function generateAssignedUsersDetailsHTML(assignedToArray) {
-  let html = '';
+  let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     html += createUserItemHTML(assignedToArray[i]);
   }
@@ -362,7 +395,7 @@ function createUserItemHTML(initialsOrName) {
   let initials = getInitials(initialsOrName);
   let fullName = getFullNameFromInitials(initialsOrName);
   let avatarColor = getAvatarColor(fullName);
-  
+
   return `
     <div class="user-item">
       <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
@@ -371,7 +404,14 @@ function createUserItemHTML(initialsOrName) {
   `;
 }
 
-function createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML, priorityIcon, priorityLabel) {
+function createDetailsTemplate(
+  task,
+  categoryId,
+  subtasksHTML,
+  assignedUsersHTML,
+  priorityIcon,
+  priorityLabel
+) {
   return `
     <div class="details-card">
       <div class="details-header">
@@ -418,7 +458,7 @@ function createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML
 
 function editTask(taskId) {
   const task = findTaskById(taskId);
-  const editOverlay = document.getElementById('details-overlay');
+  const editOverlay = document.getElementById("details-overlay");
   editOverlay.innerHTML = getEditTaskTemplate(task);
 }
 
@@ -592,17 +632,17 @@ function getEditTaskTemplate(task) {
 }
 
 function addSubtask() {
-  let subtaskList = document.getElementById('subtask-list');
-  let subtaskInput = document.getElementById('add-subtask');
+  let subtaskList = document.getElementById("subtask-list");
+  let subtaskInput = document.getElementById("add-subtask");
   let subtaskText = subtaskInput.value.trim();
 
   if (subtaskText) {
     let subtaskIndex = currentSubtasks.length;
     currentSubtasks.push({
       text: subtaskText,
-      completed: false
+      completed: false,
     });
-    
+
     let listItemHTML = `
       <li class="subtask-item" data-subtask-index="${subtaskIndex}">
         <span>${subtaskText}</span>
@@ -613,9 +653,9 @@ function addSubtask() {
         </button>
       </li>
     `;
-    
-    subtaskList.insertAdjacentHTML('beforeend', listItemHTML);
-    subtaskInput.value = '';
+
+    subtaskList.insertAdjacentHTML("beforeend", listItemHTML);
+    subtaskInput.value = "";
   }
 }
 
@@ -637,7 +677,7 @@ function removeSubtask(index, element) {
  */
 function openAddTaskOverlay(columnStatus) {
   setTargetColumn(columnStatus);
-  toggleOverlay('.add-task-menu');
+  toggleOverlay(".add-task-menu");
 }
 
 /**
@@ -646,16 +686,16 @@ function openAddTaskOverlay(columnStatus) {
  * @returns {string} Full name or the original value if not found
  */
 function getFullNameFromInitials(initialsOrName) {
-  if (!initialsOrName) return '';
-  
-  if (initialsOrName.includes(' ')) {
+  if (!initialsOrName) return "";
+
+  if (initialsOrName.includes(" ")) {
     return initialsOrName;
   }
-  
+
   if (isInitials(initialsOrName)) {
     return findContactByInitials(initialsOrName);
   }
-  
+
   return initialsOrName;
 }
 
@@ -664,7 +704,7 @@ function isInitials(str) {
 }
 
 function findContactByInitials(initials) {
-  if (typeof contacts !== 'undefined') {
+  if (typeof contacts !== "undefined") {
     for (let i = 0; i < contacts.length; i++) {
       let contactInitials = getInitials(contacts[i].name);
       if (contactInitials === initials) {
@@ -679,7 +719,7 @@ function findContactByInitials(initials) {
  * Saves tasks to sessionStorage
  */
 function saveTasksToSession() {
-  sessionStorage.setItem('tasks', JSON.stringify(tasks));
+  sessionStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 /**
@@ -687,6 +727,6 @@ function saveTasksToSession() {
  * @returns {Array|null} Tasks array or null if not found
  */
 function loadTasksFromSession() {
-  let storedTasks = sessionStorage.getItem('tasks');
+  let storedTasks = sessionStorage.getItem("tasks");
   return storedTasks ? JSON.parse(storedTasks) : null;
 }
