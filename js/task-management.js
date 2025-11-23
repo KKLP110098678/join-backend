@@ -1,107 +1,107 @@
 let tasks =
   loadTasksFromSession() ||
   [
-    // {
-    //   id: "task-1",
-    //   title: "Kochwelt Page & Recipe Recommender",
-    //   description: "Build start page with recipe recommendation.",
-    //   category: "User Story",
-    //   assignedTo: ["JD", "MS"],
-    //   priority: "urgent",
-    //   status: "todo",
-    //   subtasks: [
-    //     { text: "Implement Recipe Recommender", completed: false },
-    //     { text: "Start Page Layout", completed: true }
-    //   ],
-    //   dueDate: "2024-05-10"
-    // },
-    // {
-    //   id: "task-2",
-    //   title: "HTML Base Template Creation",
-    //   description: "Create reusable HTML base templates for all pages.",
-    //   category: "User Story",
-    //   assignedTo: ["AB"],
-    //   priority: "medium",
-    //   status: "todo",
-    //   subtasks: [
-    //     { text: "Header Template", completed: false },
-    //     { text: "Footer Template", completed: false },
-    //     { text: "Navigation Template", completed: true }
-    //   ],
-    //   dueDate: "2024-05-12"
-    // },
-    // {
-    //   id: "task-3",
-    //   title: "CSS Architecture Planning",
-    //   description: "Plan and structure CSS architecture for the project.",
-    //   category: "User Story",
-    //   assignedTo: ["CG", "DK", "LM"],
-    //   priority: "low",
-    //   status: "in-progress",
-    //   subtasks: [
-    //     { text: "Define CSS Variables", completed: true },
-    //     { text: "Create Component Structure", completed: false }
-    //   ],
-    //   dueDate: "2024-05-15"
-    // },
-    // {
-    //   id: "task-4",
-    //   title: "JavaScript Functions",
-    //   description: "Implement core JavaScript functionality.",
-    //   category: "Technical Task",
-    //   assignedTo: ["NG"],
-    //   priority: "urgent",
-    //   status: "in-progress",
-    //   subtasks: [
-    //     { text: "Event Handlers", completed: false },
-    //     { text: "Data Management", completed: false }
-    //   ],
-    //   dueDate: "2024-05-08"
-    // },
-    // {
-    //   id: "task-5",
-    //   title: "Daily Kanban Board",
-    //   description: "Create a functional Kanban board for task management.",
-    //   category: "User Story",
-    //   assignedTo: ["PQ", "RS"],
-    //   priority: "medium",
-    //   status: "await-feedback",
-    //   subtasks: [
-    //     { text: "Drag & Drop Functionality", completed: true },
-    //     { text: "Task Card Design", completed: true },
-    //     { text: "Status Management", completed: false }
-    //   ],
-    //   dueDate: "2024-05-20"
-    // },
-    // {
-    //   id: "task-6",
-    //   title: "Contact Management System",
-    //   description: "Develop a comprehensive contact management system.",
-    //   category: "User Story",
-    //   assignedTo: ["TV"],
-    //   priority: "low",
-    //   status: "done",
-    //   subtasks: [
-    //     { text: "Contact List View", completed: true },
-    //     { text: "Contact Form", completed: true }
-    //   ],
-    //   dueDate: "2024-05-05"
-    // },
-    // {
-    //   id: "task-7",
-    //   title: "Database Integration",
-    //   description: "Set up database connection and data persistence.",
-    //   category: "Technical Task",
-    //   assignedTo: ["WX", "YZ"],
-    //   priority: "medium",
-    //   status: "done",
-    //   subtasks: [
-    //     { text: "Database Schema", completed: true },
-    //     { text: "API Endpoints", completed: true },
-    //     { text: "Data Validation", completed: true }
-    //   ],
-    //   dueDate: "2024-05-03"
-    // }
+    /* {
+      id: "task-1",
+      title: "Kochwelt Page & Recipe Recommender",
+      description: "Build start page with recipe recommendation.",
+      category: "User Story",
+      assignedTo: ["JD", "MS"],
+      priority: "urgent",
+      status: "todo",
+      subtasks: [
+        { text: "Implement Recipe Recommender", completed: false },
+        { text: "Start Page Layout", completed: true }
+      ],
+      dueDate: "2024-05-10"
+    },
+    {
+      id: "task-2",
+      title: "HTML Base Template Creation",
+      description: "Create reusable HTML base templates for all pages.",
+      category: "User Story",
+      assignedTo: ["AB"],
+      priority: "medium",
+      status: "todo",
+      subtasks: [
+        { text: "Header Template", completed: false },
+        { text: "Footer Template", completed: false },
+        { text: "Navigation Template", completed: true }
+      ],
+      dueDate: "2024-05-12"
+    },
+    {
+      id: "task-3",
+      title: "CSS Architecture Planning",
+      description: "Plan and structure CSS architecture for the project.",
+      category: "User Story",
+      assignedTo: ["CG", "DK", "LM"],
+      priority: "low",
+      status: "in-progress",
+      subtasks: [
+        { text: "Define CSS Variables", completed: true },
+        { text: "Create Component Structure", completed: false }
+      ],
+      dueDate: "2024-05-15"
+    },
+    {
+      id: "task-4",
+      title: "JavaScript Functions",
+      description: "Implement core JavaScript functionality.",
+      category: "Technical Task",
+      assignedTo: ["NG"],
+      priority: "urgent",
+      status: "in-progress",
+      subtasks: [
+        { text: "Event Handlers", completed: false },
+        { text: "Data Management", completed: false }
+      ],
+      dueDate: "2024-05-08"
+    },
+    {
+      id: "task-5",
+      title: "Daily Kanban Board",
+      description: "Create a functional Kanban board for task management.",
+      category: "User Story",
+      assignedTo: ["PQ", "RS"],
+      priority: "medium",
+      status: "await-feedback",
+      subtasks: [
+        { text: "Drag & Drop Functionality", completed: true },
+        { text: "Task Card Design", completed: true },
+        { text: "Status Management", completed: false }
+      ],
+      dueDate: "2024-05-20"
+    },
+    {
+      id: "task-6",
+      title: "Contact Management System",
+      description: "Develop a comprehensive contact management system.",
+      category: "User Story",
+      assignedTo: ["TV"],
+      priority: "low",
+      status: "done",
+      subtasks: [
+        { text: "Contact List View", completed: true },
+        { text: "Contact Form", completed: true }
+      ],
+      dueDate: "2024-05-05"
+    },
+    {
+      id: "task-7",
+      title: "Database Integration",
+      description: "Set up database connection and data persistence.",
+      category: "Technical Task",
+      assignedTo: ["WX", "YZ"],
+      priority: "medium",
+      status: "done",
+      subtasks: [
+        { text: "Database Schema", completed: true },
+        { text: "API Endpoints", completed: true },
+        { text: "Data Validation", completed: true }
+      ],
+      dueDate: "2024-05-03"
+    } */
   ];
 
 // Priority icons mapping
