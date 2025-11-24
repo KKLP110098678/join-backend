@@ -61,12 +61,8 @@ a {
 }
 
 h1 {
-    margin: 72px 0px;
+    margin: 32px 0px;
     font-size: 61px;
-}
-
-.m-top-721 {
-    margin: 72px 0px;
 }
 
 h2 {
@@ -93,15 +89,12 @@ ul {
 
 .clarification {
     display: flex;
-    /* justify-content: space-between; */
     gap: 35px;
-    /* margin-top: 13px; */
 }
 
 .caption-help {
     font-size: 33px;
     font-weight: 700;
-    /* margin: 32px 0px; */
     color: var(--color-light-blue);
     margin-bottom: 24px;
 }
@@ -123,6 +116,7 @@ ul {
     flex-direction: column;
     gap: 16px;
 }
-.more{
+
+.more {
     margin-left: 62px;
 }
