@@ -5,11 +5,12 @@ function initStaticPages() {
     return;
   } else {
     renderLoginSidbar();
+    renderEmptyHeader();
   }
 }
 
-function renderLoginSidbar(seite) {
-  emptySidebar = document.getElementById("sidebar-nav");
+function renderLoginSidbar() {
+  let = emptySidebar = document.getElementById("sidebar-nav");
   emptySidebar.innerHTML = "";
   emptySidebar.innerHTML = `
       <nav class="sidenav d-flex">
@@ -20,6 +21,11 @@ function renderLoginSidbar(seite) {
           />Log In</a
         >
       </nav>
-
   `;
+}
+
+function renderEmptyHeader() {
+  let userHeadere = document.getElementById("menu-user");
+  userHeadere.innerHTML = "";
+  userHeadere.innerHTML = `<p>Kanban Project Management Tool</p>`;
 }
