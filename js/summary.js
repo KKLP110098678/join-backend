@@ -22,8 +22,8 @@
  * console.log(greeting); // "Good morning"
  */
 function getTimeOfDayGreeting() {
-    const hour = new Date().getHours();
-    
+    let hour = new Date().getHours();
+
     if (hour >= 5 && hour < 12) {
         return 'Good morning';
     } else if (hour >= 12 && hour < 18) {
@@ -49,23 +49,267 @@ function getTimeOfDayGreeting() {
  * updateGreeting();
  */
 function updateGreeting() {
-    const greetingElement = document.querySelector('.summary-greeting');
-    
+    let greetingElement = document.getElementById('summary-greeting');
+
     if (!greetingElement) return;
-    
-    const isGuest = sessionStorage.getItem('isGuest');
-    const userName = sessionStorage.getItem('userName');
-    const timeGreeting = getTimeOfDayGreeting();
-    
+
+    let isGuest = sessionStorage.getItem('isGuest');
+    let userName = sessionStorage.getItem('userName');
+    let timeGreeting = getTimeOfDayGreeting();
+
     if (isGuest === 'true') {
-        // For guest users only time-of-day greeting
         greetingElement.textContent = timeGreeting;
     } else if (userName) {
-        // For logged-in users: greeting + name
-        greetingElement.textContent = `${timeGreeting}, ${userName}`;
+        greetingElement.textContent = timeGreeting + ', ' + userName;
     } else {
-        // Fallback
         greetingElement.textContent = timeGreeting;
+    }
+}
+
+/**
+ * Loads all tasks from Firebase or SessionStorage
+ * Returns an array of task objects
+ *
+ * @async
+ * @function loadAllTasks
+ * @returns {Promise<Array>} Array of all tasks
+ */
+async function loadAllTasks() {
+    let isGuest = sessionStorage.getItem('isGuest') === 'true';
+    console.log('Loading tasks... isGuest:', isGuest);
+
+    if (isGuest) {
+        let tasksJson = sessionStorage.getItem('tasks');
+        let tasks = tasksJson ? JSON.parse(tasksJson) : [];
+        console.log('Loaded tasks from SessionStorage:', tasks);
+
+        if (tasks.length === 0 && typeof getDefaultTasks === 'function') {
+            tasks = getDefaultTasks();
+            console.log('Using default tasks:', tasks);
+        }
+
+        return tasks;
+    } else {
+        if (typeof loadTasksFromFirebase === 'function') {
+            let tasks = await loadTasksFromFirebase();
+            console.log('Loaded tasks from Firebase:', tasks);
+            return tasks;
+        } else {
+            console.error('loadTasksFromFirebase function not found!');
+            return [];
+        }
+    }
+}
+
+/**
+ * Calculates task statistics from tasks array
+ * Returns an object with counts for each status and priority
+ *
+ * @function calculateTaskStatistics
+ * @param {Array} tasks - Array of task objects
+ * @returns {Object} Statistics object with task counts
+ */
+function calculateTaskStatistics(tasks) {
+    console.log('Calculating statistics for tasks:', tasks);
+    let statistics = {
+        total: 0,
+        todo: 0,
+        inProgress: 0,
+        awaitingFeedback: 0,
+        done: 0,
+        urgent: 0,
+        urgentDeadline: null
+    };
+
+    if (!tasks || tasks.length === 0) {
+        console.log('No tasks found!');
+        return statistics;
+    }
+
+    statistics.total = tasks.length;
+
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
+        console.log('Processing task:', task.title, 'status:', task.status, 'priority:', task.priority);
+
+        if (task.status === 'todo') {
+            statistics.todo++;
+        } else if (task.status === 'in-progress') {
+            statistics.inProgress++;
+        } else if (task.status === 'await-feedback') {
+            statistics.awaitingFeedback++;
+        } else if (task.status === 'done') {
+            statistics.done++;
+        }
+
+        if (task.priority === 'urgent') {
+            statistics.urgent++;
+            if (task.dueDate) {
+                updateUrgentDeadlineIfEarlier(statistics, task.dueDate);
+            }
+        }
+    }
+
+    console.log('Final statistics:', statistics);
+    return statistics;
+}
+
+/**
+ * Updates urgent deadline if new date is earlier
+ *
+ * @function updateUrgentDeadlineIfEarlier
+ * @param {Object} statistics - Statistics object to update
+ * @param {string} newDate - New date to compare
+ * @returns {void}
+ */
+function updateUrgentDeadlineIfEarlier(statistics, newDate) {
+    if (!statistics.urgentDeadline) {
+        statistics.urgentDeadline = newDate;
+        return;
+    }
+
+    let currentDate = new Date(statistics.urgentDeadline);
+    let compareDate = new Date(newDate);
+
+    if (compareDate < currentDate) {
+        statistics.urgentDeadline = newDate;
+    }
+}
+
+/**
+ * Updates task count displays on the summary page
+ * Fetches task statistics and updates the DOM elements
+ *
+ * @async
+ * @function updateTaskCounts
+ * @returns {Promise<void>}
+ */
+async function updateTaskCounts() {
+    console.log('updateTaskCounts called');
+    let tasks = await loadAllTasks();
+    let stats = calculateTaskStatistics(tasks);
+
+    console.log('Updating UI with stats:', stats);
+    updateUrgentCount(stats.urgent);
+    updateBoardCount(stats.total);
+    updateTodoCount(stats.todo);
+    updateProgressCount(stats.inProgress);
+    updateFeedbackCount(stats.awaitingFeedback);
+    updateDoneCount(stats.done);
+    updateUrgentDeadline(stats.urgentDeadline);
+}
+
+/**
+ * Updates urgent tasks count
+ *
+ * @function updateUrgentCount
+ * @param {number} count - Number of urgent tasks
+ * @returns {void}
+ */
+function updateUrgentCount(count) {
+    let element = document.getElementById('urgent-tasks-count');
+    if (element) {
+        element.textContent = count;
+    }
+}
+
+/**
+ * Updates total board tasks count
+ *
+ * @function updateBoardCount
+ * @param {number} count - Total number of tasks
+ * @returns {void}
+ */
+function updateBoardCount(count) {
+    let element = document.getElementById('board-tasks-count');
+    if (element) {
+        element.textContent = count;
+    }
+}
+
+/**
+ * Updates todo tasks count
+ *
+ * @function updateTodoCount
+ * @param {number} count - Number of todo tasks
+ * @returns {void}
+ */
+function updateTodoCount(count) {
+    let element = document.getElementById('todo-tasks-count');
+    if (element) {
+        element.textContent = count;
+    }
+}
+
+/**
+ * Updates in progress tasks count
+ *
+ * @function updateProgressCount
+ * @param {number} count - Number of in progress tasks
+ * @returns {void}
+ */
+function updateProgressCount(count) {
+    let element = document.getElementById('progress-tasks-count');
+    if (element) {
+        element.textContent = count;
+    }
+}
+
+/**
+ * Updates awaiting feedback tasks count
+ *
+ * @function updateFeedbackCount
+ * @param {number} count - Number of awaiting feedback tasks
+ * @returns {void}
+ */
+function updateFeedbackCount(count) {
+    let element = document.getElementById('feedback-tasks-count');
+    if (element) {
+        element.textContent = count;
+    }
+}
+
+/**
+ * Updates done tasks count
+ *
+ * @function updateDoneCount
+ * @param {number} count - Number of done tasks
+ * @returns {void}
+ */
+function updateDoneCount(count) {
+    let element = document.getElementById('done-tasks-count');
+    if (element) {
+        element.textContent = count;
+    }
+}
+
+/**
+ * Formats date to readable string format
+ *
+ * @function formatDeadlineDate
+ * @param {string} dateString - Date string in ISO format
+ * @returns {string} Formatted date string
+ */
+function formatDeadlineDate(dateString) {
+    if (!dateString) return '';
+
+    let date = new Date(dateString);
+    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+/**
+ * Updates urgent deadline display
+ *
+ * @function updateUrgentDeadline
+ * @param {string} deadline - Date string for urgent deadline
+ * @returns {void}
+ */
+function updateUrgentDeadline(deadline) {
+    let element = document.getElementById('urgent-deadline');
+    if (element) {
+        let formattedDate = formatDeadlineDate(deadline);
+        element.textContent = formattedDate || 'No deadline';
     }
 }
 
@@ -73,16 +317,17 @@ function updateGreeting() {
  * Initializes the summary page
  * Updates the greeting (session check is handled by script.js)
  * Called automatically when page loads
- * 
+ *
  * @function initSummary
  * @returns {void}
- * 
+ *
  * @example
  * // Automatic call on page load
  * initSummary();
  */
-function initSummary() {
+async function initSummary() {
     updateGreeting();
+    await updateTaskCounts();
 }
 
 // Execute on page load
