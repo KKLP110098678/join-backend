@@ -160,7 +160,7 @@ function selectCategory(categoryName) {
  */
 function generateTaskId() {
   const isGuest = sessionStorage.getItem("isGuest") === "true";
-  
+
   if (isGuest) {
     // Guest user: Generate sequential ID
     let maxId = 0;
