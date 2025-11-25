@@ -276,7 +276,6 @@
 
 /* Subtask List Styling */
 .subtask-list {
-  list-style: none;
   padding: 0;
   margin: 8px 0 0 0;
   display: flex;
