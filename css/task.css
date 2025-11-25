@@ -111,7 +111,6 @@
 }
 
 .form-group.error input,
-.form-group.error select,
 .form-group.error textarea {
   border-color: #ff3d00;
 }
