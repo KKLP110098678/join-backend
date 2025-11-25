@@ -239,3 +239,73 @@ label.urgent-priority:hover {
 .radio-to-btn {
   background-color: white;
 }
+
+.remove-subtask-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-subtask-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.remove-subtask-btn svg path {
+  transition: stroke 0.3s ease;
+}
+
+.remove-subtask-btn:active svg path {
+  stroke: #005dff;
+}
+
+.form-btn-group {
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  .vertical-divider {
+    width: 1px;
+    height: 24px;
+    background-color: #d1d1d1;
+  }
+}
+
+.form-btn-round {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle-btn:hover {
+  background-color: #e3eeff;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+

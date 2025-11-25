@@ -117,24 +117,6 @@
   padding-right: 48px;
 }
 
-.add-subtask-btn {
-  position: absolute;
-  right: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.add-subtask-btn:hover {
-  background-color: #f0f0f0;
-}
-
 /* Form Actions (Buttons) */
 .form-actions {
   display: flex;
@@ -192,30 +174,6 @@
 
 .dropdown-input::placeholder {
   color: #d1d1d1;
-}
-
-.dropdown-toggle-btn {
-  position: absolute;
-  right: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-toggle-btn:hover {
-  background-color: #e3eeff;
-}
-
-.dropdown-arrow {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
 }
 
 .custom-dropdown.open .dropdown-arrow {
@@ -339,30 +297,6 @@
 .subtask-item span {
   flex: 1;
   color: #2a3647;
-}
-
-.remove-subtask-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.remove-subtask-btn:hover {
-  background-color: #e0e0e0;
-}
-
-.remove-subtask-btn svg path {
-  transition: stroke 0.3s ease;
-}
-
-.remove-subtask-btn:hover svg path {
-  stroke: #ff3d00;
 }
 
 
