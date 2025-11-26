@@ -497,7 +497,7 @@ function generateSubtasksHTML(subtasks) {
     let subtask = subtasks[i];
     if (subtask && subtask.text) {
       let completedClass = subtask.completed ? "completed" : "";
-      html += `<input type="checkbox" class="checkbox-masked" id="subtask-${i}" onchange="toggleSubtaskStatus(this)" ${subtask.completed ? "checked" : ""}><li class="${completedClass}">${subtask.text}</li>`;
+      html += `<input type="checkbox" class="checkbox-masked" id="subtask-${i}" onchange="toggleSubtaskStatus(this.id)" ${subtask.completed ? "checked" : ""}><li class="${completedClass}">${subtask.text}</li>`;
     }
   }
   return html;
@@ -864,5 +864,5 @@ function loadTasksFromSession() {
 }
 
 function toggleSubtaskStatus(checkbox) {
-  console.log("Subtask checkbox toggled:", checkbox);
+
 }
