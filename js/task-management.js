@@ -497,7 +497,7 @@ function generateSubtasksHTML(subtasks) {
     let subtask = subtasks[i];
     if (subtask && subtask.text) {
       let completedClass = subtask.completed ? "completed" : "";
-      html += '<input type="checkbox" class="checkbox-masked" ' + (subtask.completed ? "checked" : "") + '><li class="' + completedClass + '">' + subtask.text + "</li>";
+      html += '<input type="checkbox" class="checkbox-masked" onchange="toggleSubtaskStatus(this)" ' + (subtask.completed ? "checked" : "") + '><li class="' + completedClass + '">' + subtask.text + "</li>";
     }
   }
   return html;
@@ -589,14 +589,14 @@ function editTask(taskId) {
 function getEditTaskTemplate(task) {
   return `
     <div class="details-card">
-      <form id="edit-task-form" class="task-form">
+      <form id="edit-task-form" class="task-form" onsubmit="submitEditTask(event, '${task.id}')">
             <div class="form-group">
               <label for="task-title"></label>
               <input
                 type="text"
                 id="task-title"
                 name="task_title"
-                placeholder="${task.title}"
+                value="${task.title}"
                 required
               />
               <div class="error-message d-none">This field is required</div>
@@ -609,9 +609,8 @@ function getEditTaskTemplate(task) {
               <textarea
                 name="task_description"
                 id="task-description"
-                placeholder="${task.description}"
                 rows="4"
-              ></textarea>
+              >${task.description}</textarea>
             </div>
 
             <div class="form-group">
@@ -620,7 +619,7 @@ function getEditTaskTemplate(task) {
                 type="date"
                 name="due_date"
                 id="task-date"
-                placeholder="${task.dueDate}"
+                value="${task.dueDate}"
               />
               <div class="error-message d-none">This field is required</div>
             </div>
@@ -750,6 +749,7 @@ function getEditTaskTemplate(task) {
                 </button>
               </div>
             </div>
+            <button type="submit" class="primary-btn">Ok</button>
           </form>
     </div>
         `;
