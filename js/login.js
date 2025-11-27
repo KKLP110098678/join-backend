@@ -14,7 +14,7 @@
 function getEmail(inEmail) {
   if (validateEmailFormat(inEmail)) {
     objToFind.email = inEmail;
-    handleErrorSet("in-password", "field-email", "email-error", true);
+    handleErrorSet("password-input", "field-email", "email-error", true);
     return true;
   }
 }
@@ -35,7 +35,7 @@ function getEmail(inEmail) {
 function getPassword(inPassword) {
   realPassword = updateVariable(inPassword, realPassword);
   objToFind.password = realPassword;
-  handleErrorSet("checkbox", "field-password", "passwor-tooltip", true);
+  handleErrorSet("checkbox", "field-password", "error-message", true);
 }
 
 /**
@@ -57,9 +57,9 @@ function getPassword(inPassword) {
 function passwordInput(input) {
   const inPassWord = input.value;
   realPassword = updateVariable(inPassWord, realPassword);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  passwordVisible = hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
-  restInputField("field-password", "passwor-tooltip");
+  restInputField("field-password", "error-message");
   objToFind.password = realPassword;
 }
 
@@ -113,7 +113,7 @@ async function handelLogIn() {
 function checkCardinal() {
   if (objToFind.email === "") {
     handleErrorSet(
-      "in-password",
+      "password-input",
       "field-email",
       "email-error",
       false,
@@ -122,14 +122,14 @@ function checkCardinal() {
     return false;
   } else if (objToFind.password === "") {
     toggleErrorMessage(
-      "passwor-tooltip",
+      "error-message",
       false,
       "Please enter a valid password!"
     );
     setBorderColor("field-password", false);
     return false;
   } else {
-    toggleErrorMessage("passwor-tooltip", true, "");
+    toggleErrorMessage("error-message", true, "");
     return true;
   }
 }
@@ -150,7 +150,7 @@ function handleWrongCardinal() {
   const message = "Check your email and password. Please try again.";
   setBorderColor("field-email", false);
   setBorderColor("field-password", false);
-  toggleErrorMessage("passwor-tooltip", false, message);
+  toggleErrorMessage("error-message", false, message);
 }
 
 /**
@@ -164,7 +164,7 @@ function handleWrongCardinal() {
  * @returns {void} This function does not return a value.
  */
 function toggleRememberMe() {
-  const checkBox = document.getElementById("checkbox");
+  const checkBox = document.getElementById("remember-me-checkbox");
   const checkBoxImage = document.getElementById("checkbox-image");
 
   if (realPassword === "") return;
@@ -189,7 +189,7 @@ function toggleRememberMe() {
  * @returns {void} This function does not return a value.
  */
 function removeRememberMe() {
-  const checkBox = document.getElementById("checkbox");
+  const checkBox = document.getElementById("remember-me-checkbox");
   const checkBoxImage = document.getElementById("checkbox-image");
 
   if (realPassword === "") return;
@@ -210,7 +210,7 @@ function removeRememberMe() {
  * @returns {void} This function does not return a value.
  */
 function setRememberMe() {
-  const chBox = document.getElementById("checkbox");
+  const chBox = document.getElementById("remember-me-checkbox");
   chBox.checked = true;
   chBox.disabled = false;
   const checkBoxImage = document.getElementById("checkbox-image");

@@ -3,7 +3,7 @@ const CONFIG = {
     login: "../html/login.html", // Default login redirect path
   },
 };
-const newUser = { nuName: "", nuEmail: "", nuPassword: "" };
+const newUser = { name: "", email: "", password: "" };
 
 /**
  * Validates that all required input fields in the registration form are filled and valid.
@@ -79,10 +79,10 @@ async function handleRegisterUser() {
  */
 
 function checkInputName() {
-  const inName = document.getElementById("in-name").value.trim();
+  const inName = document.getElementById("input-name").value.trim();
   if (inName === "") {
     handleErrorSet(
-      "in-email",
+      "input-email",
       "field-name",
       "username-error",
       false,
@@ -118,7 +118,7 @@ async function isUserExistByName(inName) {
     const exists = await isUserNameTaken(inName);
     if (exists) {
       handleErrorSet(
-        "in-email",
+        "input-email",
         "field-name",
         "username-error",
         false,
@@ -126,8 +126,8 @@ async function isUserExistByName(inName) {
       );
       return false;
     }
-    newUser.nuName = inName;
-    handleErrorSet("in-email", "field-name", "username-error", true);
+    newUser.name = inName;
+    handleErrorSet("input-email", "field-name", "username-error", true);
     return true;
   } catch (error) {
     return false;
@@ -148,10 +148,10 @@ async function isUserExistByName(inName) {
  */
 
 function checkInputEmail() {
-  const inEmail = document.getElementById("in-email").value.trim();
+  const inEmail = document.getElementById("input-email").value.trim();
   if (inEmail === "") {
     handleErrorSet(
-      "in-password",
+      "input-password",
       "field-email",
       "email-error",
       false,
@@ -192,7 +192,7 @@ async function isUserExistByEmail(inEmail) {
     const exists = await isUserEmailTaken(inEmail);
     if (exists) {
       handleErrorSet(
-        "in-password",
+        "input-password",
         "field-email",
         "email-error",
         false,
@@ -200,8 +200,8 @@ async function isUserExistByEmail(inEmail) {
       );
       return false;
     }
-    newUser.nuEmail = inEmail;
-    handleErrorSet("in-password", "field-email", "email-error", true);
+    newUser.email = inEmail;
+    handleErrorSet("input-password", "field-email", "email-error", true);
     return true;
   } catch (error) {
     return false;
@@ -225,7 +225,7 @@ function validateEmailFormat(inEmail) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(inEmail)) {
     handleErrorSet(
-      "in-password",
+      "input-password",
       "field-email",
       "email-error",
       false,
@@ -249,7 +249,7 @@ function validateEmailFormat(inEmail) {
  * @see handleErrorSet - Displays an error message if the terms are not accepted.
  */
 function checkAcceptTerms() {
-  const checkBox = document.getElementById("checkbox");
+  const checkBox = document.getElementById("privacy-checkbox");
   if (!checkBox.checked) {
     handleErrorSet(
       "btn-signup",
@@ -279,7 +279,7 @@ function checkAcceptTerms() {
  * @see handleErrorSet - Updates or clears the error message based on the checkbox state.
  */
 function toggleCheckBox() {
-  const checkBox = document.getElementById("checkbox");
+  const checkBox = document.getElementById("privacy-checkbox");
   const checkBoxImage = document.getElementById("checkbox-image");
   if (checkBox.disabled) return;
   checkBox.checked = !checkBox.checked;

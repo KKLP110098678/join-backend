@@ -36,7 +36,7 @@
             <div class="field-container">
               <div id="field-email" class="input-icon-container">
                 <input
-                  id="in-email"
+                  id="email-input"
                   type="email"
                   placeholder="E-Mail"
                   required
@@ -50,7 +50,7 @@
             <div class="field-container">
               <div id="field-password" class="input-icon-container">
                 <input
-                  id="in-password"
+                  id="password-input"
                   type="text"
                   disabled
                   placeholder="Password"
@@ -64,12 +64,12 @@
                   onclick="onPasswordIconClick()"
                 />
               </div>
-              <small id="passwor-tooltip" class="d-none msg-error"></small>
+              <small id="error-message" class="d-none msg-error"></small>
             </div>
           </div>
           <div>
             <label class="custom-checkbox">
-              <input id="checkbox" type="checkbox" disabled />
+              <input id="remember-me-checkbox" type="checkbox" disabled />
               <img
                 id="checkbox-image"
                 src="../assets/icon/sign/unchecked.svg"

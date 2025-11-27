@@ -45,7 +45,7 @@
                 <div class="field-container">
                   <div id="field-name" class="input-icon-container">
                     <input
-                      id="in-name"
+                      id="input-name"
                       type="text"
                       placeholder="Name"
                       oninput="restInputField('field-name','username-error')"
@@ -59,7 +59,7 @@
                 <div class="field-container">
                   <div id="field-email" class="input-icon-container">
                     <input
-                      id="in-email"
+                      id="input-email"
                       type="email"
                       placeholder="E-Mail"
                       required
@@ -74,7 +74,7 @@
                 <div class="field-container">
                   <div id="field-password" class="input-icon-container">
                     <input
-                      id="in-password"
+                      id="input-password"
                       type="text"
                       disabled
                       placeholder="Password"
@@ -88,12 +88,12 @@
                       onclick="onPasswordIconClick()"
                     />
                   </div>
-                  <small id="passwor-tooltip" class="d-none msg-error"></small>
+                  <small id="password-tooltip" class="d-none msg-error"></small>
                 </div>
                 <div class="field-container">
                   <div id="field-password-confirm" class="input-icon-container">
                     <input
-                      id="in-password-confirm"
+                      id="input-password-confirm"
                       type="text"
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
@@ -108,14 +108,14 @@
                     />
                   </div>
                   <small
-                    id="confirm-password-error"
+                    id="confirm-password"
                     class="d-none msg-error"
                   ></small>
                 </div>
               </div>
               <div>
                 <label class="custom-checkbox">
-                  <input id="checkbox" type="checkbox" disabled />
+                  <input id="privacy-checkbox" type="checkbox" disabled />
                   <img
                     id="checkbox-image"
                     src="../assets/icon/sign/unchecked.svg"

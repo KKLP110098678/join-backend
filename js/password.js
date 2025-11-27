@@ -9,7 +9,7 @@ let realPassword = "";
  * Indicates whether the password input field is currently visible (plain text) or hidden (masked).
  * @type {boolean}
  */
-let passeordVisible = false;
+let passwordVisible = false;
 
 /**
  * Stores the actual confirmation password entered by the user.
@@ -27,7 +27,7 @@ let confirmVisible = false;
 /**
  * Validates the password input field in the registration form.
  *
- * This function checks if the password stored in `newUser.nuPassword` is empty.
+ * This function checks if the password stored in `newUser.password` is empty.
  * If the password is empty, it displays an error message using `handleErrorSet`.
  * Otherwise, the password is considered valid.
  *
@@ -37,11 +37,11 @@ let confirmVisible = false;
  * @see handleErrorSet - Displays or clears an error message for the password field.
  */
 function checkInputPassword() {
-  if (newUser.nuPassword === "") {
+  if (newUser.password === "") {
     handleErrorSet(
-      "in-password-confirm",
+      "input-password-confirm",
       "field-password",
-      "passwor-tooltip",
+      "password-tooltip",
       false,
       "Please enter a valid Password!"
     );
@@ -71,7 +71,7 @@ function checkInputPassword() {
 function onPasswordInput(input) {
   const inPassWord = input.value;
   realPassword = updateVariable(inPassWord, realPassword);
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  passwordVisible = hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
   setBorderColor("field-password", false);
   validatePasswordTooltip(realPassword);
@@ -81,7 +81,7 @@ function onPasswordInput(input) {
  * Handles password input blur events in the registration form.
  *
  * This function checks the entered password against validation rules using `checkPasswordRules`.
- * If the password is valid, it updates `newUser.nuPassword`, clears error messages, and removes the input border color.
+ * If the password is valid, it updates `newUser.password`, clears error messages, and removes the input border color.
  * If invalid, it sets the error state using `handleErrorSet`.
  *
  * @function onPasswordBlur
@@ -95,19 +95,19 @@ function onPasswordInput(input) {
 function onPasswordBlur() {
   const rules = checkPasswordRules(realPassword);
   if (isPasswordValid(rules)) {
-    newUser.nuPassword = realPassword;
+    newUser.password = realPassword;
     handleErrorSet(
-      "in-password-confirm",
-      "in-password",
-      "passwor-tooltip",
+      "input-password-confirm",
+      "input-password",
+      "password-tooltip",
       true
     );
     removeBorderColor("field-password");
   } else {
     handleErrorSet(
-      "in-password-confirm",
-      "in-password",
-      "passwor-tooltip",
+      "input-password-confirm",
+      "input-password",
+      "password-tooltip",
       false
     );
   }
@@ -116,7 +116,7 @@ function onPasswordBlur() {
 /**
  * Toggles the visibility of the password input field when the visibility icon is clicked.
  *
- * This function switches the `passeordVisible` state, updates the input masking
+ * This function switches the `passwordVisible` state, updates the input masking
  * using `hedienWord`, and updates the visibility icon accordingly.
  *
  * @function onPasswordIconClick
@@ -126,18 +126,18 @@ function onPasswordBlur() {
  * @see toggleVisibilityIcon - Updates the visibility icon for the password field.
  */
 function onPasswordIconClick() {
-  const input = document.getElementById("in-password");
+  const input = document.getElementById("input-password");
   if (realPassword.length === 0) return;
-  passeordVisible = !passeordVisible;
-  passeordVisible = hedienWord(input, passeordVisible, realPassword);
+  passwordVisible = !passwordVisible;
+  passwordVisible = hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
 }
 
 /**
  * Updates the password visibility icon based on the current state of the password input.
  *
- * If no password is entered, the icon shows a lock and sets `passeordVisible` to false.
- * Otherwise, it switches between "visibility" and "visibility_off" icons depending on `passeordVisible`.
+ * If no password is entered, the icon shows a lock and sets `passwordVisible` to false.
+ * Otherwise, it switches between "visibility" and "visibility_off" icons depending on `passwordVisible`.
  *
  * @function toggleVisibilityIcon
  * @returns {void} This function does not return a value.
@@ -146,9 +146,9 @@ function toggleVisibilityIcon() {
   const icon = document.getElementById("password-icon");
   if (realPassword.length === 0) {
     icon.src = "../assets/icon/sign/lock.svg";
-    passeordVisible = false;
+    passwordVisible = false;
   } else {
-    icon.src = passeordVisible
+    icon.src = passwordVisible
       ? "../assets/icon/sign/visibility.svg"
       : "../assets/icon/sign/visibility_off.svg";
   }
@@ -169,7 +169,7 @@ function toggleVisibilityIcon() {
 function checkInputConfirmPassword() {
   if (realConfirmPassword === "") {
     handleErrorSet(
-      "checkbox",
+      "checkbox-image",
       "field-password-confirm",
       "confirm-password-error",
       false,
@@ -200,7 +200,7 @@ function onInputConfirmPassword(input) {
   restInputField("field-password-confirm", "confirm-password-error");
   const inConfirmWord = input.value;
   realConfirmPassword = updateVariable(inConfirmWord, realConfirmPassword);
-  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
   updateConfirmIconByState();
 }
 
@@ -217,10 +217,10 @@ function onInputConfirmPassword(input) {
  * @see updateConfirmIconByState - Updates the visibility icon for the confirmation password field.
  */
 function onClickConfirmPasswordIcon() {
-  const input = document.getElementById("in-password-confirm");
+  const input = document.getElementById("input-password-confirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
-  confirmVisible = hedienWord(input, confirmVisible, realConfirmPassword);
+  confirmVisible = hideWord(input, confirmVisible, realConfirmPassword);
 }
 
 /**
@@ -312,7 +312,7 @@ function updateVariable(inWord, realVar) {
  * @param {string} realWord - The actual value to show or mask.
  * @returns {boolean} Returns the visibility state (`isVisible`).
  */
-function hedienWord(inWord, isVisible, realWord) {
+function hideWord(inWord, isVisible, realWord) {
   if (realWord.length === 0) return isVisible;
   inWord.value = isVisible ? realWord : "*".repeat(realWord.length);
   return isVisible;
@@ -360,9 +360,9 @@ function validatePasswordTooltip(inPassword) {
   const rules = checkPasswordRules(inPassword);
   const msg = buildPasswordMessage(rules);
   handleErrorSet(
-    "in-password-confirm",
+    "input-password-confirm",
     "field-password",
-    "passwor-tooltip",
+    "password-tooltip",
     isPasswordValid(rules),
     msg
   );
