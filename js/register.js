@@ -88,6 +88,8 @@ function checkInputName() {
       false,
       "Please enter a valid Username!"
     );
+    validationState.name = false;
+    checkAllFieldsValid();
     return false;
   } else {
     return true;
@@ -157,6 +159,8 @@ function checkInputEmail() {
       false,
       "Please enter a valid E-Mail!"
     );
+    validationState.name = false;
+    checkAllFieldsValid();
     return false;
   } else {
     return true;
@@ -186,10 +190,12 @@ function checkInputEmail() {
 async function isUserExistByEmail(inEmail) {
   if (!inEmail || !inEmail.trim()) return false;
   try {
-    if (!validateEmailFormat(inEmail)) {
+    if (!validateEmailFormat(inputEmail)) {
+      validationState.email = false;
+      checkAllFieldsValid();
       return false;
     }
-    const exists = await isUserEmailTaken(inEmail);
+    const exists = await isUserEmailTaken(inputEmail);
     if (exists) {
       handleErrorSet(
         "input-password",
@@ -198,6 +204,8 @@ async function isUserExistByEmail(inEmail) {
         false,
         "E-Mail already exists!"
       );
+      validationState.email = false;
+      checkAllFieldsValid();
       return false;
     }
     newUser.email = inEmail;
@@ -323,7 +331,6 @@ function toggleCheckBox() {
  * @see toggleErrorMessage - Displays or hides the error message element.
  */
 function handleErrorSet(
-  nextFieldId,
   fieldId,
   errorId,
   status,
@@ -334,7 +341,6 @@ function handleErrorSet(
   } else {
     setBorderColor(fieldId, false);
   }
-  toggleNextElement(nextFieldId, status);
   toggleErrorMessage(errorId, status, errorMessage);
 }
 
@@ -426,10 +432,64 @@ function setBorderColor(inID, status) {
   const feldInput = document.getElementById(inID);
   feldInput.classList.remove("valid-input", "invalid-input");
   if (status) {
-    feldInput.classList.add("valid-input");
+    fieldInput.classList.add("valid-input");
   } else {
     feldInput.classList.add("invalid-input");
   }
+}
+
+/**
+ * Checks if all input fields are valid and enables the checkbox if so
+ */
+function checkAllFieldsValid() {
+  const allValid = validationState.name && 
+                   validationState.email && 
+                   validationState.password && 
+                   validationState.confirmPassword;
+  
+  const checkbox = document.getElementById("privacy-checkbox");
+  if (checkbox) {
+    checkbox.disabled = !allValid;
+  }
+}
+
+/**
+ * Resets an input field's validation state and clears its associated error message.
+ *
+ * This function sets the input field's border to a valid state and hides any error message
+ * associated with it.
+ *
+ * @function restInputField
+ * @param {string} idField - The ID of the input field to reset.
+ * @param {string} idMsgError - The ID of the error message element to clear.
+ *
+ * @returns {void} This function does not return a value.
+ *
+ * @see setBorderColor - Updates the input field's border style.
+ * @see toggleErrorMessage - Hides or clears the error message.
+ */
+function restInputField(idField, idMsgError) {
+  setBorderColor(idField, true);
+  toggleErrorMessage(idMsgError, true, "");
+}
+
+/**
+ * Displays a success overlay and redirects the user to the login page after a short delay.
+ *
+ * This function shows an overlay element with the ID "success-overlay" by removing the "d-none" class.
+ * After 2 seconds, it automatically redirects the user to the login page.
+ *
+ * @function showSuccessAndRedirect
+ *
+ * @returns {void} This function does not return a value.
+ */
+function showSuccessAndRedirect() {
+  const overlay = document.getElementById("success-overlay");
+  overlay.classList.remove("d-none");
+
+  setTimeout(() => {
+    window.location.href = "../html/login.html";
+  }, 2000);
 }
 
 /**

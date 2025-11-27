@@ -76,6 +76,7 @@
   justify-content: space-evenly;
   align-items: center;
   color: white;
+  cursor: unset;
 }
 
 .square-urgency:hover {
@@ -90,7 +91,7 @@
 }
 
 .square-urgency:active {
-  background: #005DFF;
+  background: #005dff;
   color: white;
 
   .vertical-divider {
@@ -101,7 +102,6 @@
     border: solid 3px white;
   }
 }
-
 
 .square-to-do {
   background: rgba(210, 227, 255, 1);
@@ -116,8 +116,9 @@
 }
 
 .square-to-do:active {
-  background: #005DFF;
-  .card-number, .card-label {
+  background: #005dff;
+  .card-number,
+  .card-label {
     color: white;
   }
 }
@@ -140,7 +141,6 @@
   margin: 10px 0;
   border-radius: 3px;
 }
-
 
 .urgent-icon {
   display: flex;
@@ -237,7 +237,7 @@
 .square-progress:hover,
 .square-feedback:hover,
 .square-done:hover {
-  background: #005DFF;
+  background: #005dff;
 }
 
 .square-board:hover,

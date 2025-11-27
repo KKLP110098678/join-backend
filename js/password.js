@@ -260,19 +260,27 @@ function isPasswordMatching() {
   if (!realConfirmPassword) return;
   if (realPassword === realConfirmPassword) {
     handleErrorSet(
-      "checkbox",
+      "checkbox-image",
       "field-password-confirm",
       "confirm-password-error",
       true
     );
+    if (typeof validationState !== 'undefined') {
+      validationState.confirmPassword = true;
+      checkAllFieldsValid();
+    }
   } else {
     handleErrorSet(
-      "checkbox",
+      "checkbox-image",
       "field-password-confirm",
       "confirm-password-error",
       false,
       "Your passwords don't match. Please try again."
     );
+    if (typeof validationState !== 'undefined') {
+      validationState.confirmPassword = false;
+      checkAllFieldsValid();
+    }
   }
 }
 
@@ -292,8 +300,8 @@ function updateVariable(inWord, realVar) {
   if (inWord.length > realVar.length) {
     const added = inWord.slice(realVar.length);
     realVar += added;
-  } else if (inWord.length < realVar.length) {
-    realVar = realVar.slice(0, inWord.length);
+  } else if (inputWord.length < realVar.length) {
+    realVar = realVar.slice(0, inputWord.length);
   }
   return realVar;
 }
@@ -314,7 +322,7 @@ function updateVariable(inWord, realVar) {
  */
 function hideWord(inWord, isVisible, realWord) {
   if (realWord.length === 0) return isVisible;
-  inWord.value = isVisible ? realWord : "*".repeat(realWord.length);
+  inputWord.value = isVisible ? realWord : "*".repeat(realWord.length);
   return isVisible;
 }
 

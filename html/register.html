@@ -32,6 +32,7 @@
             <img
               alt="backImg"
               src="../assets/icon/sign/back.svg"
+              onclick="sessionStorage.setItem('skipAnimation', 'true');"
             />
           </a>
 
@@ -45,6 +46,7 @@
                 <div class="field-container">
                   <div id="field-name" class="input-icon-container">
                     <input
+                      id="input-name"
                       id="input-name"
                       type="text"
                       placeholder="Name"
@@ -60,12 +62,12 @@
                   <div id="field-email" class="input-icon-container">
                     <input
                       id="input-email"
+                      id="input-email"
                       type="email"
                       placeholder="E-Mail"
                       required
                       oninput="restInputField('field-email','email-error')"
                       onblur="isUserExistByEmail(this.value)"
-                      disabled
                     />
                     <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
                   </div>
@@ -75,8 +77,8 @@
                   <div id="field-password" class="input-icon-container">
                     <input
                       id="input-password"
+                      id="input-password"
                       type="text"
-                      disabled
                       placeholder="Password"
                       onblur="onPasswordBlur()"
                       oninput="onPasswordInput(this)"
@@ -94,11 +96,11 @@
                   <div id="field-password-confirm" class="input-icon-container">
                     <input
                       id="input-password-confirm"
+                      id="input-password-confirm"
                       type="text"
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
                       onblur="isPasswordMatching()"
-                      disabled
                     />
                     <img
                       id="confirm-password-icon"

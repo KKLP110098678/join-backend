@@ -1,177 +1,243 @@
-let tasks = loadTasksFromSession() || [
-  {
-    id: "task-1",
-    title: "Kochwelt Page & Recipe Recommender",
-    description: "Build start page with recipe recommendation.",
-    category: "User Story",
-    assignedTo: ["JD", "MS"],
-    priority: "urgent",
-    status: "todo",
-    subtasks: [
-      { text: "Implement Recipe Recommender", completed: false },
-      { text: "Start Page Layout", completed: true }
-    ],
-    dueDate: "2024-05-10"
-  },
-  {
-    id: "task-2",
-    title: "HTML Base Template Creation",
-    description: "Create reusable HTML base templates for all pages.",
-    category: "User Story",
-    assignedTo: ["AB"],
-    priority: "medium",
-    status: "todo",
-    subtasks: [
-      { text: "Header Template", completed: false },
-      { text: "Footer Template", completed: false },
-      { text: "Navigation Template", completed: true }
-    ],
-    dueDate: "2024-05-12"
-  },
-  {
-    id: "task-3",
-    title: "CSS Architecture Planning",
-    description: "Plan and structure CSS architecture for the project.",
-    category: "User Story",
-    assignedTo: ["CG", "DK", "LM"],
-    priority: "low",
-    status: "in-progress",
-    subtasks: [
-      { text: "Define CSS Variables", completed: true },
-      { text: "Create Component Structure", completed: false }
-    ],
-    dueDate: "2024-05-15"
-  },
-  {
-    id: "task-4",
-    title: "JavaScript Functions",
-    description: "Implement core JavaScript functionality.",
-    category: "Technical Task",
-    assignedTo: ["NG"],
-    priority: "urgent",
-    status: "in-progress",
-    subtasks: [
-      { text: "Event Handlers", completed: false },
-      { text: "Data Management", completed: false }
-    ],
-    dueDate: "2024-05-08"
-  },
-  {
-    id: "task-5",
-    title: "Daily Kanban Board",
-    description: "Create a functional Kanban board for task management.",
-    category: "User Story",
-    assignedTo: ["PQ", "RS"],
-    priority: "medium",
-    status: "await-feedback",
-    subtasks: [
-      { text: "Drag & Drop Functionality", completed: true },
-      { text: "Task Card Design", completed: true },
-      { text: "Status Management", completed: false }
-    ],
-    dueDate: "2024-05-20"
-  },
-  {
-    id: "task-6",
-    title: "Contact Management System",
-    description: "Develop a comprehensive contact management system.",
-    category: "User Story",
-    assignedTo: ["TV"],
-    priority: "low",
-    status: "done",
-    subtasks: [
-      { text: "Contact List View", completed: true },
-      { text: "Contact Form", completed: true }
-    ],
-    dueDate: "2024-05-05"
-  },
-  {
-    id: "task-7",
-    title: "Database Integration",
-    description: "Set up database connection and data persistence.",
-    category: "Technical Task",
-    assignedTo: ["WX", "YZ"],
-    priority: "medium",
-    status: "done",
-    subtasks: [
-      { text: "Database Schema", completed: true },
-      { text: "API Endpoints", completed: true },
-      { text: "Data Validation", completed: true }
-    ],
-    dueDate: "2024-05-03"
+/**
+ * Initializes tasks array
+ * Loads from Firebase for logged-in users or SessionStorage for guests
+ * @async
+ * @returns {Promise<Array>} Array of tasks
+ */
+async function initializeTasks() {
+  const isGuest = sessionStorage.getItem("isGuest") === "true";
+  
+  if (isGuest) {
+    // Guest user: Load from SessionStorage or use default tasks
+    const storedTasks = loadTasksFromSession();
+    return storedTasks || getDefaultTasks();
+  } else {
+    // Logged-in user: Load from Firebase
+    if (typeof loadTasksFromFirebase === "function") {
+      const firebaseTasks = await loadTasksFromFirebase();
+      return firebaseTasks.length > 0 ? firebaseTasks : getDefaultTasks();
+    }
+    return getDefaultTasks();
   }
-];
+}
+
+/**
+ * Returns default tasks for initial setup
+ * @returns {Array} Array of default tasks
+ */
+function getDefaultTasks() {
+  return [
+    {
+      id: "task-1",
+      title: "Kochwelt Page & Recipe Recommender",
+      description: "Build start page with recipe recommendation.",
+      category: "User Story",
+      assignedTo: ["JD", "MS"],
+      priority: "urgent",
+      status: "todo",
+      subtasks: [
+        { text: "Implement Recipe Recommender", completed: false },
+        { text: "Start Page Layout", completed: true }
+      ],
+      dueDate: "2024-05-10"
+    },
+    {
+      id: "task-2",
+      title: "HTML Base Template Creation",
+      description: "Create reusable HTML base templates for all pages.",
+      category: "User Story",
+      assignedTo: ["AB"],
+      priority: "medium",
+      status: "todo",
+      subtasks: [
+        { text: "Header Template", completed: false },
+        { text: "Footer Template", completed: false },
+        { text: "Navigation Template", completed: true }
+      ],
+      dueDate: "2024-05-12"
+    },
+    {
+      id: "task-3",
+      title: "CSS Architecture Planning",
+      description: "Plan and structure CSS architecture for the project.",
+      category: "User Story",
+      assignedTo: ["CG", "DK", "LM"],
+      priority: "low",
+      status: "in-progress",
+      subtasks: [
+        { text: "Define CSS Variables", completed: true },
+        { text: "Create Component Structure", completed: false }
+      ],
+      dueDate: "2024-05-15"
+    },
+    {
+      id: "task-4",
+      title: "JavaScript Functions",
+      description: "Implement core JavaScript functionality.",
+      category: "Technical Task",
+      assignedTo: ["NG"],
+      priority: "urgent",
+      status: "in-progress",
+      subtasks: [
+        { text: "Event Handlers", completed: false },
+        { text: "Data Management", completed: false }
+      ],
+      dueDate: "2024-05-08"
+    },
+    {
+      id: "task-5",
+      title: "Daily Kanban Board",
+      description: "Create a functional Kanban board for task management.",
+      category: "User Story",
+      assignedTo: ["PQ", "RS"],
+      priority: "medium",
+      status: "await-feedback",
+      subtasks: [
+        { text: "Drag & Drop Functionality", completed: true },
+        { text: "Task Card Design", completed: true },
+        { text: "Status Management", completed: false }
+      ],
+      dueDate: "2024-05-20"
+    },
+    {
+      id: "task-6",
+      title: "Contact Management System",
+      description: "Develop a comprehensive contact management system.",
+      category: "User Story",
+      assignedTo: ["TV"],
+      priority: "low",
+      status: "done",
+      subtasks: [
+        { text: "Contact List View", completed: true },
+        { text: "Contact Form", completed: true }
+      ],
+      dueDate: "2024-05-05"
+    },
+    {
+      id: "task-7",
+      title: "Database Integration",
+      description: "Set up database connection and data persistence.",
+      category: "Technical Task",
+      assignedTo: ["WX", "YZ"],
+      priority: "medium",
+      status: "done",
+      subtasks: [
+        { text: "Database Schema", completed: true },
+        { text: "API Endpoints", completed: true },
+        { text: "Data Validation", completed: true }
+      ],
+      dueDate: "2024-05-03"
+    }
+  ];
+}
+
+// Initialize tasks - will be set by initializeTasks()
+let tasks = [];
 
 // Priority icons mapping
 const priorityIcons = {
   urgent: "/assets/icon/taskManagement/urgent.svg",
   medium: "/assets/icon/taskManagement/medium.svg",
-  low: "/assets/icon/taskManagement/low.svg"
+  low: "/assets/icon/taskManagement/low.svg",
 };
 
 // Priority labels mapping
 const priorityLabels = {
   urgent: "High Priority",
   medium: "Medium Priority",
-  low: "Low Priority"
+  low: "Low Priority",
 };
 
 // Kategorie-zu-CSS-ID Mapping
 const categoryToId = {
   "User Story": "user-story",
-  "Technical Task": "technical-task"
+  "Technical Task": "technical-task",
 };
 
 function generateTaskCardHTML(task) {
-  let assignedUsersHTML = generateAssignedUsersHTML(task.assignedTo);
-  let categoryId = categoryToId[task.category] || "user-story";
-  let priorityIcon = priorityIcons[task.priority];
-  let priorityLabel = priorityLabels[task.priority];
-  let subtaskData = calculateSubtaskProgress(task.subtasks);
+  if (!task) {
+    return "";
+  }
   
-  return getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskData);
+  let assignedUsersHTML = generateAssignedUsersHTML(task.assignedTo || []);
+  let categoryId = categoryToId[task.category] || "user-story";
+  let priorityIcon = priorityIcons[task.priority] || priorityIcons["medium"];
+  let priorityLabel = priorityLabels[task.priority] || priorityLabels["medium"];
+  let subtaskData = calculateSubtaskProgress(task.subtasks || []);
+
+  return getTaskCardTemplate(
+    task,
+    assignedUsersHTML,
+    categoryId,
+    priorityIcon,
+    priorityLabel,
+    subtaskData
+  );
 }
 
 function generateAssignedUsersHTML(assignedToArray) {
-  let html = '';
+  if (!assignedToArray || !Array.isArray(assignedToArray)) {
+    return "";
+  }
+  
+  let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     let initials = getInitials(assignedToArray[i]);
-    html += '<div class="user-avatar-sm">' + initials + '</div>';
+    html += '<div class="user-avatar-sm">' + initials + "</div>";
   }
   return html;
 }
 
 function calculateSubtaskProgress(subtasks) {
+  if (!subtasks || !Array.isArray(subtasks)) {
+    return { subtaskProgress: "", totalSubtasks: 0, progressInPercent: 0 };
+  }
+  
   let completedSubtasks = 0;
   for (let i = 0; i < subtasks.length; i++) {
-    if (subtasks[i].completed) {
+    if (subtasks[i] && subtasks[i].completed) {
       completedSubtasks++;
     }
   }
 
   let totalSubtasks = subtasks.length;
-  let subtaskProgress = totalSubtasks > 0 ? completedSubtasks + '/' + totalSubtasks + ' Subtasks' : '';
-  let progressInPercent = totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
-  
+  let subtaskProgress =
+    totalSubtasks > 0
+      ? completedSubtasks + "/" + totalSubtasks + " Subtasks"
+      : "";
+  let progressInPercent =
+    totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
+
   return { subtaskProgress, totalSubtasks, progressInPercent };
 }
 
-function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, priorityLabel, subtaskData) {
+function getTaskCardTemplate(
+  task,
+  assignedUsersHTML,
+  categoryId,
+  priorityIcon,
+  priorityLabel,
+  subtaskData
+) {
   let { subtaskProgress, totalSubtasks, progressInPercent } = subtaskData;
-  
+
   return `
-    <div class="task-card" draggable="true" data-task-id="${task.id}" 
+    <div class="task-card" draggable="true" data-task-id="${task.id || ''}" 
          ondragstart="handleDragStart(event, this)" 
          ondragend="handleDragEnd(this)"
-         onclick="showTaskDetails('${task.id}')">
-      <div id="${categoryId}" class="ticket-label">${task.category}</div>
-      <div class="task-title">${task.title}</div>
-      <div class="task-description">${task.description}</div>
+         onclick="showTaskDetails('${task.id || ''}')">
+      <div id="${categoryId}" class="ticket-label">${task.category || 'User Story'}</div>
+      <div class="task-title">${task.title || 'Untitled Task'}</div>
+      <div class="task-description">${task.description || ''}</div>
       <div class="subtask-container">
         <div class="progress-container d-flex">
           <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
         </div>
-        ${totalSubtasks > 0 ? `<div class="task-subtasks">${subtaskProgress}</div>` : ''}
+        ${
+          totalSubtasks > 0
+            ? `<div class="task-subtasks">${subtaskProgress}</div>`
+            : ""
+        }
       </div>
       <div class="task-footer d-flex">
         <div class="task-users">
@@ -185,11 +251,21 @@ function getTaskCardTemplate(task, assignedUsersHTML, categoryId, priorityIcon, 
   `;
 }
 
-function renderAllTasks() {
-  if (typeof populateAssignedToDropdown === 'function') {
-    populateAssignedToDropdown();
+/**
+ * Renders all tasks on the Kanban board
+ * Initializes tasks from Firebase or SessionStorage on first call
+ * @async
+ */
+async function renderAllTasks() {
+  // Initialize tasks if array is empty
+  if (tasks.length === 0) {
+    tasks = await initializeTasks();
   }
   
+  if (typeof populateAssignedToDropdown === "function") {
+    populateAssignedToDropdown();
+  }
+
   let columns = getKanbanColumns();
   clearAllColumns(columns);
   renderTasksInColumns();
@@ -197,10 +273,10 @@ function renderAllTasks() {
 
 function getKanbanColumns() {
   return {
-    todo: document.getElementById('todo'),
-    inProgress: document.getElementById('in-progress'),
-    awaitFeedback: document.getElementById('await-feedback'),
-    done: document.getElementById('done')
+    todo: document.getElementById("todo"),
+    inProgress: document.getElementById("in-progress"),
+    awaitFeedback: document.getElementById("await-feedback"),
+    done: document.getElementById("done"),
   };
 }
 
@@ -216,7 +292,7 @@ function renderTasksInColumns() {
     let task = tasks[i];
     let column = document.getElementById(task.status);
     if (column) {
-      column.insertAdjacentHTML('beforeend', generateTaskCardHTML(task));
+      column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
     }
   }
 }
@@ -228,7 +304,7 @@ function clearColumnTaskCards(column) {
   let children = column.children;
   for (let i = children.length - 1; i >= 0; i--) {
     let child = children[i];
-    if (child.classList.contains('task-card')) {
+    if (child.classList.contains("task-card")) {
       child.remove();
     }
   }
@@ -243,12 +319,50 @@ function findTaskById(taskId) {
   return null;
 }
 
-function updateTaskStatus(taskId, newStatus) {
+/**
+ * Updates task status in Firebase (for logged-in users) or SessionStorage (for guests)
+ * Updates at boards/{userId}/tasks/{taskId}
+ * @async
+ * @param {string} taskId - The ID of the task to update
+ * @param {string} newStatus - The new status value
+ */
+async function updateTaskStatus(taskId, newStatus) {
+  const isGuest = sessionStorage.getItem("isGuest") === "true";
   const task = findTaskById(taskId);
-  task.status = newStatus;
+  
+  if (task) {
+    task.status = newStatus;
+    
+    if (isGuest) {
+      // Guest user: Update SessionStorage only
+      saveTasksToSession();
+    } else {
+      // Logged-in user: Update Firebase
+      const userId = sessionStorage.getItem("userId");
+      if (!userId) {
+        console.error("No userId found in session");
+        return;
+      }
+      
+      try {
+        await firebase.database().ref(`boards/${userId}/tasks/${taskId}`).update({ status: newStatus });
+        console.log("Task status updated in Firebase:", taskId);
+      } catch (error) {
+        console.error("Error updating task status:", error);
+      }
+    }
+  }
 }
 
-function deleteTask(taskId) {
+/**
+ * Deletes a task from Firebase (for logged-in users) or SessionStorage (for guests)
+ * Deletes from boards/{userId}/tasks/{taskId}
+ * @async
+ * @param {string} taskId - The ID of the task to delete
+ */
+async function deleteTask(taskId) {
+  const isGuest = sessionStorage.getItem("isGuest") === "true";
+  
   let taskIndex = -1;
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].id === taskId) {
@@ -256,8 +370,28 @@ function deleteTask(taskId) {
       break;
     }
   }
+  
   if (taskIndex > -1) {
-    tasks.splice(taskIndex, 1);
+    if (isGuest) {
+      // Guest user: Delete from SessionStorage only
+      tasks.splice(taskIndex, 1);
+      saveTasksToSession();
+    } else {
+      // Logged-in user: Delete from Firebase
+      const userId = sessionStorage.getItem("userId");
+      if (!userId) {
+        console.error("No userId found in session");
+        return;
+      }
+      
+      try {
+        await firebase.database().ref(`boards/${userId}/tasks/${taskId}`).remove();
+        console.log("Task deleted from Firebase:", taskId);
+        tasks.splice(taskIndex, 1);
+      } catch (error) {
+        console.error("Error deleting task:", error);
+      }
+    }
     renderAllTasks();
   }
 }
@@ -281,9 +415,11 @@ function getFilteredTasks(searchTerm) {
 }
 
 function taskMatchesSearchTerm(task, searchTerm) {
-  return task.title.toLowerCase().includes(searchTerm) ||
-         task.description.toLowerCase().includes(searchTerm) ||
-         task.category.toLowerCase().includes(searchTerm);
+  return (
+    task.title.toLowerCase().includes(searchTerm) ||
+    task.description.toLowerCase().includes(searchTerm) ||
+    task.category.toLowerCase().includes(searchTerm)
+  );
 }
 
 function renderFilteredTasks(filteredTasks) {
@@ -295,10 +431,10 @@ function renderFilteredTasks(filteredTasks) {
 
 // Global event handler functions for inline events
 function handleSearchClick() {
-  const searchInput = document.getElementById('task-search');
+  const searchInput = document.getElementById("task-search");
   if (searchInput) {
     const searchTerm = searchInput.value.trim();
-    if (searchTerm === '') {
+    if (searchTerm === "") {
       renderAllTasks();
     } else {
       filterTasks(searchTerm);
@@ -307,9 +443,9 @@ function handleSearchClick() {
 }
 
 function handleSearchKeypress(event) {
-  if (event.key === 'Enter') {
+  if (event.key === "Enter") {
     const searchTerm = event.target.value.trim();
-    if (searchTerm === '') {
+    if (searchTerm === "") {
       renderAllTasks();
     } else {
       filterTasks(searchTerm);
@@ -318,40 +454,61 @@ function handleSearchKeypress(event) {
 }
 
 function handleSearchInput(event) {
-  if (event.target.value.trim() === '') {
+  if (event.target.value.trim() === "") {
     renderAllTasks();
   }
 }
 
 function showTaskDetails(taskId) {
   const task = findTaskById(taskId);
-  const detailsOverlay = document.getElementById('details-overlay');
+  const detailsOverlay = document.getElementById("details-overlay");
   detailsOverlay.innerHTML = getTaskDetailsTemplate(task);
-  toggleOverlay('#details-overlay');
+  toggleOverlay("#details-overlay");
 }
 
 function getTaskDetailsTemplate(task) {
+  if (!task) {
+    return "<p>Task not found</p>";
+  }
+  
   let categoryId = categoryToId[task.category] || "user-story";
-  let priorityIcon = priorityIcons[task.priority];
-  let priorityLabel = priorityLabels[task.priority];
-  let subtasksHTML = generateSubtasksHTML(task.subtasks);
-  let assignedUsersHTML = generateAssignedUsersDetailsHTML(task.assignedTo);
+  let priorityIcon = priorityIcons[task.priority] || priorityIcons["medium"];
+  let priorityLabel = priorityLabels[task.priority] || priorityLabels["medium"];
+  let subtasksHTML = generateSubtasksHTML(task.subtasks || []);
+  let assignedUsersHTML = generateAssignedUsersDetailsHTML(task.assignedTo || []);
 
-  return createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML, priorityIcon, priorityLabel);
+  return createDetailsTemplate(
+    task,
+    categoryId,
+    subtasksHTML,
+    assignedUsersHTML,
+    priorityIcon,
+    priorityLabel
+  );
 }
 
 function generateSubtasksHTML(subtasks) {
-  let html = '';
+  if (!subtasks || !Array.isArray(subtasks)) {
+    return "";
+  }
+  
+  let html = "";
   for (let i = 0; i < subtasks.length; i++) {
     let subtask = subtasks[i];
-    let completedClass = subtask.completed ? 'completed' : '';
-    html += '<li class="' + completedClass + '">' + subtask.text + '</li>';
+    if (subtask && subtask.text) {
+      let completedClass = subtask.completed ? "completed" : "";
+      html += `<input type="checkbox" class="checkbox-masked" id="subtask-${i}" onchange="toggleSubtaskStatus(this.id)" ${subtask.completed ? "checked" : ""}><li class="${completedClass}">${subtask.text}</li>`;
+    }
   }
   return html;
 }
 
 function generateAssignedUsersDetailsHTML(assignedToArray) {
-  let html = '';
+  if (!assignedToArray || !Array.isArray(assignedToArray)) {
+    return "";
+  }
+  
+  let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     html += createUserItemHTML(assignedToArray[i]);
   }
@@ -362,7 +519,7 @@ function createUserItemHTML(initialsOrName) {
   let initials = getInitials(initialsOrName);
   let fullName = getFullNameFromInitials(initialsOrName);
   let avatarColor = getAvatarColor(fullName);
-  
+
   return `
     <div class="user-item">
       <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
@@ -371,11 +528,18 @@ function createUserItemHTML(initialsOrName) {
   `;
 }
 
-function createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML, priorityIcon, priorityLabel) {
+function createDetailsTemplate(
+  task,
+  categoryId,
+  subtasksHTML,
+  assignedUsersHTML,
+  priorityIcon,
+  priorityLabel
+) {
   return `
     <div class="details-card">
       <div class="details-header">
-        <div id="${categoryId}" class="ticket-label">${task.category}</div>
+        <div id="${categoryId}" class="ticket-label">${task.category || 'User Story'}</div>
         <svg class="btn-close-white" onclick="toggleOverlay('#details-overlay')" width="32" height="32" viewBox="0 0 32 32" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path
@@ -384,18 +548,18 @@ function createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML
       </svg>
       </div>
       <div class="details-body">
-        <h2 class="details-title">${task.title}</h2>
-        <p class="details-description">${task.description}</p>
+        <h2 class="details-title">${task.title || 'Untitled Task'}</h2>
+        <p class="details-description">${task.description || ''}</p>
         <div class="details-subtasks">
           <h3>Subtasks</h3>
           <ul>
-            ${subtasksHTML}
+            ${subtasksHTML || '<li>No subtasks</li>'}
           </ul>
         </div>
         <div class="details-assigned">
           <h3>Assigned To</h3>
           <div class="task-users">
-            ${assignedUsersHTML}
+            ${assignedUsersHTML || '<p>No assignees</p>'}
           </div>
         </div>
         <div class="details-priority">
@@ -407,10 +571,10 @@ function createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML
         </div>
         <div class="details-due-date">
           <h3>Due Date</h3>
-          <p>${task.dueDate}</p>
+          <p>${task.dueDate || 'No due date'}</p>
         </div>
-        <button class="text-btn-with-icon" onclick="deleteTask('${task.id}'); toggleOverlay('#details-overlay')">Delete Task</button>
-        <button class="text-btn-with-icon" onclick="editTask('${task.id}')">Edit Task</button>
+        <button class="text-btn-with-icon" onclick="deleteTask('${task.id || ''}'); toggleOverlay('#details-overlay')">Delete Task</button>
+        <button class="text-btn-with-icon" onclick="editTask('${task.id || ''}')">Edit Task</button>
       </div>
     </div>
   `;
@@ -418,21 +582,21 @@ function createDetailsTemplate(task, categoryId, subtasksHTML, assignedUsersHTML
 
 function editTask(taskId) {
   const task = findTaskById(taskId);
-  const editOverlay = document.getElementById('details-overlay');
+  const editOverlay = document.getElementById("details-overlay");
   editOverlay.innerHTML = getEditTaskTemplate(task);
 }
 
 function getEditTaskTemplate(task) {
   return `
     <div class="details-card">
-      <form id="edit-task-form" class="task-form">
+      <form id="edit-task-form" class="task-form" onsubmit="submitEditTask(event, '${task.id}')">
             <div class="form-group">
               <label for="task-title"></label>
               <input
                 type="text"
                 id="task-title"
                 name="task_title"
-                placeholder="${task.title}"
+                value="${task.title}"
                 required
               />
               <div class="error-message d-none">This field is required</div>
@@ -445,9 +609,8 @@ function getEditTaskTemplate(task) {
               <textarea
                 name="task_description"
                 id="task-description"
-                placeholder="${task.description}"
                 rows="4"
-              ></textarea>
+              >${task.description}</textarea>
             </div>
 
             <div class="form-group">
@@ -456,7 +619,7 @@ function getEditTaskTemplate(task) {
                 type="date"
                 name="due_date"
                 id="task-date"
-                placeholder="${task.dueDate}"
+                value="${task.dueDate}"
               />
               <div class="error-message d-none">This field is required</div>
             </div>
@@ -586,36 +749,45 @@ function getEditTaskTemplate(task) {
                 </button>
               </div>
             </div>
+            <button type="submit" class="primary-btn">Ok</button>
           </form>
     </div>
         `;
 }
 
 function addSubtask() {
-  let subtaskList = document.getElementById('subtask-list');
-  let subtaskInput = document.getElementById('add-subtask');
+  let subtaskList = document.getElementById("subtask-list");
+  let subtaskInput = document.getElementById("add-subtask");
   let subtaskText = subtaskInput.value.trim();
 
   if (subtaskText) {
     let subtaskIndex = currentSubtasks.length;
     currentSubtasks.push({
       text: subtaskText,
-      completed: false
+      completed: false,
     });
-    
+
     let listItemHTML = `
       <li class="subtask-item" data-subtask-index="${subtaskIndex}">
         <span>${subtaskText}</span>
-        <button type="button" class="remove-subtask-btn" onclick="removeSubtask(${subtaskIndex}, this.parentElement)">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M4 4L12 12M12 4L4 12" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
+        <div class="form-btn-group">
+          <button type="button" class="form-btn-round" onclick="editSubtask(${subtaskIndex})">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 19H6.4L15.025 10.375L13.625 8.975L5 17.6V19ZM19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z" fill="#4589FF"/>
+            </svg>
+          </button>
+          <div class="vertical-divider"></div>
+          <button type="button" class="form-btn-round"  onclick="removeSubtask(${subtaskIndex}, this.closest('.subtask-item'))">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 21C6.45 21 5.97917 20.8042 5.5875 20.4125C5.19583 20.0208 5 19.55 5 19V6C4.71667 6 4.47917 5.90417 4.2875 5.7125C4.09583 5.52083 4 5.28333 4 5C4 4.71667 4.09583 4.47917 4.2875 4.2875C4.47917 4.09583 4.71667 4 5 4H9C9 3.71667 9.09583 3.47917 9.2875 3.2875C9.47917 3.09583 9.71667 3 10 3H14C14.2833 3 14.5208 3.09583 14.7125 3.2875C14.9042 3.47917 15 3.71667 15 4H19C19.2833 4 19.5208 4.09583 19.7125 4.2875C19.9042 4.47917 20 4.71667 20 5C20 5.28333 19.9042 5.52083 19.7125 5.7125C19.5208 5.90417 19.2833 6 19 6V19C19 19.55 18.8042 20.0208 18.4125 20.4125C18.0208 20.8042 17.55 21 17 21H7ZM7 6V19H17V6H7ZM9 16C9 16.2833 9.09583 16.5208 9.2875 16.7125C9.47917 16.9042 9.71667 17 10 17C10.2833 17 10.5208 16.9042 10.7125 16.7125C10.9042 16.5208 11 16.2833 11 16V9C11 8.71667 10.9042 8.47917 10.7125 8.2875C10.5208 8.09583 10.2833 8 10 8C9.71667 8 9.47917 8.09583 9.2875 8.2875C9.09583 8.47917 9 8.71667 9 9V16ZM13 16C13 16.2833 13.0958 16.5208 13.2875 16.7125C13.4792 16.9042 13.7167 17 14 17C14.2833 17 14.5208 16.9042 14.7125 16.7125C14.9042 16.5208 15 16.2833 15 16V9C15 8.71667 14.9042 8.47917 14.7125 8.2875C14.5208 8.09583 14.2833 8 14 8C13.7167 8 13.4792 8.09583 13.2875 8.2875C13.0958 8.47917 13 8.71667 13 9V16Z" fill="#4589FF"/>
+            </svg>
+          </button>
+        </div>
       </li>
     `;
-    
-    subtaskList.insertAdjacentHTML('beforeend', listItemHTML);
-    subtaskInput.value = '';
+
+    subtaskList.insertAdjacentHTML("beforeend", listItemHTML);
+    subtaskInput.value = "";
   }
 }
 
@@ -637,7 +809,7 @@ function removeSubtask(index, element) {
  */
 function openAddTaskOverlay(columnStatus) {
   setTargetColumn(columnStatus);
-  toggleOverlay('.add-task-menu');
+  toggleOverlay(".add-task-menu");
 }
 
 /**
@@ -646,16 +818,16 @@ function openAddTaskOverlay(columnStatus) {
  * @returns {string} Full name or the original value if not found
  */
 function getFullNameFromInitials(initialsOrName) {
-  if (!initialsOrName) return '';
-  
-  if (initialsOrName.includes(' ')) {
+  if (!initialsOrName) return "";
+
+  if (initialsOrName.includes(" ")) {
     return initialsOrName;
   }
-  
+
   if (isInitials(initialsOrName)) {
     return findContactByInitials(initialsOrName);
   }
-  
+
   return initialsOrName;
 }
 
@@ -664,7 +836,7 @@ function isInitials(str) {
 }
 
 function findContactByInitials(initials) {
-  if (typeof contacts !== 'undefined') {
+  if (typeof contacts !== "undefined") {
     for (let i = 0; i < contacts.length; i++) {
       let contactInitials = getInitials(contacts[i].name);
       if (contactInitials === initials) {
@@ -679,7 +851,7 @@ function findContactByInitials(initials) {
  * Saves tasks to sessionStorage
  */
 function saveTasksToSession() {
-  sessionStorage.setItem('tasks', JSON.stringify(tasks));
+  sessionStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 /**
@@ -687,6 +859,10 @@ function saveTasksToSession() {
  * @returns {Array|null} Tasks array or null if not found
  */
 function loadTasksFromSession() {
-  let storedTasks = sessionStorage.getItem('tasks');
+  let storedTasks = sessionStorage.getItem("tasks");
   return storedTasks ? JSON.parse(storedTasks) : null;
+}
+
+function toggleSubtaskStatus(checkbox) {
+
 }

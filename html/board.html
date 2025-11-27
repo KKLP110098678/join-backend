@@ -32,7 +32,7 @@
 
   <body onload="renderAllTasks()">
     <header class="header d-flex">
-      <a href="./login.html"
+      <a href="./summary.html"
         ><img src="/assets/icon/logo-white.svg" alt="Logo" height="56px"
       /></a>
       <div class="inner-header d-flex">
@@ -94,7 +94,18 @@
               id="search-button"
               onclick="handleSearchClick()"
             >
-              Search
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.50185 13.0037C4.68467 13.0037 3.14673 12.3744 1.88804 11.1157C0.629346 9.85697 0 8.31903 0 6.50185C0 4.68467 0.629346 3.14673 1.88804 1.88804C3.14673 0.629346 4.68467 0 6.50185 0C8.31903 0 9.85697 0.629346 11.1157 1.88804C12.3744 3.14673 13.0037 4.68467 13.0037 6.50185C13.0037 7.23539 12.887 7.92725 12.6536 8.57744C12.4202 9.22762 12.1034 9.80279 11.7033 10.3029L17.3049 15.9045C17.4883 16.0879 17.58 16.3213 17.58 16.6047C17.58 16.8881 17.4883 17.1215 17.3049 17.3049C17.1215 17.4883 16.8881 17.58 16.6047 17.58C16.3213 17.58 16.0879 17.4883 15.9045 17.3049L10.3029 11.7033C9.80279 12.1034 9.22762 12.4202 8.57744 12.6536C7.92725 12.887 7.23539 13.0037 6.50185 13.0037ZM6.50185 11.0031C7.7522 11.0031 8.81501 10.5655 9.69026 9.69026C10.5655 8.81501 11.0031 7.7522 11.0031 6.50185C11.0031 5.25149 10.5655 4.18869 9.69026 3.31344C8.81501 2.43819 7.7522 2.00057 6.50185 2.00057C5.25149 2.00057 4.18869 2.43819 3.31344 3.31344C2.43819 4.18869 2.00057 5.25149 2.00057 6.50185C2.00057 7.7522 2.43819 8.81501 3.31344 9.69026C4.18869 10.5655 5.25149 11.0031 6.50185 11.0031Z"
+                  fill="#42526E"
+                />
+              </svg>
             </button>
           </div>
           <button
@@ -115,7 +126,10 @@
           >
             <div class="kanban-header d-flex">
               <h2>To Do</h2>
-              <button class="btn-add-icon" onclick="setTargetColumn('todo'); toggleOverlay('.add-task-menu')">
+              <button
+                class="btn-add-icon"
+                onclick="setTargetColumn('todo'); toggleOverlay('.add-task-menu')"
+              >
                 <svg
                   width="25"
                   height="24"
@@ -140,7 +154,10 @@
           >
             <div class="kanban-header d-flex">
               <h2>In Progress</h2>
-              <button class="btn-add-icon" onclick="setTargetColumn('in-progress'); toggleOverlay('.add-task-menu')">
+              <button
+                class="btn-add-icon"
+                onclick="setTargetColumn('in-progress'); toggleOverlay('.add-task-menu')"
+              >
                 <svg
                   width="25"
                   height="24"
@@ -165,7 +182,10 @@
           >
             <div class="kanban-header d-flex">
               <h2>Awaiting Feedback</h2>
-              <button class="btn-add-icon" onclick="setTargetColumn('await-feedback'); toggleOverlay('.add-task-menu')">
+              <button
+                class="btn-add-icon"
+                onclick="setTargetColumn('await-feedback'); toggleOverlay('.add-task-menu')"
+              >
                 <svg
                   width="25"
                   height="24"
@@ -190,7 +210,10 @@
           >
             <div class="kanban-header d-flex">
               <h2>Done</h2>
-              <button class="btn-add-icon" onclick="setTargetColumn('done'); toggleOverlay('.add-task-menu')">
+              <button
+                class="btn-add-icon"
+                onclick="setTargetColumn('done'); toggleOverlay('.add-task-menu')"
+              >
                 <svg
                   width="25"
                   height="24"
@@ -232,7 +255,9 @@
           <div class="form-group" id="title-form-group">
             <label for="task-title">Title</label>
             <input type="text" id="task-title" name="title" required />
-            <div class="error-message d-none" id="title-error-message">This field is required</div>
+            <div class="error-message d-none" id="title-error-message">
+              This field is required
+            </div>
           </div>
           <div class="form-group" id="description-form-group">
             <label for="description">Description <span>(optional)</span></label>
@@ -241,31 +266,43 @@
           <div class="form-group" id="date-form-group">
             <label for="task-date">Due Date</label>
             <input type="date" id="task-date" name="task-date" required />
-            <div class="error-message d-none" id="date-error-message">This field is required</div>
+            <div class="error-message d-none" id="date-error-message">
+              This field is required
+            </div>
           </div>
           <div class="form-group" id="priority-form-group">
             <div class="radio-to-btn d-flex">
-              <input id="add-urgent-priority" type="radio" name="priority" value="High" />
+              <input
+                id="add-urgent-priority"
+                type="radio"
+                name="priority"
+                value="High"
+              />
               <label for="add-urgent-priority" class="urgent-priority">
                 Urgent
                 <svg
-                width="20"
-                height="15"
-                viewBox="0 0 20 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="15"
+                  viewBox="0 0 20 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                  d="M18.9038 14.7547C18.6691 14.7551 18.4406 14.6803 18.2517 14.5412L9.99966 8.458L1.7476 14.5412C1.63175 14.6267 1.50017 14.6887 1.36037 14.7234C1.22057 14.7582 1.07528 14.7651 0.932817 14.7437C0.790349 14.7223 0.653485 14.6732 0.53004 14.599C0.406595 14.5247 0.298986 14.427 0.213357 14.3112C0.127727 14.1954 0.0657554 14.0639 0.0309788 13.9243C-0.00379784 13.7846 -0.010698 13.6394 0.0106721 13.497C0.0538312 13.2095 0.209522 12.9509 0.443493 12.7781L9.3476 6.20761C9.5363 6.06802 9.76488 5.99268 9.99966 5.99268C10.2344 5.99268 10.463 6.06802 10.6517 6.20761L19.5558 12.7781C19.7417 12.915 19.8796 13.1071 19.9498 13.327C20.0199 13.5469 20.0188 13.7833 19.9465 14.0025C19.8742 14.2216 19.7344 14.4124 19.5471 14.5475C19.3599 14.6826 19.1347 14.7551 18.9038 14.7547Z"
-                  fill="#FF3D00"
+                    d="M18.9038 14.7547C18.6691 14.7551 18.4406 14.6803 18.2517 14.5412L9.99966 8.458L1.7476 14.5412C1.63175 14.6267 1.50017 14.6887 1.36037 14.7234C1.22057 14.7582 1.07528 14.7651 0.932817 14.7437C0.790349 14.7223 0.653485 14.6732 0.53004 14.599C0.406595 14.5247 0.298986 14.427 0.213357 14.3112C0.127727 14.1954 0.0657554 14.0639 0.0309788 13.9243C-0.00379784 13.7846 -0.010698 13.6394 0.0106721 13.497C0.0538312 13.2095 0.209522 12.9509 0.443493 12.7781L9.3476 6.20761C9.5363 6.06802 9.76488 5.99268 9.99966 5.99268C10.2344 5.99268 10.463 6.06802 10.6517 6.20761L19.5558 12.7781C19.7417 12.915 19.8796 13.1071 19.9498 13.327C20.0199 13.5469 20.0188 13.7833 19.9465 14.0025C19.8742 14.2216 19.7344 14.4124 19.5471 14.5475C19.3599 14.6826 19.1347 14.7551 18.9038 14.7547Z"
+                    fill="#FF3D00"
                   />
                   <path
-                  d="M18.9038 9.00568C18.6691 9.00609 18.4406 8.93124 18.2517 8.79214L9.99966 2.70898L1.74761 8.79214C1.51364 8.96495 1.22055 9.0378 0.932821 8.99468C0.645094 8.95155 0.386297 8.79597 0.213361 8.56218C0.0404254 8.32838 -0.0324824 8.03551 0.0106767 7.74799C0.0538357 7.46048 0.209526 7.20187 0.443498 7.02906L9.34761 0.458588C9.53631 0.318997 9.76488 0.243652 9.99966 0.243652C10.2344 0.243652 10.463 0.318997 10.6517 0.458588L19.5558 7.02906C19.7417 7.16598 19.8796 7.35809 19.9498 7.57797C20.0199 7.79785 20.0188 8.03426 19.9465 8.25344C19.8742 8.47262 19.7344 8.66338 19.5472 8.79847C19.3599 8.93356 19.1347 9.00608 18.9038 9.00568Z"
-                  fill="#FF3D00"
+                    d="M18.9038 9.00568C18.6691 9.00609 18.4406 8.93124 18.2517 8.79214L9.99966 2.70898L1.74761 8.79214C1.51364 8.96495 1.22055 9.0378 0.932821 8.99468C0.645094 8.95155 0.386297 8.79597 0.213361 8.56218C0.0404254 8.32838 -0.0324824 8.03551 0.0106767 7.74799C0.0538357 7.46048 0.209526 7.20187 0.443498 7.02906L9.34761 0.458588C9.53631 0.318997 9.76488 0.243652 9.99966 0.243652C10.2344 0.243652 10.463 0.318997 10.6517 0.458588L19.5558 7.02906C19.7417 7.16598 19.8796 7.35809 19.9498 7.57797C20.0199 7.79785 20.0188 8.03426 19.9465 8.25344C19.8742 8.47262 19.7344 8.66338 19.5472 8.79847C19.3599 8.93356 19.1347 9.00608 18.9038 9.00568Z"
+                    fill="#FF3D00"
                   />
                 </svg>
               </label>
-              <input id="add-medium-priority" type="radio" name="priority" value="Medium" />
+              <input
+                id="add-medium-priority"
+                type="radio"
+                name="priority"
+                value="Medium"
+              />
               <label for="add-medium-priority" class="medium-priority">
                 Medium
                 <svg
@@ -274,18 +311,24 @@
                   viewBox="0 0 20 9"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  >
+                >
                   <path
-                  d="M18.9036 8.22528H1.0954C0.804754 8.22528 0.52601 8.10898 0.320491 7.90197C0.114971 7.69495 -0.000488281 7.41419 -0.000488281 7.12143C-0.000488281 6.82867 0.114971 6.5479 0.320491 6.34089C0.52601 6.13388 0.804754 6.01758 1.0954 6.01758H18.9036C19.1943 6.01758 19.473 6.13388 19.6785 6.34089C19.8841 6.5479 19.9995 6.82867 19.9995 7.12143C19.9995 7.41419 19.8841 7.69495 19.6785 7.90197C19.473 8.10898 19.1943 8.22528 18.9036 8.22528Z"
-                  fill="#FFA800"
+                    d="M18.9036 8.22528H1.0954C0.804754 8.22528 0.52601 8.10898 0.320491 7.90197C0.114971 7.69495 -0.000488281 7.41419 -0.000488281 7.12143C-0.000488281 6.82867 0.114971 6.5479 0.320491 6.34089C0.52601 6.13388 0.804754 6.01758 1.0954 6.01758H18.9036C19.1943 6.01758 19.473 6.13388 19.6785 6.34089C19.8841 6.5479 19.9995 6.82867 19.9995 7.12143C19.9995 7.41419 19.8841 7.69495 19.6785 7.90197C19.473 8.10898 19.1943 8.22528 18.9036 8.22528Z"
+                    fill="#FFA800"
                   />
                   <path
-                  d="M18.9036 2.98211H1.0954C0.804754 2.98211 0.52601 2.86581 0.320491 2.6588C0.114971 2.45179 -0.000488281 2.17102 -0.000488281 1.87826C-0.000488281 1.5855 0.114971 1.30474 0.320491 1.09772C0.52601 0.890712 0.804754 0.774414 1.0954 0.774414L18.9036 0.774414C19.1943 0.774414 19.473 0.890712 19.6785 1.09772C19.8841 1.30474 19.9995 1.5855 19.9995 1.87826C19.9995 2.17102 19.8841 2.45179 19.6785 2.6588C19.473 2.86581 19.1943 2.98211 18.9036 2.98211Z"
-                  fill="#FFA800"
+                    d="M18.9036 2.98211H1.0954C0.804754 2.98211 0.52601 2.86581 0.320491 2.6588C0.114971 2.45179 -0.000488281 2.17102 -0.000488281 1.87826C-0.000488281 1.5855 0.114971 1.30474 0.320491 1.09772C0.52601 0.890712 0.804754 0.774414 1.0954 0.774414L18.9036 0.774414C19.1943 0.774414 19.473 0.890712 19.6785 1.09772C19.8841 1.30474 19.9995 1.5855 19.9995 1.87826C19.9995 2.17102 19.8841 2.45179 19.6785 2.6588C19.473 2.86581 19.1943 2.98211 18.9036 2.98211Z"
+                    fill="#FFA800"
                   />
                 </svg>
               </label>
-              <input id="add-low-priority" type="radio" name="priority" value="Low" required />
+              <input
+                id="add-low-priority"
+                type="radio"
+                name="priority"
+                value="Low"
+                required
+              />
               <label for="add-low-priority" class="low-priority">
                 Low
                 <svg
@@ -311,15 +354,23 @@
             <label for="assigned-to">Assigned To</label>
             <div class="custom-dropdown" id="assigned-to">
               <div class="dropdown-input-container">
-                <input 
-                  type="text" 
-                  class="dropdown-input" 
+                <input
+                  type="text"
+                  class="dropdown-input"
                   placeholder="Select contacts to assign"
                   readonly
                   onclick="toggleAssignedDropdown()"
                 />
-                <button type="button" class="dropdown-toggle-btn" onclick="toggleAssignedDropdown()">
-                  <img src="/assets/icon/taskDropDown/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow">
+                <button
+                  type="button"
+                  class="dropdown-toggle-btn"
+                  onclick="toggleAssignedDropdown()"
+                >
+                  <img
+                    src="/assets/icon/task/dropdown-arrow.svg"
+                    alt="dropdown arrow"
+                    class="dropdown-arrow"
+                  />
                 </button>
               </div>
               <div class="dropdown-list d-none" id="assigned-to-list">
@@ -332,70 +383,95 @@
             <label for="category">Category</label>
             <div class="custom-dropdown" id="category">
               <div class="dropdown-input-container">
-                <input 
-                  type="text" 
-                  class="dropdown-input" 
+                <input
+                  type="text"
+                  class="dropdown-input"
                   id="category-input"
                   placeholder="Select task category"
                   readonly
                   onclick="toggleCategoryDropdown()"
                   required
                 />
-                <button type="button" class="dropdown-toggle-btn" onclick="toggleCategoryDropdown()">
-                  <img src="/assets/icon/taskDropDown/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow">
+                <button
+                  type="button"
+                  class="dropdown-toggle-btn"
+                  onclick="toggleCategoryDropdown()"
+                >
+                  <img
+                    src="/assets/icon/task/dropdown-arrow.svg"
+                    alt="dropdown arrow"
+                    class="dropdown-arrow"
+                  />
                 </button>
               </div>
               <div class="dropdown-list d-none" id="category-list">
-                <div class="dropdown-item" onclick="selectCategory('Technical Task')">
+                <div
+                  class="dropdown-item"
+                  onclick="selectCategory('Technical Task')"
+                >
                   <label>Technical Task</label>
                 </div>
-                <div class="dropdown-item" onclick="selectCategory('User Story')">
+                <div
+                  class="dropdown-item"
+                  onclick="selectCategory('User Story')"
+                >
                   <label>User Story</label>
                 </div>
               </div>
-              <input type="hidden" name="category" id="category-hidden" required />
+              <input
+                type="hidden"
+                name="category"
+                id="category-hidden"
+                required
+              />
             </div>
           </div>
           <div class="form-group">
-              <label for="add-subtask"
-                >Subtasks <span class="optional">(optional)</span></label
-              >
-              <div class="subtask-input-container">
-                <input
-                  type="text"
-                  name="subtasks"
-                  id="add-subtask"
-                  placeholder="Add new subtask"
-                />
-                <button type="button" class="add-subtask-btn" onclick="addSubtask()">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 6V18M6 12H18"
-                      stroke="#2A3647"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                    />
+            <label for="add-subtask"
+              >Subtasks <span class="optional">(optional)</span></label
+            >
+            <div class="subtask-input-container">
+              <input
+                type="text"
+                name="subtasks"
+                id="add-subtask"
+                placeholder="Add new subtask"
+              />
+              <div class="form-btn-group">
+                <button type="button" class="form-btn-round">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z" fill="#4589FF"/>
+                  </svg>
+                </button>
+                <div class="vertical-divider"></div>
+                <button type="button" class="form-btn-round" onclick="addSubtask()">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.55002 15.15L18.025 6.675C18.225 6.475 18.4625 6.375 18.7375 6.375C19.0125 6.375 19.25 6.475 19.45 6.675C19.65 6.875 19.75 7.1125 19.75 7.3875C19.75 7.6625 19.65 7.9 19.45 8.1L10.25 17.3C10.05 17.5 9.81669 17.6 9.55002 17.6C9.28336 17.6 9.05002 17.5 8.85002 17.3L4.55002 13C4.35002 12.8 4.25419 12.5625 4.26252 12.2875C4.27086 12.0125 4.37502 11.775 4.57502 11.575C4.77502 11.375 5.01252 11.275 5.28752 11.275C5.56252 11.275 5.80002 11.375 6.00002 11.575L9.55002 15.15Z" fill="#4589FF"/>
                   </svg>
                 </button>
               </div>
-              <ul class="subtask-list" id="subtask-list"></ul>
             </div>
+            <ul class="subtask-list" id="subtask-list"></ul>
+          </div>
           <button type="submit" class="btn-with-icon">Add Task</button>
         </form>
       </div>
     </div>
-    <div class="details-overlay" id="details-overlay">
-    </div>
+    <div class="details-overlay" id="details-overlay"></div>
     <div id="success-overlay" class="ol-end d-none">
       <div class="ol-end-content">
         <p>Task created successfully</p>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="/scrDB/dbConfig.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/contact.js"></script>
     <script src="/js/task-management.js"></script>
     <script src="/js/kanban-dragging.js"></script>
     <script src="/js/overlay-toggler.js"></script>
     <script src="/js/add-task.js"></script>
+    <script src="/scrDB/taskDB.js"></script>
   </body>
 </html>

@@ -38,7 +38,7 @@ function handleDragLeave(event, element) {
     }
 }
 
-function handleDrop(event, element) {
+async function handleDrop(event, element) {
     event.stopPropagation();
 
     if (draggedElement !== element && draggedElement) {
@@ -48,7 +48,7 @@ function handleDrop(event, element) {
         } else {
             element.insertBefore(draggedElement, afterElement);
         }
-        updateTaskStatusInDrag(draggedElement, element.id);
+        await updateTaskStatusInDrag(draggedElement, element.id);
     }
 
     element.classList.remove('drag-over', 'drag-active');
@@ -83,7 +83,7 @@ function getDragAfterElement(container, y) {
     return closestElement;
 }
 
-function updateTaskStatusInDrag(taskElement, columnId) {
+async function updateTaskStatusInDrag(taskElement, columnId) {
     const taskId = taskElement.getAttribute('data-task-id');
     const statusMapping = {
         'todo': 'todo',
@@ -96,7 +96,7 @@ function updateTaskStatusInDrag(taskElement, columnId) {
     
     if (newStatus && typeof window.updateTaskStatus === 'function') {
         // Verwende die globale updateTaskStatus Funktion aus task-management.js
-        window.updateTaskStatus(taskId, newStatus);
+        await window.updateTaskStatus(taskId, newStatus);
     }
 }
 
