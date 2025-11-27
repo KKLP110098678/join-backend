@@ -1,0 +1,133 @@
+body {
+    overflow-y: scroll;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+
+}
+
+.header-fix {
+    display: flex;
+    position: fixed;
+    width: 100%;
+}
+
+.main-wrapper-ds {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1920px;
+    padding: 79px;
+}
+
+.sec-sidebar {
+    position: fixed;
+    width: 232px;
+    height: 100vh;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 124px 23px 66px 23px;
+}
+
+.sidenav {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar-footer,
+a {
+    font-size: 16px;
+    color: rgba(66, 82, 110, 1);
+    text-align: left;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.selected-link {
+    background-color: var(--color-light-blue);
+    padding: 8px;
+    border-radius: 10px;
+    width: 126px;
+    color: var(--color-font-white);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.back-help {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.light-words {
+    color: var(--color-light-blue);
+
+}
+
+.pad-8 {
+    padding: 8px;
+
+}
+
+h1 {
+    margin: 32px 0px;
+    font-size: 61px;
+}
+
+h2 {
+    font-weight: 700;
+    color: var(--color-blue-hover);
+    margin: 35px 0px 10px 0px;
+    font-size: 33px;
+}
+
+h3 {
+    color: var(--color-light-blue);
+    font-size: 19px;
+}
+
+ul {
+    margin-left: 32px;
+}
+
+.help-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.clarification {
+    display: flex;
+    gap: 35px;
+}
+
+.caption-help {
+    font-size: 33px;
+    font-weight: 700;
+    color: var(--color-light-blue);
+    margin-bottom: 24px;
+}
+
+.number-help {
+    color: var(--color-blue-hover);
+    font-size: 33px;
+    font-weight: 700;
+}
+
+.step {
+    font-size: 19px;
+    color: var(--color-blue-hover);
+    font-weight: 700;
+}
+
+.gap-16 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.more {
+    margin-left: 62px;
+}
