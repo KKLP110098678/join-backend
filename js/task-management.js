@@ -467,6 +467,7 @@ function showTaskDetails(taskId) {
 }
 
 function getTaskDetailsTemplate(task) {
+  console.log("Generating details for task:", task);
   if (!task) {
     return "<p>Task not found</p>";
   }
@@ -474,7 +475,7 @@ function getTaskDetailsTemplate(task) {
   let categoryId = categoryToId[task.category] || "user-story";
   let priorityIcon = priorityIcons[task.priority] || priorityIcons["medium"];
   let priorityLabel = priorityLabels[task.priority] || priorityLabels["medium"];
-  let subtasksHTML = generateSubtasksHTML(task.subtasks || []);
+  let subtasksHTML = generateSubtasksHTML(task.id ,task.subtasks || []);
   let assignedUsersHTML = generateAssignedUsersDetailsHTML(task.assignedTo || []);
 
   return createDetailsTemplate(
@@ -487,7 +488,7 @@ function getTaskDetailsTemplate(task) {
   );
 }
 
-function generateSubtasksHTML(subtasks) {
+function generateSubtasksHTML(taskId, subtasks) {
   if (!subtasks || !Array.isArray(subtasks)) {
     return "";
   }
@@ -497,7 +498,7 @@ function generateSubtasksHTML(subtasks) {
     let subtask = subtasks[i];
     if (subtask && subtask.text) {
       let completedClass = subtask.completed ? "completed" : "";
-      html += `<input type="checkbox" class="checkbox-masked" id="subtask-${i}" onchange="toggleSubtaskStatus(this.id)" ${subtask.completed ? "checked" : ""}><li class="${completedClass}">${subtask.text}</li>`;
+      html += `<input type="checkbox" class="checkbox-masked" id="subtask-${i}" onchange="toggleSubtaskStatus('${taskId}', this.id)" ${subtask.completed ? "checked" : ""}><li class="${completedClass}">${subtask.text}</li>`;
     }
   }
   return html;
@@ -718,15 +719,6 @@ function getEditTaskTemplate(task) {
             </div>
 
             <div class="form-group">
-              <label for="task-category">Select task Category</label>
-              <select id="task-category" name="category" required>
-                <option value="">Select task category</option>
-                <option value="technical">Technical Task</option>
-                <option value="user-story">User Story</option>
-              </select>
-            </div>
-
-            <div class="form-group">
               <label for="add-subtask"
                 >Subtasks <span class="optional">(optional)</span></label
               >
@@ -863,6 +855,14 @@ function loadTasksFromSession() {
   return storedTasks ? JSON.parse(storedTasks) : null;
 }
 
-function toggleSubtaskStatus(checkbox) {
-
+async function toggleSubtaskStatus(taskId, checkboxId) {
+  const task = findTaskById(taskId);
+  if (task && task.subtasks) {
+    const index = parseInt(checkboxId.split("-")[1], 10);
+    if (!isNaN(index) && task.subtasks[index]) {
+      task.subtasks[index].completed = !task.subtasks[index].completed;
+      await updateTask(taskId, { subtasks: task.subtasks });
+      renderAllTasks();
+    }
+  }
 }
