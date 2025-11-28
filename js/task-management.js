@@ -739,6 +739,15 @@ function getEditTaskTemplate(task) {
                   </svg>
                 </button>
               </div>
+              <ul id="subtask-list" class="subtask-list">
+                ${task.subtasks && task.subtasks.length > 0
+                  ? task.subtasks
+                      .map((subtask, index) =>
+                    getSubtaskItemTemplate(index, subtask.text)
+                  )
+                  .join("")
+                  : ""}
+              </ul>
             </div>
             <button type="submit" class="primary-btn">Ok</button>
           </form>
