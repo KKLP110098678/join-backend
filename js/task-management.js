@@ -230,12 +230,15 @@ function getTaskCardTemplate(
       <div class="task-title">${task.title || 'Untitled Task'}</div>
       <div class="task-description">${task.description || ''}</div>
       <div class="subtask-container">
-        <div class="progress-container d-flex">
-          <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
-        </div>
+        
         ${
           totalSubtasks > 0
-            ? `<div class="task-subtasks">${subtaskProgress}</div>`
+            ? `
+              <div class="progress-container d-flex">
+                <div class="progress-bar" style="width: ${progressInPercent}%;"></div>
+              </div>
+              <div class="task-subtasks">${subtaskProgress}</div>
+              `
             : ""
         }
       </div>
