@@ -16,10 +16,7 @@ function populateAssignedToDropdown() {
   let dropdownList = document.getElementById("assigned-to-list");
 
   clearDropdownList(dropdownList);
-
-  if (typeof contacts !== "undefined") {
-    addContactsToDropdown(dropdownList);
-  }
+  addContactsToDropdown(dropdownList);
 }
 
 function clearDropdownList(dropdownList) {
@@ -53,12 +50,20 @@ function createDropdownItemHTML(contact, index) {
 /**
  * Toggles the assigned to dropdown
  */
-function toggleAssignedDropdown() {
-  let dropdownList = document.getElementById("assigned-to-list");
+function toggleAssignedDropdown(mode) {
+  let dropdownList = getAssignedDropdownList(mode);
   let arrow = document.querySelector(".dropdown-arrow");
 
   dropdownList.classList.toggle("d-none");
   arrow.parentElement.parentElement.parentElement.classList.toggle("open");
+}
+
+function getAssignedDropdownList(mode) {
+  if (mode === "task-edit") {
+    return document.getElementById("edit-assigned-to-list");
+  } else {
+    return document.getElementById("assigned-to-list");
+  }
 }
 
 /**

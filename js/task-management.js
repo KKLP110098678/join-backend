@@ -529,6 +529,14 @@ function editTask(taskId) {
 function getEditTaskTemplate(task) {
   return `
     <div class="details-card">
+      <div class="details-header">
+        <svg class="btn-close-white" onclick="toggleOverlay('#details-overlay')" width="32" height="32" viewBox="0 0 32 32" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M16.0001 17.8642L9.46673 24.389C9.22229 24.6331 8.91118 24.7552 8.5334 24.7552C8.15562 24.7552 7.84451 24.6331 7.60007 24.389C7.35562 24.1449 7.2334 23.8342 7.2334 23.4569C7.2334 23.0796 7.35562 22.7689 7.60007 22.5248L14.1334 16L7.60007 9.47527C7.35562 9.23115 7.2334 8.92045 7.2334 8.54316C7.2334 8.16588 7.35562 7.85518 7.60007 7.61106C7.84451 7.36693 8.15562 7.24487 8.5334 7.24487C8.91118 7.24487 9.22229 7.36693 9.46673 7.61106L16.0001 14.1358L22.5334 7.61106C22.7778 7.36693 23.089 7.24487 23.4667 7.24487C23.8445 7.24487 24.1556 7.36693 24.4001 7.61106C24.6445 7.85518 24.7667 8.16588 24.7667 8.54316C24.7667 8.92045 24.6445 9.23115 24.4001 9.47527L17.8667 16L24.4001 22.5248C24.6445 22.7689 24.7667 23.0796 24.7667 23.4569C24.7667 23.8342 24.6445 24.1449 24.4001 24.389C24.1556 24.6331 23.8445 24.7552 23.4667 24.7552C23.089 24.7552 22.7778 24.6331 22.5334 24.389L16.0001 17.8642Z"
+            fill="#4589FF" />
+        </svg>
+      </div>
       <form id="edit-task-form" class="task-form" onsubmit="submitEditTask(event, '${task.id}')">
             <div class="form-group">
               <label for="task-title"></label>
@@ -645,16 +653,36 @@ function getEditTaskTemplate(task) {
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="user-select"
-                >Assigned to <span class="optional">(optional)</span></label
+            <div class="form-group" id="assigned-to-form-group">
+              <label for="assigned-to"
+                >Assigned To</label
               >
-              <select id="user-select" name="assigned_to">
-                <option value="">Select contacts to assign</option>
-                <option value="user1">User One</option>
-                <option value="user2">User Two</option>
-                <option value="user3">User Three</option>
-              </select>
+              <div class="custom-dropdown" id="assigned-to">
+                <div class="dropdown-input-container">
+                  <input
+                    type="text"
+                    class="dropdown-input"
+                    placeholder="Select contacts to assign"
+                    readonly
+                    onclick="toggleAssignedDropdown(mode='task-edit')"
+                  />
+                  <button
+                    type="button"
+                    class="dropdown-toggle-btn"
+                    onclick="toggleAssignedDropdown(mode='task-edit')"
+                  >
+                    <img
+                      src="/assets/icon/task/dropdown-arrow.svg"
+                      alt="dropdown arrow"
+                      class="dropdown-arrow"
+                    />
+                  </button>
+                </div>
+                <div class="dropdown-list d-none" id="edit-assigned-to-list">
+                  <!-- Will be populated dynamically -->
+                </div>
+                <input type="hidden" name="assignedTo" id="assigned-to-input" />
+              </div>
             </div>
 
             <div class="form-group">
