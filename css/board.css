@@ -37,6 +37,7 @@
 .kanban-header {
     justify-content: space-between;
     align-items: center;
+    margin: 0 8px 20px;
 }
 
 .ticket-label {
@@ -163,7 +164,6 @@
 }
 
 .search-container button {
-    background-color: #4589ff;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -258,9 +258,6 @@
     transition: width 0.3s ease;
 }
 
-.main-content {
-    padding: 72px 64px 0 64px;
-}
 
 .main-content-header {
     gap: 20px;
