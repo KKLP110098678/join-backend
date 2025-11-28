@@ -312,3 +312,7 @@
   height: 24px;
   width: 24px;
 }
+
+.container-with-form-btn-group {
+  padding-right: 81px !important;
+}
