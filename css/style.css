@@ -117,20 +117,23 @@ main {
   height: 137px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  padding: 8px;
+  gap: 4px;
 }
 
 .user-dropdown-menu a {
   display: block;
-  padding: 8px 26px;
+  padding: 4px 16px;
   color: #333;
   text-decoration: none;
   font-size: 19px;
   transition: background-color 0.2s ease;
+  text-align: right;
 }
 
 .user-dropdown-menu a:hover {
   background-color: var(--color-hover-blue);
+  border-radius: 8px;
 }
 
 .inner-header {
