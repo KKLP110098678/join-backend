@@ -27,8 +27,13 @@
       <div class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>
         <img src="/assets/icon/questionmark.svg" alt="" />
-        <div class="user-avatar">
-          <div>JD</div>
+        <div class="user-avatar" onclick="toggleUserDropdown(event)">
+          <div>SM</div>
+          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
+            <a href="/html/legalnotice.html">Legal Notice</a>
+            <a href="/html/datenschutz.html">Privacy Policy</a>
+            <a href="#" onclick="logout(); return false;">Log out</a>
+          </div>
         </div>
       </div>
     </header>
@@ -208,5 +213,6 @@
         </div>
       </section>
     </main>
+    <script src="/js/script.js"></script>
   </body>
 </html>
