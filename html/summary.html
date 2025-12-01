@@ -25,7 +25,14 @@
         <a href="./help.html" title="Help">
           <img src="/assets/icon/questionmark.svg" alt=""
         /></a>
-        <div class="user-avatar"><div>JD</div></div>
+        <div class="user-avatar" onclick="toggleUserDropdown(event)">
+          <div>SM</div>
+          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
+            <a href="/html/legalnotice.html">Legal Notice</a>
+            <a href="/html/datenschutz.html">Privacy Policy</a>
+            <a href="#" onclick="logout(); return false;">Log out</a>
+          </div>
+        </div>
       </div>
     </header>
     <section id="sidebar-section" class="sidebar-content">
