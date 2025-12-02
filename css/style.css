@@ -122,7 +122,7 @@ main {
 }
 
 .user-dropdown-menu a {
-  display: block;
+  /* display: block; */
   padding: 4px 16px;
   color: #333;
   text-decoration: none;
@@ -170,4 +170,22 @@ main {
 .blur-overlay.active {
   opacity: 0.84;
   visibility: visible;
+}
+/* Desktop */
+.help-mobile {
+    display: none;
+}
+
+/* Mobile */
+
+@media (max-width: 668px) {
+  .user-dropdown-menu{
+    height: 179px;
+  }
+  .help-icon {
+    display: none; 
+  }
+  .help-mobile {
+    display: block;
+  }
 }
