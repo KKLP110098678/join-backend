@@ -679,6 +679,8 @@ function getEditTaskTemplate(task) {
                 <div class="dropdown-list d-none" id="edit-assigned-to-list">
                   <!-- Will be populated dynamically -->
                 </div>
+                <div class="assignees-container" id="edit-assignees-container">
+                  <!-- Selected assignees will appear here -->
               </div>
             </div>
 

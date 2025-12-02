@@ -92,18 +92,21 @@ function updateSelectedUsersArray(userName, isChecked) {
 }
 
 /**
- * Updates the dropdown input text based on selected users
+ * Updates the assignees container to display selected users as avatars
  */
 function updateDropdownPlaceholder() {
-  let input = document.querySelector(".dropdown-input");
-
-  if (selectedUsers.length === 0) {
-    input.value = "";
-    input.placeholder = "Select contacts to assign";
-  } else if (selectedUsers.length === 1) {
-    input.value = selectedUsers[0];
-  } else {
-    input.value = `${selectedUsers.length} users selected`;
+  let container = document.getElementById("assignees-container");
+  
+  if (!container) return;
+  
+  container.innerHTML = "";
+  
+  for (let i = 0; i < selectedUsers.length; i++) {
+    let initials = getInitials(selectedUsers[i]);
+    let avatarColor = getAvatarColor(selectedUsers[i]);
+    
+    let avatarHTML = `<div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>`;
+    container.innerHTML += avatarHTML;
   }
 }
 
