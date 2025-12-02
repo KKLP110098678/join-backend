@@ -349,7 +349,6 @@ async function updateTaskStatus(taskId, newStatus) {
       
       try {
         await firebase.database().ref(`boards/${userId}/tasks/${taskId}`).update({ status: newStatus });
-        console.log("Task status updated in Firebase:", taskId);
       } catch (error) {
         console.error("Error updating task status:", error);
       }
@@ -389,7 +388,6 @@ async function deleteTask(taskId) {
       
       try {
         await firebase.database().ref(`boards/${userId}/tasks/${taskId}`).remove();
-        console.log("Task deleted from Firebase:", taskId);
         tasks.splice(taskIndex, 1);
       } catch (error) {
         console.error("Error deleting task:", error);
@@ -681,7 +679,6 @@ function getEditTaskTemplate(task) {
                 <div class="dropdown-list d-none" id="edit-assigned-to-list">
                   <!-- Will be populated dynamically -->
                 </div>
-                <input type="hidden" name="assignedTo" id="assigned-to-input" />
               </div>
             </div>
 

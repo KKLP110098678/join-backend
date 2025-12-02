@@ -12,8 +12,8 @@ let selectedUsers = [];
 /**
  * Populates the assignedTo dropdown with checkboxes from contacts array
  */
-function populateAssignedToDropdown() {
-  let dropdownList = document.getElementById("assigned-to-list");
+function populateAssignedToDropdown(mode) {
+  let dropdownList = getAssignedDropdownList(mode);
 
   clearDropdownList(dropdownList);
   addContactsToDropdown(dropdownList);
@@ -21,7 +21,6 @@ function populateAssignedToDropdown() {
 
 function clearDropdownList(dropdownList) {
   dropdownList.innerHTML = "";
-  dropdownList.classList.add("d-none");
 }
 
 function addContactsToDropdown(dropdownList) {
@@ -51,6 +50,7 @@ function createDropdownItemHTML(contact, index) {
  * Toggles the assigned to dropdown
  */
 function toggleAssignedDropdown(mode) {
+  populateAssignedToDropdown(mode);
   let dropdownList = getAssignedDropdownList(mode);
   let arrow = document.querySelector(".dropdown-arrow");
 
@@ -59,7 +59,7 @@ function toggleAssignedDropdown(mode) {
 }
 
 function getAssignedDropdownList(mode) {
-  if (mode === "task-edit") {
+  if (mode == "task-edit") {
     return document.getElementById("edit-assigned-to-list");
   } else {
     return document.getElementById("assigned-to-list");

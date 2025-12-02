@@ -60,3 +60,7 @@ function handleSearchInput(event) {
     renderAllTasks();
   }
 }
+
+function searchContact() {
+  
+}
