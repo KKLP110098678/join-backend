@@ -316,3 +316,10 @@
 .container-with-form-btn-group {
   padding-right: 81px !important;
 }
+
+.assignees {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
