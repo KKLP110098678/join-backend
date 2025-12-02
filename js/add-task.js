@@ -26,21 +26,23 @@ function clearDropdownList(dropdownList) {
 function addContactsToDropdown(dropdownList) {
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
-    let itemHTML = createDropdownItemHTML(contact, i);
+    let isSelected = selectedUsers.includes(contact.name);
+    let itemHTML = createDropdownItemHTML(contact, i, isSelected);
     dropdownList.innerHTML += itemHTML;
   }
 }
 
-function createDropdownItemHTML(contact, index) {
+function createDropdownItemHTML(contact, index, isSelected) {
   let initials = getInitials(contact.name);
   let avatarColor = getAvatarColor(contact.name);
+  let checkedAttribute = isSelected ? 'checked' : '';
 
   return `
     <div class="dropdown-item" onclick="toggleUserSelection('${contact.name}', event)">
       <label class="d-flex dropdown-item-label custom-checkbox" for="user-${index}">
         <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
         ${contact.name}
-        <input type="checkbox" class="checkbox-masked" id="user-${index}" value="${contact.name}">
+        <input type="checkbox" class="checkbox-masked" id="user-${index}" value="${contact.name}" ${checkedAttribute}>
       </label>
     </div>
   `;
@@ -95,10 +97,7 @@ function updateSelectedUsersArray(userName, isChecked) {
  * Updates the assignees container to display selected users as avatars
  */
 function updateDropdownPlaceholder() {
-  let container = document.getElementById("assignees-container");
-  
-  if (!container) return;
-  
+  let container = document.getElementById("assignees-container");  
   container.innerHTML = "";
   
   for (let i = 0; i < selectedUsers.length; i++) {

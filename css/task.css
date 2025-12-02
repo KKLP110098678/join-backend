@@ -323,3 +323,8 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+
+.assignees .user-avatar-sm {
+  font-size: 16px;
+  border: 2px solid #ffffff;
+}
