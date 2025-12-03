@@ -446,22 +446,14 @@ function createDetailsTemplate(
         <path
           d="M16.0001 17.8642L9.46673 24.389C9.22229 24.6331 8.91118 24.7552 8.5334 24.7552C8.15562 24.7552 7.84451 24.6331 7.60007 24.389C7.35562 24.1449 7.2334 23.8342 7.2334 23.4569C7.2334 23.0796 7.35562 22.7689 7.60007 22.5248L14.1334 16L7.60007 9.47527C7.35562 9.23115 7.2334 8.92045 7.2334 8.54316C7.2334 8.16588 7.35562 7.85518 7.60007 7.61106C7.84451 7.36693 8.15562 7.24487 8.5334 7.24487C8.91118 7.24487 9.22229 7.36693 9.46673 7.61106L16.0001 14.1358L22.5334 7.61106C22.7778 7.36693 23.089 7.24487 23.4667 7.24487C23.8445 7.24487 24.1556 7.36693 24.4001 7.61106C24.6445 7.85518 24.7667 8.16588 24.7667 8.54316C24.7667 8.92045 24.6445 9.23115 24.4001 9.47527L17.8667 16L24.4001 22.5248C24.6445 22.7689 24.7667 23.0796 24.7667 23.4569C24.7667 23.8342 24.6445 24.1449 24.4001 24.389C24.1556 24.6331 23.8445 24.7552 23.4667 24.7552C23.089 24.7552 22.7778 24.6331 22.5334 24.389L16.0001 17.8642Z"
           fill="#4589FF" />
-      </svg>
+        </svg>
       </div>
       <div class="details-body">
         <h2 class="details-title">${task.title}</h2>
         <p class="details-description">${task.description || ''}</p>
-        <div class="details-subtasks">
-          <h3>Subtasks</h3>
-          <ul>
-            ${subtasksHTML || '<li>No subtasks</li>'}
-          </ul>
-        </div>
-        <div class="details-assigned">
-          <h3>Assigned To</h3>
-          <div class="task-users">
-            ${assignedUsersHTML || '<p>No assignees</p>'}
-          </div>
+        <div class="details-due-date">
+          <h3>Due Date</h3>
+          <p>${task.dueDate || 'No due date'}</p>
         </div>
         <div class="details-priority">
           <h3>Priority</h3>
@@ -470,9 +462,17 @@ function createDetailsTemplate(
             <span>${priorityLabel}</span>
           </div>
         </div>
-        <div class="details-due-date">
-          <h3>Due Date</h3>
-          <p>${task.dueDate || 'No due date'}</p>
+        <div class="details-assigned">
+          <h3>Assigned To</h3>
+          <div class="task-users">
+            ${assignedUsersHTML || '<p>No assignees</p>'}
+          </div>
+        </div>
+        <div class="details-subtasks">
+          <h3>Subtasks</h3>
+          <ul>
+            ${subtasksHTML || '<li>No subtasks</li>'}
+          </ul>
         </div>
         <button class="text-btn-with-icon" onclick="deleteTask('${task.id || ''}'); toggleOverlay('#details-overlay')">Delete Task</button>
         <button class="text-btn-with-icon" onclick="editTask('${task.id || ''}')">Edit Task</button>

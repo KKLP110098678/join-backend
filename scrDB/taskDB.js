@@ -11,18 +11,14 @@ async function addNewTask(taskData) {
   
   if (isGuest) {
     // Guest user: Save to SessionStorage only
-    console.log("Saving task to SessionStorage (Guest):", taskData);
     tasks.push(taskData);
     saveTasksToSession();
   } else {
     // Logged-in user: Save to Firebase under user's board
     const userId = sessionStorage.getItem("userId");
     if (!userId) {
-      console.error("No userId found in session");
       return;
     }
-    
-    console.log("Saving task to Firebase for user:", userId);
     try {
       const userTasksRef = firebase.database().ref(`boards/${userId}/tasks`);
       const newTaskRef = userTasksRef.push(); // Firebase generates unique ID
@@ -41,7 +37,6 @@ async function addNewTask(taskData) {
       };
       
       await newTaskRef.set(taskForFirebase);
-      console.log("Task saved to Firebase with ID:", newTaskRef.key);
       
       // Update local tasks array with Firebase ID
       taskData.id = newTaskRef.key;
@@ -71,7 +66,6 @@ async function loadTasksFromFirebase() {
     const tasksData = snapshot.val();
     
     if (!tasksData) {
-      console.log("No tasks found in Firebase for user:", userId);
       return [];
     }
     
@@ -83,8 +77,6 @@ async function loadTasksFromFirebase() {
         ...tasksData[key]
       });
     }
-    
-    console.log("Tasks loaded from Firebase:", tasksArray.length);
     return tasksArray;
   } catch (error) {
     console.error("Error loading tasks from Firebase:", error);
@@ -111,7 +103,6 @@ async function updateTask(taskId, updates) {
     if (isGuest) {
       // Guest user: Update SessionStorage only
       saveTasksToSession();
-      console.log("Task updated in SessionStorage:", taskId);
     } else {
       // Logged-in user: Update Firebase
       const userId = sessionStorage.getItem("userId");
@@ -122,7 +113,6 @@ async function updateTask(taskId, updates) {
       
       try {
         await firebase.database().ref(`boards/${userId}/tasks/${taskId}`).update(updates);
-        console.log("Task updated in Firebase:", taskId);
       } catch (error) {
         console.error("Error updating task:", error);
       }
