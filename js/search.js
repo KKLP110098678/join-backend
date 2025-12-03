@@ -60,3 +60,35 @@ function handleSearchInput(event) {
     renderAllTasks();
   }
 }
+
+function searchContact() {
+  const searchInput = document.getElementById("assigned-to-input-field");
+  if (!searchInput) return;
+  
+  const searchTerm = searchInput.value.toLowerCase().trim();
+  
+  // Filter contacts array based on search term
+  const filteredContacts = contacts.filter(contact => 
+    contact.name.toLowerCase().includes(searchTerm)
+  );
+  
+  // Get dropdown container and iterate through children
+  const dropdownList = document.getElementById('assigned-to-list');
+  if (!dropdownList) return;
+  
+  const dropdownItems = dropdownList.children;
+  
+  for (let i = 0; i < dropdownItems.length; i++) {
+    const dropdownItem = dropdownItems[i];
+    // Find checkbox by class name
+    const checkboxes = dropdownItem.getElementsByClassName('checkbox-masked');
+    const checkbox = checkboxes.length > 0 ? checkboxes[0] : null;
+    
+    if (checkbox) {
+      const contactName = checkbox.value;
+      // Show or hide based on whether the contact is in filtered results
+      const isVisible = filteredContacts.some(contact => contact.name === contactName);
+      dropdownItem.style.display = isVisible ? "" : "none";
+    }
+  }
+}

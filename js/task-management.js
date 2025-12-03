@@ -661,7 +661,7 @@ function getEditTaskTemplate(task) {
                     type="text"
                     class="dropdown-input"
                     placeholder="Select contacts to assign"
-                    readonly
+                    oninput="searchContact('task-edit')"
                     onclick="toggleAssignedDropdown(mode='task-edit')"
                   />
                   <button
@@ -679,10 +679,10 @@ function getEditTaskTemplate(task) {
                 <div class="dropdown-list d-none" id="edit-assigned-to-list">
                   <!-- Will be populated dynamically -->
                 </div>
+                </div>
                 <div class="assignees-container" id="edit-assignees-container">
                   <!-- Selected assignees will appear here -->
               </div>
-            </div>
 
             <div class="form-group">
               <label for="add-subtask"
