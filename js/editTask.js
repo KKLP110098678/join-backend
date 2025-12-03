@@ -207,7 +207,7 @@ function getEditTaskTemplate(task) {
                   <!-- Will be populated dynamically -->
                 </div>
                 </div>
-                <div class="assignees-container" id="edit-assignees-container">
+                <div class="assignees" id="edit-assignees-container">
                   <!-- Selected assignees will appear here -->
               </div>
 
