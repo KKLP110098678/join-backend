@@ -410,3 +410,13 @@ function handleDateBlur() {
     dateError.classList.add("d-none");
   }
 }
+
+
+/**
+ * Opens the add task overlay with a specific target column
+ * @param {string} columnStatus - The status/column where task should be added
+ */
+function openAddTaskOverlay(columnStatus) {
+  setTargetColumn(columnStatus);
+  toggleOverlay(".add-task-menu");
+}
