@@ -63,10 +63,10 @@ function getEditTaskTemplate(task) {
       </div>
       <form id="edit-task-form" class="task-form" onsubmit="submitEditTask(event, '${task.id}')">
             <div class="form-group">
-              <label for="task-title"></label>
+              <label for="edit-task-title"></label>
               <input
                 type="text"
-                id="task-title"
+                id="edit-task-title"
                 name="task_title"
                 value="${task.title}"
                 required
@@ -90,7 +90,7 @@ function getEditTaskTemplate(task) {
               <input
                 type="date"
                 name="due_date"
-                id="task-date"
+                id="edit-task-date"
                 value="${task.dueDate}"
               />
               <div class="error-message d-none">This field is required</div>
@@ -284,9 +284,9 @@ async function submitEditTask(event, taskId) {
   event.preventDefault();
   
   // Get form values
-  const title = document.getElementById("task-title").value.trim();
+  const title = document.getElementById("edit-task-title").value.trim();
   const description = document.getElementById("task-description").value.trim();
-  const dueDate = document.getElementById("task-date").value;
+  const dueDate = document.getElementById("edit-task-date").value;
   
   // Get selected priority
   const priorityRadios = document.getElementsByName("priority");
@@ -330,17 +330,4 @@ async function submitEditTask(event, taskId) {
   // Reset arrays
   selectedUsers = [];
   currentSubtasks = [];
-}
-
-/**
- * Maps priority value from form to internal format
- * @param {string} value - Priority value from form
- * @returns {string} Mapped priority value
- */
-function mapPriorityValue(value) {
-  let lowerValue = value.toLowerCase();
-  if (lowerValue === "urgent") return "urgent";
-  if (lowerValue === "medium") return "medium";
-  if (lowerValue === "low") return "low";
-  return "medium";
 }

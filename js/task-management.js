@@ -449,7 +449,7 @@ function createDetailsTemplate(
       </svg>
       </div>
       <div class="details-body">
-        <h2 class="details-title">${task.title || 'Untitled Task'}</h2>
+        <h2 class="details-title">${task.title}</h2>
         <p class="details-description">${task.description || ''}</p>
         <div class="details-subtasks">
           <h3>Subtasks</h3>
