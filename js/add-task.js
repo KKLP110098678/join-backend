@@ -3,9 +3,6 @@
 // Global variable to store the target column status
 let targetColumnStatus = "todo";
 
-// Global array to store subtasks
-let currentSubtasks = [];
-
 // Global array to store selected users
 let selectedUsers = [];
 
@@ -77,7 +74,6 @@ function getAssignedDropdownList(mode) {
  */
 function toggleUserSelection(userName, event, mode) {
   event.stopPropagation();
-  console.log("Toggling selection for user:", userName);
   
   // Get checkbox directly from event target
   let checkbox = event.target;
@@ -236,12 +232,6 @@ function clearFormErrors() {
   dateGroup.classList.remove("error");
 }
 
-function clearSubtasks() {
-  let subtaskList = document.getElementById("subtask-list");
-  subtaskList.innerHTML = "";
-  currentSubtasks = [];
-}
-
 function clearSelectedUsers() {
   selectedUsers = [];
   // Checkboxes will be updated when dropdown is re-populated
@@ -364,12 +354,6 @@ function getAssignedUserInitials() {
     assignedTo.push(initials);
   }
   return assignedTo;
-}
-
-function getFilteredSubtasks() {
-  return currentSubtasks.filter(function (subtask) {
-    return subtask !== null;
-  });
 }
 
 function handleTaskSaveSuccess() {
