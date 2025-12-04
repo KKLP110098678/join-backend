@@ -31,8 +31,8 @@ function addSubtask() {
  */
 function getSubtaskItemTemplate(index, text) {
   return `
-      <li class="subtask-item" data-subtask-index="${index}">
-        <span class="container-with-form-btn-group">${text}</span>
+      <li class="subtask-item" data-subtask-index="${index}" id="subtask-item-${index}">
+        <span class="subtask-text">${text}</span>
         <div class="form-btn-group">
           <button type="button" class="form-btn-round" onclick="editSubtask(${index})">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,13 +62,109 @@ function removeSubtask(index, element) {
   element.remove();
 }
 
+function getSubtaskEditTemplate(index, text) {
+  return `
+    <div class="subtask-edit-container" id="subtask-edit-${index}">
+      <div class="subtask-input-container">
+        <input 
+        type="text" 
+        id="subtask-edit-input-${index}"
+        class="subtask-edit-input container-with-form-btn-group" 
+        value="${text}"
+        />
+        <div class="form-btn-group">
+          <button type="button" class="form-btn-round" onclick="saveSubtaskEdit(${index})">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.55002 15.15L18.025 6.675C18.225 6.475 18.4625 6.375 18.7375 6.375C19.0125 6.375 19.25 6.475 19.45 6.675C19.65 6.875 19.75 7.1125 19.75 7.3875C19.75 7.6625 19.65 7.9 19.45 8.1L10.25 17.3C10.05 17.5 9.81669 17.6 9.55002 17.6C9.28336 17.6 9.05002 17.5 8.85002 17.3L4.55002 13C4.35002 12.8 4.25419 12.5625 4.26252 12.2875C4.27086 12.0125 4.37502 11.775 4.57502 11.575C4.77502 11.375 5.01252 11.275 5.28752 11.275C5.56252 11.275 5.80002 11.375 6.00002 11.575L9.55002 15.15Z" fill="#4589FF"/>
+            </svg>
+          </button>
+          <div class="vertical-divider"></div>
+          <button type="button" class="form-btn-round" onclick="cancelSubtaskEdit(${index})">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 13.4L7.09999 18.3C6.91665 18.4834 6.68332 18.575 6.39999 18.575C6.11665 18.575 5.88332 18.4834 5.69999 18.3C5.51665 18.1167 5.42499 17.8834 5.42499 17.6C5.42499 17.3167 5.51665 17.0834 5.69999 16.9L10.6 12L5.69999 7.10005C5.51665 6.91672 5.42499 6.68338 5.42499 6.40005C5.42499 6.11672 5.51665 5.88338 5.69999 5.70005C5.88332 5.51672 6.11665 5.42505 6.39999 5.42505C6.68332 5.42505 6.91665 5.51672 7.09999 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z" fill="#4589FF"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 /**
  * Edits an existing subtask
+ * Opens an input field above the subtask item for inline editing
  * @param {number} index - Index of the subtask to edit
  */
 function editSubtask(index) {
-  // TODO: Implement edit functionality
-  console.log("Edit subtask", index);
+  let subtaskItem = document.getElementById(`subtask-item-${index}`);
+  
+  if (!subtaskItem) return;
+  
+  // Check if an edit input already exists
+  let existingEdit = document.getElementById(`subtask-edit-${index}`);
+  if (existingEdit) return;
+  
+  // Get current subtask text
+  let currentText = currentSubtasks[index].text;
+  
+  // Create edit input container
+  subtaskItem.insertAdjacentHTML('afterend', getSubtaskEditTemplate(index, currentText));
+  
+  // Hide the original subtask item
+  subtaskItem.style.display = 'none';
+  
+  // Focus the input field
+  let input = document.getElementById(`subtask-edit-input-${index}`);
+  if (input) {
+    input.focus();
+    input.select();
+  }
+}
+
+/**
+ * Saves the edited subtask text
+ * @param {number} index - Index of the subtask being edited
+ */
+function saveSubtaskEdit(index) {
+  let input = document.getElementById(`subtask-edit-input-${index}`);
+  
+  if (!input) return;
+  
+  let newText = input.value.trim();
+  
+  if (newText.length > 0) {
+    // Update the subtask text
+    currentSubtasks[index].text = newText;
+    
+    // Update the display
+    let subtaskItem = document.getElementById(`subtask-item-${index}`);
+    if (subtaskItem) {
+      let textSpan = subtaskItem.getElementsByClassName('subtask-text')[0];
+      if (textSpan) {
+        textSpan.textContent = newText;
+      }
+    }
+  }
+  
+  // Remove edit container and show original item
+  cancelSubtaskEdit(index);
+}
+
+/**
+ * Cancels the subtask edit and restores the original view
+ * @param {number} index - Index of the subtask being edited
+ */
+function cancelSubtaskEdit(index) {
+  let editContainer = document.getElementById(`subtask-edit-${index}`);
+  let subtaskItem = document.getElementById(`subtask-item-${index}`);
+  
+  if (editContainer) {
+    editContainer.remove();
+  }
+  
+  if (subtaskItem) {
+    subtaskItem.style.display = '';
+  }
 }
 
 /**
