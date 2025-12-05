@@ -10,17 +10,13 @@ function addSubtask() {
   let subtaskList = document.getElementById("subtask-list");
   let subtaskInput = document.getElementById("add-subtask");
   let subtaskText = subtaskInput.value.trim();
-
-  if (subtaskText) {
-    let subtaskIndex = currentSubtasks.length;
-    currentSubtasks.push({
-      text: subtaskText,
-      completed: false,
-    });
-
-    subtaskList.innerHTML += getSubtaskItemTemplate(subtaskIndex, subtaskText);
-    subtaskInput.value = "";
-  }
+  let subtaskIndex = currentSubtasks.length;
+  currentSubtasks.push({
+    text: subtaskText,
+    completed: false,
+  });
+  subtaskList.innerHTML += getSubtaskItemTemplate(subtaskIndex, subtaskText);
+  subtaskInput.value = "";
 }
 
 /**
@@ -118,6 +114,8 @@ function editSubtask(index) {
  */
 function saveSubtaskEdit(index) {
   let input = document.getElementById(`subtask-edit-input-${index}`);
+  let subtaskItem = document.getElementById(`subtask-item-${index}`);
+  let textSpan = subtaskItem.getElementsByClassName('subtask-text')[0];
   
   if (!input) return;
   
@@ -128,13 +126,7 @@ function saveSubtaskEdit(index) {
     currentSubtasks[index].text = newText;
     
     // Update the display
-    let subtaskItem = document.getElementById(`subtask-item-${index}`);
-    if (subtaskItem) {
-      let textSpan = subtaskItem.getElementsByClassName('subtask-text')[0];
-      if (textSpan) {
-        textSpan.textContent = newText;
-      }
-    }
+    textSpan.textContent = newText;
   }
   
   // Remove edit container and show original item
@@ -228,10 +220,8 @@ function generateSubtasksHTML(taskId, subtasks) {
  */
 async function toggleSubtaskStatus(taskId, checkboxId) {
   const task = findTaskById(taskId);
-    const index = parseInt(checkboxId.split("-")[1], 10);
-    if (!isNaN(index) && task.subtasks[index]) {
-      task.subtasks[index].completed = !task.subtasks[index].completed;
-      await updateTask(taskId, { subtasks: task.subtasks });
-      renderAllTasks();
-    }
+  const index = parseInt(checkboxId.split("-")[1], 10);
+  task.subtasks[index].completed = !task.subtasks[index].completed;
+  await updateTask(taskId, { subtasks: task.subtasks });
+  renderAllTasks();
 }
