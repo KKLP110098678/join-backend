@@ -26,10 +26,11 @@
 .contact-card {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 15px 24px;
   border-radius: 8px;
-  gap: 12px;
+  gap: 35px;
 }
+
 
 .contact-card:hover {
   background-color: #D2E3FF;
