@@ -228,12 +228,10 @@ function generateSubtasksHTML(taskId, subtasks) {
  */
 async function toggleSubtaskStatus(taskId, checkboxId) {
   const task = findTaskById(taskId);
-  if (task.subtasks) {
     const index = parseInt(checkboxId.split("-")[1], 10);
     if (!isNaN(index) && task.subtasks[index]) {
       task.subtasks[index].completed = !task.subtasks[index].completed;
       await updateTask(taskId, { subtasks: task.subtasks });
       renderAllTasks();
     }
-  }
 }
