@@ -97,13 +97,6 @@ function getSubtaskEditTemplate(index, text) {
  */
 function editSubtask(index) {
   let subtaskItem = document.getElementById(`subtask-item-${index}`);
-  
-  if (!subtaskItem) return;
-  
-  // Check if an edit input already exists
-  let existingEdit = document.getElementById(`subtask-edit-${index}`);
-  if (existingEdit) return;
-  
   // Get current subtask text
   let currentText = currentSubtasks[index].text;
   
@@ -172,9 +165,7 @@ function cancelSubtaskEdit(index) {
  */
 function clearSubtasks() {
   let subtaskList = document.getElementById("subtask-list");
-  if (subtaskList) {
-    subtaskList.innerHTML = "";
-  }
+  subtaskList.innerHTML = "";
   currentSubtasks = [];
 }
 
