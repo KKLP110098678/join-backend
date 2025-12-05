@@ -40,9 +40,7 @@ function setPriorityForEdit(priority) {
   
   const radioId = priorityMap[priority?.toLowerCase()] || 'edit-medium-priority';
   const radioButton = document.getElementById(radioId);
-  if (radioButton) {
     radioButton.checked = true;
-  }
 }
 
 /**
