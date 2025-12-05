@@ -119,3 +119,10 @@
   background: transparent;
   font-size: 1rem;
 }
+
+.user-avatar-sm {
+  width: 42px;
+  height: 42px;
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -125,7 +125,9 @@ function getContactCardTemplate(contact, index) {
         const initials = getInitials(contact.name);
         return `
             <div class="contact-card ${activeClass}" onclick="showContactDetails(${index})">
-                <div class="user-avatar-sm" style="background-color: ${avatarColor};"><div>${initials}</div></div>
+                <div>
+                    <div class="user-avatar-sm" style="background-color: ${avatarColor};"><div>${initials}</div></div>
+                </div>
                 <div class="contact-info">
                     <p class="contact-name">${contact.name}</p>
                     <p class="contact-email">${contact.email}</p>
