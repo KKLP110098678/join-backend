@@ -108,10 +108,8 @@ function editSubtask(index) {
   
   // Focus the input field
   let input = document.getElementById(`subtask-edit-input-${index}`);
-  if (input) {
-    input.focus();
-    input.select();
-  }
+  input.focus();
+  input.select();
 }
 
 /**
@@ -150,14 +148,8 @@ function saveSubtaskEdit(index) {
 function cancelSubtaskEdit(index) {
   let editContainer = document.getElementById(`subtask-edit-${index}`);
   let subtaskItem = document.getElementById(`subtask-item-${index}`);
-  
-  if (editContainer) {
-    editContainer.remove();
-  }
-  
-  if (subtaskItem) {
-    subtaskItem.style.display = '';
-  }
+  editContainer.remove();
+  subtaskItem.style.display = '';
 }
 
 /**
@@ -236,7 +228,7 @@ function generateSubtasksHTML(taskId, subtasks) {
  */
 async function toggleSubtaskStatus(taskId, checkboxId) {
   const task = findTaskById(taskId);
-  if (task && task.subtasks) {
+  if (task.subtasks) {
     const index = parseInt(checkboxId.split("-")[1], 10);
     if (!isNaN(index) && task.subtasks[index]) {
       task.subtasks[index].completed = !task.subtasks[index].completed;
