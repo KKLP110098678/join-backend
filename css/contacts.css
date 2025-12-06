@@ -127,6 +127,21 @@
   border: white 2px solid;
 }
 
+.contact-details h1 {
+  font-size: 47px;
+  font-weight: 500;
+}
+
+.contact-details h2{
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.contact-details h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
 ::-webkit-scrollbar {
   background: white;
   width: 24px;
