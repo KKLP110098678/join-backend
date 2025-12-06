@@ -1,7 +1,6 @@
 function initStaticPages() {
   let isLoggedIn = sessionStorage.getItem("isLoggedIn");
   if (isLoggedIn === "true") {
-    console.log(isLoggedIn);
     return;
   } else {
     renderLoginSidbar();
