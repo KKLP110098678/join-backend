@@ -131,6 +131,7 @@
 .contact-details h1 {
   font-size: 47px;
   font-weight: 500;
+  line-height: 120%;
 }
 
 .contact-details h2{
@@ -153,4 +154,10 @@
   border-radius: 12px;
   border: 8px solid white;
   
+}
+
+.contact-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
 }
