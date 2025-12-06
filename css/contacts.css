@@ -131,7 +131,6 @@
 .contact-details h1 {
   font-size: 47px;
   font-weight: 500;
-  line-height: 120%;
 }
 
 .contact-details h2{
@@ -160,4 +159,8 @@
   display: flex;
   gap: 16px;
   margin-top: 8px;
+}
+
+.contact-header {
+  margin-bottom: 21px;
 }
