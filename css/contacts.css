@@ -96,6 +96,7 @@
   flex-direction: column;
   align-items: center;
   padding: 24px;
+  margin-bottom: 21px;
   gap: 8px;
 }
 
