@@ -30,7 +30,7 @@ const avatarColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1
 function getAvatarColor(name) {
     const firstLetter = name.charAt(0).toUpperCase();
     const charCode = firstLetter.charCodeAt(0);
-    const colorIndex = (charCode - 65) % avatarColors.length; 
+    const colorIndex = (charCode - 65) % avatarColors.length;
     return avatarColors[colorIndex];
 }
 
@@ -39,8 +39,8 @@ function getInitials(name) {
     if (nameParts.length >= 2) {
         return nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase();
     } else {
-        return nameParts[0].length >= 2 ? 
-               nameParts[0].charAt(0).toUpperCase() + nameParts[0].charAt(1).toUpperCase() : 
+        return nameParts[0].length >= 2 ?
+               nameParts[0].charAt(0).toUpperCase() + nameParts[0].charAt(1).toUpperCase() :
                nameParts[0].charAt(0).toUpperCase();
     }
 }
@@ -116,6 +116,7 @@ function getAlphabetHeaderTemplate(letter) {
         <div class="alphabet-header">
             <h3>${letter}</h3>
         </div>
+        <span class="divider"></span>
     `;
 }
 
@@ -125,10 +126,14 @@ function getContactCardTemplate(contact, index) {
         const initials = getInitials(contact.name);
         return `
             <div class="contact-card ${activeClass}" onclick="showContactDetails(${index})">
-                <div class="user-avatar-sm" style="background-color: ${avatarColor};"><div>${initials}</div></div>
-                <div class="contact-info">
-                    <p class="contact-name">${contact.name}</p>
-                    <p class="contact-email">${contact.email}</p>
+                <div class="contact-card-content">
+                  <div class="user-avatar-sm" style="background-color: ${avatarColor};">
+                    <div>${initials}</div>
+                  </div>
+                  <div class="contact-info">
+                      <p class="contact-name">${contact.name}</p>
+                      <p class="contact-email">${contact.email}</p>
+                  </div>
                 </div>
             </div>
         `;
@@ -147,8 +152,10 @@ function showContactDetails(index) {
 function getContactDetailsTemplate(contact, index, avatarColor, initials) {
     return `
         <div class="contact-header d-flex">
-            <div class="user-avatar-lg" style="background-color: ${avatarColor};"><div>${initials}</div></div>
             <div>
+                <div class="user-avatar-lg" style="background-color: ${avatarColor};">
+                    <div class="avatar-content">${initials}</div>
+                </div>
                 <h1>${contact.name}</h1>
                 <div class="contact-actions">
                     <button onclick="editContact(${index})" class="text-btn-with-icon">
