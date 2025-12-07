@@ -1,3 +1,8 @@
+.contact-menu ::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
 .contact-menu {
   position: fixed;
   left: 222px;
@@ -24,11 +29,15 @@
 }
 
 .contact-card {
-  display: flex;
-  align-items: center;
   padding: 12px;
   border-radius: 8px;
-  gap: 12px;
+}
+
+.contact-card-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
 }
 
 .contact-card:hover {
@@ -50,16 +59,20 @@
 }
 
 .alphabet-header {
-  margin: 16px 0 8px 12px;
-  border-bottom: 1px solid #D2E3FF;
-  padding-bottom: 4px;
+  margin: 16px 0 0 0;
 }
 
 .alphabet-header h3 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
+    margin: 0 0 0 36px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.divider {
+    display: block;
+  border-bottom: 1px solid #D2E3FF;
+  margin: 8px 0;
 }
 
 .user-avatar-lg {
@@ -74,9 +87,22 @@
   margin-right: 16px;
 }
 
+.uster-avatar-sm {
+    width: 385px;
+}
+
+.avatar-content {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .contact-info {
   display: flex;
   flex-direction: column;
+  width: 200px;
 }
 
 .contact-name {
@@ -97,10 +123,6 @@
   align-items: center;
   padding: 24px;
   gap: 8px;
-}
-
-.main-content {
-  width: calc(100% - 688px);
 }
 
 .input-icon-container {
