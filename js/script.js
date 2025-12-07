@@ -40,6 +40,36 @@ function logout() {
   sessionStorage.setItem('skipAnimation', 'true');
 }
 
+/**
+ * Toggles the user dropdown menu
+ * @param {Event} event - The click event
+ */
+function toggleUserDropdown(event) {
+  event.stopPropagation();
+  const dropdown = document.getElementById('user-dropdown-menu');
+  if (dropdown) {
+    dropdown.classList.toggle('d-none');
+  }
+}
+
+/**
+ * Closes the user dropdown menu when clicking outside
+ */
+function handleOutsideClick(event) {
+  const dropdown = document.getElementById('user-dropdown-menu');
+  const userAvatar = document.querySelector('.user-avatar');
+
+  if (dropdown && !dropdown.classList.contains('d-none')) {
+    // Check if click is outside both dropdown and avatar
+    if (!dropdown.contains(event.target) && !userAvatar.contains(event.target)) {
+      dropdown.classList.add('d-none');
+    }
+  }
+}
+
+// Assign the function to document.onclick
+document.onclick = handleOutsideClick;
+
 // Initialize session check on page load
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initProtectedPage);

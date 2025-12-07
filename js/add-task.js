@@ -3,48 +3,45 @@
 // Global variable to store the target column status
 let targetColumnStatus = "todo";
 
-// Global array to store subtasks
-let currentSubtasks = [];
-
 // Global array to store selected users
 let selectedUsers = [];
 
 /**
  * Populates the assignedTo dropdown with checkboxes from contacts array
  */
-function populateAssignedToDropdown() {
-  let dropdownList = document.getElementById("assigned-to-list");
+function populateAssignedToDropdown(mode) {
+  let dropdownList = getAssignedDropdownList(mode);
 
   clearDropdownList(dropdownList);
-
-  if (typeof contacts !== "undefined") {
-    addContactsToDropdown(dropdownList);
-  }
+  addContactsToDropdown(dropdownList, mode);
 }
 
 function clearDropdownList(dropdownList) {
   dropdownList.innerHTML = "";
-  dropdownList.classList.add("d-none");
 }
 
-function addContactsToDropdown(dropdownList) {
+function addContactsToDropdown(dropdownList, mode) {
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
-    let itemHTML = createDropdownItemHTML(contact, i);
+    let isSelected = selectedUsers.includes(contact.name);
+    let itemHTML = createDropdownItemHTML(contact, i, isSelected, mode);
     dropdownList.innerHTML += itemHTML;
   }
 }
 
-function createDropdownItemHTML(contact, index) {
+function createDropdownItemHTML(contact, index, isSelected, mode) {
   let initials = getInitials(contact.name);
   let avatarColor = getAvatarColor(contact.name);
+  let checkedAttribute = isSelected ? 'checked' : '';
+  let modeParam = mode ? `'${mode}'` : '';
+  let userId = mode === 'task-edit' ? `edit-user-${index}` : `user-${index}`;
 
   return `
-    <div class="dropdown-item" onclick="toggleUserSelection('${contact.name}', event)">
-      <label class="d-flex dropdown-item-label custom-checkbox" for="user-${index}">
+    <div class="dropdown-item">
+      <label class="d-flex dropdown-item-label custom-checkbox" for="${userId}">
         <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
         ${contact.name}
-        <input type="checkbox" class="checkbox-masked" id="user-${index}" value="${contact.name}">
+        <input type="checkbox" class="checkbox-masked" id="${userId}" value="${contact.name}" ${checkedAttribute} onchange="toggleUserSelection('${contact.name}', event, ${modeParam})">
       </label>
     </div>
   `;
@@ -53,30 +50,43 @@ function createDropdownItemHTML(contact, index) {
 /**
  * Toggles the assigned to dropdown
  */
-function toggleAssignedDropdown() {
-  let dropdownList = document.getElementById("assigned-to-list");
-  let arrow = document.querySelector(".dropdown-arrow");
+function toggleAssignedDropdown(mode, dropdownElement) {
+  populateAssignedToDropdown(mode);
+  let dropdownList = getAssignedDropdownList(mode);
 
   dropdownList.classList.toggle("d-none");
-  arrow.parentElement.parentElement.parentElement.classList.toggle("open");
+  if (dropdownElement) {
+    dropdownElement.classList.toggle("open");
+  }
+}
+
+function getAssignedDropdownList(mode) {
+  if (mode == "task-edit") {
+    return document.getElementById("edit-assigned-to-list");
+  } else {
+    return document.getElementById("assigned-to-list");
+  }
 }
 
 /**
  * Toggles user selection in the dropdown
+ * Called when checkbox state changes
  */
-function toggleUserSelection(userName, event) {
-  if (event) event.stopPropagation();
-  let checkbox = findUserCheckbox(userName);
-  updateSelectedUsersArray(userName, checkbox.checked);
-  updateDropdownPlaceholder();
+function toggleUserSelection(userName, event, mode) {
+  event.stopPropagation();
+  
+  // Get checkbox directly from event target
+  let checkbox = event.target;
+  
+  if (checkbox && checkbox.type === 'checkbox') {
+    updateSelectedUsersArray(userName, checkbox.checked);
+    updateDropdownPlaceholder(mode);
+  }
 }
 
-function findUserCheckbox(userName) {
-  return Array.from(
-    document.querySelectorAll('.dropdown-item input[type="checkbox"]')
-  ).find((cb) => cb.value === userName);
-}
-
+/**
+ * Updates selected users array based on checkbox state
+ */
 function updateSelectedUsersArray(userName, isChecked) {
   let index = selectedUsers.indexOf(userName);
   if (isChecked && index === -1) {
@@ -87,30 +97,43 @@ function updateSelectedUsersArray(userName, isChecked) {
 }
 
 /**
- * Updates the dropdown input text based on selected users
+ * Updates the assignees container to display selected users as avatars
  */
-function updateDropdownPlaceholder() {
-  let input = document.querySelector(".dropdown-input");
-
-  if (selectedUsers.length === 0) {
-    input.value = "";
-    input.placeholder = "Select contacts to assign";
-  } else if (selectedUsers.length === 1) {
-    input.value = selectedUsers[0];
-  } else {
-    input.value = `${selectedUsers.length} users selected`;
+function updateDropdownPlaceholder(mode) {
+  let containerId = (mode === "task-edit") ? "edit-assignees-container" : "assignees-container";
+  let container = document.getElementById(containerId);  
+  
+  if (!container) return;
+  
+  container.innerHTML = "";
+  
+  for (let i = 0; i < selectedUsers.length; i++) {
+    let initials = getInitials(selectedUsers[i]);
+    let avatarColor = getAvatarColor(selectedUsers[i]);
+    
+    let avatarHTML = `<div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>`;
+    container.innerHTML += avatarHTML;
   }
 }
 
 /**
  * Close dropdown when clicking outside
+ * Should be called from a global click handler in the HTML
  */
-document.addEventListener("click", function (event) {
+function handleDocumentClick(event) {
+  // Handle regular assigned-to dropdown
   let dropdown = document.getElementById("assigned-to");
   let dropdownList = document.getElementById("assigned-to-list");
 
   if (dropdown && !dropdown.contains(event.target) && dropdownList) {
     dropdownList.classList.add("d-none");
+    dropdown.classList.remove("open");
+  }
+
+  // Handle edit assigned-to dropdown
+  let editDropdownList = document.getElementById("edit-assigned-to-list");
+  if (dropdown && !dropdown.contains(event.target) && editDropdownList) {
+    editDropdownList.classList.add("d-none");
     dropdown.classList.remove("open");
   }
 
@@ -125,7 +148,7 @@ document.addEventListener("click", function (event) {
     categoryList.classList.add("d-none");
     categoryDropdown.classList.remove("open");
   }
-});
+}
 
 /**
  * Toggles the category dropdown
@@ -209,20 +232,9 @@ function clearFormErrors() {
   dateGroup.classList.remove("error");
 }
 
-function clearSubtasks() {
-  let subtaskList = document.getElementById("subtask-list");
-  subtaskList.innerHTML = "";
-  currentSubtasks = [];
-}
-
 function clearSelectedUsers() {
   selectedUsers = [];
-  let checkboxes = document.querySelectorAll(
-    '.dropdown-item input[type="checkbox"]'
-  );
-  for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].checked = false;
-  }
+  // Checkboxes will be updated when dropdown is re-populated
   updateDropdownPlaceholder();
 }
 
@@ -344,12 +356,6 @@ function getAssignedUserInitials() {
   return assignedTo;
 }
 
-function getFilteredSubtasks() {
-  return currentSubtasks.filter(function (subtask) {
-    return subtask !== null;
-  });
-}
-
 function handleTaskSaveSuccess() {
   let isOnAddTaskPage = window.location.pathname.includes("add-task.html");
 
@@ -403,4 +409,14 @@ function handleDateBlur() {
     dateGroup.classList.remove("error");
     dateError.classList.add("d-none");
   }
+}
+
+
+/**
+ * Opens the add task overlay with a specific target column
+ * @param {string} columnStatus - The status/column where task should be added
+ */
+function openAddTaskOverlay(columnStatus) {
+  setTargetColumn(columnStatus);
+  toggleOverlay(".add-task-menu");
 }

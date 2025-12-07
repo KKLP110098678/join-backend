@@ -1,6 +1,7 @@
 :root {
   --color-blue: #2a3647;
   --color-black-light: #091931;
+  --color-hover-blue:rgba(227, 238, 255, 1);
   --color-light-blue: rgba(69, 137, 255, 1);
   --color-orange: #ff7a00;
   --color-turquoise: #1fd7c1;

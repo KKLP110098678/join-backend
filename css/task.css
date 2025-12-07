@@ -264,7 +264,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 8px 81px 8px 12px;
   background-color: #f0f0f0;
   border-radius: 8px;
   font-size: 0.875rem;
@@ -314,4 +314,20 @@
   background-image: url(..//assets/icon/task/calendar.svg);
   height: 24px;
   width: 24px;
+}
+
+.container-with-form-btn-group {
+  padding-right: 81px !important;
+}
+
+.assignees {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.assignees .user-avatar-sm {
+  font-size: 16px;
+  border: 2px solid #ffffff;
 }

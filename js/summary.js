@@ -76,26 +76,21 @@ function updateGreeting() {
  */
 async function loadAllTasks() {
     let isGuest = sessionStorage.getItem('isGuest') === 'true';
-    console.log('Loading tasks... isGuest:', isGuest);
 
     if (isGuest) {
         let tasksJson = sessionStorage.getItem('tasks');
         let tasks = tasksJson ? JSON.parse(tasksJson) : [];
-        console.log('Loaded tasks from SessionStorage:', tasks);
 
         if (tasks.length === 0 && typeof getDefaultTasks === 'function') {
             tasks = getDefaultTasks();
-            console.log('Using default tasks:', tasks);
         }
 
         return tasks;
     } else {
         if (typeof loadTasksFromFirebase === 'function') {
             let tasks = await loadTasksFromFirebase();
-            console.log('Loaded tasks from Firebase:', tasks);
             return tasks;
         } else {
-            console.error('loadTasksFromFirebase function not found!');
             return [];
         }
     }
@@ -110,7 +105,6 @@ async function loadAllTasks() {
  * @returns {Object} Statistics object with task counts
  */
 function calculateTaskStatistics(tasks) {
-    console.log('Calculating statistics for tasks:', tasks);
     let statistics = {
         total: 0,
         todo: 0,
@@ -122,7 +116,6 @@ function calculateTaskStatistics(tasks) {
     };
 
     if (!tasks || tasks.length === 0) {
-        console.log('No tasks found!');
         return statistics;
     }
 
@@ -130,7 +123,6 @@ function calculateTaskStatistics(tasks) {
 
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
-        console.log('Processing task:', task.title, 'status:', task.status, 'priority:', task.priority);
 
         if (task.status === 'todo') {
             statistics.todo++;
@@ -149,8 +141,6 @@ function calculateTaskStatistics(tasks) {
             }
         }
     }
-
-    console.log('Final statistics:', statistics);
     return statistics;
 }
 
@@ -185,11 +175,9 @@ function updateUrgentDeadlineIfEarlier(statistics, newDate) {
  * @returns {Promise<void>}
  */
 async function updateTaskCounts() {
-    console.log('updateTaskCounts called');
     let tasks = await loadAllTasks();
     let stats = calculateTaskStatistics(tasks);
 
-    console.log('Updating UI with stats:', stats);
     updateUrgentCount(stats.urgent);
     updateBoardCount(stats.total);
     updateTodoCount(stats.todo);

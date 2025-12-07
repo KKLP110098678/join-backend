@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/AddTaskMainContent.css" />
     <link rel="stylesheet" href="/css/sidebarContent.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
+    <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="/css/register.css" />
     <link
       rel="shortcut icon"
@@ -23,8 +24,25 @@
       /></a>
       <div class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>
-        <img src="/assets/icon/questionmark.svg" alt="" />
-        <div class="user-avatar"><div>JD</div></div>
+        <a href="./help.html" title="Help" class="help-icon">
+          <img src="/assets/icon/questionmark.svg" alt=""
+        /></a>
+        <div class="user-avatar" onclick="toggleUserDropdown(event)">
+          <div>SM</div>
+          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
+            <a href="./help.html" class="help-mobile">Help</a>
+            <a href="/html/legalnotice.html">Legal Notice</a>
+            <a href="/html/datenschutz.html">Privacy Policy</a>
+            <a
+              href="#"
+              onclick="
+                logout();
+                return false;
+              "
+              >Log out</a
+            >
+          </div>
+        </div>
       </div>
     </header>
     <section id="sidebar-section" class="sidebar-content">
@@ -341,10 +359,14 @@
         <p>Task created successfully</p>
       </div>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/contact.js"></script>
     <script src="/js/task-management.js"></script>
+    <script src="/js/subtask.js"></script>
     <script src="/scrDB/taskDB.js"></script>
+    <script src="/scrDB/dbConfig.js"></script>
     <script src="/js/add-task.js"></script>
   </body>
 </html>

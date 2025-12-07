@@ -9,7 +9,7 @@
   top: 96px;
   bottom: 0;
   overflow-y: scroll;
-  padding: 16px 16px 16px 26px;
+  padding: 32px 24px 16px 62px;
   width: 466px;
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
 }
@@ -25,7 +25,6 @@
 .contact-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .contact-card {
@@ -39,6 +38,7 @@
     align-items: center;
     width: 100%;
 }
+
 
 .contact-card:hover {
   background-color: #D2E3FF;
@@ -76,15 +76,16 @@
 }
 
 .user-avatar-lg {
-  width: 64px;
-  height: 64px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background-color: #ccc;
+  border: 3px solid white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  margin-right: 16px;
+  font-size: 47px;
+  margin-right: 54px;
 }
 
 .uster-avatar-sm {
@@ -122,6 +123,7 @@
   flex-direction: column;
   align-items: center;
   padding: 24px;
+  margin-bottom: 21px;
   gap: 8px;
 }
 
@@ -139,4 +141,50 @@
   outline: none;
   background: transparent;
   font-size: 1rem;
+}
+
+.user-avatar-sm {
+  width: 42px;
+  height: 42px;
+  font-size: 16px;
+  font-weight: 500;
+  border: white 2px solid;
+}
+
+.contact-details h1 {
+  font-size: 47px;
+  font-weight: 500;
+}
+
+.contact-details h2{
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 21px;
+}
+
+.contact-details h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+::-webkit-scrollbar {
+  background: white;
+  width: 24px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8a8a8a;
+  border-radius: 12px;
+  border: 8px solid white;
+
+}
+
+.contact-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.contact-header {
+  margin-bottom: 21px;
 }
