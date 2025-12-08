@@ -145,7 +145,7 @@ function showContactDetails(index) {
     const contact = contacts[index];
     const avatarColor = getAvatarColor(contact.name);
     const initials = getInitials(contact.name);
-    const contactDetails = document.getElementById('contact-details');
+    const contactDetails = document.getElementById('contact-details-content');
     contactDetails.innerHTML = getContactDetailsTemplate(contact, index, avatarColor, initials);
 }
 
@@ -240,7 +240,7 @@ function deleteContact(index) {
         contacts.splice(index, 1);
         renderContactList();
         closeAllMenus();
-        const contactDetails = document.getElementById('contact-details');
+        const contactDetails = document.getElementById('contact-details-content');
         contactDetails.innerHTML = '<p>Select a contact to view details</p>';
 }
 

@@ -151,6 +151,10 @@
   border: white 2px solid;
 }
 
+.contact-details-content {
+margin: 0 0 0 698px;
+}
+
 .contact-details h1 {
   font-size: 47px;
   font-weight: 500;

@@ -16,6 +16,7 @@ body {
     justify-content: flex-end;
     max-width: 1920px;
     padding: 79px;
+    margin: 0 0 0 232px;
 }
 
 .sec-sidebar {
