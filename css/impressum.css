@@ -78,7 +78,7 @@ h1 {
 
 h2 {
     font-weight: 700;
-    color: var(--color-blue-hover);
+    color: var(--color-blue);
     margin: 35px 0px 10px 0px;
     font-size: 33px;
 }
