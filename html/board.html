@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/task.css" />
     <link rel="stylesheet" href="/css/board.css" />
     <link rel="stylesheet" href="/css/overlays.css" />
-    <link rel="stylesheet" href="../css/color.css">
+    <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="/css/register.css" />
     <link
       rel="shortcut icon"
@@ -33,7 +33,7 @@
         <div class="user-avatar" onclick="toggleUserDropdown(event)">
           <div>SM</div>
           <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
-            <a href="./help.html" class="help-mobile">Help</a>
+            <a href="./help.html" class="hide-mobile">Help</a>
             <a href="/html/legalnotice.html">Legal Notice</a>
             <a href="/html/datenschutz.html">Privacy Policy</a>
             <a href="#" onclick="logout(); return false;">Log out</a>
@@ -250,7 +250,13 @@
         <form id="task-form" onsubmit="saveTask(event)">
           <div class="form-group" id="title-form-group">
             <label for="task-title">Title</label>
-            <input type="text" id="task-title" name="title" required onblur="handleTitleBlur()"/>
+            <input
+              type="text"
+              id="task-title"
+              name="title"
+              required
+              onblur="handleTitleBlur()"
+            />
             <div class="error-message d-none" id="title-error-message">
               This field is required
             </div>
@@ -261,7 +267,13 @@
           </div>
           <div class="form-group" id="date-form-group">
             <label for="task-date">Due Date</label>
-            <input type="date" id="task-date" name="task-date" required onblur="handleDateBlur()"/>
+            <input
+              type="date"
+              id="task-date"
+              name="task-date"
+              required
+              onblur="handleDateBlur()"
+            />
             <div class="error-message d-none" id="date-error-message">
               This field is required
             </div>

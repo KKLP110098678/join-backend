@@ -171,21 +171,24 @@ main {
   opacity: 0.84;
   visibility: visible;
 }
+
 /* Desktop */
-.help-mobile {
-    display: none;
+.hide-mobile {
+  display: none;
 }
 
 /* Mobile */
 
 @media (max-width: 668px) {
-  .user-dropdown-menu{
+  .user-dropdown-menu {
     height: 179px;
   }
+
   .help-icon {
-    display: none; 
+    display: none;
   }
-  .help-mobile {
+
+  .hide-mobile {
     display: block;
   }
 }
