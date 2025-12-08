@@ -118,7 +118,7 @@ main {
   display: flex;
   flex-direction: column;
   padding: 8px;
-  gap: 4px;
+  gap: 12px;
 }
 
 .user-dropdown-menu a {
