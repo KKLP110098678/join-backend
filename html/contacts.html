@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/ContactsMainContent.css" />
+    <link rel="stylesheet" href="/css/mainContent.css" />
     <link rel="stylesheet" href="/css/sidebarContent.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
+    <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="/css/contacts.css" />
     <link rel="stylesheet" href="/css/overlays.css" />
     <link
@@ -17,71 +18,67 @@
     />
   </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Join</title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/mainContent.css">
-  <link rel="stylesheet" href="/css/sidebarContent.css">
-  <link rel="stylesheet" href="/css/buttons.css">
-    <link rel="stylesheet" href="../css/color.css">
-  <link rel="stylesheet" href="/css/contacts.css">
-  <link rel="stylesheet" href="/css/overlays.css">
-  <link rel="shortcut icon" href="/assets/icon/join-favicon.svg" type="image/x-icon">
-</head>
-
-<body class="body-no-scroll" onload="renderContactList()">
-  <header class="header d-flex">
-    <a href="./summary.html"><img src="/assets/icon/logo-white.svg" alt="Logo" height="56px" /></a>
-    <div class="inner-header d-flex">
-      <p>Kanban Project Management Tool</p>
-      <a href="./help.html" title="Help" class="help-icon">
-        <img src="/assets/icon/questionmark.svg" alt=""
+  <body class="body-no-scroll" onload="renderContactList()">
+    <header class="header d-flex">
+      <a href="./summary.html"
+        ><img src="/assets/icon/logo-white.svg" alt="Logo" height="56px"
       /></a>
-      <div class="user-avatar" onclick="toggleUserDropdown(event)">
-        <div>SM</div>
-        <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
-          <a href="./help.html" class="help-mobile">Help</a>
-          <a href="/html/legalnotice.html">Legal Notice</a>
-          <a href="/html/datenschutz.html">Privacy Policy</a>
-          <a href="#" onclick="logout(); return false;">Log out</a>
+      <div class="inner-header d-flex">
+        <p>Kanban Project Management Tool</p>
+        <a href="./help.html" title="Help" class="help-icon">
+          <img src="/assets/icon/questionmark.svg" alt=""
+        /></a>
+        <div class="user-avatar" onclick="toggleUserDropdown(event)">
+          <div>SM</div>
+          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
+            <a href="./help.html" class="help-mobile">Help</a>
+            <a href="/html/legalnotice.html">Legal Notice</a>
+            <a href="/html/datenschutz.html">Privacy Policy</a>
+            <a
+              href="#"
+              onclick="
+                logout();
+                return false;
+              "
+              >Log out</a
+            >
+          </div>
         </div>
       </div>
     </header>
-    <section id="sidebar-section" class="sidebar-content">
-      <nav class="sidenav d-flex">
-        <a class="btn-menu d-flex" href="./summary.html"
-          ><img
-            src="/assets/icon/menuIcons/Summary.svg"
-            alt="Summary Icon"
-          />Summary</a
-        >
-        <a class="btn-menu" href="./add-task.html"
-          ><img
-            src="/assets/icon/menuIcons/AddTask.svg"
-            alt="Add Task Icon"
-          />Add Task</a
-        >
-        <a class="btn-menu" href="./board.html"
-          ><img
-            src="/assets/icon/menuIcons/Board.svg"
-            alt="Board Icon"
-          />Board</a
-        >
-        <a class="btn-menu" href="./contacts.html"
-          ><img
-            src="/assets/icon/menuIcons/Contacts.svg"
-            alt="Contacts Icon"
-          />Contacts</a
-        >
-      </nav>
-      <div class="sidebar-footer d-flex">
-        <a href="/html/datenschutz.html">Privacy Policy</a>
-        <a href="/html/legalnotice.html">Legal Notice</a>
-      </div>
-    </section>
     <main class="main-wrapper">
+      <section id="sidebar-section" class="sidebar-content">
+        <nav class="sidenav d-flex">
+          <a class="btn-menu d-flex" href="./summary.html"
+            ><img
+              src="/assets/icon/menuIcons/Summary.svg"
+              alt="Summary Icon"
+            />Summary</a
+          >
+          <a class="btn-menu" href="./add-task.html"
+            ><img
+              src="/assets/icon/menuIcons/AddTask.svg"
+              alt="Add Task Icon"
+            />Add Task</a
+          >
+          <a class="btn-menu" href="./board.html"
+            ><img
+              src="/assets/icon/menuIcons/Board.svg"
+              alt="Board Icon"
+            />Board</a
+          >
+          <a class="btn-menu" href="./contacts.html"
+            ><img
+              src="/assets/icon/menuIcons/Contacts.svg"
+              alt="Contacts Icon"
+            />Contacts</a
+          >
+        </nav>
+        <div class="sidebar-footer d-flex">
+          <a href="/html/datenschutz.html">Privacy Policy</a>
+          <a href="/html/legalnotice.html">Legal Notice</a>
+        </div>
+      </section>
       <section id="main-content" class="main-content">
         <div class="contact-menu-content">
           <div class="contact-menu">
@@ -106,6 +103,7 @@
             <div class="contact-list" id="contact-list"></div>
           </div>
         </div>
+        <div class="contact-details" id="contact-details"></div>
       </section>
     </main>
     <div class="blur-overlay" id="blur-overlay" onclick="closeAllMenus()"></div>

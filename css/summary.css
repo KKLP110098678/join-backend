@@ -308,3 +308,155 @@
     perspective: 1000px;
     transform-style: preserve-3d;
 }
+
+/* Responsive Styles */
+
+/* Desktop mit weniger Platz: Ab 1400px beginnt das Schrumpfen */
+@media (max-width: 1200px) {
+    .summary-main-content {
+        width: 100%;
+        max-width: 912px;
+        height: auto;
+        min-height: 591px;
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+
+    .summary-square-zoom-wrapper {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .top-row,
+    .bottom-row {
+        width: 100%;
+    }
+
+    .top-row .summary-square-zoom-wrapper:first-child {
+        flex: 3;
+    }
+
+    .square-urgency {
+        width: 100%;
+        min-width: 0;
+        height: 191px;
+    }
+
+    .summary-square:not(.square-urgency) {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* Tablet: Sidebar ausgeblendet */
+@media (max-width: 1024px) {
+    .summary-main-content {
+        max-width: 912px;
+        padding: 0 32px;
+    }
+}
+
+/* Mobile: Bottom Navigation */
+@media (max-width: 850px) {
+    .main-wrapper {
+        padding-bottom: 100px;
+        height: auto;
+        min-height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+
+    .main-content {
+        padding: 16px;
+        align-items: flex-start;
+    }
+
+    .summary-main-content {
+        width: 100%;
+        height: auto;
+        padding: 0 16px;
+    }
+
+    .summary-greeting {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    .summary-square-box {
+        margin-top: 16px;
+        gap: 16px;
+    }
+
+    .top-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .square-urgency {
+        width: 100%;
+        height: auto;
+        min-height: 100px;
+        padding: 16px 20px;
+    }
+
+    .square-urgency,
+    .square-board {
+        margin: 0;
+    }
+
+    .bottom-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .summary-square:not(.square-urgency) {
+        width: 100%;
+        height: 120px;
+    }
+
+    .urgent-tasks {
+        font-size: 32px;
+    }
+
+    .summary-left-side p {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .urgent-sec-half p {
+        font-size: 16px;
+    }
+
+    .urgent-sec-half span {
+        font-size: 12px;
+    }
+
+    .card-number {
+        font-size: 32px;
+        margin-bottom: 4px;
+    }
+
+    .card-label {
+        font-size: 12px;
+    }
+
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
+    }
+
+    .card-content {
+        padding: 12px;
+    }
+
+    .vertical-divider {
+        height: 60px;
+    }
+
+    .urgent-icon img {
+        height: 50px;
+        width: 50px;
+    }
+}

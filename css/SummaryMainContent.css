@@ -6,6 +6,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 232px;
+    width: calc(100vw - 232px);
+}
+
+/* Tablet: Sidebar ausgeblendet - kein Margin nötig */
+@media (max-width: 1024px) {
+    .main-wrapper {
+        margin-left: 0;
+        width: 100vw;
+    }
 }
 
 

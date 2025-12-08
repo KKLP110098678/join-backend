@@ -176,13 +176,24 @@ header {
 
 /* Mobile */
 
-@media (max-width: 668px) {
-  .user-dropdown-menu{
+@media (max-width: 850px) {
+  header {
+    padding: 0 16px;
+    height: 80px;
+  }
+
+  .inner-header p {
+    display: none;
+  }
+
+  .user-dropdown-menu {
     height: 179px;
   }
+
   .help-icon {
     display: none;
   }
+
   .help-mobile {
     display: block;
   }
