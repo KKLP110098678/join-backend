@@ -183,7 +183,8 @@ function generateAssignedUsersHTML(assignedToArray) {
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     let initials = getInitials(assignedToArray[i]);
-    html += '<div class="user-avatar-sm">' + initials + "</div>";
+    let userColor = getAvatarColor(assignedToArray[i]);
+    html += `<div class="user-avatar-sm" style="background-color: ${userColor};">${initials}</div>`;
   }
   return html;
 }
