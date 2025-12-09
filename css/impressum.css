@@ -32,10 +32,10 @@ body {
     padding: 124px 23px 66px 23px;
 }
 
-.sidenav {
+/* .sidenav1 {
     flex-direction: column;
     gap: 10px;
-}
+} */
 
 .sidebar-footer,
 a {
