@@ -63,6 +63,10 @@ hr.solid {
 }
 
 /* Header */
+.logo-img {
+	width: 46px;
+	height: 56px;
+}
 header {
 	position: relative;
 	z-index: 2;
@@ -191,7 +195,10 @@ main {
 		padding: 0 16px;
 		height: 80px;
 	}
-
+	.logo-img {
+		width: 32px;
+		height: 39px;
+	}
 	.inner-header p {
 		display: none;
 	}
@@ -218,6 +225,11 @@ main {
 		height: 32px;
 		font-size: 15px;
 	}
+
+  .user-dropdown-menu{
+    top: 60px;
+margin-right: 156px;
+  }
 	.main-wrapper-ds {
 		margin: 0;
 	}
