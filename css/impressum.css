@@ -2,6 +2,14 @@ body {
 	overflow-y: scroll;
 	font-family: "Open Sans", sans-serif;
 	font-size: 16px;
+    /* overflow-y: auto; */
+}
+
+
+.header-fix {
+	display: flex;
+	position: fixed;
+	width: 100%;
 }
 
 .main-wrapper-ds {
@@ -117,4 +125,13 @@ ul {
 
 .more {
 	margin-left: 62px;
+}
+
+/* mobile */
+@media (max-width: 1025px) {
+	.main-wrapper-ds {
+		padding: 20px;
+		/* margin-left: 0; */
+        margin: 0px;
+	}
 }
