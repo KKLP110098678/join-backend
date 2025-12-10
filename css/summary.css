@@ -37,7 +37,6 @@
 
 .bottom-row .summary-square-zoom-wrapper {
     flex: 1;
-    display: flex;
 }
 
 .summary-square:hover {
