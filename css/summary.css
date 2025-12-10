@@ -37,6 +37,7 @@
 
 .bottom-row .summary-square-zoom-wrapper {
     flex: 1;
+    display: flex;
 }
 
 .summary-square:hover {
@@ -348,12 +349,12 @@
     }
 
     .main-content {
-        padding: 16px;
         align-items: flex-start;
+        min-width: 100%;
     }
 
     .summary-main-content {
-        width: 100%;
+        width: 90%;
         height: auto;
         padding: 0 16px;
     }
@@ -366,7 +367,7 @@
 
     .summary-square-box {
         margin-top: 16px;
-        gap: 16px;
+        gap: 24px;
     }
 
     .top-row {
@@ -377,7 +378,7 @@
     .square-urgency {
         width: 100%;
         height: auto;
-        min-height: 100px;
+        min-height: 150px;
         padding: 16px 20px;
     }
 
@@ -394,7 +395,7 @@
 
     .summary-square:not(.square-urgency) {
         width: 100%;
-        height: 120px;
+        height: 106px;
     }
 
     .urgent-tasks {
