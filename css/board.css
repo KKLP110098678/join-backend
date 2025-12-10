@@ -85,26 +85,6 @@
     color: #2A3647;
 }
 
-/* User avatar color variations */
-.user-avatar-sm:nth-child(1) {
-    background-color: #FF7A00;
-}
-
-.user-avatar-sm:nth-child(2) {
-    background-color: #0038FF;
-}
-
-.user-avatar-sm:nth-child(3) {
-    background-color: #02CF2F;
-}
-
-.user-avatar-sm:nth-child(4) {
-    background-color: #EE00D6;
-}
-
-.user-avatar-sm:nth-child(5) {
-    background-color: #9327FF;
-}
 
 /* Drag and Drop Styles */
 .kanban-column {
