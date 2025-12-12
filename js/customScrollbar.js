@@ -23,32 +23,39 @@ function updateThumbPosition() {
 	thumb.style.top = thumbTop + "px";
 }
 
-// 3. Setup mouse events for dragging
-function setupMouseEvents() {
-	thumb.onmousedown = (e) => {
-		isDragging = true;
-		startY = e.clientY;
-		startScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-	};
-
-	document.onmousemove = (e) => {
-		if (!isDragging) return;
-
-		const deltaY = e.clientY - startY;
-		const scrollHeight = document.documentElement.scrollHeight;
-		const clientHeight = document.documentElement.clientHeight;
-		const maxThumbTop = window.innerHeight - 48;
-
-		const scrollAmount = (deltaY / maxThumbTop) * (scrollHeight - clientHeight);
-		window.scrollTo(0, startScrollTop + scrollAmount);
-	};
-
-	document.onmouseup = () => {
-		isDragging = false;
-	};
+// 3. Handle mouse down on thumb
+function handleMouseDown(e) {
+	isDragging = true;
+	startY = e.clientY;
+	startScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 }
 
-// 4. Attach scroll and resize events
+// 4. Handle mouse move during drag
+function handleMouseMove(e) {
+	if (!isDragging) return;
+
+	const deltaY = e.clientY - startY;
+	const scrollHeight = document.documentElement.scrollHeight;
+	const clientHeight = document.documentElement.clientHeight;
+	const maxThumbTop = window.innerHeight - 48;
+
+	const scrollAmount = (deltaY / maxThumbTop) * (scrollHeight - clientHeight);
+	window.scrollTo(0, startScrollTop + scrollAmount);
+}
+
+// 5. Handle mouse up to stop dragging
+function handleMouseUp() {
+	isDragging = false;
+}
+
+// 6. Setup mouse events for dragging
+function setupMouseEvents() {
+	thumb.onmousedown = handleMouseDown;
+	document.onmousemove = handleMouseMove;
+	document.onmouseup = handleMouseUp;
+}
+
+// 7. Attach scroll and resize events
 function attachScrollbarEvents() {
 	window.onscroll = updateThumbPosition;
 	window.onresize = updateThumbPosition;
@@ -57,7 +64,7 @@ function attachScrollbarEvents() {
 	updateThumbPosition();
 }
 
-// 5. Main initialization function
+// 8. Main initialization function
 function initCustomScrollbar() {
 	if (window.innerWidth > 500) return;
 	if (!getScrollbarElements()) return;
