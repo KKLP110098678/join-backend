@@ -169,10 +169,6 @@ function generateTaskCardHTML(task) {
 }
 
 function generateAssignedUsersHTML(assignedToArray) {
-  if (!assignedToArray || !Array.isArray(assignedToArray)) {
-    return "";
-  }
-  
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     let initials = getInitials(assignedToArray[i]);
