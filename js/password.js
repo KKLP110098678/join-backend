@@ -12,7 +12,7 @@ function toggleVisibilityIcon() {
   } else {
     icon.src = passwordVisible
       ? "../assets/icon/sign/visibility.svg"
-      : "../assets/icon/sign/visibility_off.svg";
+      : "../assets/icon/sign/visibility-off.svg";
   }
 }
 
@@ -35,7 +35,7 @@ function updateConfirmIconByState() {
   } else {
     icon.src = confirmVisible
       ? "../assets/icon/sign/visibility.svg"
-      : "../assets/icon/sign/visibility_off.svg";
+      : "../assets/icon/sign/visibility-off.svg";
   }
 }
 
