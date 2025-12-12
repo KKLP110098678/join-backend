@@ -13,6 +13,7 @@ async function addNewUser(newUser) {
   }
 }
 
+
 async function isUserNameTaken(userName) {
   try {
     const usersRef = firebase.database().ref("users");
@@ -34,6 +35,7 @@ async function isUserNameTaken(userName) {
     return false;
   }
 }
+
 
 async function isUserEmailTaken(inputEmail) {
   try {
