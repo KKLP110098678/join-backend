@@ -289,16 +289,21 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
 
 
 function editContact(index) {
+const avatarColor = getAvatarColor(contacts[index].name);
   const contact = contacts[index];
   const form = document.getElementById("edit-contact-form");
   form.onsubmit = (event) => updateContact(event, index);
-  form.innerHTML = getEditContactFormTemplate(contact);
+  const initials = getInitials(contact.name);
+  form.innerHTML = getEditContactFormTemplate(contact, avatarColor, initials);
   toggleOverlay("#edit-contact-menu");
 }
 
 
-function getEditContactFormTemplate(contact) {
+function getEditContactFormTemplate(contact, avatarColor, initials) {
   return `
+        <div class="contact-form-avatar user-avatar-lg details-avatar" style="background-color: ${avatarColor};">
+            <div class="avatar-content">${initials}</div>
+        </div>
         <div class="input-icon-container">
             <input type="text" id="edit-contact-name" value="${
               contact.name
