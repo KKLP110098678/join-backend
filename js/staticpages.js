@@ -16,7 +16,7 @@ function renderLoginSidbar() {
       <nav class="sidenav d-flex">
         <a class="btn-menu" href="./login.html"
           ><img
-            src="/assets/icon/sign/Login.svg"
+            src="/assets/icon/sign/login.svg"
             alt="Add Task Icon"
           />Log In</a
         >
