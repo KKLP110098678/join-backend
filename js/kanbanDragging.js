@@ -7,6 +7,7 @@ function handleDragStart(event, element) {
     event.dataTransfer.setData('text/html', element.outerHTML);
 }
 
+
 function handleDragEnd(element) {
     element.classList.remove('dragging');
     draggedElement = null;
@@ -22,15 +23,18 @@ function handleDragEnd(element) {
     doneColumn.classList.remove('drag-over', 'drag-active');
 }
 
+
 function handleDragOver(event) {
     event.preventDefault();
     event.dataTransfer.dropEffect = 'move';
     return false;
 }
 
+
 function handleDragEnter(element) {
     element.classList.add('drag-over');
 }
+
 
 function handleDragLeave(event, element) {
     if (!element.contains(event.relatedTarget)) {
@@ -38,22 +42,20 @@ function handleDragLeave(event, element) {
     }
 }
 
+
 async function handleDrop(event, element) {
     event.stopPropagation();
-
-    if (draggedElement !== element && draggedElement) {
-        const afterElement = getDragAfterElement(element, event.clientY);
-        if (afterElement == null) {
-            element.appendChild(draggedElement);
-        } else {
-            element.insertBefore(draggedElement, afterElement);
-        }
-        await updateTaskStatusInDrag(draggedElement, element.id);
+    const afterElement = getDragAfterElement(element, event.clientY);
+    if (afterElement == null) {
+        element.appendChild(draggedElement);
+    } else {
+        element.insertBefore(draggedElement, afterElement);
     }
-
+    await updateTaskStatusInDrag(draggedElement, element.id);
     element.classList.remove('drag-over', 'drag-active');
     return false;
 }
+
 
 function getDragAfterElement(container, y) {
     let draggableElements = [];
@@ -83,6 +85,7 @@ function getDragAfterElement(container, y) {
     return closestElement;
 }
 
+
 async function updateTaskStatusInDrag(taskElement, columnId) {
     const taskId = taskElement.getAttribute('data-task-id');
     const statusMapping = {
@@ -94,7 +97,7 @@ async function updateTaskStatusInDrag(taskElement, columnId) {
     
     const newStatus = statusMapping[columnId];
     
-    if (newStatus && typeof window.updateTaskStatus === 'function') {
+    if (newStatus) {
         // Verwende die globale updateTaskStatus Funktion aus task-management.js
         await window.updateTaskStatus(taskId, newStatus);
     }

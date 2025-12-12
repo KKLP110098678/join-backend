@@ -35,6 +35,7 @@ function getTimeOfDayGreeting() {
     }
 }
 
+
 /**
  * Updates the greeting text on the summary page
  * Displays time-based greeting with username for logged-in users
@@ -66,6 +67,7 @@ function updateGreeting() {
     }
 }
 
+
 /**
  * Loads all tasks from Firebase or SessionStorage
  * Returns an array of task objects
@@ -95,6 +97,7 @@ async function loadAllTasks() {
         }
     }
 }
+
 
 /**
  * Calculates task statistics from tasks array
@@ -144,6 +147,7 @@ function calculateTaskStatistics(tasks) {
     return statistics;
 }
 
+
 /**
  * Updates urgent deadline if new date is earlier
  *
@@ -166,6 +170,7 @@ function updateUrgentDeadlineIfEarlier(statistics, newDate) {
     }
 }
 
+
 /**
  * Updates task count displays on the summary page
  * Fetches task statistics and updates the DOM elements
@@ -187,6 +192,7 @@ async function updateTaskCounts() {
     updateUrgentDeadline(stats.urgentDeadline);
 }
 
+
 /**
  * Updates urgent tasks count
  *
@@ -200,6 +206,7 @@ function updateUrgentCount(count) {
         element.textContent = count;
     }
 }
+
 
 /**
  * Updates total board tasks count
@@ -215,6 +222,7 @@ function updateBoardCount(count) {
     }
 }
 
+
 /**
  * Updates todo tasks count
  *
@@ -228,6 +236,7 @@ function updateTodoCount(count) {
         element.textContent = count;
     }
 }
+
 
 /**
  * Updates in progress tasks count
@@ -243,6 +252,7 @@ function updateProgressCount(count) {
     }
 }
 
+
 /**
  * Updates awaiting feedback tasks count
  *
@@ -257,6 +267,7 @@ function updateFeedbackCount(count) {
     }
 }
 
+
 /**
  * Updates done tasks count
  *
@@ -270,6 +281,7 @@ function updateDoneCount(count) {
         element.textContent = count;
     }
 }
+
 
 /**
  * Formats date to readable string format
@@ -286,6 +298,7 @@ function formatDeadlineDate(dateString) {
     return date.toLocaleDateString('en-US', options);
 }
 
+
 /**
  * Updates urgent deadline display
  *
@@ -300,6 +313,7 @@ function updateUrgentDeadline(deadline) {
         element.textContent = formattedDate || 'No deadline';
     }
 }
+
 
 /**
  * Initializes the summary page

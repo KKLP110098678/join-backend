@@ -27,6 +27,7 @@ function editTask(taskId) {
   setPriorityForEdit(task.priority);
 }
 
+
 /**
  * Sets the priority radio button in edit mode
  * @param {string} priority - Priority value (urgent, medium, low)
@@ -42,6 +43,7 @@ function setPriorityForEdit(priority) {
   const radioButton = document.getElementById(radioId);
     radioButton.checked = true;
 }
+
 
 /**
  * Generates the HTML template for editing a task
@@ -101,7 +103,7 @@ function getEditTaskTemplate(task) {
                   id="edit-urgent-priority"
                   type="radio"
                   name="priority"
-                  value="Urgent"
+                  value="high"
                 />
                 <label for="edit-urgent-priority" class="urgent-priority">
                   Urgent
@@ -273,6 +275,7 @@ function getEditTaskTemplate(task) {
         `;
 }
 
+
 /**
  * Submits the edited task
  * @param {Event} event - Form submit event
@@ -288,7 +291,6 @@ async function submitEditTask(event, taskId) {
   
   // Get selected priority
   const priorityRadios = document.getElementsByName("priority");
-  let priority = "medium";
   for (let i = 0; i < priorityRadios.length; i++) {
     if (priorityRadios[i].checked) {
       priority = mapPriorityValue(priorityRadios[i].value);

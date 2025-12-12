@@ -16,9 +16,11 @@ function populateAssignedToDropdown(mode) {
   addContactsToDropdown(dropdownList, mode);
 }
 
+
 function clearDropdownList(dropdownList) {
   dropdownList.innerHTML = "";
 }
+
 
 function addContactsToDropdown(dropdownList, mode) {
   for (let i = 0; i < contacts.length; i++) {
@@ -28,6 +30,7 @@ function addContactsToDropdown(dropdownList, mode) {
     dropdownList.innerHTML += itemHTML;
   }
 }
+
 
 function createDropdownItemHTML(contact, index, isSelected, mode) {
   let initials = getInitials(contact.name);
@@ -60,6 +63,7 @@ function toggleAssignedDropdown(mode, dropdownElement) {
   }
 }
 
+
 function getAssignedDropdownList(mode) {
   if (mode == "task-edit") {
     return document.getElementById("edit-assigned-to-list");
@@ -78,10 +82,8 @@ function toggleUserSelection(userName, event, mode) {
   // Get checkbox directly from event target
   let checkbox = event.target;
   
-  if (checkbox && checkbox.type === 'checkbox') {
-    updateSelectedUsersArray(userName, checkbox.checked);
-    updateDropdownPlaceholder(mode);
-  }
+  updateSelectedUsersArray(userName, checkbox.checked);
+  updateDropdownPlaceholder(mode);
 }
 
 /**
@@ -101,9 +103,7 @@ function updateSelectedUsersArray(userName, isChecked) {
  */
 function updateDropdownPlaceholder(mode) {
   let containerId = (mode === "task-edit") ? "edit-assignees-container" : "assignees-container";
-  let container = document.getElementById(containerId);  
-  
-  if (!container) return;
+  let container = document.getElementById(containerId);
   
   container.innerHTML = "";
   
@@ -210,6 +210,7 @@ function setTargetColumn(status) {
   targetColumnStatus = status || "todo";
 }
 
+
 function clearForm() {
   let form = document.getElementById("task-form");
   form.reset();
@@ -219,6 +220,7 @@ function clearForm() {
   clearSelectedUsers();
   clearCategory();
 }
+
 
 function clearFormErrors() {
   let titleError = document.getElementById("title-error-message");
@@ -232,11 +234,13 @@ function clearFormErrors() {
   dateGroup.classList.remove("error");
 }
 
+
 function clearSelectedUsers() {
   selectedUsers = [];
   // Checkboxes will be updated when dropdown is re-populated
   updateDropdownPlaceholder();
 }
+
 
 function clearCategory() {
   let categoryInput = document.getElementById("category-input");
@@ -246,11 +250,13 @@ function clearCategory() {
   categoryHidden.value = "";
 }
 
+
 function validateForm() {
   let isValid = validateTitleField();
   isValid = validateDateField() && isValid;
   return isValid;
 }
+
 
 function validateTitleField() {
   let title = document.getElementById("task-title");
@@ -268,6 +274,7 @@ function validateTitleField() {
   }
 }
 
+
 function validateDateField() {
   let date = document.getElementById("task-date");
   let dateGroup = document.getElementById("date-form-group");
@@ -284,6 +291,7 @@ function validateDateField() {
   }
 }
 
+
 async function saveTask(event) {
   event.preventDefault();
 
@@ -293,6 +301,7 @@ async function saveTask(event) {
     handleTaskSaveSuccess();
   }
 }
+
 
 function createTaskFromForm() {
   let taskId = generateTaskId();
@@ -317,10 +326,12 @@ function createTaskFromForm() {
   };
 }
 
+
 function getDescriptionValue() {
   let descriptionField = document.getElementById("description");
   return descriptionField.value.trim();
 }
+
 
 function getSelectedPriority() {
   let priorityRadios = document.getElementsByName("priority");
@@ -329,16 +340,16 @@ function getSelectedPriority() {
       return mapPriorityValue(priorityRadios[i].value);
     }
   }
-  return "medium";
 }
+
 
 function mapPriorityValue(value) {
   let lowerValue = value.toLowerCase();
   if (lowerValue === "high") return "urgent";
   if (lowerValue === "medium") return "medium";
   if (lowerValue === "low") return "low";
-  return "medium";
 }
+
 
 function getSelectedCategory() {
   let categoryHidden = document.getElementById("category-hidden");
@@ -346,6 +357,7 @@ function getSelectedCategory() {
     ? categoryHidden.value
     : "User Story";
 }
+
 
 function getAssignedUserInitials() {
   let assignedTo = [];
@@ -355,6 +367,7 @@ function getAssignedUserInitials() {
   }
   return assignedTo;
 }
+
 
 function handleTaskSaveSuccess() {
   let isOnAddTaskPage = window.location.pathname.includes("add-task.html");
@@ -370,18 +383,17 @@ function handleTaskSaveSuccess() {
     setTimeout(function () {
       clearForm();
       targetColumnStatus = "todo";
-
-      if (typeof closeAllMenus === "function") {
-        closeAllMenus();
-      }
+      closeAllMenus();
     }, 1500);
   }
 }
+
 
 function showSuccessOverlay() {
   let overlay = document.getElementById("success-overlay");
   overlay.classList.remove("d-none");
 }
+
 
 function handleTitleBlur() {
   let titleInput = document.getElementById("task-title");
@@ -396,6 +408,7 @@ function handleTitleBlur() {
     titleError.classList.add("d-none");
   }
 }
+
 
 function handleDateBlur() {
   let dateInput = document.getElementById("task-date");

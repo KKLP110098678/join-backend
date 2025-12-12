@@ -8,6 +8,7 @@ function initStaticPages() {
   }
 }
 
+
 function renderLoginSidbar() {
   let = emptySidebar = document.getElementById("sidebar-nav");
   emptySidebar.innerHTML = "";
@@ -15,13 +16,14 @@ function renderLoginSidbar() {
       <nav class="sidenav d-flex">
         <a class="btn-menu" href="./login.html"
           ><img
-            src="/assets/icon/sign/Login.svg"
+            src="/assets/icon/sign/login.svg"
             alt="Add Task Icon"
           />Log In</a
         >
       </nav>
   `;
 }
+
 
 function renderEmptyHeader() {
   let userHeadere = document.getElementById("menu-user");

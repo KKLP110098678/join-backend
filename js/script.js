@@ -15,6 +15,7 @@ function checkSession() {
   return true;
 }
 
+
 /**
  * Initializes session-protected pages
  * Checks session and prevents page load if not authenticated
@@ -30,6 +31,7 @@ function initProtectedPage() {
   }
 }
 
+
 /**
  * Logs out the user
  * Clears session storage and redirects to login page
@@ -39,6 +41,7 @@ function logout() {
   window.location.href = '/html/login.html';
   sessionStorage.setItem('skipAnimation', 'true');
 }
+
 
 /**
  * Toggles the user dropdown menu
@@ -51,6 +54,7 @@ function toggleUserDropdown(event) {
     dropdown.classList.toggle('d-none');
   }
 }
+
 
 /**
  * Closes the user dropdown menu when clicking outside
@@ -122,6 +126,7 @@ function Loadingscreen() {
   }
     loader.innerHTML = getLoadingscreen();
 }
+
 
 function getLoadingscreen() {
   return `

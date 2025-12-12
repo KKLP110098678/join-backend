@@ -6,8 +6,8 @@
     <title>Join</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/task.css" />
-    <link rel="stylesheet" href="/css/AddTaskMainContent.css" />
-    <link rel="stylesheet" href="/css/sidebarContent.css" />
+    <link rel="stylesheet" href="/css/add-task-main-content.css" />
+    <link rel="stylesheet" href="/css/sidebar-content.css" />
     <link rel="stylesheet" href="/css/buttons.css" />
     <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="/css/register.css" />
@@ -49,25 +49,25 @@
       <nav class="sidenav d-flex">
         <a class="btn-menu d-flex" href="./summary.html"
           ><img
-            src="/assets/icon/menuIcons/Summary.svg"
+            src="/assets/icon/menuIcons/summary.svg"
             alt="Summary Icon"
           />Summary</a
         >
         <a class="btn-menu" href="./add-task.html"
           ><img
-            src="/assets/icon/menuIcons/AddTask.svg"
+            src="/assets/icon/menuIcons/add-task.svg"
             alt="Add Task Icon"
           />Add Task</a
         >
         <a class="btn-menu" href="./board.html"
           ><img
-            src="/assets/icon/menuIcons/Board.svg"
+            src="/assets/icon/menuIcons/board.svg"
             alt="Board Icon"
           />Board</a
         >
         <a class="btn-menu" href="./contacts.html"
           ><img
-            src="/assets/icon/menuIcons/Contacts.svg"
+            src="/assets/icon/menuIcons/contacts.svg"
             alt="Contacts Icon"
           />Contacts</a
         >
@@ -232,12 +232,8 @@
                   <div class="dropdown-list d-none" id="assigned-to-list">
                     <!-- Will be populated dynamically -->
                   </div>
-                  <input
-                    type="hidden"
-                    name="assignedTo"
-                    id="assigned-to-input"
-                  />
                 </div>
+                <div class="assignees" id="assignees-container"></div>
               </div>
 
               <div class="form-group" id="category-form-group">
@@ -363,10 +359,10 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="/js/script.js"></script>
     <script src="/js/contact.js"></script>
-    <script src="/js/task-management.js"></script>
+    <script src="/js/taskManagement.js"></script>
     <script src="/js/subtask.js"></script>
     <script src="/scrDB/taskDB.js"></script>
     <script src="/scrDB/dbConfig.js"></script>
-    <script src="/js/add-task.js"></script>
+    <script src="/js/addTask.js"></script>
   </body>
 </html>

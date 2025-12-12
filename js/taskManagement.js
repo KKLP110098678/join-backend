@@ -13,13 +13,11 @@ async function initializeTasks() {
     return storedTasks || getDefaultTasks();
   } else {
     // Logged-in user: Load from Firebase
-    if (typeof loadTasksFromFirebase === "function") {
       const firebaseTasks = await loadTasksFromFirebase();
       return firebaseTasks.length > 0 ? firebaseTasks : getDefaultTasks();
-    }
-    return getDefaultTasks();
   }
 }
+
 
 /**
  * Returns default tasks for initial setup
@@ -155,10 +153,6 @@ const categoryToId = {
 };
 
 function generateTaskCardHTML(task) {
-  if (!task) {
-    return "";
-  }
-  
   let assignedUsersHTML = generateAssignedUsersHTML(task.assignedTo || []);
   let categoryId = categoryToId[task.category] || "user-story";
   let priorityIcon = priorityIcons[task.priority] || priorityIcons["medium"];
@@ -175,11 +169,8 @@ function generateTaskCardHTML(task) {
   );
 }
 
+
 function generateAssignedUsersHTML(assignedToArray) {
-  if (!assignedToArray || !Array.isArray(assignedToArray)) {
-    return "";
-  }
-  
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     let initials = getInitials(assignedToArray[i]);
@@ -188,6 +179,7 @@ function generateAssignedUsersHTML(assignedToArray) {
   }
   return html;
 }
+
 
 function getTaskCardTemplate(
   task,
@@ -242,15 +234,13 @@ async function renderAllTasks() {
   if (tasks.length === 0) {
     tasks = await initializeTasks();
   }
-  
-  if (typeof populateAssignedToDropdown === "function") {
-    populateAssignedToDropdown();
-  }
+  populateAssignedToDropdown();
 
   let columns = getKanbanColumns();
   clearAllColumns(columns);
   renderTasksInColumns();
 }
+
 
 function getKanbanColumns() {
   return {
@@ -261,6 +251,7 @@ function getKanbanColumns() {
   };
 }
 
+
 function clearAllColumns(columns) {
   clearColumnTaskCards(columns.todo);
   clearColumnTaskCards(columns.inProgress);
@@ -268,20 +259,17 @@ function clearAllColumns(columns) {
   clearColumnTaskCards(columns.done);
 }
 
+
 function renderTasksInColumns() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
     let column = document.getElementById(task.status);
-    if (column) {
-      column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
-    }
+    column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
   }
 }
 
+
 function clearColumnTaskCards(column) {
-  if (!column) {
-    return;
-  }
   let children = column.children;
   for (let i = children.length - 1; i >= 0; i--) {
     let child = children[i];
@@ -290,6 +278,7 @@ function clearColumnTaskCards(column) {
     }
   }
 }
+
 
 function findTaskById(taskId) {
   for (let i = 0; i < tasks.length; i++) {
@@ -375,12 +364,14 @@ async function deleteTask(taskId) {
   }
 }
 
+
 function showTaskDetails(taskId) {
   const task = findTaskById(taskId);
   const detailsOverlay = document.getElementById("details-overlay");
   detailsOverlay.innerHTML = getTaskDetailsTemplate(task);
   toggleOverlay("#details-overlay");
 }
+
 
 function getTaskDetailsTemplate(task) {
   if (!task) {
@@ -406,16 +397,13 @@ function getTaskDetailsTemplate(task) {
 
 
 function generateAssignedUsersDetailsHTML(assignedToArray) {
-  if (!assignedToArray || !Array.isArray(assignedToArray)) {
-    return "";
-  }
-  
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     html += createUserItemHTML(assignedToArray[i]);
   }
   return html;
 }
+
 
 function createUserItemHTML(initialsOrName) {
   let initials = getInitials(initialsOrName);
@@ -429,6 +417,7 @@ function createUserItemHTML(initialsOrName) {
     </div>
   `;
 }
+
 
 function createDetailsTemplate(
   task,
@@ -501,19 +490,19 @@ function getFullNameFromInitials(initialsOrName) {
   return initialsOrName;
 }
 
+
 function isInitials(str) {
   return str.length <= 3 && str === str.toUpperCase();
 }
 
+
 function findContactByInitials(initials) {
-  if (typeof contacts !== "undefined") {
     for (let i = 0; i < contacts.length; i++) {
       let contactInitials = getInitials(contacts[i].name);
       if (contactInitials === initials) {
         return contacts[i].name;
       }
     }
-  }
   return initials;
 }
 
@@ -523,6 +512,7 @@ function findContactByInitials(initials) {
 function saveTasksToSession() {
   sessionStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
 
 /**
  * Loads tasks from sessionStorage

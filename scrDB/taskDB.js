@@ -47,6 +47,7 @@ async function addNewTask(taskData) {
   }
 }
 
+
 /**
  * Loads tasks from Firebase for logged-in users
  * Tasks are loaded from boards/{userId}/tasks/
@@ -83,6 +84,7 @@ async function loadTasksFromFirebase() {
     return [];
   }
 }
+
 
 /**
  * Updates a task in Firebase (for logged-in users) or SessionStorage (for guests)

@@ -1,118 +1,215 @@
 let contacts = [
-    { name: "John Doe", email: "john.doe@example.com", phone: "123-456-7890"},
-    { name: "Jane Smith", email: "jane.smith@example.com", phone: "123-456-7890"},
-    { name: "Alice Johnson", email: "alice.johnson@example.com", phone: "123-456-7890"},
-    { name: "Brian Adams", email: "brian.adams@example.com", phone: "234-567-8901"},
-    { name: "Cathy Brown", email: "cathy.brown@example.com", phone: "345-678-9012"},
-    { name: "David Clark", email: "david.clark@example.com", phone: "456-789-0123"},
-    { name: "Evelyn Davis", email: "evelyn.davis@example.com", phone: "567-890-1234"},
-    { name: "Frank Evans", email: "frank.evans@example.com", phone: "678-901-2345"},
-    { name: "Grace Foster", email: "grace.foster@example.com", phone: "789-012-3456"},
-    { name: "Henry Green", email: "henry.green@example.com", phone: "890-123-4567"},
-    { name: "Irene Harris", email: "irene.harris@example.com", phone: "901-234-5678"},
-    { name: "Jack Ingram", email: "jack.ingram@example.com", phone: "012-345-6789"},
-    { name: "Karen Jones", email: "karen.jones@example.com", phone: "123-456-7891"},
-    { name: "Liam King", email: "liam.king@example.com", phone: "234-567-8902"},
-    { name: "Mona Lee", email: "mona.lee@example.com", phone: "345-678-9013"},
-    { name: "Nathan Moore", email: "nathan.moore@example.com", phone: "456-789-0124"},
-    { name: "Olivia Nelson", email: "olivia.nelson@example.com", phone: "567-890-1235"},
-    { name: "Paul Owens", email: "paul.owens@example.com", phone: "678-901-2346"},
-    { name: "Quincy Price", email: "quincy.price@example.com", phone: "789-012-3457"},
-    { name: "Rachel Quinn", email: "rachel.quinn@example.com", phone: "890-123-4568"},
-    { name: "Samuel Reed", email: "samuel.reed@example.com", phone: "901-234-5679"},
-    { name: "Tina Scott", email: "tina.scott@example.com", phone: "012-345-6790"}
+  { name: "John Doe", email: "john.doe@example.com", phone: "123-456-7890" },
+  {
+    name: "Jane Smith",
+    email: "jane.smith@example.com",
+    phone: "123-456-7890",
+  },
+  {
+    name: "Alice Johnson",
+    email: "alice.johnson@example.com",
+    phone: "123-456-7890",
+  },
+  {
+    name: "Brian Adams",
+    email: "brian.adams@example.com",
+    phone: "234-567-8901",
+  },
+  {
+    name: "Cathy Brown",
+    email: "cathy.brown@example.com",
+    phone: "345-678-9012",
+  },
+  {
+    name: "David Clark",
+    email: "david.clark@example.com",
+    phone: "456-789-0123",
+  },
+  {
+    name: "Evelyn Davis",
+    email: "evelyn.davis@example.com",
+    phone: "567-890-1234",
+  },
+  {
+    name: "Frank Evans",
+    email: "frank.evans@example.com",
+    phone: "678-901-2345",
+  },
+  {
+    name: "Grace Foster",
+    email: "grace.foster@example.com",
+    phone: "789-012-3456",
+  },
+  {
+    name: "Henry Green",
+    email: "henry.green@example.com",
+    phone: "890-123-4567",
+  },
+  {
+    name: "Irene Harris",
+    email: "irene.harris@example.com",
+    phone: "901-234-5678",
+  },
+  {
+    name: "Jack Ingram",
+    email: "jack.ingram@example.com",
+    phone: "012-345-6789",
+  },
+  {
+    name: "Karen Jones",
+    email: "karen.jones@example.com",
+    phone: "123-456-7891",
+  },
+  { name: "Liam King", email: "liam.king@example.com", phone: "234-567-8902" },
+  { name: "Mona Lee", email: "mona.lee@example.com", phone: "345-678-9013" },
+  {
+    name: "Nathan Moore",
+    email: "nathan.moore@example.com",
+    phone: "456-789-0124",
+  },
+  {
+    name: "Olivia Nelson",
+    email: "olivia.nelson@example.com",
+    phone: "567-890-1235",
+  },
+  {
+    name: "Paul Owens",
+    email: "paul.owens@example.com",
+    phone: "678-901-2346",
+  },
+  {
+    name: "Quincy Price",
+    email: "quincy.price@example.com",
+    phone: "789-012-3457",
+  },
+  {
+    name: "Rachel Quinn",
+    email: "rachel.quinn@example.com",
+    phone: "890-123-4568",
+  },
+  {
+    name: "Samuel Reed",
+    email: "samuel.reed@example.com",
+    phone: "901-234-5679",
+  },
+  {
+    name: "Tina Scott",
+    email: "tina.scott@example.com",
+    phone: "012-345-6790",
+  },
 ];
 
 let activeContactIndex = null;
 
-const avatarColors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#462F8A', '#FF4646', '#00BEE8'];
+const avatarColors = [
+  "#FF7A00",
+  "#9327FF",
+  "#6E52FF",
+  "#FC71FF",
+  "#FFBB2B",
+  "#1FD7C1",
+  "#462F8A",
+  "#FF4646",
+  "#00BEE8",
+];
 
 function getAvatarColor(name) {
-    const firstLetter = name.charAt(0).toUpperCase();
-    const charCode = firstLetter.charCodeAt(0);
-    const colorIndex = (charCode - 65) % avatarColors.length;
-    return avatarColors[colorIndex];
+  const firstLetter = name.charAt(0).toUpperCase();
+  const charCode = firstLetter.charCodeAt(0);
+  const colorIndex = (charCode - 65) % avatarColors.length;
+  return avatarColors[colorIndex];
 }
 
+
 function getInitials(name) {
-    const nameParts = name.trim().split(' ');
-    if (nameParts.length >= 2) {
-        return nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase();
-    } else {
-        return nameParts[0].length >= 2 ?
-               nameParts[0].charAt(0).toUpperCase() + nameParts[0].charAt(1).toUpperCase() :
-               nameParts[0].charAt(0).toUpperCase();
-    }
+  const nameParts = name.trim().split(" ");
+  if (nameParts.length >= 2) {
+    return (
+      nameParts[0].charAt(0).toUpperCase() +
+      nameParts[nameParts.length - 1].charAt(0).toUpperCase()
+    );
+  } else {
+    return nameParts[0].length >= 2
+      ? nameParts[0].charAt(0).toUpperCase() +
+          nameParts[0].charAt(1).toUpperCase()
+      : nameParts[0].charAt(0).toUpperCase();
+  }
 }
 
 function groupContactsByAlphabet() {
-    let sortedContacts = [];
-    for (let i = 0; i < contacts.length; i++) {
-        sortedContacts.push(contacts[i]);
-    }
+  let sortedContacts = [];
+  for (let i = 0; i < contacts.length; i++) {
+    sortedContacts.push(contacts[i]);
+  }
 
-    for (let i = 0; i < sortedContacts.length - 1; i++) {
-        for (let j = 0; j < sortedContacts.length - i - 1; j++) {
-            if (sortedContacts[j].name.localeCompare(sortedContacts[j + 1].name) > 0) {
-                let temp = sortedContacts[j];
-                sortedContacts[j] = sortedContacts[j + 1];
-                sortedContacts[j + 1] = temp;
-            }
-        }
+  for (let i = 0; i < sortedContacts.length - 1; i++) {
+    for (let j = 0; j < sortedContacts.length - i - 1; j++) {
+      if (
+        sortedContacts[j].name.localeCompare(sortedContacts[j + 1].name) > 0
+      ) {
+        let temp = sortedContacts[j];
+        sortedContacts[j] = sortedContacts[j + 1];
+        sortedContacts[j + 1] = temp;
+      }
     }
+  }
 
-    let groupedContacts = {};
-    for (let i = 0; i < sortedContacts.length; i++) {
-        let contact = sortedContacts[i];
-        let firstLetter = contact.name.charAt(0).toUpperCase();
-        if (!groupedContacts[firstLetter]) {
-            groupedContacts[firstLetter] = [];
-        }
-        let originalIndex = -1;
-        for (let j = 0; j < contacts.length; j++) {
-            if (contacts[j] === contact) {
-                originalIndex = j;
-                break;
-            }
-        }
-        groupedContacts[firstLetter].push({ contact: contact, originalIndex: originalIndex });
+  let groupedContacts = {};
+  for (let i = 0; i < sortedContacts.length; i++) {
+    let contact = sortedContacts[i];
+    let firstLetter = contact.name.charAt(0).toUpperCase();
+    if (!groupedContacts[firstLetter]) {
+      groupedContacts[firstLetter] = [];
     }
+    let originalIndex = -1;
+    for (let j = 0; j < contacts.length; j++) {
+      if (contacts[j] === contact) {
+        originalIndex = j;
+        break;
+      }
+    }
+    groupedContacts[firstLetter].push({
+      contact: contact,
+      originalIndex: originalIndex,
+    });
+  }
 
-    return groupedContacts;
+  return groupedContacts;
 }
 
+
 function renderContactList() {
-    let contactList = document.getElementById('contact-list');
-    contactList.innerHTML = '';
+  let contactList = document.getElementById("contact-list");
+  contactList.innerHTML = "";
 
-    let groupedContacts = groupContactsByAlphabet();
-    let alphabeticalKeys = Object.keys(groupedContacts);
+  let groupedContacts = groupContactsByAlphabet();
+  let alphabeticalKeys = Object.keys(groupedContacts);
 
-    for (let i = 0; i < alphabeticalKeys.length - 1; i++) {
-        for (let j = 0; j < alphabeticalKeys.length - i - 1; j++) {
-            if (alphabeticalKeys[j] > alphabeticalKeys[j + 1]) {
-                let temp = alphabeticalKeys[j];
-                alphabeticalKeys[j] = alphabeticalKeys[j + 1];
-                alphabeticalKeys[j + 1] = temp;
-            }
-        }
+  for (let i = 0; i < alphabeticalKeys.length - 1; i++) {
+    for (let j = 0; j < alphabeticalKeys.length - i - 1; j++) {
+      if (alphabeticalKeys[j] > alphabeticalKeys[j + 1]) {
+        let temp = alphabeticalKeys[j];
+        alphabeticalKeys[j] = alphabeticalKeys[j + 1];
+        alphabeticalKeys[j + 1] = temp;
+      }
     }
+  }
 
-    for (let i = 0; i < alphabeticalKeys.length; i++) {
-        let letter = alphabeticalKeys[i];
-        contactList.innerHTML += getAlphabetHeaderTemplate(letter);
-        let contactsInGroup = groupedContacts[letter];
-        for (let j = 0; j < contactsInGroup.length; j++) {
-            let contactItem = contactsInGroup[j];
-            let contact = contactItem.contact;
-            let originalIndex = contactItem.originalIndex;
-            contactList.innerHTML += getContactCardTemplate(contact, originalIndex);
-        }
+  for (let i = 0; i < alphabeticalKeys.length; i++) {
+    let letter = alphabeticalKeys[i];
+    contactList.innerHTML += getAlphabetHeaderTemplate(letter);
+    let contactsInGroup = groupedContacts[letter];
+    for (let j = 0; j < contactsInGroup.length; j++) {
+      let contactItem = contactsInGroup[j];
+      let contact = contactItem.contact;
+      let originalIndex = contactItem.originalIndex;
+      contactList.innerHTML += getContactCardTemplate(contact, originalIndex);
     }
+  }
 }
 
 function getAlphabetHeaderTemplate(letter) {
-    return `
+  return `
         <div class="alphabet-header">
             <h3>${letter}</h3>
         </div>
@@ -120,11 +217,12 @@ function getAlphabetHeaderTemplate(letter) {
     `;
 }
 
+
 function getContactCardTemplate(contact, index) {
-        const activeClass = activeContactIndex === index ? 'active' : '';
-        const avatarColor = getAvatarColor(contact.name);
-        const initials = getInitials(contact.name);
-        return `
+  const activeClass = activeContactIndex === index ? "active" : "";
+  const avatarColor = getAvatarColor(contact.name);
+  const initials = getInitials(contact.name);
+  return `
             <div class="contact-card ${activeClass}" onclick="showContactDetails(${index})">
                 <div class="contact-card-content">
                   <div class="user-avatar-sm" style="background-color: ${avatarColor};">
@@ -139,18 +237,24 @@ function getContactCardTemplate(contact, index) {
         `;
 }
 
+
 function showContactDetails(index) {
-    activeContactIndex = index;
-    renderContactList();
-    const contact = contacts[index];
-    const avatarColor = getAvatarColor(contact.name);
-    const initials = getInitials(contact.name);
-    const contactDetails = document.getElementById('contact-details-content');
-    contactDetails.innerHTML = getContactDetailsTemplate(contact, index, avatarColor, initials);
+  activeContactIndex = index;
+  renderContactList();
+  const contact = contacts[index];
+  const avatarColor = getAvatarColor(contact.name);
+  const initials = getInitials(contact.name);
+  const contactDetails = document.getElementById("contact-details-content");
+  contactDetails.innerHTML = getContactDetailsTemplate(
+    contact,
+    index,
+    avatarColor,
+    initials
+  );
 }
 
 function getContactDetailsTemplate(contact, index, avatarColor, initials) {
-    return `
+  return `
         <div class="contact-header d-flex">
             <div>
                 <div class="user-avatar-lg" style="background-color: ${avatarColor};">
@@ -181,33 +285,42 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
             <a href="tel:${contact.phone}">${contact.phone}</a>
         </div>
     `;
-
 }
+
 
 function editContact(index) {
-    const contact = contacts[index];
-    const form = document.getElementById('edit-contact-form');
-    form.onsubmit = (event) => updateContact(event, index);
-    form.innerHTML = getEditContactFormTemplate(contact);
-    toggleOverlay('#edit-contact-menu');
+  const contact = contacts[index];
+  const form = document.getElementById("edit-contact-form");
+  form.onsubmit = (event) => updateContact(event, index);
+  form.innerHTML = getEditContactFormTemplate(contact);
+  toggleOverlay("#edit-contact-menu");
 }
 
+
 function getEditContactFormTemplate(contact) {
-    return `
+  return `
         <div class="input-icon-container">
-            <input type="text" id="edit-contact-name" value="${contact.name}" required />
+            <input type="text" id="edit-contact-name" value="${
+              contact.name
+            }" required />
             <img src="/assets/icon/sign/person.svg" alt="name" class="overlay-image" />
         </div>
         <div class="input-icon-container">
-            <input type="email" id="edit-contact-email" value="${contact.email}" required />
+            <input type="email" id="edit-contact-email" value="${
+              contact.email
+            }" required />
             <img src="/assets/icon/sign/mail.svg" alt="email" class="overlay-image" />
         </div>
         <div class="input-icon-container">
-            <input type="text" id="edit-contact-phone" value="${contact.phone}" required />
+            <input type="text" id="edit-contact-phone" value="${
+              contact.phone
+            }" required />
             <img src="/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
         </div>
         <div class="form-buttons">
-            <button type="button" onclick="deleteContact(${contacts.indexOf(contact)})" class="btn-secondary-with-icon">Delete</button>
+            <button type="button" onclick="deleteContact(${contacts.indexOf(
+              contact
+            )})" class="btn-secondary-with-icon">Delete</button>
             <button type="submit" class="btn-with-icon">Save
                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.55021 9.15L14.0252 0.675C14.2252 0.475 14.4627 0.375 14.7377 0.375C15.0127 0.375 15.2502 0.475 15.4502 0.675C15.6502 0.875 15.7502 1.1125 15.7502 1.3875C15.7502 1.6625 15.6502 1.9 15.4502 2.1L6.25021 11.3C6.05021 11.5 5.81687 11.6 5.55021 11.6C5.28354 11.6 5.05021 11.5 4.85021 11.3L0.550207 7C0.350207 6.8 0.254374 6.5625 0.262707 6.2875C0.27104 6.0125 0.375207 5.775 0.575207 5.575C0.775207 5.375 1.01271 5.275 1.28771 5.275C1.56271 5.275 1.80021 5.375 2.00021 5.575L5.55021 9.15Z" fill="white"/>
@@ -217,48 +330,51 @@ function getEditContactFormTemplate(contact) {
     `;
 }
 
+
 function updateContact(event, editContactIndex) {
-    event.preventDefault();
-    const nameInput = document.getElementById('edit-contact-name');
-    const emailInput = document.getElementById('edit-contact-email');
-    const phoneInput = document.getElementById('edit-contact-phone');
+  event.preventDefault();
+  const nameInput = document.getElementById("edit-contact-name");
+  const emailInput = document.getElementById("edit-contact-email");
+  const phoneInput = document.getElementById("edit-contact-phone");
 
-    const updatedContact = {
-        name: nameInput.value,
-        email: emailInput.value,
-        phone: phoneInput.value
-    };
+  const updatedContact = {
+    name: nameInput.value,
+    email: emailInput.value,
+    phone: phoneInput.value,
+  };
 
-    contacts[editContactIndex] = updatedContact;
-    activeContactIndex = editContactIndex;
-    renderContactList();
-    showContactDetails(editContactIndex);
-    closeAllMenus();
+  contacts[editContactIndex] = updatedContact;
+  activeContactIndex = editContactIndex;
+  renderContactList();
+  showContactDetails(editContactIndex);
+  closeAllMenus();
 }
+
 
 function deleteContact(index) {
-        contacts.splice(index, 1);
-        renderContactList();
-        closeAllMenus();
-        const contactDetails = document.getElementById('contact-details-content');
-        contactDetails.innerHTML = '<p>Select a contact to view details</p>';
+  contacts.splice(index, 1);
+  renderContactList();
+  closeAllMenus();
+  const contactDetails = document.getElementById("contact-details-content");
+  contactDetails.innerHTML = "<p>Select a contact to view details</p>";
 }
 
+
 function addContact(event) {
-    event.preventDefault();
-    const nameInput = document.getElementById('add-contact-name');
-    const emailInput = document.getElementById('add-contact-email');
-    const phoneInput = document.getElementById('add-contact-phone');
+  event.preventDefault();
+  const nameInput = document.getElementById("add-contact-name");
+  const emailInput = document.getElementById("add-contact-email");
+  const phoneInput = document.getElementById("add-contact-phone");
 
-    const newContact = {
-        name: nameInput.value,
-        email: emailInput.value,
-        phone: phoneInput.value
-    };
+  const newContact = {
+    name: nameInput.value,
+    email: emailInput.value,
+    phone: phoneInput.value,
+  };
 
-    contacts.push(newContact);
-    renderContactList();
-    const newContactIndex = contacts.length - 1;
-    showContactDetails(newContactIndex);
-    closeAllMenus();
+  contacts.push(newContact);
+  renderContactList();
+  const newContactIndex = contacts.length - 1;
+  showContactDetails(newContactIndex);
+  closeAllMenus();
 }

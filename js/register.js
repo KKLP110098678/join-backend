@@ -29,6 +29,7 @@ async function handleRegisterUser(event) {
   }
 }
 
+
 async function isUserExistByName(inputName) {
   if (!inputName || !inputName.trim()) {
     handleErrorSet(
@@ -60,6 +61,7 @@ async function isUserExistByName(inputName) {
     return true;
   }
 }
+
 
 async function isUserExistByEmail(inputEmail) {
   if (!inputEmail || !inputEmail.trim()) {
@@ -104,6 +106,7 @@ async function isUserExistByEmail(inputEmail) {
   }
 }
 
+
 function validateEmailFormat(inputEmail) {
   // RFC 5322 compliant email regex that handles most valid email formats
   const emailRegex =
@@ -119,6 +122,7 @@ function validateEmailFormat(inputEmail) {
   }
   return true;
 }
+
 
 function toggleCheckBox(event) {
   let checkbox = document.getElementById("privacy-checkbox");
@@ -136,6 +140,7 @@ function toggleCheckBox(event) {
   }, 0);
 }
 
+
 function handleErrorSet(
   fieldId,
   errorId,
@@ -149,6 +154,7 @@ function handleErrorSet(
   }
   toggleErrorMessage(errorId, status, errorMessage);
 }
+
 
 function toggleErrorMessage(elementId, isValid, message = "") {
   const el = document.getElementById(elementId);
@@ -168,6 +174,7 @@ function toggleErrorMessage(elementId, isValid, message = "") {
   }
 }
 
+
 function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
   const overlay = document.getElementById("success-overlay");
   if (!overlay) {
@@ -182,6 +189,7 @@ function showSuccessAndRedirect(redirectPath = CONFIG.routes.login) {
   }, 2000);
 }
 
+
 function removeBorderColor(inputField) {
   const fieldInput = document.getElementById(inputField);
   if (!fieldInput) {
@@ -190,6 +198,7 @@ function removeBorderColor(inputField) {
   }
   fieldInput.classList.remove("valid-input", "invalid-input");
 }
+
 
 function setBorderColor(inputField, status) {
   const fieldInput = document.getElementById(inputField);
