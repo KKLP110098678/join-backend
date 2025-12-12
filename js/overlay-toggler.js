@@ -10,6 +10,7 @@ function toggleOverlay(menuId) {
     }
 }
 
+
 function closeAllMenus() {
     let addTaskMenu = document.getElementById('add-task-menu');
     let editContactMenu = document.getElementById('edit-contact-menu');

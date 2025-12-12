@@ -16,9 +16,11 @@ function populateAssignedToDropdown(mode) {
   addContactsToDropdown(dropdownList, mode);
 }
 
+
 function clearDropdownList(dropdownList) {
   dropdownList.innerHTML = "";
 }
+
 
 function addContactsToDropdown(dropdownList, mode) {
   for (let i = 0; i < contacts.length; i++) {
@@ -28,6 +30,7 @@ function addContactsToDropdown(dropdownList, mode) {
     dropdownList.innerHTML += itemHTML;
   }
 }
+
 
 function createDropdownItemHTML(contact, index, isSelected, mode) {
   let initials = getInitials(contact.name);
@@ -59,6 +62,7 @@ function toggleAssignedDropdown(mode, dropdownElement) {
     dropdownElement.classList.toggle("open");
   }
 }
+
 
 function getAssignedDropdownList(mode) {
   if (mode == "task-edit") {
@@ -206,6 +210,7 @@ function setTargetColumn(status) {
   targetColumnStatus = status || "todo";
 }
 
+
 function clearForm() {
   let form = document.getElementById("task-form");
   form.reset();
@@ -215,6 +220,7 @@ function clearForm() {
   clearSelectedUsers();
   clearCategory();
 }
+
 
 function clearFormErrors() {
   let titleError = document.getElementById("title-error-message");
@@ -228,11 +234,13 @@ function clearFormErrors() {
   dateGroup.classList.remove("error");
 }
 
+
 function clearSelectedUsers() {
   selectedUsers = [];
   // Checkboxes will be updated when dropdown is re-populated
   updateDropdownPlaceholder();
 }
+
 
 function clearCategory() {
   let categoryInput = document.getElementById("category-input");
@@ -242,11 +250,13 @@ function clearCategory() {
   categoryHidden.value = "";
 }
 
+
 function validateForm() {
   let isValid = validateTitleField();
   isValid = validateDateField() && isValid;
   return isValid;
 }
+
 
 function validateTitleField() {
   let title = document.getElementById("task-title");
@@ -264,6 +274,7 @@ function validateTitleField() {
   }
 }
 
+
 function validateDateField() {
   let date = document.getElementById("task-date");
   let dateGroup = document.getElementById("date-form-group");
@@ -280,6 +291,7 @@ function validateDateField() {
   }
 }
 
+
 async function saveTask(event) {
   event.preventDefault();
 
@@ -289,6 +301,7 @@ async function saveTask(event) {
     handleTaskSaveSuccess();
   }
 }
+
 
 function createTaskFromForm() {
   let taskId = generateTaskId();
@@ -313,10 +326,12 @@ function createTaskFromForm() {
   };
 }
 
+
 function getDescriptionValue() {
   let descriptionField = document.getElementById("description");
   return descriptionField.value.trim();
 }
+
 
 function getSelectedPriority() {
   let priorityRadios = document.getElementsByName("priority");
@@ -328,6 +343,7 @@ function getSelectedPriority() {
   return "medium";
 }
 
+
 function mapPriorityValue(value) {
   let lowerValue = value.toLowerCase();
   if (lowerValue === "high") return "urgent";
@@ -336,12 +352,14 @@ function mapPriorityValue(value) {
   return "medium";
 }
 
+
 function getSelectedCategory() {
   let categoryHidden = document.getElementById("category-hidden");
   return categoryHidden && categoryHidden.value
     ? categoryHidden.value
     : "User Story";
 }
+
 
 function getAssignedUserInitials() {
   let assignedTo = [];
@@ -351,6 +369,7 @@ function getAssignedUserInitials() {
   }
   return assignedTo;
 }
+
 
 function handleTaskSaveSuccess() {
   let isOnAddTaskPage = window.location.pathname.includes("add-task.html");
@@ -371,10 +390,12 @@ function handleTaskSaveSuccess() {
   }
 }
 
+
 function showSuccessOverlay() {
   let overlay = document.getElementById("success-overlay");
   overlay.classList.remove("d-none");
 }
+
 
 function handleTitleBlur() {
   let titleInput = document.getElementById("task-title");
@@ -389,6 +410,7 @@ function handleTitleBlur() {
     titleError.classList.add("d-none");
   }
 }
+
 
 function handleDateBlur() {
   let dateInput = document.getElementById("task-date");

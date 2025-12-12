@@ -18,6 +18,7 @@ async function initializeTasks() {
   }
 }
 
+
 /**
  * Returns default tasks for initial setup
  * @returns {Array} Array of default tasks
@@ -168,6 +169,7 @@ function generateTaskCardHTML(task) {
   );
 }
 
+
 function generateAssignedUsersHTML(assignedToArray) {
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
@@ -177,6 +179,7 @@ function generateAssignedUsersHTML(assignedToArray) {
   }
   return html;
 }
+
 
 function getTaskCardTemplate(
   task,
@@ -238,6 +241,7 @@ async function renderAllTasks() {
   renderTasksInColumns();
 }
 
+
 function getKanbanColumns() {
   return {
     todo: document.getElementById("todo"),
@@ -247,12 +251,14 @@ function getKanbanColumns() {
   };
 }
 
+
 function clearAllColumns(columns) {
   clearColumnTaskCards(columns.todo);
   clearColumnTaskCards(columns.inProgress);
   clearColumnTaskCards(columns.awaitFeedback);
   clearColumnTaskCards(columns.done);
 }
+
 
 function renderTasksInColumns() {
   for (let i = 0; i < tasks.length; i++) {
@@ -261,6 +267,7 @@ function renderTasksInColumns() {
     column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
   }
 }
+
 
 function clearColumnTaskCards(column) {
   let children = column.children;
@@ -271,6 +278,7 @@ function clearColumnTaskCards(column) {
     }
   }
 }
+
 
 function findTaskById(taskId) {
   for (let i = 0; i < tasks.length; i++) {
@@ -356,12 +364,14 @@ async function deleteTask(taskId) {
   }
 }
 
+
 function showTaskDetails(taskId) {
   const task = findTaskById(taskId);
   const detailsOverlay = document.getElementById("details-overlay");
   detailsOverlay.innerHTML = getTaskDetailsTemplate(task);
   toggleOverlay("#details-overlay");
 }
+
 
 function getTaskDetailsTemplate(task) {
   if (!task) {
@@ -394,6 +404,7 @@ function generateAssignedUsersDetailsHTML(assignedToArray) {
   return html;
 }
 
+
 function createUserItemHTML(initialsOrName) {
   let initials = getInitials(initialsOrName);
   let fullName = getFullNameFromInitials(initialsOrName);
@@ -406,6 +417,7 @@ function createUserItemHTML(initialsOrName) {
     </div>
   `;
 }
+
 
 function createDetailsTemplate(
   task,
@@ -478,9 +490,11 @@ function getFullNameFromInitials(initialsOrName) {
   return initialsOrName;
 }
 
+
 function isInitials(str) {
   return str.length <= 3 && str === str.toUpperCase();
 }
+
 
 function findContactByInitials(initials) {
     for (let i = 0; i < contacts.length; i++) {
@@ -498,6 +512,7 @@ function findContactByInitials(initials) {
 function saveTasksToSession() {
   sessionStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
 
 /**
  * Loads tasks from sessionStorage

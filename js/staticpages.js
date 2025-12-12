@@ -8,6 +8,7 @@ function initStaticPages() {
   }
 }
 
+
 function renderLoginSidbar() {
   let = emptySidebar = document.getElementById("sidebar-nav");
   emptySidebar.innerHTML = "";
@@ -22,6 +23,7 @@ function renderLoginSidbar() {
       </nav>
   `;
 }
+
 
 function renderEmptyHeader() {
   let userHeadere = document.getElementById("menu-user");

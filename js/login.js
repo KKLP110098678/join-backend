@@ -82,6 +82,7 @@ async function loginUser() {
   }
 }
 
+
 /**
  * Displays an error message in the login form
  * Makes the error message element visible and sets the error text
@@ -103,6 +104,7 @@ function showError(message) {
   errorMessage.style.display = "block";
 }
 
+
 /**
  * Sets session data for a guest user
  * Stores predefined guest credentials in SessionStorage
@@ -123,10 +125,12 @@ function setGuestSession() {
   sessionStorage.setItem("isGuest", "true");
 }
 
+
 function loginAsGuest() {
   setGuestSession();
   window.location.href = "./summary.html";
 }
+
 
 /**
  * Initializes the login form with event listeners

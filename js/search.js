@@ -3,6 +3,7 @@ function filterTasks(searchTerm) {
   renderFilteredTasks(filteredTasks);
 }
 
+
 function getFilteredTasks(searchTerm) {
   let filteredTasks = [];
   let lowerSearchTerm = searchTerm.toLowerCase();
@@ -16,6 +17,7 @@ function getFilteredTasks(searchTerm) {
   return filteredTasks;
 }
 
+
 function taskMatchesSearchTerm(task, searchTerm) {
   return (
     task.title.toLowerCase().includes(searchTerm) ||
@@ -23,6 +25,7 @@ function taskMatchesSearchTerm(task, searchTerm) {
     task.category.toLowerCase().includes(searchTerm)
   );
 }
+
 
 function renderFilteredTasks(filteredTasks) {
   let currentTasks = tasks;
@@ -44,6 +47,7 @@ function handleSearchClick() {
   }
 }
 
+
 function handleSearchKeypress(event) {
   if (event.key === "Enter") {
     const searchTerm = event.target.value.trim();
@@ -55,11 +59,13 @@ function handleSearchKeypress(event) {
   }
 }
 
+
 function handleSearchInput(event) {
   if (event.target.value.trim() === "") {
     renderAllTasks();
   }
 }
+
 
 function searchContact() {
   const searchInput = document.getElementById("assigned-to-input-field");

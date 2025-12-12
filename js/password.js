@@ -16,6 +16,7 @@ function toggleVisibilityIcon() {
   }
 }
 
+
 function onPasswordIconClick() {
   const input = document.getElementById("input-password");
   if (realPassword.length === 0) return;
@@ -24,6 +25,7 @@ function onPasswordIconClick() {
   hideWord(input, passwordVisible, realPassword);
   toggleVisibilityIcon();
 }
+
 
 function updateConfirmIconByState() {
   const icon = document.getElementById("confirm-password-icon");
@@ -37,6 +39,7 @@ function updateConfirmIconByState() {
   }
 }
 
+
 function onInputConfirmPassword(input) {
   const inputConfirmWord = input.value;
   realConfirmPassword = updateVariable(inputConfirmWord, realConfirmPassword);
@@ -44,12 +47,14 @@ function onInputConfirmPassword(input) {
   updateConfirmIconByState();
 }
 
+
 function onClickConfirmPasswordIcon() {
   const input = document.getElementById("input-password-confirm");
   confirmVisible = !confirmVisible;
   updateConfirmIconByState();
   hideWord(input, confirmVisible, realConfirmPassword);
 }
+
 
 function isPasswordMatching() {
   if (!realConfirmPassword) return;
@@ -76,6 +81,7 @@ function isPasswordMatching() {
     }
   }
 }
+
 function updateVariable(inputWord, realVar) {
   if (inputWord.length > realVar.length) {
     const added = inputWord.slice(realVar.length);
@@ -86,11 +92,13 @@ function updateVariable(inputWord, realVar) {
   return realVar;
 }
 
+
 function hideWord(inputWord, isVisible, realWord) {
   if (realWord.length === 0) return isVisible;
   inputWord.value = isVisible ? realWord : "*".repeat(realWord.length);
   return isVisible;
 }
+
 
 function onPasswordInput(input) {
   const inputPassword = input.value;
@@ -100,6 +108,7 @@ function onPasswordInput(input) {
   setBorderColor("field-password", false);
   validatePasswordTooltip(realPassword);
 }
+
 
 function onPasswordBlur(inPassword) {
   if (checkPasswordRules(inPassword)) {
@@ -118,6 +127,7 @@ function onPasswordBlur(inPassword) {
     }
   }
 }
+
 
 function validatePasswordTooltip(inputPassword) {
   const rules = checkPasswordRules(inputPassword);
@@ -146,9 +156,11 @@ function validatePasswordTooltip(inputPassword) {
   }
 }
 
+
 function isPasswordValid(rules) {
   return rules.minLength && rules.hasLower && rules.hasNumber;
 }
+
 
 function buildPasswordMessage(rules) {
   return`<span class="${rules.minLength ? "valid" : "invalid"}">
@@ -160,6 +172,7 @@ function buildPasswordMessage(rules) {
                 At least one number
               </span><br>`;
 }
+
 
 function checkPasswordRules(password) {
   return {

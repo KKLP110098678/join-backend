@@ -19,6 +19,7 @@ function addSubtask() {
   subtaskInput.value = "";
 }
 
+
 /**
  * Returns HTML template for a subtask item
  * @param {number} index - Index of the subtask
@@ -45,6 +46,7 @@ function getSubtaskItemTemplate(index, text) {
       </li>
     `;
 }
+
 
 /**
  * Removes a subtask from the array and DOM
@@ -86,6 +88,7 @@ function getSubtaskEditTemplate(index, text) {
   `;
 }
 
+
 /**
  * Edits an existing subtask
  * Opens an input field above the subtask item for inline editing
@@ -107,6 +110,7 @@ function editSubtask(index) {
   input.focus();
   input.select();
 }
+
 
 /**
  * Saves the edited subtask text
@@ -133,6 +137,7 @@ function saveSubtaskEdit(index) {
   cancelSubtaskEdit(index);
 }
 
+
 /**
  * Cancels the subtask edit and restores the original view
  * @param {number} index - Index of the subtask being edited
@@ -144,6 +149,7 @@ function cancelSubtaskEdit(index) {
   subtaskItem.style.display = '';
 }
 
+
 /**
  * Clears all subtasks from the list and array
  */
@@ -152,6 +158,7 @@ function clearSubtasks() {
   subtaskList.innerHTML = "";
   currentSubtasks = [];
 }
+
 
 /**
  * Returns filtered subtasks (removes null entries)
@@ -162,6 +169,7 @@ function getFilteredSubtasks() {
     return subtask !== null;
   });
 }
+
 
 /**
  * Calculates subtask progress statistics
@@ -191,6 +199,7 @@ function calculateSubtaskProgress(subtasks) {
   return { subtaskProgress, totalSubtasks, progressInPercent };
 }
 
+
 /**
  * Generates HTML for displaying subtasks in task details
  * @param {string} taskId - ID of the task
@@ -210,6 +219,7 @@ function generateSubtasksHTML(taskId, subtasks) {
   }
   return html;
 }
+
 
 /**
  * Toggles the completion status of a subtask
