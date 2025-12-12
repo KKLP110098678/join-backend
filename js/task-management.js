@@ -152,10 +152,6 @@ const categoryToId = {
 };
 
 function generateTaskCardHTML(task) {
-  if (!task) {
-    return "";
-  }
-  
   let assignedUsersHTML = generateAssignedUsersHTML(task.assignedTo || []);
   let categoryId = categoryToId[task.category] || "user-story";
   let priorityIcon = priorityIcons[task.priority] || priorityIcons["medium"];
@@ -395,10 +391,6 @@ function getTaskDetailsTemplate(task) {
 
 
 function generateAssignedUsersDetailsHTML(assignedToArray) {
-  if (!assignedToArray || !Array.isArray(assignedToArray)) {
-    return "";
-  }
-  
   let html = "";
   for (let i = 0; i < assignedToArray.length; i++) {
     html += createUserItemHTML(assignedToArray[i]);

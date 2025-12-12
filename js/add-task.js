@@ -78,10 +78,8 @@ function toggleUserSelection(userName, event, mode) {
   // Get checkbox directly from event target
   let checkbox = event.target;
   
-  if (checkbox && checkbox.type === 'checkbox') {
-    updateSelectedUsersArray(userName, checkbox.checked);
-    updateDropdownPlaceholder(mode);
-  }
+  updateSelectedUsersArray(userName, checkbox.checked);
+  updateDropdownPlaceholder(mode);
 }
 
 /**
@@ -101,9 +99,7 @@ function updateSelectedUsersArray(userName, isChecked) {
  */
 function updateDropdownPlaceholder(mode) {
   let containerId = (mode === "task-edit") ? "edit-assignees-container" : "assignees-container";
-  let container = document.getElementById(containerId);  
-  
-  if (!container) return;
+  let container = document.getElementById(containerId);
   
   container.innerHTML = "";
   
@@ -370,10 +366,7 @@ function handleTaskSaveSuccess() {
     setTimeout(function () {
       clearForm();
       targetColumnStatus = "todo";
-
-      if (typeof closeAllMenus === "function") {
-        closeAllMenus();
-      }
+      closeAllMenus();
     }, 1500);
   }
 }
