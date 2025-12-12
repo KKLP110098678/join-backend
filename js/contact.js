@@ -257,7 +257,7 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
   return `
         <div class="contact-header d-flex">
             <div>
-                <div class="user-avatar-lg" style="background-color: ${avatarColor};">
+                <div class="user-avatar-lg details-avatar" style="background-color: ${avatarColor};">
                     <div class="avatar-content">${initials}</div>
                 </div>
                 <h1>${contact.name}</h1>

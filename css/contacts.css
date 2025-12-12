@@ -85,9 +85,11 @@
   align-items: center;
   justify-content: center;
   font-size: 47px;
-  margin-right: 54px;
 }
 
+.details-avatar {
+  margin-right: 54px;   
+}
 .avatar-content {
     width: 24px;
     height: 24px;
@@ -191,6 +193,5 @@ margin: 0 0 0 698px;
 
 .contact-form-avatar {
   margin-bottom: 32px;
-  font-size: 47px;
   background-color: #D1D1D1;
 }
