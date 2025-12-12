@@ -120,18 +120,20 @@ ul {
 		padding: 20px;
 		margin: 0px;
 	}
-		h1 {
+	h1 {
 		margin: 0px 0px 20px 0px;
 	}
-		.back-help {
+	.back-help {
 		margin-top: 144px;
 	}
 }
 
 @media (max-width: 850px) {
-
-		.back-help {
+	.back-help {
 		margin-top: 144px;
+	}
+	h2 {
+		font-size: 19px;
 	}
 }
 @media (max-width: 525px) {
@@ -161,7 +163,6 @@ ul {
 		position: absolute;
 		width: 40px;
 		height: 48px;
-		/* background: var(--color-light-blue); */
 		background: var(--color-Scroll);
 		border-radius: 3px;
 		cursor: pointer;
@@ -172,7 +173,10 @@ ul {
 	h1 {
 		font-size: 47px;
 	}
-
+	.pp-content {
+		max-width: 100%;
+		overflow-wrap: break-word;
+	}
 	.main-wrapper-ds {
 		padding: 16px;
 	}
