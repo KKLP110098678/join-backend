@@ -25,13 +25,13 @@ function updateThumbPosition() {
 
 // 3. Setup mouse events for dragging
 function setupMouseEvents() {
-	thumb.onmousedown = function (e) {
+	thumb.onmousedown = (e) => {
 		isDragging = true;
 		startY = e.clientY;
 		startScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	};
 
-	document.onmousemove = function (e) {
+	document.onmousemove = (e) => {
 		if (!isDragging) return;
 
 		const deltaY = e.clientY - startY;
@@ -43,7 +43,7 @@ function setupMouseEvents() {
 		window.scrollTo(0, startScrollTop + scrollAmount);
 	};
 
-	document.onmouseup = function () {
+	document.onmouseup = () => {
 		isDragging = false;
 	};
 }
@@ -72,7 +72,7 @@ function initCustomScrollbar() {
 
 // Initialize on page load
 if (document.readyState === "loading") {
-	document.onreadystatechange = function () {
+	document.onreadystatechange = () => {
 		if (document.readyState === "complete") {
 			initCustomScrollbar();
 		}
