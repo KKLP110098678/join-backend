@@ -103,7 +103,7 @@ function getEditTaskTemplate(task) {
                   id="edit-urgent-priority"
                   type="radio"
                   name="priority"
-                  value="Urgent"
+                  value="high"
                 />
                 <label for="edit-urgent-priority" class="urgent-priority">
                   Urgent
@@ -291,7 +291,6 @@ async function submitEditTask(event, taskId) {
   
   // Get selected priority
   const priorityRadios = document.getElementsByName("priority");
-  let priority = "medium";
   for (let i = 0; i < priorityRadios.length; i++) {
     if (priorityRadios[i].checked) {
       priority = mapPriorityValue(priorityRadios[i].value);

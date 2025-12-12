@@ -340,7 +340,6 @@ function getSelectedPriority() {
       return mapPriorityValue(priorityRadios[i].value);
     }
   }
-  return "medium";
 }
 
 
@@ -349,7 +348,6 @@ function mapPriorityValue(value) {
   if (lowerValue === "high") return "urgent";
   if (lowerValue === "medium") return "medium";
   if (lowerValue === "low") return "low";
-  return "medium";
 }
 
 
