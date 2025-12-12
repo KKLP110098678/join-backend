@@ -188,3 +188,10 @@ margin: 0 0 0 698px;
 .contact-header {
   margin-bottom: 21px;
 }
+
+.contact-form-avatar {
+  margin-bottom: 32px;
+  font-size: 47px;
+  background-color: #D1D1D1;
+  align-self:center;
+}
