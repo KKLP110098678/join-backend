@@ -40,17 +40,13 @@ function handleDragLeave(event, element) {
 
 async function handleDrop(event, element) {
     event.stopPropagation();
-
-    if (draggedElement !== element && draggedElement) {
-        const afterElement = getDragAfterElement(element, event.clientY);
-        if (afterElement == null) {
-            element.appendChild(draggedElement);
-        } else {
-            element.insertBefore(draggedElement, afterElement);
-        }
-        await updateTaskStatusInDrag(draggedElement, element.id);
+    const afterElement = getDragAfterElement(element, event.clientY);
+    if (afterElement == null) {
+        element.appendChild(draggedElement);
+    } else {
+        element.insertBefore(draggedElement, afterElement);
     }
-
+    await updateTaskStatusInDrag(draggedElement, element.id);
     element.classList.remove('drag-over', 'drag-active');
     return false;
 }
@@ -94,7 +90,7 @@ async function updateTaskStatusInDrag(taskElement, columnId) {
     
     const newStatus = statusMapping[columnId];
     
-    if (newStatus && typeof window.updateTaskStatus === 'function') {
+    if (newStatus) {
         // Verwende die globale updateTaskStatus Funktion aus task-management.js
         await window.updateTaskStatus(taskId, newStatus);
     }

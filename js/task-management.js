@@ -13,11 +13,8 @@ async function initializeTasks() {
     return storedTasks || getDefaultTasks();
   } else {
     // Logged-in user: Load from Firebase
-    if (typeof loadTasksFromFirebase === "function") {
       const firebaseTasks = await loadTasksFromFirebase();
       return firebaseTasks.length > 0 ? firebaseTasks : getDefaultTasks();
-    }
-    return getDefaultTasks();
   }
 }
 
@@ -242,10 +239,7 @@ async function renderAllTasks() {
   if (tasks.length === 0) {
     tasks = await initializeTasks();
   }
-  
-  if (typeof populateAssignedToDropdown === "function") {
-    populateAssignedToDropdown();
-  }
+  populateAssignedToDropdown();
 
   let columns = getKanbanColumns();
   clearAllColumns(columns);
@@ -272,16 +266,11 @@ function renderTasksInColumns() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
     let column = document.getElementById(task.status);
-    if (column) {
-      column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
-    }
+    column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
   }
 }
 
 function clearColumnTaskCards(column) {
-  if (!column) {
-    return;
-  }
   let children = column.children;
   for (let i = children.length - 1; i >= 0; i--) {
     let child = children[i];
@@ -506,14 +495,12 @@ function isInitials(str) {
 }
 
 function findContactByInitials(initials) {
-  if (typeof contacts !== "undefined") {
     for (let i = 0; i < contacts.length; i++) {
       let contactInitials = getInitials(contacts[i].name);
       if (contactInitials === initials) {
         return contacts[i].name;
       }
     }
-  }
   return initials;
 }
 
