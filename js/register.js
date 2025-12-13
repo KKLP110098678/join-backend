@@ -216,6 +216,7 @@ function setBorderColor(inputField, status) {
   }
 }
 
+
 /**
  * Checks if all input fields are valid and enables the checkbox if so
  */

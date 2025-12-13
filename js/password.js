@@ -82,6 +82,7 @@ function isPasswordMatching() {
   }
 }
 
+
 function updateVariable(inputWord, realVar) {
   if (inputWord.length > realVar.length) {
     const added = inputWord.slice(realVar.length);

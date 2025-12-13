@@ -34,6 +34,7 @@ function renderFilteredTasks(filteredTasks) {
   tasks = currentTasks;
 }
 
+
 // Global event handler functions for inline events
 function handleSearchClick() {
   const searchInput = document.getElementById("task-search");
