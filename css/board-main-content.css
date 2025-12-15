@@ -1,3 +1,12 @@
+@media (max-width: 1493px) {
+    .kanban {
+        flex-direction: column;
+    }
+
+    .kanban-column {
+        width: 100%;
+    }
+}
 .main-wrapper {
     flex-grow: 1;
     margin-top: 72px;
