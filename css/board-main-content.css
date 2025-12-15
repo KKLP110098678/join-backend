@@ -2,7 +2,11 @@
     flex-grow: 1;
     margin-top: 72px;
     margin-left: 232px;
-    height: 100vh;
+    max-width: calc(1920px - 232px);
+}
+
+.main-content {
+    padding: 0 64px;
 }
 
 
