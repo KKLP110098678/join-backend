@@ -45,11 +45,12 @@ function handleDragLeave(event, element) {
 
 async function handleDrop(event, element) {
     event.stopPropagation();
-    const afterElement = getDragAfterElement(element, event.clientY);
+    const targetContainer = document.getElementById(element.id + '-cards');
+    const afterElement = getDragAfterElement(targetContainer, event.clientY);
     if (afterElement == null) {
-        element.appendChild(draggedElement);
+        targetContainer.appendChild(draggedElement);
     } else {
-        element.insertBefore(draggedElement, afterElement);
+        targetContainer.insertBefore(draggedElement, afterElement);
     }
     await updateTaskStatusInDrag(draggedElement, element.id);
     element.classList.remove('drag-over', 'drag-active');

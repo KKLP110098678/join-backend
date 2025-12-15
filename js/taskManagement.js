@@ -263,20 +263,16 @@ function clearAllColumns(columns) {
 function renderTasksInColumns() {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
-    let column = document.getElementById(task.status);
-    column.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
+    const containerId = task.status + "-cards";
+    const container = document.getElementById(containerId);
+    container.insertAdjacentHTML("beforeend", generateTaskCardHTML(task));
   }
 }
 
 
 function clearColumnTaskCards(column) {
-  let children = column.children;
-  for (let i = children.length - 1; i >= 0; i--) {
-    let child = children[i];
-    if (child.classList.contains("task-card")) {
-      child.remove();
-    }
-  }
+  const container = document.getElementById(column.id + "-cards");
+  container.innerHTML = "";
 }
 
 
