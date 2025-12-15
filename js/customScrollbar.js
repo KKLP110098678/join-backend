@@ -18,19 +18,14 @@ function getScrollbarElements() {
  */
 function updateThumbPosition() {
 	if (!thumb) return;
-
 	const scrollHeight = document.documentElement.scrollHeight;
 	const clientHeight = document.documentElement.clientHeight;
 	const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
 	const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
-
-	// Account for track top position (205px) and thumb height (48px)
 	const trackTop = 205;
 	const thumbHeight = 48;
 	const maxThumbTop = window.innerHeight - trackTop - thumbHeight;
 	const thumbTop = scrollPercentage * maxThumbTop;
-
 	thumb.style.top = thumbTop + "px";
 }
 
@@ -52,16 +47,12 @@ function handleMouseDown(e) {
  */
 function handleMouseMove(e) {
 	if (!isDragging) return;
-
 	const deltaY = e.clientY - startY;
 	const scrollHeight = document.documentElement.scrollHeight;
 	const clientHeight = document.documentElement.clientHeight;
-
-	// Account for track top position (205px) and thumb height (48px)
 	const trackTop = 205;
 	const thumbHeight = 48;
 	const maxThumbTop = window.innerHeight - trackTop - thumbHeight;
-
 	const scrollAmount = (deltaY / maxThumbTop) * (scrollHeight - clientHeight);
 	window.scrollTo(0, startScrollTop + scrollAmount);
 }
@@ -91,7 +82,6 @@ function setupMouseEvents() {
 function attachScrollbarEvents() {
 	window.onscroll = updateThumbPosition;
 	window.onresize = updateThumbPosition;
-
 	// Initial position
 	updateThumbPosition();
 }
@@ -104,11 +94,9 @@ function attachScrollbarEvents() {
 function initCustomScrollbar() {
 	if (window.innerWidth > 500) return;
 	if (!getScrollbarElements()) return;
-
 	isDragging = false;
 	startY = 0;
 	startScrollTop = 0;
-
 	setupMouseEvents();
 	attachScrollbarEvents();
 }
