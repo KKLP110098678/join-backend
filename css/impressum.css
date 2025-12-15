@@ -114,59 +114,28 @@ ul {
 	margin-left: 62px;
 }
 
-/* todelete */
-/* Override nav flex centering for empty-nav */
-/* #sidebar-nav.d-flex .empty-nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	flex: 1;
-} */
-/* todelete */
-
-/* todelete */
-/* Make nav not center when it has empty-nav */
-/* #sidebar-nav:has(.empty-nav) {
-	justify-content: flex-start;
-	align-items: stretch;
-} */
-
-/* todelete */
-/* .sidebar-links {
-	font-size: 16px;
-} */
-/* todelete */
-/* Fix nav centering on mobile when empty-nav is present */
-/* @media (max-width: 1024px) {
-	#sidebar-nav:has(.empty-nav) {
-		justify-content: flex-start;
-	}
-
-	#sidebar-nav .empty-nav {
-		justify-content: space-between;
-		width: 100%;
-		flex: 1;
-	}
-} */
-
 @media (min-width: 1026px) {
 	.sidebar-links {
 		display: none;
 	}
 }
+
 /* mobile */
 @media (max-width: 1025px) {
 	.main-wrapper-ds {
 		padding: 20px;
 		margin: 0px;
+		margin-bottom: 80px;
 	}
+	
 	h1 {
 		margin: 0px 0px 20px 0px;
 	}
+
 	.back-help {
 		margin-top: 144px;
 	}
+
 	.empty-nav {
 		display: flex;
 		justify-content: space-between;
@@ -176,14 +145,14 @@ ul {
 		bottom: 0px;
 		width: 100%;
 	}
-	.btn-menu{
+
+	.btn-menu {
 		flex-direction: column;
 	}
 
 	.sidebar-links {
 		display: flex;
 		gap: 16px;
-		/* align-items: center; */
 	}
 }
 
@@ -191,10 +160,12 @@ ul {
 	.back-help {
 		margin-top: 144px;
 	}
+
 	h2 {
 		font-size: 19px;
 	}
-	.sidebar-links{
+
+	.sidebar-links {
 		padding-right: 8px;
 	}
 }
@@ -204,6 +175,7 @@ ul {
 		overflow-y: scroll;
 		scrollbar-width: none;
 	}
+
 	html::-webkit-scrollbar {
 		display: none;
 	}
@@ -235,10 +207,12 @@ ul {
 	h1 {
 		font-size: 47px;
 	}
+
 	.pp-content {
 		max-width: 100%;
 		overflow-wrap: break-word;
 	}
+
 	.main-wrapper-ds {
 		padding: 16px;
 	}
@@ -246,13 +220,16 @@ ul {
 	.caption-help {
 		font-size: 23px;
 	}
+
 	.step {
 		font-size: 19px;
 	}
+
 	.clarification {
 		gap: 16px;
 	}
-	.btn-menu{
+
+	.btn-menu {
 		padding: 8px 8px;
 	}
 }
