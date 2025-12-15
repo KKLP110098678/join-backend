@@ -1,10 +1,8 @@
 .main-wrapper {
     flex-grow: 1;
-    margin: 72px 0 0;
-    width: 100vw;
+    margin-top: 72px;
+    margin-left: 232px;
     height: 100vh;
-    display: flex;
-    justify-content: center;
 }
 
 
@@ -27,4 +25,10 @@
     transition:
         width 1s cubic-bezier(0.77, 0, 0.18, 1),
         height 1s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+@media (max-width: 1024px) {
+    .main-wrapper {
+        margin-left: 0;
+    }
 }
