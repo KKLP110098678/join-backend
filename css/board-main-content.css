@@ -2,9 +2,18 @@
     .kanban {
         flex-direction: column;
     }
+    
+    .main-wrapper {
+        margin-left: 0;
+    }
 
-    .kanban-column {
-        width: 100%;
+    .task-cards {
+        flex-direction: row !important;
+        
+    }
+
+    .task-card {
+        width: 252px;
     }
 }
 .main-wrapper {
@@ -38,10 +47,4 @@
     transition:
         width 1s cubic-bezier(0.77, 0, 0.18, 1),
         height 1s cubic-bezier(0.77, 0, 0.18, 1);
-}
-
-@media (max-width: 1024px) {
-    .main-wrapper {
-        margin-left: 0;
-    }
 }
