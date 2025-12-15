@@ -17,7 +17,11 @@ function updateThumbPosition() {
 	const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
 	const scrollPercentage = scrollTop / (scrollHeight - clientHeight);
-	const maxThumbTop = window.innerHeight - 48;
+
+	// Account for track top position (205px) and thumb height (48px)
+	const trackTop = 205;
+	const thumbHeight = 48;
+	const maxThumbTop = window.innerHeight - trackTop - thumbHeight;
 	const thumbTop = scrollPercentage * maxThumbTop;
 
 	thumb.style.top = thumbTop + "px";
@@ -37,7 +41,11 @@ function handleMouseMove(e) {
 	const deltaY = e.clientY - startY;
 	const scrollHeight = document.documentElement.scrollHeight;
 	const clientHeight = document.documentElement.clientHeight;
-	const maxThumbTop = window.innerHeight - 48;
+
+	// Account for track top position (205px) and thumb height (48px)
+	const trackTop = 205;
+	const thumbHeight = 48;
+	const maxThumbTop = window.innerHeight - trackTop - thumbHeight;
 
 	const scrollAmount = (deltaY / maxThumbTop) * (scrollHeight - clientHeight);
 	window.scrollTo(0, startScrollTop + scrollAmount);

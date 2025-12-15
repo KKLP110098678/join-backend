@@ -43,11 +43,3 @@ function renderEmptyHeader() {
 	userHeadere.innerHTML = `<p>Kanban Project Management Tool</p>`;
 }
 
-// {/* <div class="sidebar-footer d-flex">
-// 	<a href="./datenschutz.html" class="selected-link">
-// 		Privacy Policy
-// 	</a>
-// 	<a href="./legalnotice.html" class="pad-8">
-// 		Legal Notice
-// 	</a>
-// </div>; */}

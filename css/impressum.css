@@ -39,7 +39,6 @@ a {
 
 .back-help {
 	display: flex;
-	align-items: center;
 	justify-content: space-between;
 	margin-top: 90px;
 }
@@ -114,6 +113,12 @@ ul {
 	margin-left: 62px;
 }
 
+.top-176{
+	margin-top: -30px;
+	/* top: -30px; */
+	/* top: 167px; */
+
+}
 @media (min-width: 1026px) {
 	.sidebar-links {
 		display: none;
@@ -127,7 +132,7 @@ ul {
 		margin: 0px;
 		margin-bottom: 80px;
 	}
-	
+
 	h1 {
 		margin: 0px 0px 20px 0px;
 	}
@@ -160,7 +165,9 @@ ul {
 	.back-help {
 		margin-top: 144px;
 	}
-
+	h1 {
+		font-size: 47px;
+	}
 	h2 {
 		font-size: 19px;
 	}
@@ -169,7 +176,7 @@ ul {
 		padding-right: 8px;
 	}
 }
-@media (max-width: 525px) {
+@media (max-width: 428px) {
 	/* Hide native scrollbar for custom scrollbar */
 	html {
 		overflow-y: scroll;
@@ -204,9 +211,9 @@ ul {
 		pointer-events: auto;
 	}
 
-	h1 {
+	/* h1 {
 		font-size: 47px;
-	}
+	} */
 
 	.pp-content {
 		max-width: 100%;
@@ -231,5 +238,10 @@ ul {
 
 	.btn-menu {
 		padding: 8px 8px;
+	}
+}
+@media (max-width: 385px) {
+	.top-custom {
+		top: 205px;
 	}
 }
