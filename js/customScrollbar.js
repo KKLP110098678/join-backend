@@ -1,14 +1,21 @@
 // Custom Scrollbar for Mobile (Mouse only - no touch support)
 let scrollbar, thumb, isDragging, startY, startScrollTop;
 
-// 1. Get scrollbar elements
+/**
+ * Get scrollbar elements from the DOM
+ * @returns {boolean} True if both scrollbar and thumb elements exist, false otherwise
+ */
 function getScrollbarElements() {
 	scrollbar = document.querySelector(".custom-scrollbar");
 	thumb = document.querySelector(".custom-scrollbar-thumb");
 	return scrollbar && thumb;
 }
 
-// 2. Update thumb position based on scroll
+/**
+ * Update thumb position based on current scroll position
+ * Calculates the thumb position accounting for track top (205px) and thumb height (48px)
+ * to prevent thumb from going off-screen at the bottom
+ */
 function updateThumbPosition() {
 	if (!thumb) return;
 
@@ -27,14 +34,22 @@ function updateThumbPosition() {
 	thumb.style.top = thumbTop + "px";
 }
 
-// 3. Handle mouse down on thumb
+/**
+ * Handle mouse down event on scrollbar thumb
+ * Initiates drag operation and stores initial positions
+ * @param {MouseEvent} e - The mouse event object
+ */
 function handleMouseDown(e) {
 	isDragging = true;
 	startY = e.clientY;
 	startScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 }
 
-// 4. Handle mouse move during drag
+/**
+ * Handle mouse move event during thumb drag
+ * Calculates scroll position based on thumb movement
+ * @param {MouseEvent} e - The mouse event object
+ */
 function handleMouseMove(e) {
 	if (!isDragging) return;
 
@@ -51,19 +66,28 @@ function handleMouseMove(e) {
 	window.scrollTo(0, startScrollTop + scrollAmount);
 }
 
-// 5. Handle mouse up to stop dragging
+/**
+ * Handle mouse up event to stop dragging
+ * Ends the drag operation
+ */
 function handleMouseUp() {
 	isDragging = false;
 }
 
-// 6. Setup mouse events for dragging
+/**
+ * Setup mouse events for dragging functionality
+ * Attaches mousedown, mousemove, and mouseup event handlers
+ */
 function setupMouseEvents() {
 	thumb.onmousedown = handleMouseDown;
 	document.onmousemove = handleMouseMove;
 	document.onmouseup = handleMouseUp;
 }
 
-// 7. Attach scroll and resize events
+/**
+ * Attach scroll and resize events to update thumb position
+ * Also sets initial thumb position on page load
+ */
 function attachScrollbarEvents() {
 	window.onscroll = updateThumbPosition;
 	window.onresize = updateThumbPosition;
@@ -72,7 +96,11 @@ function attachScrollbarEvents() {
 	updateThumbPosition();
 }
 
-// 8. Main initialization function
+/**
+ * Main initialization function for custom scrollbar
+ * Only initializes on mobile screens (width <= 500px)
+ * Sets up all event handlers and initial state
+ */
 function initCustomScrollbar() {
 	if (window.innerWidth > 500) return;
 	if (!getScrollbarElements()) return;
