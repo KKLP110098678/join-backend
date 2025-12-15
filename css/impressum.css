@@ -53,7 +53,6 @@ a {
 
 h1 {
 	margin: 0px 0px 36px 0px;
-
 	font-size: 61px;
 }
 
@@ -113,12 +112,6 @@ ul {
 	margin-left: 62px;
 }
 
-.top-176{
-	margin-top: -30px;
-	/* top: -30px; */
-	/* top: 167px; */
-
-}
 @media (min-width: 1026px) {
 	.sidebar-links {
 		display: none;
@@ -165,9 +158,11 @@ ul {
 	.back-help {
 		margin-top: 144px;
 	}
+
 	h1 {
 		font-size: 47px;
 	}
+
 	h2 {
 		font-size: 19px;
 	}
@@ -199,7 +194,6 @@ ul {
 		pointer-events: none;
 	}
 
-	/* Custom scrollbar thumb */
 	.custom-scrollbar-thumb {
 		position: absolute;
 		width: 40px;
@@ -210,10 +204,6 @@ ul {
 		transition: background 0.2s;
 		pointer-events: auto;
 	}
-
-	/* h1 {
-		font-size: 47px;
-	} */
 
 	.pp-content {
 		max-width: 100%;
@@ -240,8 +230,5 @@ ul {
 		padding: 8px 8px;
 	}
 }
-@media (max-width: 385px) {
-	.top-custom {
-		top: 205px;
-	}
-}
+
+
