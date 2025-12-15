@@ -10,7 +10,7 @@ function initStaticPages() {
 
 function renderLoginSidbar() {
 	const emptySidebar = document.getElementById("sidebar-nav");
-  emptySidebar.classList.remove("sidenav");
+	emptySidebar.classList.remove("sidenav");
 	emptySidebar.innerHTML = "";
 	emptySidebar.innerHTML = `
       <div class="empty-nav">
@@ -25,10 +25,10 @@ function renderLoginSidbar() {
 </div>
 
  <div class="sidebar-links">
-	<a href="./datenschutz.html" class="selected-link">
+	<a href="./datenschutz.html" >
 		Privacy Policy
 	</a>
-	<a href="./legalnotice.html" class="pad-8">
+	<a href="./legalnotice.html" >
 		Legal Notice
 	</a>
 </div>

@@ -173,7 +173,17 @@ ul {
 		align-items: center;
 		position: fixed;
 		left: 0;
+		bottom: 0px;
 		width: 100%;
+	}
+	.btn-menu{
+		flex-direction: column;
+	}
+
+	.sidebar-links {
+		display: flex;
+		gap: 16px;
+		/* align-items: center; */
 	}
 }
 
@@ -183,6 +193,9 @@ ul {
 	}
 	h2 {
 		font-size: 19px;
+	}
+	.sidebar-links{
+		padding-right: 8px;
 	}
 }
 @media (max-width: 525px) {
@@ -238,5 +251,8 @@ ul {
 	}
 	.clarification {
 		gap: 16px;
+	}
+	.btn-menu{
+		padding: 8px 8px;
 	}
 }
