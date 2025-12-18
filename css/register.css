@@ -29,6 +29,15 @@ a {
 	gap: 35px;
 }
 
+/* .logo-header {
+	position: absolute;
+	width: 64px;
+	height: 78px;
+	top: 80px;
+	left: 77px;
+} */
+
+
 .back-button-link {
 	position: absolute;
 	left: 48px;
@@ -178,6 +187,17 @@ input:-webkit-autofill {
    Breakpoint: max-width 428px
    ============================================================================ */
 
+@media (max-width: 1028px){
+	.register-form {
+top: 44px;
+	}
+  	.logo-header {
+		top: 37px;
+		left: 38px;
+		/* width: 80px;
+		height: 100px; */
+	}
+}
 @media (max-width: 628px){
 	.register-form {
 		/* width: 95%; */
@@ -238,12 +258,12 @@ input:-webkit-autofill {
 	/**
 	 * Adjust logo position for mobile
 	 */
-	.logo-header {
-		top: 40px;
-		left: 24px;
+	/* .logo-header {
+		top: 37px;
+		left: 38px;
 		width: 80px;
 		height: 100px;
-	}
+	} */
 
 	/**
 	 * Make success overlay responsive
