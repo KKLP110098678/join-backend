@@ -375,11 +375,16 @@
 
 @media (max-width: 1024px) {
     .main-wrapper {
+        margin-top: 64px;
         margin-left: 0;
     }
 
     .kanban {
         max-height: calc(100vh - 330px);
+    }
+
+    .main-content {
+        padding: 0 16px;
     }
 
 }
