@@ -200,11 +200,9 @@ top: 44px;
 }
 @media (max-width: 628px){
 	.register-form {
-		/* width: 95%; */
-		/* max-width: 95%; */
+
         width: 100%;
 		padding: 40px 40px;
-		min-height: 0;
 	}
 }
 @media (max-width: 528px){
@@ -238,15 +236,6 @@ top: 44px;
 	.separator {
 		width: 100px;
 	}
-
-	/**
-	 * Adjust main registration area for mobile
-	 */
-	/* .main-reg {
-		width: 100%;
-		max-width: 100%;
-	} */
-
 	/**
 	 * Adjust back button position for mobile
 	 */
