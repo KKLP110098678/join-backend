@@ -378,4 +378,8 @@
         margin-left: 0;
     }
 
+    .kanban {
+        max-height: calc(100vh - 330px);
+    }
+
 }
