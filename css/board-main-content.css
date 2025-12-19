@@ -36,32 +36,3 @@
     height 1s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-@media (max-width: 1493px) {
-    .kanban {
-        flex-direction: column;
-    }
-
-    kanban-column {
-        min-height: 0;
-    }
-
-    .task-cards {
-        flex-direction: row !important;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        gap: 12px;
-    }
-    
-    .task-card {
-        width: 252px;
-        flex: 0 0 252px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .main-wrapper {
-        margin-left: 0;
-    }
-
-}
