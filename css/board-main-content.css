@@ -3,10 +3,16 @@
     margin-top: 72px;
     margin-left: 232px;
     max-width: calc(1920px - 232px);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 96px);
 }
 
 .main-content {
     padding: 0 64px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 #logo-slide {
@@ -35,16 +41,17 @@
         flex-direction: column;
     }
 
-    .kanban-column {
-        min-height: 0 !important;
-    }
-
     .task-cards {
-        flex-direction: row !important;    
+        flex-direction: row !important;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
     }
     
     .task-card {
         width: 252px;
+        flex: 0 0 252px;
     }
 }
 

@@ -28,10 +28,12 @@
   font-size: 14px;
   color: #666;
   margin: 8px 0;
-  line-height: 1.4;
 }
 .kanban {
     gap: 24px;
+    overflow-y: auto;
+    min-height: 0;
+    max-height: calc(100vh - 250px);
 }
 
 .task-cards {
@@ -97,6 +99,9 @@
     flex: 1;
     border-radius: 16px;
     transition: background-color 0.3s ease;
+    /* Arrange header and task list vertically */
+    display: flex;
+    flex-direction: column;
 }
 
 .task-card {
