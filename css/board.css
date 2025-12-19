@@ -95,7 +95,6 @@
 
 /* Drag and Drop Styles */
 .kanban-column {
-    min-height: 400px;
     flex: 1;
     border-radius: 16px;
     transition: background-color 0.3s ease;

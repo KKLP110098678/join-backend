@@ -41,6 +41,10 @@
         flex-direction: column;
     }
 
+    kanban-column {
+        min-height: 0;
+    }
+
     .task-cards {
         flex-direction: row !important;
         flex-wrap: nowrap;
