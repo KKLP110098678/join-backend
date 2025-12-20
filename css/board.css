@@ -253,8 +253,13 @@
 
 .main-content-header {
     gap: 20px;
+    display: flex;
     align-items: center;
     margin-bottom: 48px;
+}
+
+.task-search {
+    width: 100%;
 }
 
 .subtask-container {
