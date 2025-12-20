@@ -460,8 +460,10 @@ function createDetailsTemplate(
             ${subtasksHTML || '<li>No subtasks</li>'}
           </ul>
         </div>
-        <button class="text-btn-with-icon" onclick="deleteTask('${task.id || ''}'); toggleOverlay('#details-overlay')">Delete Task</button>
-        <button class="text-btn-with-icon" onclick="editTask('${task.id || ''}')">Edit Task</button>
+        <div class="text-btn-container d-flex">
+          <button class="text-btn-with-icon" onclick="deleteTask('${task.id || ''}'); toggleOverlay('#details-overlay')">Delete Task</button>
+          <button class="text-btn-with-icon" onclick="editTask('${task.id || ''}')">Edit Task</button>
+        </div>
       </div>
     </div>
   `;
