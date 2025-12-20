@@ -371,6 +371,14 @@
         width: 252px;
         flex: 0 0 252px;
     }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .search-container input {
+        width: calc(100%);
+    }
 }
 
 @media (max-width: 1024px) {
