@@ -337,6 +337,7 @@
     display: flex;
     margin-top: 24px;
     justify-content: flex-end;
+    gap: 8px;
 }
 
 .kanban-column.drag-over {

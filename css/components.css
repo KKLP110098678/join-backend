@@ -276,7 +276,7 @@ label.urgent-priority:hover {
 	right: 8px;
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: 4px;
 }
 
 .vertical-divider {
