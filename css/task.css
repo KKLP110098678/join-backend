@@ -333,6 +333,20 @@
   border: 2px solid #ffffff;
 }
 
+/*Tablet*/
+
+@media (max-width: 1024px) {
+    .form-actions {
+      position: absolute;
+      background-color: #FFFFFF;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      padding: 12px 16px;
+      justify-content: center;
+    }
+}
+
 /* Mobile: Bottom Navigation */
 @media (max-width: 850px) {
   .add-task-main-container {
@@ -350,13 +364,5 @@
     padding-bottom: 80px;
   }
 
-  .form-actions {
-    position: absolute;
-    background-color: #FFFFFF;
-    bottom: 80px;
-    left: 0;
-    right: 0;
-    padding: 12px 16px;
-    justify-content: center;
-  }
+
 }
