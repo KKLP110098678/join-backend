@@ -365,38 +365,3 @@
     background-color: #e3f2fd !important;
     border: 2px dashed #2196f3 !important;
 }
-
-/*@media (max-width: 1493px) {
-    .kanban {
-        flex-direction: column;
-    }
-
-    .task-cards {
-        flex-direction: row !important;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        gap: 12px;
-    }
-
-    .task-card {
-        width: 252px;
-        flex: 0 0 252px;
-    }
-}*/
-
-/*@media (max-width: 1024px) {
-    .main-wrapper {
-        margin-top: 64px;
-        margin-left: 0;
-    }
-
-    .kanban {
-        max-height: calc(100vh - 330px);
-    }
-
-    .main-content {
-        padding: 0 16px;
-    }
-
-}*/
