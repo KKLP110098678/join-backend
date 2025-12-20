@@ -123,6 +123,9 @@ button {
   padding: 3px;
   border: solid 1px #4589ff;
   background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-add-icon svg {
