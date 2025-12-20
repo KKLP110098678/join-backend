@@ -1,6 +1,5 @@
 .btn-add {
   color: white;
-  padding: 16px 10px;
   border-radius: 8px;
   border: none;
   background-color: #4589ff;
@@ -17,6 +16,11 @@
 
 .btn-add:active {
   background-color: #091931;
+}
+
+.add-task-button-text {
+  font-size: 32px;
+  font-weight: 300;
 }
 
 .btn-secondary-with-icon {
@@ -320,4 +324,3 @@ label.urgent-priority:hover {
 .dropdown-arrow {
   transition: transform 0.3s ease;
 }
-
