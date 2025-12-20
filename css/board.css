@@ -386,10 +386,6 @@
         align-items: center;
         justify-content: center;
     }
-
-    .full-text {
-        display: none;
-    }
 }
 
 @media (max-width: 1024px) {
