@@ -354,7 +354,7 @@
     border: 2px dashed #2196f3 !important;
 }
 
-@media (max-width: 1493px) {
+/*@media (max-width: 1493px) {
     .kanban {
         flex-direction: column;
     }
@@ -366,14 +366,14 @@
         -webkit-overflow-scrolling: touch;
         gap: 12px;
     }
-    
+
     .task-card {
         width: 252px;
         flex: 0 0 252px;
     }
-}
+}*/
 
-@media (max-width: 1024px) {
+/*@media (max-width: 1024px) {
     .main-wrapper {
         margin-top: 64px;
         margin-left: 0;
@@ -387,4 +387,4 @@
         padding: 0 16px;
     }
 
-}
+}*/
