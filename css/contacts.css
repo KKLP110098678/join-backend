@@ -197,8 +197,8 @@ margin: 0 0 0 698px;
 }
 
 @media (max-width: 1493px) {
-  .btn-with-icon {
-    position: absolute;
+  .btn-add-contact {
+    position: fixed;
     right: 24.44px;
     bottom: 100px;
     width: auto !important;
