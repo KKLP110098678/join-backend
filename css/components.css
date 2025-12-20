@@ -277,13 +277,13 @@ label.urgent-priority:hover {
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	.vertical-divider {
-		width: 1px;
-		height: 24px;
-		background-color: #d1d1d1;
-	}
 }
 
+.vertical-divider {
+    width: 1px;
+    height: 24px;
+    background-color: #d1d1d1;
+}
 .form-btn-round {
 	display: flex;
 	align-items: center;

@@ -344,13 +344,6 @@
     border: 2px dashed #2196f3 !important;
 }
 
-.vertical-divider {
-    width: 1px;
-    height: 24px;
-    background-color: #ddd;
-    margin: 0 16px;
-}
-
 @media (max-width: 1493px) {
     .kanban {
         flex-direction: column;
