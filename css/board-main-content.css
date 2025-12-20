@@ -36,8 +36,6 @@
     height 1s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-<<<<<<< Updated upstream
-=======
 /* Tablet: Sidebar wird Bottom-Nav */
 @media (max-width: 1024px) {
     .main-wrapper {
