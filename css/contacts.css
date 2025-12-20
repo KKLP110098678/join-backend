@@ -196,7 +196,7 @@ margin: 0 0 0 698px;
   background-color: #D1D1D1;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1493px) {
   .btn-with-icon {
     position: absolute;
     right: 24.44px;
@@ -204,7 +204,9 @@ margin: 0 0 0 698px;
     width: auto !important;
     padding: 16px;
   }
+}
 
+@media (max-width: 1024px) {
   .contact-details-content {
     margin: 0 16px;
   }
