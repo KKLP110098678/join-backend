@@ -372,13 +372,7 @@
     }
 
     .btn-add {
-        position: absolute;
-        right: 24.44px;
-        bottom: 100px;
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: none;
     }
 }
 
