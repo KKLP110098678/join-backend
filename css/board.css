@@ -335,7 +335,6 @@
 
 .text-btn-container {
     display: flex;
-    gap: 16px;
     margin-top: 24px;
     justify-content: flex-end;
 }
@@ -343,6 +342,13 @@
 .kanban-column.drag-over {
     background-color: #e3f2fd !important;
     border: 2px dashed #2196f3 !important;
+}
+
+.vertical-divider {
+    width: 1px;
+    height: 24px;
+    background-color: #ddd;
+    margin: 0 16px;
 }
 
 @media (max-width: 1493px) {
