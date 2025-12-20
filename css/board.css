@@ -379,6 +379,16 @@
     .search-container input {
         width: 100%;
     }
+
+    .btn-add {
+        position: absolute;
+        right: 65px;
+        bottom: 100px;
+    }
+
+    .full-text {
+        display: none;
+    }
 }
 
 @media (max-width: 1024px) {
