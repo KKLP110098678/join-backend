@@ -185,13 +185,6 @@
   background-color: #f0f0f0;
 }
 
-.dropdown-item input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  accent-color: #4589ff;
-  margin-left: auto;
-}
 
 .dropdown-item label {
   align-items: center;
@@ -277,38 +270,6 @@
 }
 
 
-.custom-checkbox {
-  cursor: pointer;
-  user-select: none;
-}
-
-.checkbox-masked {
-  content: "";
-  position: relative;
-  width: 24px;
-  height: 24px;
-}
-
-.checkbox-masked::before {
-  content: "";
-  background-color: #FFFFFF;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/unchecked.svg);
-}
-
-.checkbox-masked:checked::before {
-  content: "";
-  position: absolute;
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  background-image: url(..//assets/icon/sign/checked.svg);
-}
 
 ::-webkit-calendar-picker-indicator {
   background-color: #ffffff;
