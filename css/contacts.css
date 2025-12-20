@@ -150,7 +150,8 @@
 }
 
 .contact-details-content {
-margin: 0 0 0 698px;
+  margin: 0 0 0 689px;
+  padding: 72px 62px;
 }
 
 .contact-details h1 {
@@ -207,10 +208,6 @@ margin: 0 0 0 698px;
 }
 
 @media (max-width: 1024px) {
-  .contact-details-content {
-    margin: 0 16px;
-  }
-
   .contact-menu {
     left: 0;
     top: 176px;
