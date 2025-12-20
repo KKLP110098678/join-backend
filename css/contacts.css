@@ -34,9 +34,7 @@
 
 .contact-card-content {
     display: flex;
-    align-items: center;
     gap: 35px;
-    width: 100%;
 }
 
 
@@ -102,6 +100,7 @@
   display: flex;
   flex-direction: column;
   width: 200px;
+  font-size: 19px;
 }
 
 .contact-name {
@@ -110,6 +109,7 @@
 
 .contact-email {
   color: #4589FF;
+  font-size: 16px;
 }
 
 .contact-form-header {
