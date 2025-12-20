@@ -245,6 +245,7 @@ label.urgent-priority:hover {
 
 .radio-to-btn {
 	background-color: white;
+    gap: 16px;
 }
 
 .remove-subtask-btn {
@@ -345,6 +346,8 @@ label.urgent-priority:hover {
 	position: relative;
 	width: 24px;
 	height: 24px;
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .checkbox-masked::before {
