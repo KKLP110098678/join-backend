@@ -245,6 +245,7 @@ function showContactDetails(index) {
   const avatarColor = getAvatarColor(contact.name);
   const initials = getInitials(contact.name);
   const contactDetails = document.getElementById("contact-details-content");
+  contactDetails.style.display = "block";
   contactDetails.innerHTML = getContactDetailsTemplate(
     contact,
     index,
@@ -256,6 +257,7 @@ function showContactDetails(index) {
 function getContactDetailsTemplate(contact, index, avatarColor, initials) {
   return `
         <div class="contact-header d-flex">
+      <button class="back-btn-mobile" onclick="backToContactList()" aria-label="Back" type="button"></button>
             <div>
                 <div class="user-avatar-lg details-avatar" style="background-color: ${avatarColor};">
                     <div class="avatar-content">${initials}</div>
@@ -285,6 +287,13 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
             <a href="tel:${contact.phone}">${contact.phone}</a>
         </div>
     `;
+}
+
+function backToContactList() {
+  const contactDetails = document.getElementById("contact-details-content");
+  contactDetails.style.display = "none";
+  activeContactIndex = null;
+  renderContactList();
 }
 
 
