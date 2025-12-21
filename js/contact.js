@@ -245,6 +245,7 @@ function showContactDetails(index) {
   const avatarColor = getAvatarColor(contact.name);
   const initials = getInitials(contact.name);
   const contactDetails = document.getElementById("contact-details-content");
+  contactDetails.style.display = "block";
   contactDetails.innerHTML = getContactDetailsTemplate(
     contact,
     index,
@@ -261,6 +262,7 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
                     <div class="avatar-content">${initials}</div>
                 </div>
                 <h1>${contact.name}</h1>
+                
                 <div class="contact-actions">
                     <button onclick="editContact(${index})" class="text-btn-with-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -284,7 +286,15 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
             <h3>Phone</h3>
             <a href="tel:${contact.phone}">${contact.phone}</a>
         </div>
-    `;
+        <button class="back-btn-mobile" onclick="backToContactList()" aria-label="Back" type="button"></button>
+            `;
+}
+
+function backToContactList() {
+  const contactDetails = document.getElementById("contact-details-content");
+  contactDetails.style.display = "none";
+  activeContactIndex = null;
+  renderContactList();
 }
 
 

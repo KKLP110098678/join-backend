@@ -34,9 +34,8 @@
 
 .contact-card-content {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
+    gap: 35px;
+    padding-left: 24px;
 }
 
 
@@ -102,6 +101,7 @@
   display: flex;
   flex-direction: column;
   width: 200px;
+  font-size: 19px;
 }
 
 .contact-name {
@@ -110,6 +110,7 @@
 
 .contact-email {
   color: #4589FF;
+  font-size: 16px;
 }
 
 .contact-form-header {
@@ -150,7 +151,8 @@
 }
 
 .contact-details-content {
-margin: 0 0 0 698px;
+  margin: 0 0 0 689px;
+  padding: 72px 62px;
 }
 
 .contact-details h1 {
@@ -194,4 +196,78 @@ margin: 0 0 0 698px;
 .contact-form-avatar {
   margin-bottom: 32px;
   background-color: #D1D1D1;
+}
+
+.back-btn-mobile {
+  display: none;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  margin-right: 8px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-image: url("/assets/icon/contacts/back.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+}
+
+@media (max-width: 1493px) {
+  .btn-add-contact {
+    position: fixed;
+    right: 24.44px;
+    bottom: 100px;
+    width: auto !important;
+    padding: 16px;
+  }
+
+  .contact-side-menu.right.open {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    background: white;
+    border-radius: 30px;
+    width: 396px;
+  }
+
+  .overlay-menu.open {
+    height: 760px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-details-content {
+    margin: 0;
+    position: fixed;
+    top: 96px;
+    right: 0;
+    left: 0;
+    bottom: 80px;
+    background: white;
+    z-index: 1;
+    display: none;
+    padding: 64px 16px;
+  }
+  .back-btn-mobile {
+    position: absolute;
+    top: 64px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .back-btn-mobile:active {
+    background-image: url("/assets/icon/contacts/back-active.svg");
+  }
+
+  .contact-menu {
+    left: 0;
+    top: 176px;
+    width: 100%;
+    box-shadow: none;
+    padding: 16px;
+  }
 }

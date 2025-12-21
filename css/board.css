@@ -86,13 +86,6 @@
     height: 20px;
 }
 
-.task-title {
-    font-weight: 600;
-    margin: 8px 0;
-    color: #2A3647;
-}
-
-
 /* Drag and Drop Styles */
 .kanban-column {
     flex: 1;
@@ -136,42 +129,30 @@
     opacity: 1;
 }
 
-.search-container-content {
-    display: flex;
-    align-items: center;
+.search-container {
     border-radius: 8px;
     border: solid 1px #ddd;
     overflow: hidden;
-    width: 100%;
-    height: 48px;
-    max-width: 312px;
 }
 
-.search-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.search-container-content input {
+.search-container input {
     border: none;
     outline: none;
     padding: 0px 16px;
     font-size: 1rem;
 }
 
-.search-container-content button {
+.search-container button {
     background-color: #ffffff;
     color: white;
     border: none;
+    margin: 8px 16px 8px 0px;
     cursor: pointer;
     width: 32px;
     height: 32px;
 }
 
-.search-container-content button:hover {
+.search-container button:hover {
     background-color: #f0f0f0;
 }
 
@@ -285,15 +266,6 @@
     height: 8px;
 }
 
-/* Date Input Styling */
-.form-group input[type="date"] {
-    position: relative;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3e%3cpath d='M8 2V6M16 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z' stroke='%23A8A8A8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 20px;
-}
-
 /* Select Dropdown Styling */
 .form-group select {
     appearance: none;
@@ -361,7 +333,61 @@
     transform: rotate(5deg);
 }
 
+.text-btn-container {
+    display: flex;
+    margin-top: 24px;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
 .kanban-column.drag-over {
     background-color: #e3f2fd !important;
     border: 2px dashed #2196f3 !important;
+}
+
+@media (max-width: 1493px) {
+    .kanban {
+        flex-direction: column;
+    }
+
+    .task-cards {
+        flex-direction: row !important;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+    }
+    
+    .task-card {
+        width: 252px;
+        flex: 0 0 252px;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .search-container input {
+        width: 100%;
+    }
+
+    .btn-add {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-wrapper {
+        margin-top: 64px;
+        margin-left: 0;
+    }
+
+    .kanban {
+        max-height: calc(100vh - 330px);
+    }
+
+    .main-content {
+        padding: 0 16px;
+    }
+
 }
