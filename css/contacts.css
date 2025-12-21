@@ -270,4 +270,8 @@
     box-shadow: none;
     padding: 16px;
   }
+
+  .contact-list {
+    margin-bottom: 80px;
+  }
 }
