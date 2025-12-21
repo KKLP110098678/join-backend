@@ -257,12 +257,12 @@ function showContactDetails(index) {
 function getContactDetailsTemplate(contact, index, avatarColor, initials) {
   return `
         <div class="contact-header d-flex">
-      <button class="back-btn-mobile" onclick="backToContactList()" aria-label="Back" type="button"></button>
             <div>
                 <div class="user-avatar-lg details-avatar" style="background-color: ${avatarColor};">
                     <div class="avatar-content">${initials}</div>
                 </div>
                 <h1>${contact.name}</h1>
+                
                 <div class="contact-actions">
                     <button onclick="editContact(${index})" class="text-btn-with-icon">
                         <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -286,7 +286,8 @@ function getContactDetailsTemplate(contact, index, avatarColor, initials) {
             <h3>Phone</h3>
             <a href="tel:${contact.phone}">${contact.phone}</a>
         </div>
-    `;
+        <button class="back-btn-mobile" onclick="backToContactList()" aria-label="Back" type="button"></button>
+            `;
 }
 
 function backToContactList() {
