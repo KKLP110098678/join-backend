@@ -37,7 +37,6 @@ a {
 	left: 77px;
 } */
 
-
 .back-button-link {
 	position: absolute;
 	left: 48px;
@@ -187,32 +186,30 @@ input:-webkit-autofill {
    Breakpoint: max-width 428px
    ============================================================================ */
 
-@media (max-width: 1028px){
+@media (max-width: 1028px) {
 	.register-form {
-top: 44px;
+		top: 44px;
 	}
-  	.logo-header {
+	.logo-header {
 		top: 37px;
 		left: 38px;
 		/* width: 80px;
 		height: 100px; */
 	}
 }
-@media (max-width: 628px){
+@media (max-width: 628px) {
 	.register-form {
-
-        width: 100%;
+		width: 100%;
 		padding: 40px 40px;
 	}
 }
-@media (max-width: 528px){
-
-  	.main-reg {
+@media (max-width: 528px) {
+	.main-reg {
 		width: 100%;
 		max-width: 100%;
 	}
 }
-   @media (max-width: 428px) {
+@media (max-width: 428px) {
 	/**
 	 * Mobile layout adjustments for register page
 	 * Makes form full-width and adjusts spacing for small screens
@@ -222,10 +219,15 @@ top: 44px;
 		max-width: 95%;
 		padding: 32px 24px;
 	}
+	.main-reg {
+
+		margin-top: 24px;
+	}
 
 	/**
 	 * Reduce heading size for mobile
 	 */
+
 	.head-reg {
 		font-size: 32px;
 	}
@@ -234,7 +236,7 @@ top: 44px;
 	 * Adjust separator width for mobile
 	 */
 	.separator {
-		width: 100px;
+		width: 88px;
 	}
 	/**
 	 * Adjust back button position for mobile
@@ -245,18 +247,12 @@ top: 44px;
 	}
 
 	/**
-	 * Adjust logo position for mobile
-	 */
-	/* .logo-header {
-		top: 37px;
-		left: 38px;
-		width: 80px;
-		height: 100px;
-	} */
-
-	/**
 	 * Make success overlay responsive
 	 */
+	.field-container {
+		margin-bottom: 32px;
+	}
+
 	.ol-end-content {
 		width: 90%;
 		max-width: 326px;
@@ -267,7 +263,7 @@ top: 44px;
 	 * Adjust button container for mobile
 	 */
 	.btn-container {
-		padding-top: 8px;
+		padding-top: 16px;
 	}
 
 	/**
@@ -275,12 +271,29 @@ top: 44px;
 	 */
 	.foot-container {
 		flex-direction: row;
-		gap: 12px;
+		gap: 16px;
 		flex-wrap: wrap;
 		justify-content: center;
 	}
 
 	.foot-container a {
 		font-size: 14px;
+	}
+}
+
+@media (max-width: 390px) {
+	.input-icon-container img {
+		margin-left: 0;
+		margin-right: 21px;
+	}
+	.register-form {
+		width: 304px;
+		max-width: 360px;
+		/* padding: 20px;         */
+		/* box-sizing: border-box; */
+	}
+	.main-reg {
+		width: 90%;
+		/* max-width: 100%; */
 	}
 }
