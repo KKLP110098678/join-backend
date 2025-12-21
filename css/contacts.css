@@ -221,7 +221,9 @@
     width: auto !important;
     padding: 16px;
   }
+}
 
+@media (max-width: 1024px) {
   .contact-details-content {
     margin: 0;
     position: fixed;
@@ -245,9 +247,7 @@
   .back-btn-mobile:active {
     background-image: url("/assets/icon/contacts/back-active.svg");
   }
-}
 
-@media (max-width: 1024px) {
   .contact-menu {
     left: 0;
     top: 176px;
