@@ -228,9 +228,9 @@
     top: 96px;
     right: 0;
     left: 0;
-    bottom: 0;
+    bottom: 80px;
     background: white;
-    z-index: 2000;
+    z-index: 1;
     display: none;
     padding: 64px 16px;
   }
