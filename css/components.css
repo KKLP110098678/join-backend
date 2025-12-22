@@ -4,7 +4,7 @@ button {
 
 .btn-add {
 	color: white;
-	padding: 16px 10px;
+	padding: 0 10px;
 	border-radius: 8px;
 	gap: 10px;
 	border: none;
@@ -14,6 +14,16 @@ button {
     align-items: center;
     justify-content: center;
     font-size: 23px;
+}
+
+.btn-add img {
+	margin: 18px 0;
+	
+}
+
+.btn-add img {
+	width: 15px;
+	height: 15px;
 }
 
 .btn-add:hover {
@@ -27,6 +37,9 @@ button {
 }
 
 .btn-secondary-with-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: 23px;
 	background-color: white;
 	border-radius: 10px;
@@ -83,6 +96,10 @@ button {
 }
 
 .btn-with-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
 	font-size: 23px;
 	color: white;
 	border: none;
