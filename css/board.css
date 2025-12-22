@@ -388,12 +388,9 @@
     transform: translateY(-50%) !important;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     background: white;
-    border-radius: 30px !important;
-    width: 396px;
-  }
-
-  .overlay-menu.open {
-    height: 760px;
+    border-radius: 0 !important;
+    height: calc(100svh - 160px);
+    width: 100vw;
   }
 }
 
