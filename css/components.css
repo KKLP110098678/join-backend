@@ -9,6 +9,7 @@ button {
 	gap: 10px;
 	border: none;
 	background-color: #4589ff;
+	border: 1px solid #4589ff;
 	display: flex;
     align-items: center;
     justify-content: center;
@@ -17,10 +18,12 @@ button {
 
 .btn-add:hover {
 	background-color: #005dff;
+	border: 1px solid #005dff;
 }
 
 .btn-add:active {
 	background-color: #091931;
+	border: 1px solid #4589ff;
 }
 
 .btn-secondary-with-icon {
