@@ -213,6 +213,10 @@
   background-size: 24px 24px;
 }
 
+.overlay-menu {
+  width: 584px;
+}
+
 @media (max-width: 1493px) {
   .btn-add-contact {
     position: fixed;

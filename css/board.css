@@ -345,6 +345,10 @@
     border: 2px dashed #2196f3 !important;
 }
 
+.overlay-menu {
+    width: 518px;
+}
+
 @media (max-width: 1493px) {
     .kanban {
         flex-direction: column;
