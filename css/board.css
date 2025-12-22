@@ -374,6 +374,23 @@
     .btn-add {
         display: none;
     }
+
+    .overlay-menu.open {
+    position: fixed;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    background: white;
+    border-radius: 30px !important;
+    width: 396px;
+  }
+
+  .overlay-menu.open {
+    height: 760px;
+  }
 }
 
 @media (max-width: 1024px) {
