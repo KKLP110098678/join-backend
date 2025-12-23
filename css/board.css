@@ -75,7 +75,10 @@
 .task-users.details {
     margin-left: 16px;
     flex-direction: column;
-    
+}
+
+.details .user-item {
+    padding: 7px 0;
 }
 
 .task-users .user-avatar-sm:not(:first-child) {
