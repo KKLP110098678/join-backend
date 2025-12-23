@@ -63,11 +63,12 @@ function getEditTaskTemplate(task) {
       </div>
       <form id="edit-task-form" class="task-form" onsubmit="submitEditTask(event, '${task.id}')">
             <div class="form-group">
-              <label for="edit-task-title"></label>
               <input
                 type="text"
+                class="form-input title-input"
                 id="edit-task-title"
                 name="task_title"
+                placeholder="Enter a title"
                 value="${task.title}"
                 required
               />
@@ -89,6 +90,7 @@ function getEditTaskTemplate(task) {
               <label for="task-date">Due date</label>
               <input
                 type="date"
+                class="form-input"
                 name="due_date"
                 id="edit-task-date"
                 value="${task.dueDate}"
@@ -178,10 +180,10 @@ function getEditTaskTemplate(task) {
             </div>
 
             <div class="form-group" id="assigned-to-form-group">
-              <label for="assigned-to"
-                >Assigned To</label
-              >
-              <div class="custom-dropdown" id="assigned-to">
+              <label for="assigned-to-input-field">
+                Assigned To <span class="optional">(optional)</span>
+              </label>
+              <div class="custom-dropdown">
                 <div class="dropdown-input-container">
                   <input
                     type="text"
@@ -218,6 +220,7 @@ function getEditTaskTemplate(task) {
               <div class="subtask-input-container">
                 <input
                   type="text"
+                  class="form-input"
                   name="subtasks"
                   id="add-subtask"
                   class="container-with-form-btn-group"
