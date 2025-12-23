@@ -163,12 +163,6 @@
     margin-bottom: 16px;
 }
 
-.form-group label {
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: #2a3647;
-}
-
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group select {
