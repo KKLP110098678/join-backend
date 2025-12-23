@@ -88,24 +88,6 @@
     margin: 0;
 }
 
-.details-subtasks ul {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    padding-left: 20px;
-}
-
-.details-subtasks li {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    margin-bottom: 8px;
-}
-
-.details-assigned .task-users {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
 .user-item {
     display: flex;
     align-items: center;
