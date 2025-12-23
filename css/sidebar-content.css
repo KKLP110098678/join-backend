@@ -28,7 +28,13 @@ a {
     text-align: left;
     flex-direction: column;
     gap: 15px;
+    padding: 8px 0;
     text-decoration: none;
+}
+
+.sidebar-footer
+a:hover {
+    color: #005DFF;
 }
 
 /* Responsive: Tablet/Mobile - Bottom Navigation ab 1024px */
