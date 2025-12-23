@@ -438,18 +438,18 @@ function createDetailsTemplate(
         <h2 class="details-title">${task.title}</h2>
         <p class="details-description">${task.description || ''}</p>
         <div class="details-due-date">
-          <h3>Due Date</h3>
+          <h3>Due Date:</h3>
           <p>${task.dueDate || 'No due date'}</p>
         </div>
         <div class="details-priority">
-          <h3>Priority</h3>
+          <h3>Priority:</h3>
           <div class="task-priority">
             <img src="${priorityIcon}" alt="${priorityLabel}" class="priority-icon">
             <span>${priorityLabel}</span>
           </div>
         </div>
         <div class="details-assigned">
-          <h3>Assigned To</h3>
+          <h3>Assigned To:</h3>
           <div class="task-users">
             ${assignedUsersHTML || '<p>No assignees</p>'}
           </div>
