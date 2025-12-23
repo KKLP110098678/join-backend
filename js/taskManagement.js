@@ -450,7 +450,7 @@ function createDetailsTemplate(
         </div>
         <div class="details-assigned">
           <h3>Assigned To:</h3>
-          <div class="task-users">
+          <div class="task-users details">
             ${assignedUsersHTML || '<p>No assignees</p>'}
           </div>
         </div>
