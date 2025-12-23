@@ -277,6 +277,19 @@
   color: #2a3647;
 }
 
+.subtask {
+  margin-left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.subtask-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 
 
 ::-webkit-calendar-picker-indicator {

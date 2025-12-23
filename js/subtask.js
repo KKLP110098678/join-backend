@@ -215,7 +215,7 @@ function generateSubtasksHTML(taskId, subtasks) {
   for (let i = 0; i < subtasks.length; i++) {
     let subtask = subtasks[i];
     let completedClass = subtask.completed ? "completed" : "";
-    html += `<input type="checkbox" class="checkbox-masked" id="subtask-${i}" onchange="toggleSubtaskStatus('${taskId}', this.id)" ${subtask.completed ? "checked" : ""}><li class="${completedClass}">${subtask.text}</li>`;
+    html += `<div class="${completedClass} subtask"><input type="checkbox" class="checkbox-masked" id="subtask-${i}" onchange="toggleSubtaskStatus('${taskId}', this.id)" ${subtask.completed ? "checked" : ""}>${subtask.text}</div>`;
   }
   return html;
 }

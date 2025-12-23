@@ -456,9 +456,9 @@ function createDetailsTemplate(
         </div>
         <div class="details-subtasks">
           <h3>Subtasks</h3>
-          <ul>
+          <div class="subtask-content">
             ${subtasksHTML || '<li>No subtasks</li>'}
-          </ul>
+          </div>
         </div>
         <div class="text-btn-container d-flex">
           <button class="text-btn-with-icon" onclick="deleteTask('${task.id}'); toggleOverlay('#details-overlay')">
