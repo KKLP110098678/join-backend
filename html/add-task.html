@@ -83,6 +83,7 @@
             <form id="task-form" class="task-form" onsubmit="saveTask(event)">
               <div class="form-group" id="title-form-group">
                 <input
+                  class="title-input form-input"
                   type="text"
                   id="task-title"
                   name="task_title"
@@ -110,6 +111,7 @@
               <div class="form-group" id="date-form-group">
                 <label for="task-date">Due date</label>
                 <input
+                  class="form-input"
                   type="date"
                   name="due_date"
                   id="task-date"
@@ -288,6 +290,7 @@
                 >
                 <div class="subtask-input-container">
                   <input
+                    class="form-input"
                     type="text"
                     name="subtasks"
                     id="add-subtask"

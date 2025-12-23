@@ -279,6 +279,7 @@
         <form id="task-form" onsubmit="saveTask(event)">
           <div class="form-group" id="title-form-group">
             <input
+            class="title-input form-input"
               type="text"
               id="task-title"
               name="title"
@@ -291,13 +292,14 @@
             </div>
           </div>
           <div class="form-group" id="description-form-group">
-            <label for="description">Description <span>(optional)</span></label>
+            <label for="description">Description <span class="optional">(optional)</span></label>
             <textarea id="description" name="description" rows="4"></textarea>
           </div>
           <div class="form-group" id="date-form-group">
             <label for="task-date">Due Date</label>
             <input
               type="date"
+              class="form-input"
               id="task-date"
               name="task-date"
               required
@@ -315,7 +317,7 @@
                 name="priority"
                 value="High"
               />
-              <label for="add-urgent-priority" class="urgent-priority">
+              <label for="add-urgent-priority" class="urgent-priority priority">
                 Urgent
                 <svg
                   width="20"
@@ -340,7 +342,7 @@
                 name="priority"
                 value="Medium"
               />
-              <label for="add-medium-priority" class="medium-priority">
+              <label for="add-medium-priority" class="medium-priority priority">
                 Medium
                 <svg
                   width="20"
@@ -366,7 +368,7 @@
                 value="Low"
                 required
               />
-              <label for="add-low-priority" class="low-priority">
+              <label for="add-low-priority" class="low-priority priority">
                 Low
                 <svg
                   width="21"
@@ -388,7 +390,7 @@
             </div>
           </div>
           <div class="form-group" id="assigned-to-form-group">
-            <label for="assigned-to">Assigned To</label>
+            <label for="assigned-to">Assigned To <span class="optional">(optional)</span></label>
             <div class="custom-dropdown" id="assigned-to">
               <div class="dropdown-input-container">
                 <input
@@ -473,7 +475,7 @@
                 type="text"
                 name="subtasks"
                 id="add-subtask"
-                class="container-with-form-btn-group"
+                class="container-with-form-btn-group form-input"
                 placeholder="Add new subtask"
               />
               <div class="form-btn-group">
