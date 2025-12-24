@@ -44,12 +44,33 @@ function setPriorityForEdit(priority) {
 }
 
 
+function generateAssignedUsersEditHTML(assignedToArray) {
+  let html = "";
+  for (let i = 0; i < assignedToArray.length; i++) {
+    html += createUserItemHTML(assignedToArray[i]);
+  }
+  return html;
+}
+
+function createUserItemHTML(fullName) {
+  let initials = getInitials(fullName);
+  let avatarColor = getAvatarColor(fullName);
+
+  return `
+    <div class="user-item">
+      <div class="user-avatar-sm" style="background-color: ${avatarColor};">${initials}</div>
+    </div>
+  `;
+}
+
+
 /**
  * Generates the HTML template for editing a task
  * @param {Object} task - Task object to edit
  * @returns {string} HTML string for the edit form
  */
 function getEditTaskTemplate(task) {
+  let assignedUsersHTML = generateAssignedUsersEditHTML(task.assignedTo || []);
   return `
     <div class="details-card">
       <div class="details-header">
@@ -209,7 +230,7 @@ function getEditTaskTemplate(task) {
                 </div>
                 </div>
                 <div class="assignees" id="edit-assignees-container">
-                  <!-- Selected assignees will appear here -->
+                  ${assignedUsersHTML}
               </div>
             </div>
             <div class="form-group">
