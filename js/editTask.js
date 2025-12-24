@@ -13,8 +13,7 @@ function editTask(taskId) {
   if (task.assignedTo && Array.isArray(task.assignedTo)) {
     selectedUsers = [];
     for (let i = 0; i < task.assignedTo.length; i++) {
-      let fullName = getFullNameFromInitials(task.assignedTo[i]);
-      selectedUsers.push(fullName);
+      selectedUsers.push(task.assignedTo[i]);
     }
   }
   
@@ -188,7 +187,7 @@ function getEditTaskTemplate(task) {
                   <input
                     type="text"
                     class="dropdown-input"
-                    id="assigned-to-input-field"
+                    id="edit-assigned-to-input-field"
                     placeholder="Select contacts to assign"
                     oninput="searchContact('task-edit')"
                     onclick="toggleAssignedDropdown('task-edit', this.parentElement.parentElement)"
@@ -307,11 +306,10 @@ async function submitEditTask(event, taskId) {
     }
   }
   
-  // Get assigned users as initials
+  // Get assigned users as full names
   let assignedTo = [];
   for (let i = 0; i < selectedUsers.length; i++) {
-    let initials = getInitials(selectedUsers[i]);
-    assignedTo.push(initials);
+    assignedTo.push(selectedUsers[i]);
   }
   
   // Get filtered subtasks
