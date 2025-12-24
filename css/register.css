@@ -276,9 +276,9 @@ input:-webkit-autofill {
 		justify-content: center;
 	}
 
-	.foot-container a {
+	/* .foot-container a {
 		font-size: 14px;
-	}
+	} */
 }
 
 @media (max-width: 390px) {
