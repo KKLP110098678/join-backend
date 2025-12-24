@@ -30,7 +30,7 @@ function getDefaultTasks() {
       title: "Kochwelt Page & Recipe Recommender",
       description: "Build start page with recipe recommendation.",
       category: "User Story",
-      assignedTo: ["JD", "MS"],
+      assignedTo: ["John Doe", "Jane Smith"],
       priority: "urgent",
       status: "todo",
       subtasks: [
@@ -44,7 +44,7 @@ function getDefaultTasks() {
       title: "HTML Base Template Creation",
       description: "Create reusable HTML base templates for all pages.",
       category: "User Story",
-      assignedTo: ["AB"],
+      assignedTo: ["Alice Johnson"],
       priority: "medium",
       status: "todo",
       subtasks: [
@@ -59,7 +59,7 @@ function getDefaultTasks() {
       title: "CSS Architecture Planning",
       description: "Plan and structure CSS architecture for the project.",
       category: "User Story",
-      assignedTo: ["CG", "DK", "LM"],
+      assignedTo: ["Cathy Brown", "David Clark", "Liam King"],
       priority: "low",
       status: "in-progress",
       subtasks: [
@@ -73,7 +73,7 @@ function getDefaultTasks() {
       title: "JavaScript Functions",
       description: "Implement core JavaScript functionality.",
       category: "Technical Task",
-      assignedTo: ["NG"],
+      assignedTo: ["Nathan Moore"],
       priority: "urgent",
       status: "in-progress",
       subtasks: [
@@ -87,7 +87,7 @@ function getDefaultTasks() {
       title: "Daily Kanban Board",
       description: "Create a functional Kanban board for task management.",
       category: "User Story",
-      assignedTo: ["PQ", "RS"],
+      assignedTo: ["Paul Owens", "Rachel Quinn"],
       priority: "medium",
       status: "await-feedback",
       subtasks: [
@@ -102,7 +102,7 @@ function getDefaultTasks() {
       title: "Contact Management System",
       description: "Develop a comprehensive contact management system.",
       category: "User Story",
-      assignedTo: ["TV"],
+      assignedTo: ["Tina Scott"],
       priority: "low",
       status: "done",
       subtasks: [
@@ -116,7 +116,7 @@ function getDefaultTasks() {
       title: "Database Integration",
       description: "Set up database connection and data persistence.",
       category: "Technical Task",
-      assignedTo: ["WX", "YZ"],
+      assignedTo: ["Quincy Price", "Samuel Reed"],
       priority: "medium",
       status: "done",
       subtasks: [
@@ -400,10 +400,8 @@ function generateAssignedUsersDetailsHTML(assignedToArray) {
   return html;
 }
 
-
-function createUserItemHTML(initialsOrName) {
-  let initials = getInitials(initialsOrName);
-  let fullName = getFullNameFromInitials(initialsOrName);
+function createUserItemHTML(fullName) {
+  let initials = getInitials(fullName);
   let avatarColor = getAvatarColor(fullName);
 
   return `
@@ -480,40 +478,7 @@ function createDetailsTemplate(
   `;
 }
 
-/**
- * Gets full name from initials by searching in contacts array
- * @param {string} initialsOrName - Initials (e.g., "JD") or full name
- * @returns {string} Full name or the original value if not found
- */
-function getFullNameFromInitials(initialsOrName) {
-  if (!initialsOrName) return "";
-
-  if (initialsOrName.includes(" ")) {
-    return initialsOrName;
-  }
-
-  if (isInitials(initialsOrName)) {
-    return findContactByInitials(initialsOrName);
-  }
-
-  return initialsOrName;
-}
-
-
-function isInitials(str) {
-  return str.length <= 3 && str === str.toUpperCase();
-}
-
-
-function findContactByInitials(initials) {
-    for (let i = 0; i < contacts.length; i++) {
-      let contactInitials = getInitials(contacts[i].name);
-      if (contactInitials === initials) {
-        return contacts[i].name;
-      }
-    }
-  return initials;
-}
+// Removed initials-to-name mapping: assignees now store full names directly
 
 /**
  * Saves tasks to sessionStorage

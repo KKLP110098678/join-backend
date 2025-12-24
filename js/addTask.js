@@ -310,7 +310,7 @@ function createTaskFromForm() {
   let dueDate = document.getElementById("task-date").value;
   let priority = getSelectedPriority();
   let category = getSelectedCategory();
-  let assignedTo = getAssignedUserInitials();
+  let assignedTo = getAssignedUserNames();
   let subtasks = getFilteredSubtasks();
 
   return {
@@ -359,11 +359,10 @@ function getSelectedCategory() {
 }
 
 
-function getAssignedUserInitials() {
+function getAssignedUserNames() {
   let assignedTo = [];
   for (let i = 0; i < selectedUsers.length; i++) {
-    let initials = getInitials(selectedUsers[i]);
-    assignedTo.push(initials);
+    assignedTo.push(selectedUsers[i]);
   }
   return assignedTo;
 }
