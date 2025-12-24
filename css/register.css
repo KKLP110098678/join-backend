@@ -215,13 +215,15 @@ input:-webkit-autofill {
 	 * Makes form full-width and adjusts spacing for small screens
 	 */
 	.register-form {
-		width: 95%;
-		max-width: 95%;
+		/* max-width: 100%; */
+		width: 396px;
 		padding: 32px 24px;
+		/* top: 32px; */
+		/* bottom: 32px; */
 	}
 	.main-reg {
-
 		margin-top: 24px;
+		width: 364px;
 	}
 
 	/**
@@ -229,7 +231,7 @@ input:-webkit-autofill {
 	 */
 
 	.head-reg {
-		font-size: 32px;
+		font-size: 47px;
 	}
 
 	/**
@@ -242,7 +244,6 @@ input:-webkit-autofill {
 	 * Adjust back button position for mobile
 	 */
 	.back-button-link {
-		left: 24px;
 		top: 32px;
 	}
 
@@ -281,14 +282,14 @@ input:-webkit-autofill {
 	} */
 }
 
-@media (max-width: 390px) {
+@media (max-width: 396px) {
 	.input-icon-container img {
 		margin-left: 0;
 		margin-right: 21px;
 	}
 	.register-form {
-		width: 304px;
-		max-width: 360px;
+		width: 100%;
+		max-width: 320px;
 		/* padding: 20px;         */
 		/* box-sizing: border-box; */
 	}
