@@ -478,8 +478,6 @@ function createDetailsTemplate(
   `;
 }
 
-// Removed initials-to-name mapping: assignees now store full names directly
-
 /**
  * Saves tasks to sessionStorage
  */

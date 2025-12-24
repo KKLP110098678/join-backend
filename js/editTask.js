@@ -187,7 +187,7 @@ function getEditTaskTemplate(task) {
                   <input
                     type="text"
                     class="dropdown-input"
-                    id="assigned-to-input-field"
+                    id="edit-assigned-to-input-field"
                     placeholder="Select contacts to assign"
                     oninput="searchContact('task-edit')"
                     onclick="toggleAssignedDropdown('task-edit', this.parentElement.parentElement)"

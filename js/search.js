@@ -68,8 +68,10 @@ function handleSearchInput(event) {
 }
 
 
-function searchContact() {
-  const searchInput = document.getElementById("assigned-to-input-field");
+function searchContact(mode) {
+  const searchInput = mode === 'task-edit'
+    ? document.getElementById('edit-assigned-to-input-field')
+    : document.getElementById('assigned-to-input-field');
   if (!searchInput) return;
   
   const searchTerm = searchInput.value.toLowerCase().trim();
@@ -80,9 +82,10 @@ function searchContact() {
   );
   
   // Get dropdown container and iterate through children
-  const dropdownList = document.getElementById('assigned-to-list');
-  if (!dropdownList) return;
-  
+  const dropdownList = mode === 'task-edit'
+    ? document.getElementById('edit-assigned-to-list')
+    : document.getElementById('assigned-to-list');
+  if (!dropdownList) return;  
   const dropdownItems = dropdownList.children;
   
   for (let i = 0; i < dropdownItems.length; i++) {
