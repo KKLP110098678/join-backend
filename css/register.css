@@ -84,7 +84,7 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	gap: 16px;
+	gap: 32px;
 	width: 422px;
 	min-height: 324px;
 	margin: 0 auto;
@@ -215,12 +215,10 @@ input:-webkit-autofill {
 	 * Makes form full-width and adjusts spacing for small screens
 	 */
 	.register-form {
-		/* max-width: 100%; */
 		width: 396px;
 		padding: 32px 24px;
-		/* top: 32px; */
-		/* bottom: 32px; */
 	}
+
 	.main-reg {
 		margin-top: 24px;
 		width: 364px;
@@ -229,7 +227,6 @@ input:-webkit-autofill {
 	/**
 	 * Reduce heading size for mobile
 	 */
-
 	.head-reg {
 		font-size: 47px;
 	}
@@ -259,14 +256,20 @@ input:-webkit-autofill {
 		max-width: 326px;
 		font-size: 20px;
 	}
-
+.custom-checkbox{
+	gap: 10px;
+}
 	/**
 	 * Adjust button container for mobile
 	 */
 	.btn-container {
 		padding-top: 16px;
 	}
-
+.btn-no-icon {
+	width: 180px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
 	/**
 	 * Adjust footer for mobile
 	 */
