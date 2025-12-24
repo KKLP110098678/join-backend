@@ -29,14 +29,6 @@ a {
 	gap: 35px;
 }
 
-/* .logo-header {
-	position: absolute;
-	width: 64px;
-	height: 78px;
-	top: 80px;
-	left: 77px;
-} */
-
 .back-button-link {
 	position: absolute;
 	left: 48px;
@@ -183,18 +175,18 @@ input:-webkit-autofill {
 
 /* ============================================================================
    RESPONSIVE DESIGN - MOBILE
-   Breakpoint: max-width 428px
+   Breakpoint: max-width 1028px 628px 528px 428px 396px 340px
    ============================================================================ */
 
 @media (max-width: 1028px) {
 	.register-form {
 		top: 44px;
+		min-height: 608px;
 	}
 	.logo-header {
 		top: 37px;
 		left: 38px;
-		/* width: 80px;
-		height: 100px; */
+
 	}
 }
 @media (max-width: 628px) {
@@ -256,20 +248,20 @@ input:-webkit-autofill {
 		max-width: 326px;
 		font-size: 20px;
 	}
-.custom-checkbox{
-	gap: 10px;
-}
+	.custom-checkbox {
+		gap: 10px;
+	}
 	/**
 	 * Adjust button container for mobile
 	 */
 	.btn-container {
 		padding-top: 16px;
 	}
-.btn-no-icon {
-	width: 180px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-}
+	.btn-no-icon {
+		width: 180px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
 	/**
 	 * Adjust footer for mobile
 	 */
@@ -279,25 +271,46 @@ input:-webkit-autofill {
 		flex-wrap: wrap;
 		justify-content: center;
 	}
-
-	/* .foot-container a {
-		font-size: 14px;
-	} */
 }
 
 @media (max-width: 396px) {
+	.back-button-link {
+		left: 32px;
+	}
+
 	.input-icon-container img {
 		margin-left: 0;
 		margin-right: 21px;
 	}
-	.register-form {
-		width: 100%;
-		max-width: 320px;
-		/* padding: 20px;         */
-		/* box-sizing: border-box; */
+
+	.head-reg {
+		font-size: 37px;
 	}
+
+	.register-form {
+		max-width: 320px;
+		top: 32px;
+	}
+
 	.main-reg {
-		width: 90%;
-		/* max-width: 100%; */
+		width: 290px;
+	}
+}
+@media (max-width: 340px) {
+	.back-button-link {
+		left: 22px;
+	}
+
+	.input-icon-container img {
+		margin-left: 0;
+		margin-right: 31px;
+	}
+
+	.register-form {
+		max-width: 300px;
+	}
+
+	.input-icon-container {
+		padding: 12px 12px;
 	}
 }
