@@ -72,8 +72,6 @@ function searchContact(mode) {
   const searchInput = mode === 'task-edit'
     ? document.getElementById('edit-assigned-to-input-field')
     : document.getElementById('assigned-to-input-field');
-  if (!searchInput) return;
-  
   const searchTerm = searchInput.value.toLowerCase().trim();
   
   // Filter contacts array based on search term
@@ -85,7 +83,6 @@ function searchContact(mode) {
   const dropdownList = mode === 'task-edit'
     ? document.getElementById('edit-assigned-to-list')
     : document.getElementById('assigned-to-list');
-  if (!dropdownList) return;  
   const dropdownItems = dropdownList.children;
   
   for (let i = 0; i < dropdownItems.length; i++) {
