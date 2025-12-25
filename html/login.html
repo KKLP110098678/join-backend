@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
     <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/color.css" />
     <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/color.css" />
   </head>
   <body onload="Loadingscreen()">
     <div id="loader" class="loader"></div>
@@ -15,11 +15,7 @@
       <header>
         <div class="text-center login-header">
           <p class="login-header-text">Not a Join user?</p>
-          <a
-            href="register.html"
-            class="btn-no-icon"
-            >Sign up</a
-          >
+          <a href="register.html" class="btn-no-icon">Sign up</a>
         </div>
       </header>
       <main>
@@ -60,20 +56,22 @@
               </div>
             </div>
             <div class="checkbox-container">
-                <label class="custom-checkbox">
-                  <input id="remember-me-checkbox" class="checkbox-masked" type="checkbox" disabled />
-                  <span>
-                    Remember me
-                  </span>
-                </label>
-                <small id="checkbox-error" class="d-none msg-error"></small>
-              </div>
+              <label class="custom-checkbox">
+                <input
+                  id="remember-me-checkbox"
+                  class="checkbox-masked"
+                  type="checkbox"
+                  disabled
+                />
+                <span> Remember me </span>
+              </label>
+              <small id="checkbox-error" class="d-none msg-error"></small>
+            </div>
             <div class="btn-container">
               <button class="btn-no-icon" type="submit">Log in</button>
-              <button
-                class="btn-secondary"
-                onclick="loginAsGuest()"
-                >Guest log in</button>
+              <button class="btn-secondary" onclick="loginAsGuest()">
+                Guest Log in
+              </button>
             </div>
           </div>
         </form>

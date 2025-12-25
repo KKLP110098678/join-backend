@@ -109,6 +109,19 @@ a {
 	padding-top: 10px;
 }
 
+.logo-header {
+	position: absolute;
+	width: 101px;
+	height: 122px;
+	top: 80px;
+	left: 77px;
+}
+
+.logo-header img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
 .msg-error {
 	color: red;
 	text-align: left;
@@ -186,7 +199,6 @@ input:-webkit-autofill {
 	.logo-header {
 		top: 37px;
 		left: 38px;
-
 	}
 }
 @media (max-width: 628px) {
@@ -206,6 +218,11 @@ input:-webkit-autofill {
 	 * Mobile layout adjustments for register page
 	 * Makes form full-width and adjusts spacing for small screens
 	 */
+	.logo-header {
+		width: 64px;
+		height: 78px;
+	}
+	
 	.register-form {
 		width: 396px;
 		padding: 32px 24px;
