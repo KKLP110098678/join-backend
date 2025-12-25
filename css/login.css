@@ -281,14 +281,17 @@ a {
 	}
 } */
 @media (max-width: 428px) {
-	.loder1 {
-		width: 64px;
-		height: 78px;
+
+	.head-reg {
+		font-size: 47px;
+	}
+	.separator {
+		width: 88px;
 	}
 	.register-form {
 		width: 396px;
-		padding: 32px 24px;
-		height: 469px;
+		padding: 32px 16px;
+		min-height: 469px;
 	}
 	.main-reg {
 		gap: 16px;
@@ -307,6 +310,6 @@ a {
 	.btn-secondary {
 		width: 180px !important;
 		font-size: 19px !important;
-		padding: 10px 0px !important; 
+		padding: 10px 0px !important;
 	}
 }
