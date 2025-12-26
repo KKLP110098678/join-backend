@@ -270,8 +270,8 @@ a {
 		background-color: tomato;
 	}
 }
-@media (max-width: 768px){
-		.register-main-container {
+@media (max-width: 768px) {
+	.register-main-container {
 		position: relative;
 	}
 
@@ -279,7 +279,15 @@ a {
 		position: absolute;
 		top: 782px;
 		gap: 35px;
-		transform: translateX(12%);
+		left: 50%;
+		transform: translateX(-50%);
+		right: 0px;
+		justify-content: center;
+		/* align-items: center; */
+		/* 	position: absolute;
+	top: 67px;
+	display: flex;
+	gap: 20px; */
 	}
 
 	.login-header-text {
@@ -302,6 +310,13 @@ a {
 }
 
 @media (max-width: 428px) {
+		.login-header1 {
+		position: absolute;
+		top: 782px;
+		gap: 35px;
+		/* transform: translateX(12%); */
+	}
+
 	.head-reg {
 		font-size: 47px;
 	}
@@ -341,5 +356,4 @@ a {
 		width: 180px !important;
 		padding: 10px 0px !important;
 	}
-
 }
