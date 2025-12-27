@@ -76,12 +76,16 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	gap: 32px;
+	gap: 22px;
 	width: 422px;
 	min-height: 324px;
 	margin: 0 auto;
 }
-
+.field-container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
+}
 .main-reg > div {
 	width: 100%;
 }
@@ -92,6 +96,25 @@ a {
 	margin-bottom: 16px;
 }
 
+.input-icon-container {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid var(--color-grey-light);
+	justify-content: space-around;
+	padding: 12px 21px;
+}
+
+.input-icon-container input {
+	flex: 1;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: 1rem;
+}
+
+.input-icon-container img {
+	margin-left: 12px;
+}
 .valid-input {
 	border-bottom: 1px solid var(--color-light-blue);
 }
@@ -104,9 +127,13 @@ a {
 #password-icon {
 	cursor: pointer;
 }
-
 .btn-container {
-	padding-top: 10px;
+	display: flex;
+	gap: 35px;
+	padding-top: 32px;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
 }
 
 .logo-header {
@@ -222,7 +249,7 @@ input:-webkit-autofill {
 		width: 64px;
 		height: 78px;
 	}
-	
+
 	.register-form {
 		width: 396px;
 		padding: 32px 24px;
@@ -275,9 +302,9 @@ input:-webkit-autofill {
 		padding-top: 16px;
 	}
 	.btn-no-icon {
-		width: 180px;
-		padding-top: 4px;
-		padding-bottom: 4px;
+		width: 180px !important;
+		height: 48px !important;
+		font-size: 19px !important;
 	}
 	/**
 	 * Adjust footer for mobile
@@ -330,4 +357,7 @@ input:-webkit-autofill {
 	.input-icon-container {
 		padding: 12px 12px;
 	}
+}
+.form-field .field-container:nth-child(4) {
+	margin-bottom: 0;
 }
