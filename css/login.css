@@ -50,7 +50,7 @@
 	gap: 16px;
 	width: 100%;
 	max-width: 422px;
-	min-height: 200px;
+	min-height: 152px;
 	margin: 0 auto;
 }
 
@@ -283,18 +283,23 @@ a {
 		transform: translateX(-50%);
 		right: 0px;
 		justify-content: center;
-		/* align-items: center; */
-		/* 	position: absolute;
-	top: 67px;
-	display: flex;
-	gap: 20px; */
 	}
 
 	.login-header-text {
 		color: #42526e;
 		font-size: 19px;
 	}
+	.main-reg {
+		padding: 16px 0px;
+	}
+	.field-container {
+		margin-bottom: 28px;
+	}
 
+	.btn-container {
+		padding-top: 16px;
+	}
+	
 	.btn-no-icon:last-child {
 		width: 98px !important;
 		padding: 10px 16px !important;
@@ -306,11 +311,12 @@ a {
 	.register-form {
 		padding: 24px 20px;
 		border-radius: 16px;
+		min-height: 469px;
 	}
 }
 
 @media (max-width: 428px) {
-		.login-header1 {
+	.login-header1 {
 		position: absolute;
 		top: 782px;
 		gap: 35px;
