@@ -242,7 +242,6 @@
 /* Error message styling */
 #error-message {
 	color: #ff3d00;
-	/* margin-top: 10px; */
 	display: none;
 	font-size: 14px;
 }
@@ -306,9 +305,7 @@ a {
 	.register-form {
 		max-height: 469px;
 	}
-	.field-container {
-		/* margin-bottom: 28px; */
-	}
+
 	.form-field :last-child {
 		margin-bottom: 0;
 	}
@@ -325,15 +322,15 @@ a {
 
 @media (max-width: 568px) {
 	.login-header {
-		/* left: auto; */
 		right: -50%;
 	}
+	
 	.register-form {
 		padding: 32px 32px;
 		border-radius: 16px;
-		/* max-height: 469px; */
 		height: 459px;
 	}
+
 	.main-reg {
 		padding: 16px 0;
 	}
@@ -362,9 +359,8 @@ a {
 	}
 
 	.main-reg {
-		gap: 16px;
-
-		width: 364px;
+		width: 100%;
+		max-width: 364px;
 	}
 
 	button {
@@ -392,25 +388,13 @@ a {
 	.head-reg {
 		font-size: 37px;
 	}
-
-	/* .register-form {
-		width: 396px;
-		padding: 32px 16px;
-		height: 469px;
+	.main-reg input {
+		width: 100%;
+		min-width: 0;
 	}
-
-	.main-reg {
-		gap: 16px;
-
-		width: 364px;
-	} */
 
 	.register-form {
 		padding: 16px 8px;
-	}
-
-	.main-reg {
-		width: 100%;
-		gap: 12px;
+		max-width: 302px;
 	}
 }
