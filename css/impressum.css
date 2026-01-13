@@ -82,6 +82,14 @@ a {
 	font-size: 16px;
 }
 
+.back-img {
+	transition: 0.2s ease-in-out;
+	contain: url("../assets/icon/sign/back.svg");
+}
+.back-img:hover {
+	contain: url("../assets/icon/sign/hoverback.svg");
+	/* width: 40px; */
+}
 /**
  * Back button and help icon container
  * Displays page title with back button on right (desktop only)

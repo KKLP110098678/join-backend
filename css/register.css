@@ -42,9 +42,13 @@ a {
 	overflow: hidden;
 }
 
-.back-button-link:hover {
-	background-color: #e3eeff;
+/* .back-img {
+	transition: 0.2s ease-in-out;
+	contain: url("../assets/icon/sign/back.svg");
 }
+.back-button-link:hover .back-img{
+	contain: url("../assets/icon/sign/hoverback.svg");
+} */
 
 .register-form {
 	position: relative;
