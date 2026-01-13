@@ -33,8 +33,6 @@ a {
 	position: absolute;
 	left: 48px;
 	top: 64px;
-	width: 37px;
-	height: 37px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -42,13 +40,22 @@ a {
 	overflow: hidden;
 }
 
-/* .back-img {
-	transition: 0.2s ease-in-out;
-	contain: url("../assets/icon/sign/back.svg");
+.back-icon {
+  width: 33px;
+  height: 33px;
+
+  background-image: url("../assets/icon/sign/back.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: 0.2s ease-in-out;
 }
-.back-button-link:hover .back-img{
-	contain: url("../assets/icon/sign/hoverback.svg");
-} */
+
+.back-icon:hover {
+  background-image: url("../assets/icon/sign/hoverback.svg");
+}
+
 
 .register-form {
 	position: relative;

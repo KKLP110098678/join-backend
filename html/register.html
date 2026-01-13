@@ -19,11 +19,10 @@
       <main>
         <form class="register-form" onsubmit="handleRegisterUser(event)">
           <a class="back-button-link" href="./login.html" title="back">
-            <img
-              alt="backImg"
-              src="../assets/icon/sign/back.svg"
+            <span
+              class="back-icon"
               onclick="sessionStorage.setItem('skipAnimation', 'true');"
-            />
+            ></span>
           </a>
 
           <div>
@@ -99,7 +98,12 @@
               </div>
               <div class="checkbox-container">
                 <label class="custom-checkbox" onclick="toggleCheckBox(event)">
-                  <input id="privacy-checkbox" class="checkbox-masked" type="checkbox" disabled />
+                  <input
+                    id="privacy-checkbox"
+                    class="checkbox-masked"
+                    type="checkbox"
+                    disabled
+                  />
                   <span>
                     I accept the
                     <span class="color-dark-blue"
@@ -111,7 +115,12 @@
               </div>
             </div>
             <div class="btn-container">
-              <button id="btn-signup" class="btn-no-icon" type="submit" disabled>
+              <button
+                id="btn-signup"
+                class="btn-no-icon"
+                type="submit"
+                disabled
+              >
                 Sign up
               </button>
             </div>

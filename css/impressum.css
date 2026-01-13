@@ -82,6 +82,18 @@ a {
 	font-size: 16px;
 }
 
+
+
+/**
+ * Back button and help icon container
+ * Displays page title with back button on right (desktop only)
+ */
+.back-help {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 90px;
+}
+
 .back-icon {
   display: inline-block;
   width: 33px;
@@ -97,17 +109,6 @@ a {
 
 .back-icon:hover {
   background-image: url("../assets/icon/sign/hoverback.svg");
-}
-
-
-/**
- * Back button and help icon container
- * Displays page title with back button on right (desktop only)
- */
-.back-help {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 90px;
 }
 
 /* ============================================================================
