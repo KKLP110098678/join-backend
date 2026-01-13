@@ -271,7 +271,6 @@ a {
 		margin-bottom: 16px;
 		top: 865px;
 	}
-
 }
 @media (max-width: 768px) {
 	@keyframes logoTransition {
@@ -322,9 +321,6 @@ a {
 		padding: 10px 16px !important;
 		font-size: 19px !important;
 	}
-}
-
-@media (max-width: 640px) {
 }
 
 @media (max-width: 568px) {
