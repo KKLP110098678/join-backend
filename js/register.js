@@ -1,3 +1,9 @@
+/**
+ * @fileoverview User registration flow and validation.
+ * Manages form state, validation, and user creation logic.
+ * @version 1.0.0
+ * @author Join Development Team
+ */
 const CONFIG = {
   routes: {
     login: "../html/login.html", // Default login redirect path

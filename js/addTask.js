@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Add-task form and assigned user management.
+ * Handles dropdown population, user selection, subtasks, and form toggles.
+ * @version 1.0.0
+ * @author Join Development Team
+ */
 // Add Task Form Functionality
 
 // Global variable to store the target column status
