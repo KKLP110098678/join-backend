@@ -64,10 +64,10 @@ function getSubtaskEditTemplate(index, text) {
   return `
     <div class="subtask-edit-container" id="subtask-edit-${index}">
       <div class="subtask-input-container">
-        <input 
-        type="text" 
+        <input
+        type="text"
         id="subtask-edit-input-${index}"
-        class="subtask-edit-input container-with-form-btn-group" 
+        class="subtask-edit-input container-with-form-btn-group"
         value="${text}"
         />
         <div class="form-btn-group">
@@ -98,13 +98,13 @@ function editSubtask(index) {
   let subtaskItem = document.getElementById(`subtask-item-${index}`);
   // Get current subtask text
   let currentText = currentSubtasks[index].text;
-  
+
   // Create edit input container
   subtaskItem.insertAdjacentHTML('afterend', getSubtaskEditTemplate(index, currentText));
-  
+
   // Hide the original subtask item
   subtaskItem.style.display = 'none';
-  
+
   // Focus the input field
   let input = document.getElementById(`subtask-edit-input-${index}`);
   input.focus();
@@ -120,19 +120,19 @@ function saveSubtaskEdit(index) {
   let input = document.getElementById(`subtask-edit-input-${index}`);
   let subtaskItem = document.getElementById(`subtask-item-${index}`);
   let textSpan = subtaskItem.getElementsByClassName('subtask-text')[0];
-  
+
   if (!input) return;
-  
+
   let newText = input.value.trim();
-  
+
   if (newText.length > 0) {
     // Update the subtask text
     currentSubtasks[index].text = newText;
-    
+
     // Update the display
     textSpan.textContent = newText;
   }
-  
+
   // Remove edit container and show original item
   cancelSubtaskEdit(index);
 }
@@ -191,7 +191,7 @@ function calculateSubtaskProgress(subtasks) {
   let totalSubtasks = subtasks.length;
   let subtaskProgress =
     totalSubtasks > 0
-      ? completedSubtasks + "/" + totalSubtasks + " Subtasks"
+      ? completedSubtasks + "/" + totalSubtasks + "Subtasks"
       : "";
   let progressInPercent =
     totalSubtasks > 0 ? (completedSubtasks / totalSubtasks) * 100 : 0;
@@ -210,7 +210,7 @@ function generateSubtasksHTML(taskId, subtasks) {
   if (!subtasks || !Array.isArray(subtasks)) {
     return "";
   }
-  
+
   let html = "";
   for (let i = 0; i < subtasks.length; i++) {
     let subtask = subtasks[i];

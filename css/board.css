@@ -45,6 +45,8 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 8px 20px;
+    max-width: fit-content;
+    gap: 12px;
 }
 
 .ticket-label {
@@ -362,7 +364,7 @@
         -webkit-overflow-scrolling: touch;
         gap: 12px;
     }
-    
+
     .task-card {
         width: 252px;
         flex: 0 0 252px;
@@ -402,12 +404,6 @@
   }
 }
 
-@media (max-width: 850px) {
-    .overlay-menu.open {
-        top: 80px;
-        height: calc(100svh - 160px);
-    }
-}
 
 @media (max-width: 1024px) {
     .main-wrapper {
@@ -423,4 +419,11 @@
         padding: 0 16px;
     }
 
+}
+
+@media (max-width: 850px) {
+    .overlay-menu.open {
+        top: 80px;
+        height: calc(100svh - 160px);
+    }
 }
