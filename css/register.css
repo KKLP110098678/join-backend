@@ -41,21 +41,20 @@ a {
 }
 
 .back-icon {
-  width: 33px;
-  height: 33px;
+	width: 33px;
+	height: 33px;
 
-  background-image: url("../assets/icon/sign/back.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+	background-image: url("../assets/icon/sign/back.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
 
-  transition: 0.2s ease-in-out;
+	transition: 0.2s ease-in-out;
 }
 
 .back-icon:hover {
-  background-image: url("../assets/icon/sign/hoverback.svg");
+	background-image: url("../assets/icon/sign/hoverback.svg");
 }
-
 
 .register-form {
 	position: relative;
@@ -234,23 +233,31 @@ input:-webkit-autofill {
 		top: 44px;
 		min-height: 608px;
 	}
+
 	.logo-header {
 		top: 37px;
 		left: 38px;
 	}
 }
+
 @media (max-width: 628px) {
 	.register-form {
 		width: 100%;
 		padding: 40px 40px;
 	}
+
+	.back-button-link {
+		top: 44px;
+	}
 }
+
 @media (max-width: 528px) {
 	.main-reg {
 		width: 100%;
 		max-width: 100%;
 	}
 }
+
 @media (max-width: 428px) {
 	/**
 	 * Mobile layout adjustments for register page
@@ -303,6 +310,7 @@ input:-webkit-autofill {
 		max-width: 326px;
 		font-size: 20px;
 	}
+
 	.custom-checkbox {
 		gap: 10px;
 	}
@@ -312,6 +320,7 @@ input:-webkit-autofill {
 	.btn-container {
 		padding-top: 16px;
 	}
+
 	.btn-no-icon {
 		width: 180px !important;
 		height: 48px !important;
