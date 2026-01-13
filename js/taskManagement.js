@@ -1,4 +1,10 @@
 /**
+ * @fileoverview Task lifecycle and data management.
+ * Initializes, loads, persists and renders tasks for the Kanban board.
+ * @version 1.0.0
+ * @author Join Development Team
+ */
+/**
  * Initializes tasks array
  * Loads from Firebase for logged-in users or SessionStorage for guests
  * @async

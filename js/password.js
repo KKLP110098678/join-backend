@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Password visibility toggles and matching helpers.
+ * Handles masked input rendering and confirm-password comparison.
+ * @version 1.0.0
+ * @author Join Development Team
+ */
 let realPassword = "";
 let passwordVisible = false;
 

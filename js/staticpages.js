@@ -1,4 +1,10 @@
 /**
+ * @fileoverview Static pages renderer for unauthenticated users.
+ * Initializes sidebar and header content when no session is active.
+ * @version 1.0.0
+ * @author Join Development Team
+ */
+/**
  * Initialize static pages based on user authentication status
  * Checks sessionStorage for login status and renders appropriate UI
  * If user is not logged in, displays login sidebar and empty header

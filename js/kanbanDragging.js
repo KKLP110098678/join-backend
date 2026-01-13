@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Drag-and-drop handlers for Kanban board columns.
+ * Provides drag start/end/over/drop logic and visual feedback.
+ * @version 1.0.0
+ * @author Join Development Team
+ */
 let draggedElement = null;
 
 function handleDragStart(event, element) {
