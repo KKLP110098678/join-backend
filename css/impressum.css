@@ -82,14 +82,24 @@ a {
 	font-size: 16px;
 }
 
-.back-img {
-	transition: 0.2s ease-in-out;
-	contain: url("../assets/icon/sign/back.svg");
+.back-icon {
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+
+  background-image: url("../assets/icon/sign/back.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  transition: 0.2s ease-in-out;
 }
-.back-img:hover {
-	contain: url("../assets/icon/sign/hoverback.svg");
-	/* width: 40px; */
+
+.back-icon:hover {
+  background-image: url("../assets/icon/sign/hoverback.svg");
 }
+
+
 /**
  * Back button and help icon container
  * Displays page title with back button on right (desktop only)
