@@ -290,8 +290,6 @@
   gap: 8px;
 }
 
-
-
 ::-webkit-calendar-picker-indicator {
   background-color: #ffffff;
   background-image: url(..//assets/icon/task/calendar.svg);
@@ -345,6 +343,14 @@
     margin: 16px 0 0;
     padding-bottom: 80px;
   }
+}
 
+@media (max-width: 480px) {
+  .radio-to-btn-text {
+      font-size: 12px;
+  }
 
+  .sidenav-text {
+      text-align: center;
+  }
 }

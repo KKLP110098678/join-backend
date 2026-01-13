@@ -18,7 +18,7 @@ button {
 
 .btn-add img {
 	margin: 17px 0;
-	
+
 }
 
 .btn-add img {
@@ -227,7 +227,8 @@ button {
 	justify-content: center;
 	flex: 1;
 	border-radius: 10px;
-	width: 136px;
+	max-width: 136px;
+	width: 100%;
 	gap: 10px;
 	padding: 10px 18px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -404,3 +405,13 @@ label.urgent-priority:hover {
 	margin-left: auto;
 }
 
+@media (max-width: 480px) {
+    .radio-to-btn label {
+        flex-direction: column;
+        padding: 2px;
+    }
+
+    .radio-to-btn-text {
+        font-size: 12px;
+    }
+}
