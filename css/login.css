@@ -255,7 +255,6 @@ a {
 		justify-content: space-between;
 	}
 
-
 	.main-reg {
 		padding: 16px;
 	}
@@ -273,36 +272,27 @@ a {
 		top: 865px;
 	}
 
-
-
 }
 @media (max-width: 768px) {
-		@keyframes logoTransition {
-	0% {
-		top: 50%;
-		left: 50%;
-		width: 274px;
-		height: 334px;
-		transform: translate(-50%, -50%);
-	}
+	@keyframes logoTransition {
+		0% {
+			top: 50%;
+			left: 50%;
+			width: 274px;
+			height: 334px;
+			transform: translate(-50%, -50%);
+		}
 
-	100% {
-		top: 37px;
-		left: 38px;
-		width: 64px;
-		height: 78px;
-		transform: none;
+		100% {
+			top: 37px;
+			left: 38px;
+			width: 64px;
+			height: 78px;
+			transform: none;
+		}
 	}
-}
 	.register-main-container {
 		position: relative;
-	}
-	.loader-image-white {
-		top: 37px;
-		left: 38px;
-		width: 64px;
-		height: 78px;
-		/* display: none; */
 	}
 
 	.login-header {
