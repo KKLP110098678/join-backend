@@ -427,3 +427,9 @@
         height: calc(100svh - 160px);
     }
 }
+
+@media (max-width: 560px) {
+    .details-overlay {
+        width: 90vw;
+    }
+}
