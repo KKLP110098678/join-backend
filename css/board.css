@@ -383,6 +383,7 @@
     }
 
     .overlay-menu.open {
+    z-index: 1003;
     position: fixed;
     right: 0;
     margin: auto;
@@ -430,6 +431,9 @@
 
 @media (max-width: 560px) {
     .details-overlay {
-        width: 90vw;
+        width: calc(100% - 32px);
     }
 }
+
+
+

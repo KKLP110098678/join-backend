@@ -292,3 +292,10 @@
     margin-bottom: 80px;
   }
 }
+
+@media (max-width: 428px) {
+    .contact-side-menu.open {
+        width: calc(100% - 32px);
+    }
+    
+}
