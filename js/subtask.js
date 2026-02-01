@@ -73,7 +73,7 @@ function getSubtaskEditTemplate(index, text) {
         <input
         type="text"
         id="subtask-edit-input-${index}"
-        class="subtask-edit-input container-with-form-btn-group"
+        class="subtask-edit-input container-with-form-btn-group form-input"
         value="${text}"
         />
         <div class="form-btn-group">
