@@ -225,6 +225,10 @@
 }
 
 @media (max-width: 1493px) {
+  #add-contact-form .btn-secondary-with-icon {
+    display: none;
+  }
+
   .btn-add-contact {
     position: fixed;
     right: 24.44px;
