@@ -1,12 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/components.css" />
-    <link rel="stylesheet" href="../css/color.css" />
+    <!-- <link rel="stylesheet" href="../css/login.css" /> -->
+    <link rel="stylesheet" href="{% static 'css/components.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/color.css' %}" />
     <link
       rel="shortcut icon"
       href="/assets/icon/join-favicon.svg"
@@ -24,7 +25,8 @@
         </div>
       </header>
       <main>
-        <form id="log-in-form" class="register-form" action="./summary.html">
+        <form  id="log-in-form" class="register-form" action="./summary.html" method="post">
+          {% csrf_token %}
           <div>
             <div class="head-reg">
               <span>Log in</span>
@@ -36,6 +38,7 @@
                   <div class="input-icon-container">
                     <input
                       id="email-input"
+                      name="username"
                       type="email"
                       placeholder="Email"
                       required
@@ -47,6 +50,7 @@
                   <div class="input-icon-container">
                     <input
                       id="password-input"
+                      name="password"
                       type="password"
                       placeholder="Password"
                       required
