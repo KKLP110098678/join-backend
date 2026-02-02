@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from kanban.views import kanban_board
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('login/', include('login.urls')),
+    path('kanban/', kanban_board),
 ]
