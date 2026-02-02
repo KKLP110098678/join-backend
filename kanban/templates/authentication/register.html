@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/register.css" />
-    <link rel="stylesheet" href="../css/color.css" />
-    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/color.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/components.css' %}" />
     <title>Sign Up</title>
   </head>
 
@@ -13,7 +14,7 @@
     <div class="register-main-container">
       <header>
         <div class="logo-header">
-          <img src="../assets/icon/logowhiteheader.svg" alt="" />
+          <img src="{% static 'assets/icon/logowhiteheader.svg' %}" alt="" />
         </div>
       </header>
       <main>
@@ -42,7 +43,7 @@
                       onblur="isUserExistByName(this.value)"
                       required
                     />
-                    <img src="../assets/icon/sign/person.svg" alt="name" />
+                    <img src="{% static 'assets/icon/sign/person.svg' %}" alt="name" />
                   </div>
                   <small id="username-error" class="d-none msg-error"></small>
                 </div>
@@ -55,7 +56,7 @@
                       required
                       onblur="isUserExistByEmail(this.value)"
                     />
-                    <img src="../assets/icon/sign/mail.svg" alt="E-Mail" />
+                    <img src="{% static 'assets/icon/sign/mail.svg' %}" alt="E-Mail" />
                   </div>
                   <small id="email-error" class="d-none msg-error"></small>
                 </div>
@@ -70,7 +71,7 @@
                     />
                     <img
                       id="password-icon"
-                      src="../assets/icon/sign/lock.svg"
+                      src="{% static 'assets/icon/sign/lock.svg' %}"
                       alt="password icon"
                       onclick="onPasswordIconClick()"
                     />
@@ -88,7 +89,7 @@
                     />
                     <img
                       id="confirm-password-icon"
-                      src="../assets/icon/sign/lock.svg"
+                      src="{% static 'assets/icon/sign/lock.svg' %}"
                       alt="confirm password icon"
                       onclick="onClickConfirmPasswordIcon()"
                     />

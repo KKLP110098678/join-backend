@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'css/color.css' %}" />
     <link
       rel="shortcut icon"
-      href="/assets/icon/join-favicon.svg"
+      href="{% static 'assets/icon/join-favicon.svg' %}"
       type="image/x-icon"
     />
   </head>
@@ -24,7 +24,7 @@
   <body onload="renderAllTasks()">
     <header class="header d-flex">
       <a href="./summary.html"
-        ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
+        ><img src="{% static 'assets/icon/logo-white.svg' %}" alt="Logo" class="logo-img"
       /></a>
       <div class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>
@@ -59,19 +59,19 @@
         >
         <a class="btn-menu" href="./add-task.html"
           ><img
-            src="/assets/icon/menuIcons/add-task.svg"
+            src="{% static 'assets/icon/menuIcons/add-task.svg' %}"
             alt="Add Task Icon"
           />Add Task</a
         >
         <a class="btn-menu" href="./board.html"
           ><img
-            src="/assets/icon/menuIcons/board.svg"
+            src="{% static 'assets/icon/menuIcons/board.svg' %}"
             alt="Board Icon"
           />Board</a
         >
         <a class="btn-menu" href="./contacts.html"
           ><img
-            src="/assets/icon/menuIcons/contacts.svg"
+            src="{% static 'assets/icon/menuIcons/contacts.svg' %}"
             alt="Contacts Icon"
           />Contacts</a
         >
@@ -121,7 +121,7 @@
           >
             <span class="full-text">New Task </span>
             <img
-              src="/assets/icon/taskManagement/add-task.svg"
+              src="{% static 'assets/icon/taskManagement/add-task.svg' %}"
               alt="Add Task Icon"
             />
           </button>

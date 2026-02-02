@@ -1,25 +1,26 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Summary</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/summary-main-content.css" />
-    <link rel="stylesheet" href="/css/sidebar-content.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-    <link rel="stylesheet" href="/css/summary.css" />
-    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/summary-main-content.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sidebar-content.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/components.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/summary.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/color.css' %}" />
     <link
       rel="shortcut icon"
-      href="/assets/icon/join-favicon.svg"
+      href="{% static 'assets/icon/join-favicon.svg' %}"
       type="image/x-icon"
     />
   </head>
   <body>
     <header class="header d-flex">
       <a href="./summary.html"
-        ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
+        ><img src="{% static 'assets/icon/logo-white.svg' %}" alt="Logo" class="logo-img"
       /></a>
       <div class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>

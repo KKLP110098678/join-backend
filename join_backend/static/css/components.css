@@ -384,7 +384,7 @@ label.urgent-priority:hover {
 	transform: translateY(-50%);
 	width: 24px;
 	height: 24px;
-	background-image: url(..//assets/icon/sign/unchecked.svg);
+	background-image: url("/static/assets/icon/sign/unchecked.svg");
 }
 
 .checkbox-masked:checked::before {
@@ -393,7 +393,7 @@ label.urgent-priority:hover {
 	transform: translateY(-50%);
 	width: 24px;
 	height: 24px;
-	background-image: url(..//assets/icon/sign/checked.svg);
+	background-image: url("/static/assets/icon/sign/checked.svg");
 }
 
 .dropdown-item input[type="checkbox"] {
@@ -419,13 +419,13 @@ label.urgent-priority:hover {
 	display: inline-block;
 	width: 32px;
 	height: 32px;
-	background-image: url("/assets/icon/questionmark.svg");
+	background-image: url("/static/assets/icon/questionmark.svg");
 	background-size: contain;
 	background-repeat: no-repeat;
 	transition: 0.2s ease-in-out;
 }
 
  .help-icon-svg:hover {
-	background-image: url("/assets/icon/questionmark-hover.svg");
+	background-image: url("/static/assets/icon/questionmark-hover.svg");
 	transform: scale(1.1);
 }

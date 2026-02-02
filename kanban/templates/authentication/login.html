@@ -21,11 +21,11 @@
       <header>
         <div class="text-center login-header">
           <p class="login-header-text">Not a Join user?</p>
-          <a href="register.html" class="btn-no-icon">Sign up</a>
+          <a href="{% url 'kanban_signup' %}" class="btn-no-icon">Sign up</a>
         </div>
       </header>
       <main>
-        <form  id="log-in-form" class="register-form" action="./summary.html" method="post">
+        <form  id="log-in-form" class="register-form" action="" method="post">
           {% csrf_token %}
           <div>
             <div class="head-reg">
@@ -99,8 +99,8 @@
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="../scrDB/dbConfig.js"></script>
+    <!-- <script src="../scrDB/dbConfig.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/script.js"></script> -->
   </body>
 </html>

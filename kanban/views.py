@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from join_backend.settings import BASE_DIR
@@ -6,7 +6,7 @@ from join_backend.settings import BASE_DIR
 # Create your views here.
 def kanban_board(request):
     if not request.user.is_authenticated:
-        return render(request, 'authetication/login.html')
+        return render(request, 'authentication/login.html')
     return render(request, 'board.html')
 
 def kanban_login(request):
@@ -16,8 +16,11 @@ def kanban_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, 'board.html')
+            return redirect('kanban_board')
         else:
-            return render(request, 'authetication/login.html', {'error': 'Invalid username or password'})
+            return render(request, 'authentication/login.html', {'error': 'Invalid username or password'})
     else:
-        return render(request, 'authetication/login.html')
+        return render(request, 'authentication/login.html')
+    
+def kanban_signup(request):
+    return render(request, 'authentication/register.html')
