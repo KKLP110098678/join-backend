@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log In</title>
-    <!-- <link rel="stylesheet" href="../css/login.css" /> -->
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
     <link rel="stylesheet" href="{% static 'css/components.css' %}" />
     <link rel="stylesheet" href="{% static 'css/color.css' %}" />
     <link
       rel="shortcut icon"
-      href="/assets/icon/join-favicon.svg"
+      href="{% static 'assets/icon/join-favicon.svg' %}"
       type="image/x-icon"
     />
   </head>
@@ -43,7 +43,7 @@
                       placeholder="Email"
                       required
                     />
-                    <img src="../assets/icon/login/mail.svg" alt="Email Icon" />
+                    <img src="{% static 'assets/icon/login/mail.svg' %}" alt="Email Icon" />
                   </div>
                 </div>
                 <div class="field-container">
@@ -56,7 +56,7 @@
                       required
                     />
                     <img
-                      src="../assets/icon/login/lock.svg"
+                      src="{% static 'assets/icon/login/lock.svg' %}"
                       alt="Password Icon"
                     />
                   </div>
