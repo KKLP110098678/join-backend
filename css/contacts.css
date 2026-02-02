@@ -206,6 +206,7 @@
 
 .contact-header {
   margin-bottom: 21px;
+  flex-wrap: wrap;
 }
 
 .contact-form-avatar {
@@ -267,7 +268,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1206px) {
   .contact-details-content {
     margin: 0;
     position: fixed;
