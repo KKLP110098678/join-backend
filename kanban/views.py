@@ -20,7 +20,21 @@ def kanban_login(request):
         else:
             return render(request, 'authentication/login.html', {'error': 'Invalid username or password'})
     else:
-        return render(request, 'authentication/login.html')
-    
+        return render(request, 'authentication/login.html')    
+
 def kanban_signup(request):
-    return render(request, 'authentication/register.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        # Additional fields can be handled here
+
+        from django.contrib.auth.models import User
+        if User.objects.filter(username=username).exists():
+            return render(request, 'authentication/register.html', {'error': 'Username already exists'})
+        
+        user = User.objects.create_user(username=username, password=password)
+        user.save()
+        login(request, user)
+        return redirect('kanban_board')
+    else:
+        return render(request, 'authentication/register.html')

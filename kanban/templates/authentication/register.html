@@ -18,8 +18,9 @@
         </div>
       </header>
       <main>
-        <form class="register-form" onsubmit="handleRegisterUser(event)">
-          <a class="back-button-link" href="./login.html" title="back">
+        <form  class="register-form" method="post">
+          {% csrf_token %}
+          <a class="back-button-link" href="{% url 'kanban_board' %}" title="back">
             <span
               class="back-icon"
               onclick="sessionStorage.setItem('skipAnimation', 'true');"
@@ -144,11 +145,11 @@
         <p>You Signed Up successfully</p>
       </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../scrDB/dbConfig.js"></script>
     <script src="../scrDB/userDB.js"></script>
     <script src="../js/register.js"></script>
-    <script src="../js/password.js"></script>
+    <script src="../js/password.js"></script> -->
   </body>
 </html>

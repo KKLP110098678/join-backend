@@ -7,5 +7,5 @@ from . import views
 urlpatterns = [
     path('', views.kanban_board, name='kanban_board'),
     path('login/', views.kanban_login, name='kanban_login'),
-    path('signnup/', views.kanban_signup, name='kanban_signup'),
+    path('signup/', views.kanban_signup, name='kanban_signup'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
