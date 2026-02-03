@@ -23,20 +23,20 @@
 
   <body onload="renderAllTasks()">
     <header class="header d-flex">
-      <a href="./summary.html"
+      <a href="{% url 'summary' %}"
         ><img src="{% static 'assets/icon/logo-white.svg' %}" alt="Logo" class="logo-img"
       /></a>
       <div class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>
-        <a href="./help.html" title="Help" class="help-icon">
+        <a href="{% url 'help' %}" title="Help" class="help-icon">
           <span class="help-icon-svg"></span
         ></a>
         <div class="user-avatar" onclick="toggleUserDropdown(event)">
           <div class="user-avatar-name">SM</div>
           <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
-            <a href="./help.html" class="hide-mobile">Help</a>
-            <a href="./legalnotice.html">Legal Notice</a>
-            <a href="./datenschutz.html">Privacy Policy</a>
+            <a href="{% url 'help' %}" class="hide-mobile">Help</a>
+            <a href="{% url 'legal_notice' %}">Legal Notice</a>
+            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
             <a
               href="#"
               onclick="
@@ -413,7 +413,7 @@
                   onclick="toggleAssignedDropdown()"
                 >
                   <img
-                    src="/assets/icon/task/dropdown-arrow.svg"
+                    src="{% static 'assets/icon/task/dropdown-arrow.svg' %}"
                     alt="dropdown arrow"
                     class="dropdown-arrow"
                   />
@@ -444,7 +444,7 @@
                   onclick="toggleCategoryDropdown()"
                 >
                   <img
-                    src="/assets/icon/task/dropdown-arrow.svg"
+                    src="{% static 'assets/icon/task/dropdown-arrow.svg' %}"
                     alt="dropdown arrow"
                     class="dropdown-arrow"
                   />
@@ -556,7 +556,7 @@
     <script src="/js/subtask.js"></script>
     <script src="/js/editTask.js"></script>
     <script src="/js/kanbanDragging.js"></script>
-    <script src="/js/overlayToggler.js"></script>
+    <script src="{% static 'js/overlayToggler.js' %}"></script>
     <script src="/js/addTask.js"></script>
     <script src="/scrDB/taskDB.js"></script>
   </body>
