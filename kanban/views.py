@@ -6,7 +6,7 @@ from join_backend.settings import BASE_DIR
 # Create your views here.
 def kanban_board(request):
     if not request.user.is_authenticated:
-        return render(request, 'authentication/login.html')
+        return redirect('kanban_login')
     return render(request, 'board.html')
 
 def kanban_login(request):
@@ -41,6 +41,10 @@ def kanban_signup(request):
         return redirect('kanban_board')
     else:
         return render(request, 'authentication/register.html')
+    
+def kanban_logout(request):
+    logout(request)
+    return redirect('kanban_login')
 
 def privacy_policy(request):
     return render(request, 'datenschutz.html')
@@ -63,6 +67,13 @@ def add_task(request):
 
 def contacts(request):
     if not request.user.is_authenticated:
+        if request.method == 'POST':
+            name = request.POST.get('add-contact-name')
+            email = request.POST.get('add-contact-email')
+            phone = request.POST.get('add-contact-phone')
+            from .models import Contact
+            contact = Contact.objects.create(user=request.user, name=name, email=email, phone=phone)
+            contact.save()
         return render(request, 'authentication/login.html')
     return render(request, 'contacts.html')
 

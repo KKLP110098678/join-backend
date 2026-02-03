@@ -15,9 +15,8 @@
     <link
       rel="shortcut icon"
       href="{% static 'assets/icon/join-favicon.svg' %}"
-      type="image/x-icon"
-    />
-  </head>
+      type="image/svg+xml"
+    />  </head>
 
   <body class="body-no-scroll" onload="renderContactList()">
     <header class="header d-flex">
@@ -36,15 +35,10 @@
             <a href="{% url 'legal_notice' %}">Legal Notice</a>
             <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
             <a
-              href="#"
-              onclick="
-                logout();
-                return false;
-              "
+              href="{% url 'kanban_logout' %}"
               >Log out</a
             >
           </div>
-        </div>
       </div>
     </header>
     <main class="main-wrapper">
@@ -128,12 +122,14 @@
           />
         </svg>
       </div>
-      <form id="add-contact-form" class="d-flex" onsubmit="addContact(event)">
+      <form method="post" action="" id="add-contact-form" class="d-flex">
+        {% csrf_token %}        
         <div class="contact-form-avatar user-avatar-lg">
           <img src="{% static 'assets/icon/contacts/avatar-placeholder.svg' %}" alt="Avatar" />
         </div>
         <div class="input-icon-container">
           <input
+            name="contact-name"
             type="text"
             id="add-contact-name"
             placeholder="Name"
@@ -148,6 +144,7 @@
         <div class="input-icon-container">
           <input
             type="email"
+            name="contact-email"
             id="add-contact-email"
             placeholder="E-Mail"
             required
@@ -161,6 +158,7 @@
         <div class="input-icon-container">
           <input
             type="text"
+            name="contact-phone"
             id="add-contact-phone"
             placeholder="Phone"
             required
@@ -231,10 +229,12 @@
           />
         </svg>
       </div>
-      <form id="edit-contact-form" class="contact-form d-flex"></form>
+      <form id="edit-contact-form" class="contact-form d-flex">
+        {% csrf_token %}
+      </form>
     </div>
-    <script src="/js/script.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <script src="/js/contact.js"></script>
-    <script src="/js/overlayToggler.js"></script>
+    <script src="{% static 'js/overlayToggler.js' %}"></script>
   </body>
 </html>
