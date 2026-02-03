@@ -1,39 +1,40 @@
+{% load static %}
 <!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/contacts-main-content.css" />
-    <link rel="stylesheet" href="/css/sidebar-content.css" />
-    <link rel="stylesheet" href="/css/components.css" />
-    <link rel="stylesheet" href="../css/color.css" />
-    <link rel="stylesheet" href="/css/contacts.css" />
-    <link rel="stylesheet" href="/css/overlays.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/contacts/contacts-main-content.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sidebar-content.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/components.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/color.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/contacts/contacts.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/overlays.css' %}" />
     <link
       rel="shortcut icon"
-      href="/assets/icon/join-favicon.svg"
+      href="{% static 'assets/icon/join-favicon.svg' %}"
       type="image/x-icon"
     />
   </head>
 
   <body class="body-no-scroll" onload="renderContactList()">
     <header class="header d-flex">
-      <a href="./summary.html"
-        ><img src="/assets/icon/logo-white.svg" alt="Logo" class="logo-img"
+      <a href="{% url 'summary' %}"
+        ><img src="{% static 'assets/icon/logo-white.svg' %}" alt="Logo" class="logo-img"
       /></a>
       <div class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>
-        <a href="./help.html" title="Help" class="help-icon">
+        <a href="{% url 'help' %}" title="Help" class="help-icon">
           <span class="help-icon-svg"></span
         ></a>
         <div class="user-avatar" onclick="toggleUserDropdown(event)">
           <div class="user-avatar-name">SM</div>
           <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
-            <a href="./help.html" class="hide-mobile">Help</a>
-            <a href="./legalnotice.html">Legal Notice</a>
-            <a href="./datenschutz.html">Privacy Policy</a>
+            <a href="{% url 'help' %}" class="hide-mobile">Help</a>
+            <a href="{% url 'legal_notice' %}">Legal Notice</a>
+            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
             <a
               href="#"
               onclick="
@@ -49,34 +50,34 @@
     <main class="main-wrapper">
       <section id="sidebar-section" class="sidebar-content">
         <nav class="sidenav d-flex">
-          <a class="btn-menu d-flex" href="./summary.html"
+          <a class="btn-menu d-flex" href="{% url 'summary' %}"
             ><img
-              src="/assets/icon/menuIcons/summary.svg"
+              src="{% static 'assets/icon/menuIcons/summary.svg' %}"
               alt="Summary Icon"
             />Summary</a
           >
-          <a class="btn-menu" href="./add-task.html"
+          <a class="btn-menu" href="{% url 'add_task' %}"
             ><img
-              src="/assets/icon/menuIcons/add-task.svg"
+              src="{% static 'assets/icon/menuIcons/add-task.svg' %}"
               alt="Add Task Icon"
             />Add Task</a
           >
-          <a class="btn-menu" href="./board.html"
+          <a class="btn-menu" href="{% url 'kanban_board' %}"
             ><img
-              src="/assets/icon/menuIcons/board.svg"
+              src="{% static 'assets/icon/menuIcons/board.svg' %}"
               alt="Board Icon"
             />Board</a
           >
-          <a class="btn-menu" href="./contacts.html"
+          <a class="btn-menu" href="{% url 'contacts' %}"
             ><img
-              src="/assets/icon/menuIcons/contacts.svg"
+              src="{% static 'assets/icon/menuIcons/contacts.svg' %}"
               alt="Contacts Icon"
             />Contacts</a
           >
         </nav>
         <div class="sidebar-footer d-flex">
-          <a href="/html/datenschutz.html">Privacy Policy</a>
-          <a href="/html/legalnotice.html">Legal Notice</a>
+          <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+          <a href="{% url 'legal_notice' %}">Legal Notice</a>
         </div>
       </section>
       <section id="main-content" class="main-content">
@@ -109,7 +110,7 @@
     <div class="blur-overlay" id="blur-overlay" onclick="closeAllMenus()"></div>
     <div class="contact-side-menu overlay-menu right" id="add-contact-menu">
       <div class="contact-form-header d-flex">
-        <img src="/assets/icon/logo-white.svg" alt="" />
+        <img src="{% static 'assets/icon/logo-white.svg' %}" alt="" />
         <h2>Add Contact</h2>
         <h3>Tasks are better with a team!</h3>
         <svg
@@ -129,7 +130,7 @@
       </div>
       <form id="add-contact-form" class="d-flex" onsubmit="addContact(event)">
         <div class="contact-form-avatar user-avatar-lg">
-          <img src="/assets/icon/contacts/avatar-placeholder.svg" alt="Avatar" />
+          <img src="{% static 'assets/icon/contacts/avatar-placeholder.svg' %}" alt="Avatar" />
         </div>
         <div class="input-icon-container">
           <input
@@ -139,7 +140,7 @@
             required
           />
           <img
-            src="/assets/icon/sign/person.svg"
+            src="{% static 'assets/icon/sign/person.svg' %}"
             alt="name"
             class="overlay-image"
           />
@@ -152,7 +153,7 @@
             required
           />
           <img
-            src="/assets/icon/sign/mail.svg"
+            src="{% static 'assets/icon/sign/mail.svg' %}"
             alt="email"
             class="overlay-image"
           />
@@ -165,7 +166,7 @@
             required
           />
           <img
-            src="/assets/icon/sign/phone.svg"
+            src="{% static 'assets/icon/sign/phone.svg' %}"
             alt="phone"
             class="overlay-image"
           />
@@ -213,7 +214,7 @@
     </div>
     <div class="contact-side-menu overlay-menu left" id="edit-contact-menu">
       <div class="contact-form-header d-flex">
-        <img src="/assets/icon/logo-white.svg" alt="" />
+        <img src="{% static 'assets/icon/logo-white.svg' %}" alt="" />
         <h2>Edit Contact</h2>
         <svg
           class="btn-close"
