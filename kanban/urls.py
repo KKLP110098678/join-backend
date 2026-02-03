@@ -6,6 +6,9 @@ from . import views
 
 urlpatterns = [
     path('', views.kanban_board, name='kanban_board'),
+    path('summary/', views.summary, name='summary'),
+    path('add-task/', views.add_task, name='add_task'),
+    path('contacts/', views.contacts, name='contacts'),
     path('login/', views.kanban_login, name='kanban_login'),
     path('signup/', views.kanban_signup, name='kanban_signup'),
     path('privacy', views.privacy_policy, name='privacy_policy'),

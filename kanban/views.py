@@ -47,3 +47,19 @@ def legal_notice(request):
 
 def help(request):
     return render(request, 'help.html')
+
+def summary(request):
+    if not request.user.is_authenticated:
+        return render(request, 'authentication/login.html')
+    return render(request, 'summary.html')
+
+def add_task(request):
+    if not request.user.is_authenticated:
+        return render(request, 'authentication/login.html')
+    return render(request, 'add-task.html')
+
+def contacts(request):
+    if not request.user.is_authenticated:
+        return render(request, 'authentication/login.html')
+    return render(request, 'contacts.html')
+
