@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,36 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="shortcut icon"
-      href="../assets/icon/join-favicon.svg"
+      href="{% static 'assets/icon/join-favicon.svg' %}"
       type="image/x-icon"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/components.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/impressum.css" />
-    <link rel="stylesheet" href="../css/sidebar-content.css" />
-    <link rel="stylesheet" href="../css/color.css" />
+    <link rel="stylesheet" href="{% static 'css/components.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/impressum.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sidebar-content.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/color.css' %}" />
     <title>Datenschutzerklärung</title>
   </head>
   <body onload="initStaticPages()">
     <header class="header-fix">
-      <a href="./login.html"
-        ><img src="../assets/icon/logo-white.svg" alt="Logo" class="logo-img"
+      <a href="{% url 'kanban_login' %}"
+        ><img src="{% static 'assets/icon/logo-white.svg' %}" alt="Logo" class="logo-img"
       /></a>
       <div id="menu-user" class="inner-header d-flex">
         <p>Kanban Project Management Tool</p>
-        <a href="./help.html" title="Help" class="help-icon">
+        <a href="{% url 'help' %}" title="Help" class="help-icon">
           <span class="help-icon-svg"></span
         ></a>
         <div class="user-avatar" onclick="toggleUserDropdown(event)">
           <div class="user-avatar-name">SM</div>
           <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
-            <a href="./help.html" class="hide-mobile">Help</a>
-            <a href="./legalnotice.html">Legal Notice</a>
-            <a href="./datenschutz.html">Privacy Policy</a>
+            <a href="{% url 'help' %}" class="hide-mobile">Help</a>
+            <a href="{% url 'legal_notice' %}">Legal Notice</a>
+            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
             <a
               href="#"
               onclick="
@@ -76,8 +78,8 @@
         >
       </nav>
       <div class="sidebar-footer d-flex">
-        <a href="./datenschutz.html" class="selected-link">Privacy Policy</a>
-        <a href="./legalnotice.html" class="pad-8">Legal Notice</a>
+        <a href="{% url 'privacy_policy' %}" class="selected-link">Privacy Policy</a>
+        <a href="{% url 'legal_notice' %}" class="pad-8">Legal Notice</a>
       </div>
     </section>
     <main class="main-wrapper-ds">

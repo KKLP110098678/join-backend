@@ -38,3 +38,12 @@ def kanban_signup(request):
         return redirect('kanban_board')
     else:
         return render(request, 'authentication/register.html')
+
+def privacy_policy(request):
+    return render(request, 'datenschutz.html')
+
+def legal_notice(request):
+    return render(request, 'legalnotice.html')
+
+def help(request):
+    return render(request, 'help.html')
