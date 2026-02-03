@@ -51,25 +51,25 @@
     </header>
     <section id="sidebar-section" class="sidebar-content">
       <nav class="sidenav d-flex">
-        <a class="btn-menu d-flex" href="./summary.html"
+        <a class="btn-menu d-flex" href="{% url 'summary' %}"
           ><img
-            src="/assets/icon/menuIcons/summary.svg"
+            src="{% static 'assets/icon/menuIcons/summary.svg' %}"
             alt="Summary Icon"
           />Summary</a
         >
-        <a class="btn-menu" href="./add-task.html"
+        <a class="btn-menu" href="{% url 'add_task' %}"
           ><img
             src="{% static 'assets/icon/menuIcons/add-task.svg' %}"
             alt="Add Task Icon"
           />Add Task</a
         >
-        <a class="btn-menu" href="./board.html"
+        <a class="btn-menu" href="{% url 'kanban_board' %}"
           ><img
             src="{% static 'assets/icon/menuIcons/board.svg' %}"
             alt="Board Icon"
           />Board</a
         >
-        <a class="btn-menu" href="./contacts.html"
+        <a class="btn-menu" href="{% url 'contacts' %}"
           ><img
             src="{% static 'assets/icon/menuIcons/contacts.svg' %}"
             alt="Contacts Icon"
@@ -77,8 +77,8 @@
         >
       </nav>
       <div class="sidebar-footer d-flex">
-        <a href="/html/datenschutz.html">Privacy Policy</a>
-        <a href="/html/impressum.html">Legal Notice</a>
+        <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+        <a href="{% url 'legal_notice' %}">Legal Notice</a>
       </div>
     </section>
     <main class="main-wrapper">

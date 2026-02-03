@@ -18,7 +18,7 @@
         </div>
       </header>
       <main>
-        <form  class="register-form" method="post">
+        <form  class="register-form" method="POST" action="{% url 'kanban_signup' %}">
           {% csrf_token %}
           <a class="back-button-link" href="{% url 'kanban_board' %}" title="back">
             <span
@@ -39,6 +39,7 @@
                     <input
                       id="input-name"
                       type="text"
+                      name="username"
                       placeholder="Name"
                       oninput="setBorderColor('field-name',true)"
                       onblur="isUserExistByName(this.value)"
@@ -53,6 +54,7 @@
                     <input
                       id="input-email"
                       type="email"
+                      name="email"
                       placeholder="E-Mail"
                       required
                       onblur="isUserExistByEmail(this.value)"
@@ -65,7 +67,8 @@
                   <div id="field-password" class="input-icon-container">
                     <input
                       id="input-password"
-                      type="text"
+                      type="password"
+                      name="password"
                       placeholder="Password"
                       oninput="onPasswordInput(this)"
                       onblur="onPasswordBlur(this.value)"
@@ -83,7 +86,8 @@
                   <div id="field-password-confirm" class="input-icon-container">
                     <input
                       id="input-password-confirm"
-                      type="text"
+                      type="password"
+                      name="password_confirm"
                       placeholder="Confirm password"
                       oninput="onInputConfirmPassword(this)"
                       onblur="isPasswordMatching()"

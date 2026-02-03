@@ -115,6 +115,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'join_backend/static'
-STATICFILES_DIRS = [BASE_DIR / 'join_backend/staticfiles']
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # collectstatic target
+
+# Source static dirs used in development
+STATICFILES_DIRS = [
+    BASE_DIR / 'join_backend' / 'static',  # where components.css and assets live
+]
