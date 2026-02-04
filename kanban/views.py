@@ -66,14 +66,19 @@ def add_task(request):
     return render(request, 'add-task.html')
 
 def contacts(request):
-    if not request.user.is_authenticated:
+    if request.user.is_authenticated:
         if request.method == 'POST':
+            user = request.user
             name = request.POST.get('add-contact-name')
             email = request.POST.get('add-contact-email')
             phone = request.POST.get('add-contact-phone')
             from .models import Contact
-            contact = Contact.objects.create(user=request.user, name=name, email=email, phone=phone)
+            contact = Contact.objects.create(user=user, name=name, email=email, phone=phone)
             contact.save()
-        return render(request, 'authentication/login.html')
-    return render(request, 'contacts.html')
+            print(f"Added contact: {name}, {email}, {phone}")
+        context = {
+            'contacts': request.user.contacts.all()
+        }
+        return render(request, 'contacts.html', context)
+    return render(request, 'authentication/login.html')
 

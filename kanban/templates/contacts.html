@@ -95,7 +95,19 @@
                 />
               </svg>
             </button>
-            <div class="contact-list" id="contact-list"></div>
+            <div class="contact-list" id="contact-list">
+              {% for contact in contacts %}
+              <div class="contact-list-item d-flex" onclick="showContactDetails({{ contact.id }})">
+                <div class="contact-avatar user-avatar-sm">
+                  <img src="{% static 'assets/icon/contacts/avatar-placeholder.svg' %}" alt="Avatar" />
+                </div>
+                <div class="contact-info">
+                  <p class="contact-name">{{ contact.name }}</p>
+                  <p class="contact-email">{{ contact.email }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
           </div>
         </div>
         <div class="contact-details-content" id="contact-details-content"></div>
@@ -122,14 +134,14 @@
           />
         </svg>
       </div>
-      <form method="post" action="" id="add-contact-form" class="d-flex">
+      <form method="POST" action="" id="add-contact-form" class="d-flex">
         {% csrf_token %}        
         <div class="contact-form-avatar user-avatar-lg">
           <img src="{% static 'assets/icon/contacts/avatar-placeholder.svg' %}" alt="Avatar" />
         </div>
         <div class="input-icon-container">
           <input
-            name="contact-name"
+            name="add-contact-name"
             type="text"
             id="add-contact-name"
             placeholder="Name"
@@ -144,7 +156,7 @@
         <div class="input-icon-container">
           <input
             type="email"
-            name="contact-email"
+            name="add-contact-email"
             id="add-contact-email"
             placeholder="E-Mail"
             required
@@ -158,7 +170,7 @@
         <div class="input-icon-container">
           <input
             type="text"
-            name="contact-phone"
+            name="add-contact-phone"
             id="add-contact-phone"
             placeholder="Phone"
             required
