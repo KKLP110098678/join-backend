@@ -76,9 +76,11 @@ def contacts(request):
             contact = Contact.objects.create(user=user, name=name, email=email, phone=phone)
             contact.save()
             print(f"Added contact: {name}, {email}, {phone}")
+            # Post/Redirect/Get to avoid duplicate submission on refresh
+            return redirect('contacts')
         context = {
             'contacts': request.user.contacts.all()
         }
         return render(request, 'contacts.html', context)
-    return render(request, 'authentication/login.html')
+    return redirect('kanban_login')
 
