@@ -22,33 +22,7 @@
     <title>Datenschutzerklärung</title>
   </head>
   <body onload="initStaticPages()">
-    <header class="header-fix">
-      <a href="{% url 'summary' %}"
-        ><img src="{% static 'assets/icon/logo-white.svg' %}" alt="Logo" class="logo-img"
-      /></a>
-      <div id="menu-user" class="inner-header d-flex">
-        <p>Kanban Project Management Tool</p>
-        <a href="{% url 'help' %}" title="Help" class="help-icon">
-          <span class="help-icon-svg"></span
-        ></a>
-        <div class="user-avatar" onclick="toggleUserDropdown(event)">
-          <div class="user-avatar-name">SM</div>
-          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
-            <a href="{% url 'help' %}" class="hide-mobile">Help</a>
-            <a href="{% url 'legal_notice' %}">Legal Notice</a>
-            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
-            <a
-              href="#"
-              onclick="
-                logout();
-                return false;
-              "
-              >Log out</a
-            >
-          </div>
-        </div>
-      </div>
-    </header>
+    {% include 'partials/navbar.html' %}
     <section class="sidebar-content">
       <nav id="sidebar-nav" class="sidenav d-flex">
         <a class="btn-menu d-flex" href="{% url 'summary' %}"
@@ -987,7 +961,7 @@
       <div class="custom-scrollbar-thumb"></div>
     </div>
     <script src="../js/staticpages.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <script src="../js/customScrollbar.js"></script>
   </body>
 </html>

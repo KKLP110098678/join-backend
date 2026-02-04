@@ -23,22 +23,6 @@ function checkSession() {
 
 
 /**
- * Initializes session-protected pages
- * Checks session and prevents page load if not authenticated
- */
-function initProtectedPage() {
-  const currentPage = window.location.pathname;
-  const protectedPages = ['/html/summary.html', '/html/add-task.html', '/html/board.html', '/html/contacts.html'];
-  
-  const isProtectedPage = protectedPages.some(page => currentPage.includes(page));
-  
-  if (isProtectedPage) {
-    checkSession();
-  }
-}
-
-
-/**
  * Logs out the user
  * Clears session storage and redirects to login page
  */

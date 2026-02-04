@@ -79,7 +79,8 @@ def contacts(request):
             # Post/Redirect/Get to avoid duplicate submission on refresh
             return redirect('contacts')
         context = {
-            'contacts': request.user.contacts.all()
+            'contacts': request.user.contacts.all(),
+            'initials': [name[:2].upper() for name in request.user.contacts.all().values_list('name', flat=True)],
         }
         return render(request, 'contacts.html', context)
     return redirect('kanban_login')

@@ -1,0 +1,24 @@
+{% load static %}
+<header class="header-fix d-flex">
+      <a href="{% url 'summary' %}"
+        ><img src="{% static 'assets/icon/logo-white.svg' %}" alt="Logo" class="logo-img"
+      /></a>
+      <div id="menu-user" class="inner-header d-flex">
+        <p>Kanban Project Management Tool</p>
+        <a href="{% url 'help' %}" title="Help" class="help-icon">
+          <span class="help-icon-svg"></span
+        ></a>
+        <div class="user-avatar" onclick="toggleUserDropdown(event)">
+          <div class="user-avatar-name">SM</div>
+          <div id="user-dropdown-menu" class="user-dropdown-menu d-none">
+            <a href="{% url 'help' %}" class="hide-mobile">Help</a>
+            <a href="{% url 'legal_notice' %}">Legal Notice</a>
+            <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+            <a
+              href="{% url 'kanban_logout' %}"
+              >Log out</a
+            >
+          </div>
+        </div>
+      </div>
+</header>

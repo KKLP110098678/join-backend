@@ -29,6 +29,22 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone = models.CharField(max_length=20, blank=True, null=True)
+    @property
+    def initials(self):
+        return ''.join([part[0].upper() for part in self.name.split() if part])
+    @property
+    def avatar_color(self):
+        colors = [
+        "#FF7A00",
+        "#9327FF",
+        "#6E52FF",
+        "#FC71FF",
+        "#FFBB2B",
+        "#1FD7C1",
+        "#462F8A",
+        "#FF4646",
+        "#00BEE8"]
+        return colors[ord(self.name[0].upper()) % len(colors)]
 
-    def __str__(self):
-        return self.name
+def __str__(self):
+    return self.name
