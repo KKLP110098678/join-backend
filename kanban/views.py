@@ -78,10 +78,13 @@ def contacts(request):
             print(f"Added contact: {name}, {email}, {phone}")
             # Post/Redirect/Get to avoid duplicate submission on refresh
             return redirect('contacts')
+        contacts_list = list(request.user.contacts.all().values('name', 'email', 'phone'))
         context = {
             'contacts': request.user.contacts.all(),
             'initials': [name[:2].upper() for name in request.user.contacts.all().values_list('name', flat=True)],
+            'contact_list': contacts_list
         }
         return render(request, 'contacts.html', context)
-    return redirect('kanban_login')
+    else:
+        return redirect('kanban_login')
 

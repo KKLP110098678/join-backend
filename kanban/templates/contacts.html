@@ -16,9 +16,11 @@
       rel="shortcut icon"
       href="{% static 'assets/icon/join-favicon.svg' %}"
       type="image/svg+xml"
-    />  </head>
+    />  
+    {{ contact_list|json_script:"contact_json" }}
+  </head>
 
-  <body class="body-no-scroll" onload="renderContactList()">
+  <body class="body-no-scroll">
     {% include 'partials/navbar.html' %}
     <main class="main-wrapper">
       <section id="sidebar-section" class="sidebar-content">
@@ -76,7 +78,7 @@
             </button>
             <div class="contact-list" id="contact-list">
               {% for contact in contacts %}
-              <div class="contact-card d-flex" onclick="showContactDetails('{{ contact.id }}')">
+              <div class="contact-card d-flex" onclick="showContactDetails('{{ forloop.counter0 }}')">
                 <div class="user-avatar-sm" style="background-color: {{ contact.avatar_color }};">
                     <div>{{ contact.initials }}</div>
                 </div>
@@ -225,7 +227,7 @@
       </form>
     </div>
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="/js/contact.js"></script>
+    <script src="{% static 'js/contacts/contact.js' %}"></script>
     <script src="{% static 'js/overlayToggler.js' %}"></script>
   </body>
 </html>
