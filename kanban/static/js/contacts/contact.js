@@ -151,7 +151,6 @@ function getContactCardTemplate(contact, index) {
 function showContactDetails(index) {
   activeContactIndex = index;
   const contact = getContactData()[index];
-  console.log("Selected contact:", contact);
   const avatarColor = getAvatarColor(contact.name);
   const initials = getInitials(contact.name);
   const contactDetails = document.getElementById("contact-details-content");
