@@ -210,10 +210,12 @@ function backToContactList() {
 
 
 function editContact(index) {
-const avatarColor = getAvatarColor(getContactData()[index].name);
   const contact = getContactData()[index];
-  const form = document.getElementById("edit-contact-form");
-  form.onsubmit = (event) => updateContact(event, index);
+  const editContactForm = document.getElementById("edit-contact-form");
+  const baseUrl = editContactForm.getAttribute("data-url").replace("/0", "");
+  editContactForm.setAttribute("action", `${baseUrl}${contact.id}/`);
+  const avatarColor = getAvatarColor(getContactData()[index].name);
+  const form = document.getElementById("edit-contact-form-content");
   const initials = getInitials(contact.name);
   form.innerHTML = getEditContactFormTemplate(contact, avatarColor, initials);
   toggleOverlay("#edit-contact-menu");
@@ -222,26 +224,27 @@ const avatarColor = getAvatarColor(getContactData()[index].name);
 
 function getEditContactFormTemplate(contact, avatarColor, initials) {
   return `
+        <input type="hidden" id="contact-id" value="${contact.id}" />
         <div class="contact-form-avatar user-avatar-lg " style="background-color: ${avatarColor};">
             <div class="avatar-content">${initials}</div>
         </div>
         <div class="input-icon-container">
-            <input type="text" id="edit-contact-name" value="${
+            <input type="text" id="edit-contact-name" name="edit-contact-name" value="${
               contact.name
             }" required />
-            <img src="{% static 'assets/icon/sign/person.svg' %}" alt="name" class="overlay-image" />
+            <img src="/static/assets/icon/sign/person.svg" alt="name" class="overlay-image" />
         </div>
         <div class="input-icon-container">
-            <input type="email" id="edit-contact-email" value="${
+            <input type="email" id="edit-contact-email" name="edit-contact-email" value="${
               contact.email
             }" required />
-            <img src="{% static 'assets/icon/sign/mail.svg' %}" alt="email" class="overlay-image" />
+            <img src="/static/assets/icon/sign/mail.svg" alt="email" class="overlay-image" />
         </div>
         <div class="input-icon-container">
-            <input type="text" id="edit-contact-phone" value="${
+            <input type="text" id="edit-contact-phone" name="edit-contact-phone" value="${
               contact.phone
             }" required />
-            <img src="{% static 'assets/icon/sign/phone.svg' %}" alt="phone" class="overlay-image" />
+            <img src="/static/assets/icon/sign/phone.svg" alt="phone" class="overlay-image" />
         </div>
         <div class="form-buttons">
             <button type="button" onclick="deleteContact(${getContactData().indexOf(

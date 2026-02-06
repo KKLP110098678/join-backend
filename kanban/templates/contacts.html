@@ -222,8 +222,9 @@
           />
         </svg>
       </div>
-      <form id="edit-contact-form" class="contact-form d-flex">
+      <form method="post" data-url="{% url 'edit_contact' 0 %}"  id="edit-contact-form" class="contact-form d-flex">
         {% csrf_token %}
+        <div id="edit-contact-form-content"></div>
       </form>
     </div>
     <script src="{% static 'js/script.js' %}"></script>
