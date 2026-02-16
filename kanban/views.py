@@ -105,4 +105,13 @@ def edit_contact(request, contact_id):
         return redirect('contacts')
     else:
         return redirect('kanban_login')
+    
+def delete_contact(request, contact_id):
+    if request.user.is_authenticated:
+        from .models import Contact
+        contact = Contact.objects.get(id=contact_id, user=request.user)
+        contact.delete()
+        return redirect('contacts')
+    else:
+        return redirect('kanban_login')
 
